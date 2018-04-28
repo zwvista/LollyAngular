@@ -22,50 +22,50 @@ export class UnitWordService extends BaseService {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
     return this.http.get<UnitWord[]>(url)
       .pipe(
-        tap(result => this.log(`fetched unitWords`)),
-        catchError(this.handleError('getDataByTextbook unitWord', []))
+        tap(result => this.log(`fetched UnitWords`)),
+        catchError(this.handleError('getDataByTextbook UnitWords', []))
       );
   }
 
   create(item: UnitWord): Observable<number> {
-    const url = `${this.baseUrl}VUNITWORDS`;
+    const url = `${this.baseUrl}UNITWORDS`;
     return this.http.get<number>(url)
       .pipe(
-        tap(result => this.log(`created unitWord id=${result}`)),
-        catchError(this.handleError('create unitWord', []))
+        tap(result => this.log(`created UnitWord id=${result}`)),
+        catchError(this.handleError('create UnitWord', []))
       );
   }
 
-  updateSeqNum(ID: number, SEQNUM: number): Observable<boolean> {
-    const url = `${this.baseUrl}VUNITWORDS/${ID}`;
-    return this.http.put(url, {ID, SEQNUM} as UnitWord, httpOptions).pipe(
-      tap(_ => this.log(`updated unitWord id=${ID}`)),
-      catchError(this.handleError<any>('update unitWord'))
+  updateSeqNum(id: number, seqnum: number): Observable<boolean> {
+    const url = `${this.baseUrl}UNITWORDS/${id}`;
+    return this.http.put(url, {ID: id, SEQNUM: seqnum} as UnitWord, httpOptions).pipe(
+      tap(_ => this.log(`updated UnitWord id=${id}`)),
+      catchError(this.handleError<any>('update UnitWord'))
     );
   }
 
-  updateNote(ID: number, NOTE: string): Observable<boolean> {
-    const url = `${this.baseUrl}VUNITWORDS/${ID}`;
-    return this.http.put(url, {ID, NOTE} as UnitWord, httpOptions).pipe(
-      tap(_ => this.log(`updated unitWord id=${ID}`)),
-      catchError(this.handleError<any>('update unitWord'))
+  updateNote(id: number, note: string): Observable<boolean> {
+    const url = `${this.baseUrl}UNITWORDS/${id}`;
+    return this.http.put(url, {ID: id, NOTE: note} as UnitWord, httpOptions).pipe(
+      tap(_ => this.log(`updated UnitWord id=${id}`)),
+      catchError(this.handleError<any>('update UnitWord'))
     );
   }
 
   update(item: UnitWord): Observable<boolean> {
-    const url = `${this.baseUrl}VUNITWORDS/${item.ID}`;
+    const url = `${this.baseUrl}UNITWORDS/${item.ID}`;
     return this.http.put(url, item, httpOptions).pipe(
-      tap(_ => this.log(`updated unitWord id=${item.ID}`)),
-      catchError(this.handleError<any>('update unitWord'))
+      tap(_ => this.log(`updated UnitWord id=${item.ID}`)),
+      catchError(this.handleError<any>('update UnitWord'))
     );
   }
 
   delete(ID: number): Observable<boolean> {
-    const url = `${this.baseUrl}VUNITWORDS/${ID}`;
+    const url = `${this.baseUrl}UNITWORDS/${ID}`;
 
     return this.http.delete<boolean>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted unitWord id=${ID}`)),
-      catchError(this.handleError<any>('delete unitWord'))
+      tap(_ => this.log(`deleted UnitWord id=${ID}`)),
+      catchError(this.handleError<any>('delete UnitWord'))
     );
   }
 
