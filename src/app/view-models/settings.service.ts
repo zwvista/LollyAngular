@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import {LanguageService} from '../services/language.service';
 import {UserSettingService} from '../services/user-setting.service';
-import {UserSetting} from '../models/user-setting';
-import {Language} from '../models/language';
-import {DictNote, DictOnline} from '../models/dictionary';
-import {Textbook} from '../models/textbook';
+import {UserSetting, UserSettings} from '../models/user-setting';
+import {Language, Languages} from '../models/language';
+import {DictNote, DictOnline, DictsNote, DictsOnline} from '../models/dictionary';
+import {Textbook, Textbooks} from '../models/textbook';
 import {forkJoin} from 'rxjs/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import {Observable} from 'rxjs/Observable';
 import {DictNoteService, DictOnlineService} from '../services/dictionary.service';
 import {TextbookService} from '../services/textbook.service';
-import 'core-js/es6/array.js';
 
 const userid = 1;
 
@@ -149,8 +148,8 @@ export class SettingsService {
   getData(): Observable<void> {
     return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)])
       .mergeMap(res => {
-        this.languages = res[0].LANGUAGES;
-        this.userSettings = res[1].USERSETTINGS;
+        this.languages = (res[0] as Languages).LANGUAGES;
+        this.userSettings = (res[1] as UserSettings).USERSETTINGS;
         this.selectedUSUserIndex = this.userSettings.findIndex(value => value.KIND === 1);
         return this.setSelectedLangIndex(this.languages.findIndex(value => value.ID === this.USLANGID));
       });
@@ -163,13 +162,13 @@ export class SettingsService {
     return forkJoin([this.dictOnlineService.getDataByLang(this.USLANGID),
     this.dictNoteService.getDataByLang(this.USLANGID), this.textbookService.getDataByLang(this.USLANGID)])
       .map(res => {
-        this.dictsOnline = res[0].VDICTSONLINE;
+        this.dictsOnline = (res[0] as DictsOnline).VDICTSONLINE;
         this.selectedDictOnlineIndex = this.dictsOnline.findIndex(value => value.ID === this.USDICTONLINEID);
-        this.dictsNote = res[1].VDICTSNOTE;
+        this.dictsNote = (res[1] as DictsNote).VDICTSNOTE;
         if (this.dictsNote.length > 0) {
           this.selectedDictNoteIndex = this.dictsNote.findIndex(value => value.ID === this.USDICTNOTEID);
         }
-        this.textbooks = res[2].TEXTBOOKS;
+        this.textbooks = (res[2] as Textbooks).TEXTBOOKS;
         this.selectedTextbookIndex = this.textbooks.findIndex(value => value.ID === this.USTEXTBOOKID);
       });
   }

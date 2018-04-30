@@ -13,9 +13,9 @@ export class TextbookService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<Textbooks> {
+  getDataByLang(langid: number): Observable<Textbooks[]> {
     const url = `${this.baseUrl}TEXTBOOKS?transform=1&filter=LANGID,eq,${langid}`;
-    return this.http.get<Textbooks>(url)
+    return this.http.get<Textbooks[]>(url)
       .pipe(
         tap(result => this.log(`fetched Textbooks`)),
         catchError(this.handleError('getDataByLang Textbooks', []))

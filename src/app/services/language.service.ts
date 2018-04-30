@@ -13,9 +13,9 @@ export class LanguageService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getData(): Observable<Languages> {
+  getData(): Observable<Languages[]> {
     const url = `${this.baseUrl}LANGUAGES?transform=1&filter=ID,neq,0`;
-    return this.http.get<Languages>(url)
+    return this.http.get<Languages[]>(url)
       .pipe(
         tap(result => this.log(`fetched Languages`)),
         catchError(this.handleError('getData Languages', []))

@@ -1,3 +1,11 @@
-<p>
-  words-unit works!
-</p>
+<table class="table">
+  <thead>
+  <tr><th>名前</th><th>年齢</th></tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let member of members">
+    <td>{{member.name}}</td>
+    <td>{{member.age}}</td>
+  </tr>
+  </tbody>
+</table>
