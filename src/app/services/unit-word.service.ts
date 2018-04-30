@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UnitWord } from '../models/unit-word';
+import {UnitWord, UnitWords} from '../models/unit-word';
 import { Observable } from 'rxjs/Observable';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -17,9 +17,9 @@ export class UnitWordService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByTextbookUnitPart(textbookid: number, unitPartFrom: number, unitPartTo: number): Observable<UnitWord[]> {
+  getDataByTextbookUnitPart(textbookid: number, unitPartFrom: number, unitPartTo: number): Observable<UnitWords> {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
-    return this.http.get<UnitWord[]>(url)
+    return this.http.get<UnitWords>(url)
       .pipe(
         tap(result => this.log(`fetched UnitWords`)),
         catchError(this.handleError('getDataByTextbook UnitWords', []))

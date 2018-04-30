@@ -1,3 +1,6 @@
+export class UnitWords {
+  UNITWORDS: UnitWord[];
+}
 export class UnitWord {
   ID: number;
   TEXTBOOKID: number;

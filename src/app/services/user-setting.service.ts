@@ -4,7 +4,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import {MessageService} from './message.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {UserSetting} from '../models/user-setting';
+import {UserSetting, UserSettings} from '../models/user-setting';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,9 +17,9 @@ export class UserSettingService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByUser(userid: number): Observable<UserSetting[]> {
+  getDataByUser(userid: number): Observable<UserSettings> {
     const url = `${this.baseUrl}USERSETTINGS?transform=1&filter=USERID,eq,${userid}`;
-    return this.http.get<UserSetting[]>(url)
+    return this.http.get<UserSettings>(url)
       .pipe(
         tap(result => this.log(`fetched UserSettings`)),
         catchError(this.handleError('getDataByUser UserSettings', []))

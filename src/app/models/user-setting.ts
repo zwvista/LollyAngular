@@ -1,3 +1,6 @@
+export class UserSettings {
+  USERSETTINGS: UserSetting[];
+}
 export class UserSetting {
   ID: number;
   USERID: number;

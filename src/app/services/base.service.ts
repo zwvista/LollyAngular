@@ -12,7 +12,7 @@ export class BaseService {
 
 
   protected log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+    this.messageService.add('BaseService: ' + message);
   }
   protected handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

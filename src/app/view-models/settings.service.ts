@@ -11,6 +11,7 @@ import 'rxjs/add/operator/mergeMap';
 import {Observable} from 'rxjs/Observable';
 import {DictNoteService, DictOnlineService} from '../services/dictionary.service';
 import {TextbookService} from '../services/textbook.service';
+import 'core-js/es6/array.js';
 
 const userid = 1;
 
@@ -23,7 +24,7 @@ export class SettingsService {
     return this.userSettings[this.selectedUSUserIndex];
   }
   private get USLANGID(): number {
-    return this.selectedUSUser.VALUE1;
+    return +this.selectedUSUser.VALUE1;
   }
   private set USLANGID(newValue: number) {
     this.selectedUSUser.VALUE1 = newValue;
@@ -33,19 +34,19 @@ export class SettingsService {
     return this.userSettings[this.selectedUSLangIndex];
   }
   get USTEXTBOOKID(): number {
-    return this.selectedUSLang.VALUE1;
+    return +this.selectedUSLang.VALUE1;
   }
   set USTEXTBOOKID(newValue: number) {
     this.selectedUSLang.VALUE1 = newValue;
   }
   get USDICTONLINEID(): number {
-    return this.selectedUSLang.VALUE2;
+    return +this.selectedUSLang.VALUE2;
   }
   set USDICTONLINEID(newValue: number) {
     this.selectedUSLang.VALUE2 = newValue;
   }
   get USDICTNOTEID(): number {
-    return this.selectedUSLang.VALUE3;
+    return +this.selectedUSLang.VALUE3;
   }
   set USDICTNOTEID(newValue: number) {
     this.selectedUSLang.VALUE3 = newValue;
@@ -55,25 +56,25 @@ export class SettingsService {
     return this.userSettings[this.selectedUSTextbookIndex];
   }
   get USUNITFROM(): number {
-    return this.selectedUSTextbook.VALUE1;
+    return +this.selectedUSTextbook.VALUE1;
   }
   set USUNITFROM(newValue: number) {
     this.selectedUSTextbook.VALUE1 = newValue;
   }
   get USPARTFROM(): number {
-    return this.selectedUSTextbook.VALUE2;
+    return +this.selectedUSTextbook.VALUE2;
   }
   set USPARTFROM(newValue: number) {
     this.selectedUSTextbook.VALUE2 = newValue;
   }
   get USUNITTO(): number {
-    return this.selectedUSTextbook.VALUE3;
+    return +this.selectedUSTextbook.VALUE3;
   }
   set USUNITTO(newValue: number) {
     this.selectedUSTextbook.VALUE3 = newValue;
   }
   get USPARTTO(): number {
-    return this.selectedUSTextbook.VALUE4;
+    return +this.selectedUSTextbook.VALUE4;
   }
   set USPARTTO(newValue: number) {
     this.selectedUSTextbook.VALUE4 = newValue;
@@ -148,8 +149,8 @@ export class SettingsService {
   getData(): Observable<void> {
     return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)])
       .mergeMap(res => {
-        this.languages = res[0];
-        this.userSettings = res[1];
+        this.languages = res[0].LANGUAGES;
+        this.userSettings = res[1].USERSETTINGS;
         this.selectedUSUserIndex = this.userSettings.findIndex(value => value.KIND === 1);
         return this.setSelectedLangIndex(this.languages.findIndex(value => value.ID === this.USLANGID));
       });
@@ -162,13 +163,13 @@ export class SettingsService {
     return forkJoin([this.dictOnlineService.getDataByLang(this.USLANGID),
     this.dictNoteService.getDataByLang(this.USLANGID), this.textbookService.getDataByLang(this.USLANGID)])
       .map(res => {
-        this.dictsOnline = res[0];
+        this.dictsOnline = res[0].VDICTSONLINE;
         this.selectedDictOnlineIndex = this.dictsOnline.findIndex(value => value.ID === this.USDICTONLINEID);
-        this.dictsNote = res[1];
-        if (this.dictsNote.length === 0) {
+        this.dictsNote = res[1].VDICTSNOTE;
+        if (this.dictsNote.length > 0) {
           this.selectedDictNoteIndex = this.dictsNote.findIndex(value => value.ID === this.USDICTNOTEID);
         }
-        this.textbooks = res[2];
+        this.textbooks = res[2].TEXTBOOKS;
         this.selectedTextbookIndex = this.textbooks.findIndex(value => value.ID === this.USTEXTBOOKID);
       });
   }

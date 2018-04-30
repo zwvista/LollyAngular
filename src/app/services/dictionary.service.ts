@@ -4,7 +4,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {MessageService} from './message.service';
 import {BaseService} from './base.service';
-import {DictNote, DictOffline, DictOnline} from '../models/dictionary';
+import {DictNote, DictOffline, DictOnline, DictsNote, DictsOffline, DictsOnline} from '../models/dictionary';
 
 @Injectable()
 export class DictOnlineService extends BaseService {
@@ -13,12 +13,12 @@ export class DictOnlineService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<DictOnline[]> {
+  getDataByLang(langid: number): Observable<DictsOnline> {
     const url = `${this.baseUrl}VDICTSONLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictOnline[]>(url)
+    return this.http.get<DictsOnline>(url)
       .pipe(
-        tap(result => this.log(`fetched DictOnline`)),
-        catchError(this.handleError('getDataByLang DictOnline', []))
+        tap(result => this.log(`fetched DictsOnline`)),
+        catchError(this.handleError('getDataByLang DictsOnline', []))
       );
   }
 
@@ -31,12 +31,12 @@ export class DictOfflineService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<DictOffline[]> {
+  getDataByLang(langid: number): Observable<DictsOffline> {
     const url = `${this.baseUrl}VDICTSONLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictOffline[]>(url)
+    return this.http.get<DictsOffline>(url)
       .pipe(
-        tap(result => this.log(`fetched DictOffline`)),
-        catchError(this.handleError('getDataByLang DictOffline', []))
+        tap(result => this.log(`fetched DictsOffline`)),
+        catchError(this.handleError('getDataByLang DictsOffline', []))
       );
   }
 
@@ -49,12 +49,12 @@ export class DictNoteService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<DictNote[]> {
+  getDataByLang(langid: number): Observable<DictsNote> {
     const url = `${this.baseUrl}VDICTSNOTE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictNote[]>(url)
+    return this.http.get<DictsNote>(url)
       .pipe(
-        tap(result => this.log(`fetched DictNote`)),
-        catchError(this.handleError('getDataByLang DictNote', []))
+        tap(result => this.log(`fetched DictsNote`)),
+        catchError(this.handleError('getDataByLang DictsNote', []))
       );
   }
 

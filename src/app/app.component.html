@@ -3,6 +3,6 @@
   <a routerLink="/words-unit">Words in Unit</a>
   <a routerLink="/settings">Settings</a>
 </nav>
-{{settingsService.languages.length}}
+<div *ngIf="settingsService.languages">{{settingsService.languages.length}}</div>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

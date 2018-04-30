@@ -4,7 +4,7 @@ import {MessageService} from './message.service';
 import {BaseService} from './base.service';
 import {Observable} from 'rxjs/Observable';
 import {catchError, tap} from 'rxjs/operators';
-import {Textbook} from '../models/textbook';
+import {Textbook, Textbooks} from '../models/textbook';
 
 @Injectable()
 export class TextbookService extends BaseService {
@@ -13,9 +13,9 @@ export class TextbookService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<Textbook[]> {
+  getDataByLang(langid: number): Observable<Textbooks> {
     const url = `${this.baseUrl}TEXTBOOKS?transform=1&filter=LANGID,eq,${langid}`;
-    return this.http.get<Textbook[]>(url)
+    return this.http.get<Textbooks>(url)
       .pipe(
         tap(result => this.log(`fetched Textbooks`)),
         catchError(this.handleError('getDataByLang Textbooks', []))
