@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UnitWord } from '../models/unit-word';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import {BaseService} from './base.service';
@@ -27,9 +26,9 @@ export class UnitWordService extends BaseService {
       );
   }
 
-  create(item: UnitWord): Observable<number> {
+  create(item: UnitWord): Observable<number | any[]> {
     const url = `${this.baseUrl}UNITWORDS`;
-    return this.http.get<number>(url)
+    return this.http.get<number | any[]>(url)
       .pipe(
         tap(result => this.log(`created UnitWord id=${result}`)),
         catchError(this.handleError('create UnitWord', []))
