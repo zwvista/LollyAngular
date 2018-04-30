@@ -15,6 +15,7 @@ import {TextbookService} from './services/textbook.service';
 import {UnitWordService} from './services/unit-word.service';
 import {UserSettingService} from './services/user-setting.service';
 import {SettingsService} from './view-models/settings.service';
+import {WordsUnitService} from './view-models/words-unit.service';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {SettingsService} from './view-models/settings.service';
     UnitWordService,
     UserSettingService,
     SettingsService,
+    WordsUnitService,
   ],
   bootstrap: [AppComponent]
 })

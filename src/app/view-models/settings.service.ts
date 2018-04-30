@@ -11,13 +11,14 @@ import 'rxjs/add/operator/mergeMap';
 import {Observable} from 'rxjs/Observable';
 import {DictNoteService, DictOnlineService} from '../services/dictionary.service';
 import {TextbookService} from '../services/textbook.service';
+import {ReplaySubject} from 'rxjs/ReplaySubject';
 
 const userid = 1;
 
 @Injectable()
 export class SettingsService {
 
-  userSettings: UserSetting[];
+  userSettings: UserSetting[] = new Array(0);
   private selectedUSUserIndex: number;
   private get selectedUSUser(): UserSetting {
     return this.userSettings[this.selectedUSUserIndex];
@@ -91,13 +92,13 @@ export class SettingsService {
     return this.USUNITPARTFROM > this.USUNITPARTTO;
   }
 
-  languages: Language[];
+  languages: Language[] = new Array(0);
   private selectedLangIndex: number;
   private get selectedLang(): Language {
     return this.languages[this.selectedLangIndex];
   }
 
-  dictsOnline: DictOnline[];
+  dictsOnline: DictOnline[] = new Array(0);
   _selectedDictOnlineIndex: number;
   get selectedDictOnlineIndex() {
     return this._selectedDictOnlineIndex;
@@ -110,7 +111,7 @@ export class SettingsService {
     return this.dictsOnline[this._selectedDictOnlineIndex];
   }
 
-  dictsNote: DictNote[];
+  dictsNote: DictNote[] = new Array(0);
   _selectedDictNoteIndex: number;
   get selectedDictNoteIndex() {
     return this._selectedDictNoteIndex;
@@ -123,7 +124,7 @@ export class SettingsService {
     return this.dictsNote.length === 0 ? null : this.dictsNote[this._selectedDictNoteIndex];
   }
 
-  textbooks: Textbook[];
+  textbooks: Textbook[] = new Array(0);
   _selectedTextbookIndex: number;
   get selectedTextbookIndex() {
     return this._selectedTextbookIndex;
@@ -136,8 +137,13 @@ export class SettingsService {
     return this.textbooks[this._selectedTextbookIndex];
   }
 
-  units: string[];
-  parts: string[];
+  units: string[] = new Array(0);
+  parts: string[] = new Array(0);
+
+  private _getDataComplete: ReplaySubject<void> = new ReplaySubject<void>();
+  get getDataComplete() {
+    return this._getDataComplete.asObservable();
+  }
 
   constructor(private langService: LanguageService,
               private userSettingService: UserSettingService,
@@ -170,11 +176,15 @@ export class SettingsService {
         }
         this.textbooks = (res[2] as Textbooks).TEXTBOOKS;
         this.selectedTextbookIndex = this.textbooks.findIndex(value => value.ID === this.USTEXTBOOKID);
+        this._getDataComplete.next(null);
       });
   }
 
-  setSelectedTextbookIndex() {
-
+  private setSelectedTextbookIndex() {
+    this.USTEXTBOOKID = this.selectedTextbook.ID;
+    this.selectedUSTextbookIndex = this.userSettings.findIndex(value => value.KIND === 3 && value.ENTITYID === this.USTEXTBOOKID);
+    this.units = Array.from(Array(this.selectedTextbook.UNITS).keys()).map(value => String(value));
+    this.parts = this.selectedTextbook.PARTS.split(' ');
   }
 
 }

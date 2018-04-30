@@ -1,5 +1,5 @@
 export class UnitWords {
-  UNITWORDS: UnitWord[];
+  VUNITWORDS: UnitWord[];
 }
 export class UnitWord {
   ID: number;

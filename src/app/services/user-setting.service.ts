@@ -17,9 +17,9 @@ export class UserSettingService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByUser(userid: number): Observable<UserSettings[]> {
+  getDataByUser(userid: number): Observable<UserSettings | any[]> {
     const url = `${this.baseUrl}USERSETTINGS?transform=1&filter=USERID,eq,${userid}`;
-    return this.http.get<UserSettings[]>(url)
+    return this.http.get<UserSettings | any[]>(url)
       .pipe(
         tap(result => this.log(`fetched UserSettings`)),
         catchError(this.handleError('getDataByUser UserSettings', []))

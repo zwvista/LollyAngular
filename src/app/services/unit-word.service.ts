@@ -17,9 +17,9 @@ export class UnitWordService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByTextbookUnitPart(textbookid: number, unitPartFrom: number, unitPartTo: number): Observable<UnitWords[]> {
+  getDataByTextbookUnitPart(textbookid: number, unitPartFrom: number, unitPartTo: number): Observable<UnitWords | any[]> {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
-    return this.http.get<UnitWords>(url)
+    return this.http.get<UnitWords | any[]>(url)
       .pipe(
         tap(result => this.log(`fetched UnitWords`)),
         catchError(this.handleError('getDataByTextbook UnitWords', []))

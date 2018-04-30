@@ -13,9 +13,9 @@ export class DictOnlineService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<DictsOnline[]> {
+  getDataByLang(langid: number): Observable<DictsOnline | any[]> {
     const url = `${this.baseUrl}VDICTSONLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictsOnline[]>(url)
+    return this.http.get<DictsOnline | any[]>(url)
       .pipe(
         tap(result => this.log(`fetched DictsOnline`)),
         catchError(this.handleError('getDataByLang DictsOnline', []))
@@ -31,9 +31,9 @@ export class DictOfflineService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<DictsOffline[]> {
+  getDataByLang(langid: number): Observable<DictsOffline | any[]> {
     const url = `${this.baseUrl}VDICTSOFFLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictsOffline[]>(url)
+    return this.http.get<DictsOffline | any[]>(url)
       .pipe(
         tap(result => this.log(`fetched DictsOffline`)),
         catchError(this.handleError('getDataByLang DictsOffline', []))
@@ -49,9 +49,9 @@ export class DictNoteService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByLang(langid: number): Observable<DictsNote[]> {
+  getDataByLang(langid: number): Observable<DictsNote | any[]> {
     const url = `${this.baseUrl}VDICTSNOTE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictsNote[]>(url)
+    return this.http.get<DictsNote | any[]>(url)
       .pipe(
         tap(result => this.log(`fetched DictsNote`)),
         catchError(this.handleError('getDataByLang DictsNote', []))

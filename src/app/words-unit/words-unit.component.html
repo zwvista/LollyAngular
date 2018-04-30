@@ -1,11 +1,22 @@
 <table class="table">
   <thead>
-  <tr><th>名前</th><th>年齢</th></tr>
+  <tr>
+    <th>ID</th>
+    <th>UNIT</th>
+    <th>PART</th>
+    <th>SEQNUM</th>
+    <th>WORD</th>
+    <th>NOTE</th>
+  </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let member of members">
-    <td>{{member.name}}</td>
-    <td>{{member.age}}</td>
+  <tr *ngFor="let unitWord of wordsUnitService.unitWords">
+    <td>{{unitWord.ID}}</td>
+    <td>{{unitWord.UNIT}}</td>
+    <td>{{unitWord.PART}}</td>
+    <td>{{unitWord.SEQNUM}}</td>
+    <td>{{unitWord.WORD}}</td>
+    <td>{{unitWord.NOTE}}</td>
   </tr>
   </tbody>
 </table>
