@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from './base.service';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError, tap, map} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import {MessageService} from './message.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -17,10 +17,11 @@ export class UserSettingService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByUser(userid: number): Observable<UserSettings | any[]> {
+  getDataByUser(userid: number): Observable<UserSetting[]> {
     const url = `${this.baseUrl}USERSETTINGS?transform=1&filter=USERID,eq,${userid}`;
-    return this.http.get<UserSettings | any[]>(url)
+    return this.http.get<UserSettings>(url)
       .pipe(
+        map(result => result.USERSETTINGS),
         tap(result => this.log(`fetched UserSettings`)),
         catchError(this.handleError('getDataByUser UserSettings', []))
       );

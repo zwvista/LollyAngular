@@ -1,10 +1,13 @@
 import {MessageService} from './message.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {of} from 'rxjs/observable/of';
 import {Observable} from 'rxjs/Observable';
 
 export class BaseService {
   protected baseUrl = 'http://13.231.236.234/lolly/api.php/';
+  protected httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     protected http: HttpClient,

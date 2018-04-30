@@ -13,10 +13,7 @@ export class WordsUnitService {
     this.settingsService.getDataComplete.subscribe(_ => {
       this.unitWordService.getDataByTextbookUnitPart(this.settingsService.USTEXTBOOKID,
         this.settingsService.USUNITPARTFROM, this.settingsService.USUNITPARTTO)
-        .subscribe(res => {
-          console.log(res);
-          this.unitWords = (res as UnitWords).VUNITWORDS;
-        });
+        .subscribe(res => this.unitWords = res);
     });
   }
 

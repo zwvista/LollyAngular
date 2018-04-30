@@ -17,10 +17,11 @@ export class UnitWordService extends BaseService {
     http: HttpClient,
     messageService: MessageService)  { super(http, messageService); }
 
-  getDataByTextbookUnitPart(textbookid: number, unitPartFrom: number, unitPartTo: number): Observable<UnitWords | any[]> {
+  getDataByTextbookUnitPart(textbookid: number, unitPartFrom: number, unitPartTo: number): Observable<UnitWord[]> {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
-    return this.http.get<UnitWords | any[]>(url)
+    return this.http.get<UnitWords>(url)
       .pipe(
+        map(result => result.VUNITWORDS),
         tap(result => this.log(`fetched UnitWords`)),
         catchError(this.handleError('getDataByTextbook UnitWords', []))
       );

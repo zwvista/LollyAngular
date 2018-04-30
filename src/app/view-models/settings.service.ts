@@ -154,8 +154,8 @@ export class SettingsService {
   getData(): Observable<void> {
     return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)])
       .mergeMap(res => {
-        this.languages = (res[0] as Languages).LANGUAGES;
-        this.userSettings = (res[1] as UserSettings).USERSETTINGS;
+        this.languages = res[0] as Language[];
+        this.userSettings = res[1] as UserSetting[];
         this.selectedUSUserIndex = this.userSettings.findIndex(value => value.KIND === 1);
         return this.setSelectedLangIndex(this.languages.findIndex(value => value.ID === this.USLANGID));
       });
@@ -168,13 +168,13 @@ export class SettingsService {
     return forkJoin([this.dictOnlineService.getDataByLang(this.USLANGID),
     this.dictNoteService.getDataByLang(this.USLANGID), this.textbookService.getDataByLang(this.USLANGID)])
       .map(res => {
-        this.dictsOnline = (res[0] as DictsOnline).VDICTSONLINE;
+        this.dictsOnline = res[0] as DictOnline[];
         this.selectedDictOnlineIndex = this.dictsOnline.findIndex(value => value.ID === this.USDICTONLINEID);
-        this.dictsNote = (res[1] as DictsNote).VDICTSNOTE;
+        this.dictsNote = res[1] as DictNote[];
         if (this.dictsNote.length > 0) {
           this.selectedDictNoteIndex = this.dictsNote.findIndex(value => value.ID === this.USDICTNOTEID);
         }
-        this.textbooks = (res[2] as Textbooks).TEXTBOOKS;
+        this.textbooks = res[2] as Textbook[];
         this.selectedTextbookIndex = this.textbooks.findIndex(value => value.ID === this.USTEXTBOOKID);
         this._getDataComplete.next(null);
       });
