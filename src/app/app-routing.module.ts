@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {WordsUnitComponent} from './words-unit/words-unit.component';
-import {SettingsComponent} from './settings/settings.component';
+import {WordsUnitComponent} from './components/words-unit/words-unit.component';
+import {SettingsComponent} from './components/settings/settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/words-unit', pathMatch: 'full' },

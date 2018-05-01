@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { WordsUnitComponent } from './words-unit/words-unit.component';
-import { MessagesComponent } from './messages/messages.component';
+import { WordsUnitComponent } from './components/words-unit/words-unit.component';
+import { MessagesComponent } from './components/messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MessageService} from './services/message.service';
 import {DictNoteService, DictOfflineService, DictOnlineService} from './services/dictionary.service';
