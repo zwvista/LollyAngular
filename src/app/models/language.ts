@@ -3,5 +3,5 @@ export class Languages {
 }
 export class Language {
   ID: number;
-  LANGNAME: string;
+  NAME: string;
 }

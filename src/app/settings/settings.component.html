@@ -1,3 +1,42 @@
-<p>
-  settings works!
-</p>
+<div>
+  <label>Languages:</label>
+  <select [(ngModel)]="settingsService.selectedLang">
+    <option *ngFor="let lang of settingsService.languages" [ngValue]="lang">{{lang.NAME}}</option>
+  </select>
+</div>
+<div>
+  <label>Dictionary(Online):</label>
+  <select [(ngModel)]="settingsService.selectedDictOnline">
+    <option *ngFor="let dict of settingsService.dictsOnline" [ngValue]="dict">{{dict.DICTNAME}}</option>
+  </select>
+</div>
+<div>
+  <label>Dictionary(Note):</label>
+  <select [(ngModel)]="settingsService.selectedDictNote">
+    <option *ngFor="let dict of settingsService.dictsNote" [ngValue]="dict">{{dict.DICTNAME}}</option>
+  </select>
+</div>
+<div>
+  <label>Textbook:</label>
+  <select [(ngModel)]="settingsService.selectedTextbook">
+    <option *ngFor="let textbook of settingsService.textbooks" [ngValue]="textbook">{{textbook.NAME}}</option>
+  </select>
+</div>
+<div *ngIf="settingsService.selectedUSTextbook">
+  <label>Unit:</label>
+  <select [(ngModel)]="unitFrom">
+    <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
+  </select>
+  <select [(ngModel)]="partFrom">
+    <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
+  </select>
+</div>
+<div *ngIf="settingsService.selectedUSTextbook">
+  <label>To:</label>
+  <select [(ngModel)]="unitTo">
+    <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
+  </select>
+  <select [(ngModel)]="partTo">
+    <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
+  </select>
+</div>

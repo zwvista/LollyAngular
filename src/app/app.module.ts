@@ -16,6 +16,7 @@ import {UnitWordService} from './services/unit-word.service';
 import {UserSettingService} from './services/user-setting.service';
 import {SettingsService} from './view-models/settings.service';
 import {WordsUnitService} from './view-models/words-unit.service';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {WordsUnitService} from './view-models/words-unit.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     DictOnlineService,

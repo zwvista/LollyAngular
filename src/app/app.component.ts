@@ -9,10 +9,9 @@ import {SettingsService} from './view-models/settings.service';
 export class AppComponent implements OnInit {
   title = 'Lolly Angular';
 
-  constructor(private settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.settingsService.getData().subscribe();
   }
 
 }

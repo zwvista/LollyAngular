@@ -183,7 +183,7 @@ export class SettingsService {
   private setSelectedTextbookIndex() {
     this.USTEXTBOOKID = this.selectedTextbook.ID;
     this.selectedUSTextbookIndex = this.userSettings.findIndex(value => value.KIND === 3 && value.ENTITYID === this.USTEXTBOOKID);
-    this.units = Array.from(Array(this.selectedTextbook.UNITS).keys()).map(value => String(value));
+    this.units = Array.from(Array(this.selectedTextbook.UNITS).keys()).map(value => String(value + 1));
     this.parts = this.selectedTextbook.PARTS.split(' ');
   }
 
