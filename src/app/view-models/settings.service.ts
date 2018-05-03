@@ -151,7 +151,7 @@ export class SettingsService {
               private dictNoteService: DictNoteService,
               private textbookService: TextbookService) { }
 
-  getData(): Observable<number> {
+  getData(): Observable<void> {
     return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)])
       .mergeMap(res => {
         this.languages = res[0] as Language[];
@@ -161,7 +161,7 @@ export class SettingsService {
       });
   }
 
-  setSelectedLangIndex(langindex: number): Observable<number> {
+  setSelectedLangIndex(langindex: number): Observable<void> {
     this.selectedLangIndex = langindex;
     this.USLANGID = this.selectedLang.ID;
     this.selectedUSLangIndex = this.userSettings.findIndex(value => value.KIND === 2 && value.ENTITYID === this.USLANGID);

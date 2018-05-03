@@ -63,7 +63,7 @@ export class SettingsComponent implements OnInit {
 
   onPartFromChange(index) {
     this.settingsService.USPARTFROM = index + 1;
-    this.settingsService.updateUnitFrom()
+    this.settingsService.updatePartFrom()
       .subscribe(_ => {
         if (!this.unitToOn || this.settingsService.isInvalidUnitPart) {
           this.updateUnitPartTo();
