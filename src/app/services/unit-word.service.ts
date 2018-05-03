@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { UnitWord, UnitWords } from '../models/unit-word';
 import { Observable } from 'rxjs/Observable';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import { BaseService } from './base.service';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable()
 export class UnitWordService extends BaseService {
@@ -36,34 +32,34 @@ export class UnitWordService extends BaseService {
       );
   }
 
-  updateSeqNum(id: number, seqnum: number): Observable<boolean> {
+  updateSeqNum(id: number, seqnum: number): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${id}`;
-    return this.http.put(url, {ID: id, SEQNUM: seqnum} as UnitWord, httpOptions).pipe(
+    return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as UnitWord, this.httpOptions).pipe(
       tap(_ => this.log(`updated UnitWord id=${id}`)),
       catchError(this.handleError<any>('update UnitWord'))
     );
   }
 
-  updateNote(id: number, note: string): Observable<boolean> {
+  updateNote(id: number, note: string): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${id}`;
-    return this.http.put(url, {ID: id, NOTE: note} as UnitWord, httpOptions).pipe(
+    return this.http.put<number>(url, {ID: id, NOTE: note} as UnitWord, this.httpOptions).pipe(
       tap(_ => this.log(`updated UnitWord id=${id}`)),
       catchError(this.handleError<any>('update UnitWord'))
     );
   }
 
-  update(item: UnitWord): Observable<boolean> {
+  update(item: UnitWord): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${item.ID}`;
-    return this.http.put(url, item, httpOptions).pipe(
+    return this.http.put<number>(url, item, this.httpOptions).pipe(
       tap(_ => this.log(`updated UnitWord id=${item.ID}`)),
       catchError(this.handleError<any>('update UnitWord'))
     );
   }
 
-  delete(ID: number): Observable<boolean> {
+  delete(ID: number): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${ID}`;
 
-    return this.http.delete<boolean>(url, httpOptions).pipe(
+    return this.http.delete<number>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted UnitWord id=${ID}`)),
       catchError(this.handleError<any>('delete UnitWord'))
     );

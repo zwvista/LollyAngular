@@ -18,6 +18,9 @@ import { SettingsService } from './view-models/settings.service';
 import { WordsUnitService } from './view-models/words-unit.service';
 import { FormsModule } from '@angular/forms';
 import { AppService } from './view-models/app.service';
+import { PhrasesUnitComponent } from './components/phrases-unit/phrases-unit.component';
+import { PhrasesUnitService } from './view-models/phrases-unit.service';
+import { UnitPhraseService } from './services/unit-phrase.service';
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import { AppService } from './view-models/app.service';
     AppComponent,
     WordsUnitComponent,
     MessagesComponent,
-    SettingsComponent
+    SettingsComponent,
+    PhrasesUnitComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +44,13 @@ import { AppService } from './view-models/app.service';
     LanguageService,
     MessageService,
     TextbookService,
+    UnitPhraseService,
     UnitWordService,
     UserSettingService,
+
+    // view models
     AppService,
+    PhrasesUnitService,
     SettingsService,
     WordsUnitService,
   ],
