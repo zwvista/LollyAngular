@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {UnitWordService} from '../services/unit-word.service';
-import {SettingsService} from './settings.service';
-import {UnitWord, UnitWords} from '../models/unit-word';
+import { UnitWordService } from '../services/unit-word.service';
+import { SettingsService } from './settings.service';
+import { UnitWord } from '../models/unit-word';
 
 @Injectable()
 export class WordsUnitService {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WordsUnitService} from '../../view-models/words-unit.service';
+import { WordsUnitService } from '../../view-models/words-unit.service';
 
 @Component({
   selector: 'app-words-unit',

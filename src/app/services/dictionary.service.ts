@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {catchError, tap, map} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
-import {MessageService} from './message.service';
-import {BaseService} from './base.service';
-import {DictNote, DictOffline, DictOnline, DictsNote, DictsOffline, DictsOnline} from '../models/dictionary';
+import { Observable } from 'rxjs/Observable';
+import { catchError, tap, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { MessageService } from './message.service';
+import { BaseService } from './base.service';
+import { DictNote, DictOffline, DictOnline, DictsNote, DictsOffline, DictsOnline } from '../models/dictionary';
 
 @Injectable()
 export class DictOnlineService extends BaseService {

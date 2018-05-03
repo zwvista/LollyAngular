@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BaseService} from './base.service';
-import {catchError, tap, map} from 'rxjs/operators';
-import {Observable} from 'rxjs/Observable';
-import {MessageService} from './message.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {UserSetting, UserSettings} from '../models/user-setting';
+import { BaseService } from './base.service';
+import { catchError, tap, map, ignoreElements } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserSetting, UserSettings } from '../models/user-setting';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,57 +27,73 @@ export class UserSettingService extends BaseService {
       );
   }
 
-  updateLang(id: number, langid: number): Observable<boolean> {
+  updateLang(id: number, langid: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE1: langid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE1: langid} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateLang UserSetting'))
     );
   }
 
-  updateTextbook(id: number, textbookid: number): Observable<boolean> {
+  updateTextbook(id: number, textbookid: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE1: textbookid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE1: textbookid} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateTextbook UserSetting'))
     );
   }
 
-  updateDict(id: number, dictid: number): Observable<boolean> {
+  updateDictOnline(id: number, dictonlineid: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE2: dictid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE2: dictonlineid} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
-      catchError(this.handleError<any>('updateDict UserSetting'))
+      catchError(this.handleError<any>('updateDictOnline UserSetting'))
     );
   }
 
-  updateUnitFrom(id: number, unitfrom: number): Observable<boolean> {
+  updateDictNote(id: number, dictnoteid: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE1: unitfrom} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE3: dictnoteid} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
+      tap(_ => this.log(`updated UserSetting id=${id}`)),
+      catchError(this.handleError<any>('updateDictNote UserSetting'))
+    );
+  }
+
+  updateUnitFrom(id: number, unitfrom: number): Observable<void> {
+    const url = `${this.baseUrl}USERSETTINGS/${id}`;
+    return this.http.put<number>(url, {VALUE1: unitfrom} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateUnitFrom UserSetting'))
     );
   }
 
-  updatePartFrom(id: number, partfrom: number): Observable<boolean> {
+  updatePartFrom(id: number, partfrom: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE2: partfrom} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE2: partfrom} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updatePartFrom UserSetting'))
     );
   }
 
-  updateUnitTo(id: number, unitto: number): Observable<boolean> {
+  updateUnitTo(id: number, unitto: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE3: unitto} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE3: unitto} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateUnitTo UserSetting'))
     );
   }
 
-  updatePartTo(id: number, partto: number): Observable<boolean> {
+  updatePartTo(id: number, partto: number): Observable<void> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put(url, {VALUE4: partto} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE4: partto} as UserSetting, httpOptions).pipe(
+      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updatePartTo UserSetting'))
     );

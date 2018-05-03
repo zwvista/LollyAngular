@@ -1,42 +1,42 @@
 <div>
   <label>Languages:</label>
-  <select [(ngModel)]="settingsService.selectedLang">
+  <select [(ngModel)]="settingsService.selectedLang" (change)="onLangChange($event.target.selectedIndex)">
     <option *ngFor="let lang of settingsService.languages" [ngValue]="lang">{{lang.NAME}}</option>
   </select>
 </div>
 <div>
   <label>Dictionary(Online):</label>
-  <select [(ngModel)]="settingsService.selectedDictOnline">
+  <select [(ngModel)]="settingsService.selectedDictOnline" (change)="onDictOnlineChange($event.target.selectedIndex)">
     <option *ngFor="let dict of settingsService.dictsOnline" [ngValue]="dict">{{dict.DICTNAME}}</option>
   </select>
 </div>
 <div>
   <label>Dictionary(Note):</label>
-  <select [(ngModel)]="settingsService.selectedDictNote">
+  <select [(ngModel)]="settingsService.selectedDictNote" (change)="onDictNoteChange($event.target.selectedIndex)">
     <option *ngFor="let dict of settingsService.dictsNote" [ngValue]="dict">{{dict.DICTNAME}}</option>
   </select>
 </div>
 <div>
   <label>Textbook:</label>
-  <select [(ngModel)]="settingsService.selectedTextbook">
+  <select [(ngModel)]="settingsService.selectedTextbook" (change)="onTextbookChange($event.target.selectedIndex)">
     <option *ngFor="let textbook of settingsService.textbooks" [ngValue]="textbook">{{textbook.NAME}}</option>
   </select>
 </div>
 <div *ngIf="settingsService.selectedUSTextbook">
   <label>Unit:</label>
-  <select [(ngModel)]="unitFrom">
+  <select [(ngModel)]="unitFrom" (change)="onUnitFromChange($event.target.selectedIndex)">
     <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
   </select>
-  <select [(ngModel)]="partFrom">
+  <select [(ngModel)]="partFrom" (change)="onPartFromChange($event.target.selectedIndex)">
     <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
   </select>
 </div>
 <div *ngIf="settingsService.selectedUSTextbook">
-  <label>To:</label>
-  <select [(ngModel)]="unitTo">
+  <input type="checkbox" [(ngModel)]="unitToOn" (change)="onUnitToChange($event.target.value)">To:
+  <select [disabled]="!unitToOn" [(ngModel)]="unitTo" (change)="onUnitToChange($event.target.selectedIndex)">
     <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
   </select>
-  <select [(ngModel)]="partTo">
+  <select [disabled]="!unitToOn" [(ngModel)]="partTo" (change)="onPartToChange($event.target.selectedIndex)">
     <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
   </select>
 </div>

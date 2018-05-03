@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {MessageService} from './message.service';
-import {BaseService} from './base.service';
-import {Observable} from 'rxjs/Observable';
-import {catchError, tap, map} from 'rxjs/operators';
-import {Textbook, Textbooks} from '../models/textbook';
+import { HttpClient } from '@angular/common/http';
+import { MessageService } from './message.service';
+import { BaseService } from './base.service';
+import { Observable } from 'rxjs/Observable';
+import { catchError, tap, map } from 'rxjs/operators';
+import { Textbook, Textbooks } from '../models/textbook';
 
 @Injectable()
 export class TextbookService extends BaseService {

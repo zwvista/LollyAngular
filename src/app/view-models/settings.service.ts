@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import {LanguageService} from '../services/language.service';
-import {UserSettingService} from '../services/user-setting.service';
-import {UserSetting, UserSettings} from '../models/user-setting';
-import {Language, Languages} from '../models/language';
-import {DictNote, DictOnline, DictsNote, DictsOnline} from '../models/dictionary';
-import {Textbook, Textbooks} from '../models/textbook';
-import {forkJoin} from 'rxjs/observable/forkJoin';
+import { LanguageService } from '../services/language.service';
+import { UserSettingService } from '../services/user-setting.service';
+import { UserSetting } from '../models/user-setting';
+import { Language } from '../models/language';
+import { DictNote, DictOnline } from '../models/dictionary';
+import { Textbook } from '../models/textbook';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import {Observable} from 'rxjs/Observable';
-import {DictNoteService, DictOnlineService} from '../services/dictionary.service';
-import {TextbookService} from '../services/textbook.service';
-import {ReplaySubject} from 'rxjs/ReplaySubject';
+import { Observable } from 'rxjs/Observable';
+import { DictNoteService, DictOnlineService } from '../services/dictionary.service';
+import { TextbookService } from '../services/textbook.service';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 const userid = 1;
 
@@ -99,7 +99,7 @@ export class SettingsService {
   }
 
   dictsOnline: DictOnline[] = new Array(0);
-  _selectedDictOnlineIndex: number;
+  private _selectedDictOnlineIndex: number;
   get selectedDictOnlineIndex() {
     return this._selectedDictOnlineIndex;
   }
@@ -112,7 +112,7 @@ export class SettingsService {
   }
 
   dictsNote: DictNote[] = new Array(0);
-  _selectedDictNoteIndex: number;
+  private _selectedDictNoteIndex: number;
   get selectedDictNoteIndex() {
     return this._selectedDictNoteIndex;
   }
@@ -125,7 +125,7 @@ export class SettingsService {
   }
 
   textbooks: Textbook[] = new Array(0);
-  _selectedTextbookIndex: number;
+  private _selectedTextbookIndex: number;
   get selectedTextbookIndex() {
     return this._selectedTextbookIndex;
   }
@@ -185,6 +185,38 @@ export class SettingsService {
     this.selectedUSTextbookIndex = this.userSettings.findIndex(value => value.KIND === 3 && value.ENTITYID === this.USTEXTBOOKID);
     this.units = Array.from(Array(this.selectedTextbook.UNITS).keys()).map(value => String(value + 1));
     this.parts = this.selectedTextbook.PARTS.split(' ');
+  }
+
+  updateLang(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSUser.ID, this.USLANGID);
+  }
+
+  updateTextbook(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSLang.ID, this.USTEXTBOOKID);
+  }
+
+  updateDictOnline(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSLang.ID, this.USDICTONLINEID);
+  }
+
+  updateDictNote(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSLang.ID, this.USDICTNOTEID);
+  }
+
+  updateUnitFrom(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USUNITFROM);
+  }
+
+  updatePartFrom(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USPARTFROM);
+  }
+
+  updateUnitTo(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USUNITTO);
+  }
+
+  updatePartTo(): Observable<void> {
+    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USPARTTO);
   }
 
 }
