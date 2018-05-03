@@ -151,7 +151,7 @@ export class SettingsService {
               private dictNoteService: DictNoteService,
               private textbookService: TextbookService) { }
 
-  getData(): Observable<void> {
+  getData(): Observable<number> {
     return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)])
       .mergeMap(res => {
         this.languages = res[0] as Language[];
@@ -161,7 +161,7 @@ export class SettingsService {
       });
   }
 
-  setSelectedLangIndex(langindex: number): Observable<void> {
+  setSelectedLangIndex(langindex: number): Observable<number> {
     this.selectedLangIndex = langindex;
     this.USLANGID = this.selectedLang.ID;
     this.selectedUSLangIndex = this.userSettings.findIndex(value => value.KIND === 2 && value.ENTITYID === this.USLANGID);
@@ -187,36 +187,36 @@ export class SettingsService {
     this.parts = this.selectedTextbook.PARTS.split(' ');
   }
 
-  updateLang(): Observable<void> {
+  updateLang(): Observable<number> {
     return this.userSettingService.updateLang(this.selectedUSUser.ID, this.USLANGID);
   }
 
-  updateTextbook(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSLang.ID, this.USTEXTBOOKID);
+  updateTextbook(): Observable<number> {
+    return this.userSettingService.updateTextbook(this.selectedUSLang.ID, this.USTEXTBOOKID);
   }
 
-  updateDictOnline(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSLang.ID, this.USDICTONLINEID);
+  updateDictOnline(): Observable<number> {
+    return this.userSettingService.updateDictOnline(this.selectedUSLang.ID, this.USDICTONLINEID);
   }
 
-  updateDictNote(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSLang.ID, this.USDICTNOTEID);
+  updateDictNote(): Observable<number> {
+    return this.userSettingService.updateDictNote(this.selectedUSLang.ID, this.USDICTNOTEID);
   }
 
-  updateUnitFrom(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USUNITFROM);
+  updateUnitFrom(): Observable<number> {
+    return this.userSettingService.updateUnitFrom(this.selectedUSTextbook.ID, this.USUNITFROM);
   }
 
-  updatePartFrom(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USPARTFROM);
+  updatePartFrom(): Observable<number> {
+    return this.userSettingService.updatePartFrom(this.selectedUSTextbook.ID, this.USPARTFROM);
   }
 
-  updateUnitTo(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USUNITTO);
+  updateUnitTo(): Observable<number> {
+    return this.userSettingService.updateUnitTo(this.selectedUSTextbook.ID, this.USUNITTO);
   }
 
-  updatePartTo(): Observable<void> {
-    return this.userSettingService.updateLang(this.selectedUSTextbook.ID, this.USPARTTO);
+  updatePartTo(): Observable<number> {
+    return this.userSettingService.updatePartTo(this.selectedUSTextbook.ID, this.USPARTTO);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { catchError, tap, map, ignoreElements } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -27,73 +27,65 @@ export class UserSettingService extends BaseService {
       );
   }
 
-  updateLang(id: number, langid: number): Observable<void> {
+  updateLang(id: number, langid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE1: langid} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateLang UserSetting'))
     );
   }
 
-  updateTextbook(id: number, textbookid: number): Observable<void> {
+  updateTextbook(id: number, textbookid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE1: textbookid} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateTextbook UserSetting'))
     );
   }
 
-  updateDictOnline(id: number, dictonlineid: number): Observable<void> {
+  updateDictOnline(id: number, dictonlineid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE2: dictonlineid} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateDictOnline UserSetting'))
     );
   }
 
-  updateDictNote(id: number, dictnoteid: number): Observable<void> {
+  updateDictNote(id: number, dictnoteid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE3: dictnoteid} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateDictNote UserSetting'))
     );
   }
 
-  updateUnitFrom(id: number, unitfrom: number): Observable<void> {
+  updateUnitFrom(id: number, unitfrom: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE1: unitfrom} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
-      catchError(this.handleError<any>('updateUnitFrom UserSetting'))
+      catchError(this.handleError<any>('updateUnitFrom UserSetting')),
     );
   }
 
-  updatePartFrom(id: number, partfrom: number): Observable<void> {
+  updatePartFrom(id: number, partfrom: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE2: partfrom} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updatePartFrom UserSetting'))
     );
   }
 
-  updateUnitTo(id: number, unitto: number): Observable<void> {
+  updateUnitTo(id: number, unitto: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE3: unitto} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updateUnitTo UserSetting'))
     );
   }
 
-  updatePartTo(id: number, partto: number): Observable<void> {
+  updatePartTo(id: number, partto: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
     return this.http.put<number>(url, {VALUE4: partto} as UserSetting, httpOptions).pipe(
-      ignoreElements(),
       tap(_ => this.log(`updated UserSetting id=${id}`)),
       catchError(this.handleError<any>('updatePartTo UserSetting'))
     );

@@ -47,22 +47,73 @@ export class SettingsComponent implements OnInit {
   onTextbookChange(index) {
     this.settingsService.selectedTextbookIndex = index;
     this.settingsService.updateTextbook().subscribe();
+    this.updateTextbook();
   }
 
   onUnitFromChange(index) {
+    this.settingsService.USUNITFROM = index + 1;
+    this.settingsService.updateUnitFrom()
+      .subscribe(_ => {
+        console.log('aaaaaa');
+        if (!this.unitToOn || this.settingsService.isInvalidUnitPart) {
+          this.updateUnitPartTo();
+        }
+      });
   }
 
   onPartFromChange(index) {
+    this.settingsService.USPARTFROM = index + 1;
+    this.settingsService.updateUnitFrom()
+      .subscribe(_ => {
+        if (!this.unitToOn || this.settingsService.isInvalidUnitPart) {
+          this.updateUnitPartTo();
+        }
+      });
   }
 
-  onUnitToChange(value) {
+  onUnitToChange(index) {
+    this.settingsService.USUNITTO = index + 1;
+    this.settingsService.updateUnitTo()
+      .subscribe(_ => {
+        if (this.settingsService.isInvalidUnitPart) {
+          this.updateUnitPartFrom();
+        }
+      });
   }
 
   onPartToChange(index) {
+    this.settingsService.USPARTTO = index + 1;
+    this.settingsService.updatePartTo()
+      .subscribe(_ => {
+        if (this.settingsService.isInvalidUnitPart) {
+          this.updateUnitPartFrom();
+        }
+      });
   }
 
   updateTextbook() {
     this.unitToOn = !this.settingsService.isSingleUnitPart;
-    this.onUnitToChange(this.unitToOn);
+  }
+
+  updateUnitPartFrom() {
+    if (this.settingsService.USUNITFROM !== this.settingsService.USUNITTO) {
+      this.settingsService.USUNITFROM = this.settingsService.USUNITTO;
+      this.settingsService.updateUnitFrom().subscribe();
+    }
+    if (this.settingsService.USPARTFROM !== this.settingsService.USPARTTO) {
+      this.settingsService.USPARTFROM = this.settingsService.USPARTTO;
+      this.settingsService.updatePartFrom().subscribe();
+    }
+  }
+
+  updateUnitPartTo() {
+    if (this.settingsService.USUNITTO !== this.settingsService.USUNITFROM) {
+      this.settingsService.USUNITTO = this.settingsService.USUNITFROM;
+      this.settingsService.updateUnitTo().subscribe();
+    }
+    if (this.settingsService.USPARTTO !== this.settingsService.USPARTFROM) {
+      this.settingsService.USPARTTO = this.settingsService.USPARTFROM;
+      this.settingsService.updatePartTo().subscribe();
+    }
   }
 }
