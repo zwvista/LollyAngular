@@ -1,3 +1,22 @@
-<p>
-  phrases-unit works!
-</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>UNIT</th>
+    <th>PART</th>
+    <th>SEQNUM</th>
+    <th>PHRASE</th>
+    <th>TRANSLATION</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let unitPhrase of phrasesUnitService.unitPhrases">
+    <td>{{unitPhrase.ID}}</td>
+    <td>{{unitPhrase.UNIT}}</td>
+    <td>{{unitPhrase.PART}}</td>
+    <td>{{unitPhrase.SEQNUM}}</td>
+    <td>{{unitPhrase.PHRASE}}</td>
+    <td>{{unitPhrase.TRANSLATION}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 
 @Component({
   selector: 'app-phrases-unit',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhrasesUnitComponent implements OnInit {
 
-  constructor() { }
+  constructor(private phrasesUnitService: PhrasesUnitService) { }
 
   ngOnInit() {
+    this.phrasesUnitService.getData();
   }
 
 }
