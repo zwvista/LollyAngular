@@ -17,6 +17,7 @@ import { UserSettingService } from './services/user-setting.service';
 import { SettingsService } from './view-models/settings.service';
 import { WordsUnitService } from './view-models/words-unit.service';
 import { FormsModule } from '@angular/forms';
+import { AppService } from './view-models/app.service';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     TextbookService,
     UnitWordService,
     UserSettingService,
+    AppService,
     SettingsService,
     WordsUnitService,
   ],

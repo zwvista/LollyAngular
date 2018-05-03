@@ -11,7 +11,6 @@ import 'rxjs/add/operator/mergeMap';
 import { Observable } from 'rxjs/Observable';
 import { DictNoteService, DictOnlineService } from '../services/dictionary.service';
 import { TextbookService } from '../services/textbook.service';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 const userid = 1;
 
@@ -140,11 +139,6 @@ export class SettingsService {
   units: string[] = new Array(0);
   parts: string[] = new Array(0);
 
-  private _getDataComplete: ReplaySubject<void> = new ReplaySubject<void>();
-  get getDataComplete() {
-    return this._getDataComplete.asObservable();
-  }
-
   constructor(private langService: LanguageService,
               private userSettingService: UserSettingService,
               private dictOnlineService: DictOnlineService,
@@ -176,7 +170,6 @@ export class SettingsService {
         }
         this.textbooks = res[2] as Textbook[];
         this.selectedTextbookIndex = this.textbooks.findIndex(value => value.ID === this.USTEXTBOOKID);
-        this._getDataComplete.next(null);
       });
   }
 

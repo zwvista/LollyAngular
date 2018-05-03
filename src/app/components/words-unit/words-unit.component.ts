@@ -11,6 +11,7 @@ export class WordsUnitComponent implements OnInit {
   constructor(private wordsUnitService: WordsUnitService) { }
 
   ngOnInit() {
+    this.wordsUnitService.getData();
   }
 
 }

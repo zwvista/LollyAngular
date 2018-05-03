@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from './view-models/settings.service';
+import { AppService } from './view-models/app.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { SettingsService } from './view-models/settings.service';
 export class AppComponent implements OnInit {
   title = 'Lolly Angular';
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
   }
