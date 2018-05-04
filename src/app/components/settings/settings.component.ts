@@ -21,7 +21,7 @@ export class SettingsComponent implements OnInit {
     return this.settingsService.parts[this.settingsService.USPARTTO - 1];
   }
 
-  unitToOn: boolean;
+  unitPartTo: boolean;
 
   constructor(private settingsService: SettingsService) { }
 
@@ -55,7 +55,7 @@ export class SettingsComponent implements OnInit {
     this.settingsService.updateUnitFrom()
       .subscribe(_ => {
         console.log('aaaaaa');
-        if (!this.unitToOn || this.settingsService.isInvalidUnitPart) {
+        if (!this.unitPartTo || this.settingsService.isInvalidUnitPart) {
           this.updateUnitPartTo();
         }
       });
@@ -65,7 +65,7 @@ export class SettingsComponent implements OnInit {
     this.settingsService.USPARTFROM = index + 1;
     this.settingsService.updatePartFrom()
       .subscribe(_ => {
-        if (!this.unitToOn || this.settingsService.isInvalidUnitPart) {
+        if (!this.unitPartTo || this.settingsService.isInvalidUnitPart) {
           this.updateUnitPartTo();
         }
       });
@@ -92,7 +92,7 @@ export class SettingsComponent implements OnInit {
   }
 
   updateTextbook() {
-    this.unitToOn = !this.settingsService.isSingleUnitPart;
+    this.unitPartTo = !this.settingsService.isSingleUnitPart;
   }
 
   updateUnitPartFrom() {
