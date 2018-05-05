@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {TableModule} from 'primeng/table';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {MenuItem} from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { TabMenuModule } from 'primeng/tabmenu';
+
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { WordsUnitComponent } from './components/words-unit/words-unit.component';
@@ -39,7 +40,9 @@ import { UnitPhraseService } from './services/unit-phrase.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
+    // Material
+    MatTabsModule,
+    // PrimeNG
     TableModule,
     TabMenuModule,
   ],
