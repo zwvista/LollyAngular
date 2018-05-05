@@ -1,4 +1,4 @@
-<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [(selection)]="selectedUnitPhrase">
+<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [(selection)]="selectedUnitPhrase" [autoLayout]="true">
   <ng-template pTemplate="header">
   <tr>
     <th style="width:2em"></th>
@@ -8,6 +8,7 @@
     <th>SEQNUM</th>
     <th>PHRASE</th>
     <th>TRANSLATION</th>
+    <th></th>
   </tr>
   </ng-template>
   <ng-template pTemplate="body" let-unitPhrase let-index="rowIndex">
@@ -21,6 +22,11 @@
     <td>{{unitPhrase.SEQNUM}}</td>
     <td>{{unitPhrase.PHRASE}}</td>
     <td>{{unitPhrase.TRANSLATION}}</td>
+    <td><p-button label="Delete" styleClass="ui-button-danger" (onClick)="deletePhrase(index)"></p-button>
+      <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
+        <p-button label="Edit"></p-button>
+      </a>
+    </td>
   </tr>
   </ng-template>
 </p-table>

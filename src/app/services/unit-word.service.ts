@@ -25,7 +25,7 @@ export class UnitWordService extends BaseService {
 
   create(item: UnitWord): Observable<number | any[]> {
     const url = `${this.baseUrl}UNITWORDS`;
-    return this.http.get<number | any[]>(url)
+    return this.http.post<number | any[]>(url, item, this.httpOptions)
       .pipe(
         tap(result => this.log(`created UnitWord id=${result}`)),
         catchError(this.handleError('create UnitWord', []))
@@ -56,11 +56,11 @@ export class UnitWordService extends BaseService {
     );
   }
 
-  delete(ID: number): Observable<number> {
-    const url = `${this.baseUrl}UNITWORDS/${ID}`;
+  delete(id: number): Observable<number> {
+    const url = `${this.baseUrl}UNITWORDS/${id}`;
 
     return this.http.delete<number>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted UnitWord id=${ID}`)),
+      tap(_ => this.log(`deleted UnitWord id=${id}`)),
       catchError(this.handleError<any>('delete UnitWord'))
     );
   }

@@ -10,6 +10,7 @@ import { UnitWord } from '../../models/unit-word';
 export class WordsUnitComponent implements OnInit {
 
   selectedUnitWord: UnitWord;
+  newWord: string;
 
   constructor(private wordsUnitService: WordsUnitService) { }
 
@@ -17,4 +18,18 @@ export class WordsUnitComponent implements OnInit {
     this.wordsUnitService.getData();
   }
 
+  onEnter() {
+    if (!this.newWord) return;
+    const o = this.wordsUnitService.newUnitWord();
+    o.WORD = this.newWord;
+    this.wordsUnitService.create(o).subscribe(id => {
+      o.ID = id as number;
+      this.wordsUnitService.unitWords.push(o);
+      this.newWord = '';
+    });
+  }
+
+  deleteWord(index: number) {
+    console.log(index);
+  }
 }

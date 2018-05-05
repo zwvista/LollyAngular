@@ -1,15 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+// Material
+import { MatTabsModule } from '@angular/material/tabs';
+// PrimeNG
 import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
-
-import { MatTabsModule } from '@angular/material/tabs';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 import { AppComponent } from './app.component';
 import { WordsUnitComponent } from './components/words-unit/words-unit.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from './services/message.service';
@@ -25,6 +27,8 @@ import { AppService } from './view-models/app.service';
 import { PhrasesUnitComponent } from './components/phrases-unit/phrases-unit.component';
 import { PhrasesUnitService } from './view-models/phrases-unit.service';
 import { UnitPhraseService } from './services/unit-phrase.service';
+import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
+import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
 
 
 @NgModule({
@@ -33,7 +37,9 @@ import { UnitPhraseService } from './services/unit-phrase.service';
     WordsUnitComponent,
     MessagesComponent,
     SettingsComponent,
-    PhrasesUnitComponent
+    PhrasesUnitComponent,
+    WordsUnitDetailComponent,
+    PhrasesUnitDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,8 @@ import { UnitPhraseService } from './services/unit-phrase.service';
     // PrimeNG
     TableModule,
     TabMenuModule,
+    InputTextModule,
+    ButtonModule,
   ],
   providers: [
     DictOnlineService,
@@ -56,7 +64,6 @@ import { UnitPhraseService } from './services/unit-phrase.service';
     UnitPhraseService,
     UnitWordService,
     UserSettingService,
-
     // view models
     AppService,
     PhrasesUnitService,

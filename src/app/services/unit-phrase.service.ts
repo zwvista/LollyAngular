@@ -25,7 +25,7 @@ export class UnitPhraseService extends BaseService {
 
   create(item: UnitPhrase): Observable<number | any[]> {
     const url = `${this.baseUrl}UNITPHRASES`;
-    return this.http.get<number | any[]>(url)
+    return this.http.post<number | any[]>(url, item)
       .pipe(
         tap(result => this.log(`created UnitPhrase id=${result}`)),
         catchError(this.handleError('create UnitPhrase', []))
