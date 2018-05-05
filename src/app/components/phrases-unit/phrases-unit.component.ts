@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
+import { UnitWord } from '../../models/unit-word';
+import { UnitPhrase } from '../../models/unit-phrase';
 
 @Component({
   selector: 'app-phrases-unit',
@@ -7,6 +9,8 @@ import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
   styleUrls: ['./phrases-unit.component.css']
 })
 export class PhrasesUnitComponent implements OnInit {
+
+  selectedUnitPhrase: UnitPhrase;
 
   constructor(private phrasesUnitService: PhrasesUnitService) { }
 

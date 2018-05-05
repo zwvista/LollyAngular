@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import {TableModule} from 'primeng/table';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {MenuItem} from 'primeng/api';
 
 import { AppComponent } from './app.component';
 import { WordsUnitComponent } from './components/words-unit/words-unit.component';
@@ -36,7 +39,9 @@ import { UnitPhraseService } from './services/unit-phrase.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule.forRoot(),
+
+    TableModule,
+    TabMenuModule,
   ],
   providers: [
     DictOnlineService,

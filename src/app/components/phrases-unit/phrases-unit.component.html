@@ -1,6 +1,7 @@
-<table class="table">
-  <thead>
+<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [(selection)]="selectedUnitPhrase">
+  <ng-template pTemplate="header">
   <tr>
+    <th style="width:2em"></th>
     <th>ID</th>
     <th>UNIT</th>
     <th>PART</th>
@@ -8,9 +9,12 @@
     <th>PHRASE</th>
     <th>TRANSLATION</th>
   </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let unitPhrase of phrasesUnitService.unitPhrases">
+  </ng-template>
+  <ng-template pTemplate="body" let-unitPhrase let-index="rowIndex">
+    <tr [pReorderableRow]="index" [pSelectableRow]="unitPhrase">
+      <td>
+        <i class="fa fa-bars" pReorderableRowHandle></i>
+      </td>
     <td>{{unitPhrase.ID}}</td>
     <td>{{unitPhrase.UNIT}}</td>
     <td>{{unitPhrase.PART}}</td>
@@ -18,5 +22,5 @@
     <td>{{unitPhrase.PHRASE}}</td>
     <td>{{unitPhrase.TRANSLATION}}</td>
   </tr>
-  </tbody>
-</table>
+  </ng-template>
+</p-table>

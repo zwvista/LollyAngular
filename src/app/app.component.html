@@ -1,8 +1,4 @@
 <h1>{{title}}</h1>
-<nav>
-  <a routerLink="/words-unit">Words in Unit</a>
-  <a routerLink="/phrases-unit">Phrases in Unit</a>
-  <a routerLink="/settings">Settings</a>
-</nav>
+<p-tabMenu [model]="items"></p-tabMenu>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

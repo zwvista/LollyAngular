@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
+import { UnitWord } from '../../models/unit-word';
 
 @Component({
   selector: 'app-words-unit',
@@ -7,6 +8,8 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
   styleUrls: ['./words-unit.component.css']
 })
 export class WordsUnitComponent implements OnInit {
+
+  selectedUnitWord: UnitWord;
 
   constructor(private wordsUnitService: WordsUnitService) { }
 
