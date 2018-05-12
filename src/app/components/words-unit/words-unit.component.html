@@ -30,9 +30,9 @@
       <a routerLink="/words-unit-detail/{{unitWord.ID}}">
         <p-button label="Edit"></p-button>
       </a>
-      <p-button label="Retrieve Note" (onClick)="editWord(index)"></p-button>
-      <p-button label="Copy Word" (onClick)="editWord(index)"></p-button>
-      <p-button label="Google Word" (onClick)="editWord(index)"></p-button>
+      <p-button label="Retrieve Note" (onClick)="getNote(index)"></p-button>
+      <p-button label="Copy Word" (onClick)="copyWord(index)"></p-button>
+      <p-button label="Google Word" (onClick)="googleWord(index)"></p-button>
     </td>
   </tr>
   </ng-template>

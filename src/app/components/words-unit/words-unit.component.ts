@@ -32,4 +32,8 @@ export class WordsUnitComponent implements OnInit {
   deleteWord(index: number) {
     console.log(index);
   }
+
+  getNote(index: number) {
+    this.wordsUnitService.getNote(index).subscribe();
+  }
 }

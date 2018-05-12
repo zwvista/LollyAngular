@@ -119,7 +119,7 @@ export class SettingsService {
     this._selectedDictNoteIndex = newValue;
     this.USDICTNOTEID = this.selectedDictNote.ID;
   }
-  private get selectedDictNote(): DictNote {
+  get selectedDictNote(): DictNote {
     return this.dictsNote.length === 0 ? null : this.dictsNote[this._selectedDictNoteIndex];
   }
 

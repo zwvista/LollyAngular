@@ -29,6 +29,7 @@ import { PhrasesUnitService } from './view-models/phrases-unit.service';
 import { UnitPhraseService } from './services/unit-phrase.service';
 import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
 import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
+import { HtmlService } from './services/html.service';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phr
     PhrasesUnitService,
     SettingsService,
     WordsUnitService,
+    HtmlService,
   ],
   bootstrap: [AppComponent]
 })

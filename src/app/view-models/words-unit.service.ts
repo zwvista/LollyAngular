@@ -4,6 +4,8 @@ import { SettingsService } from './settings.service';
 import { UnitWord } from '../models/unit-word';
 import { AppService } from './app.service';
 import { Observable } from 'rxjs/Observable';
+import { HtmlService } from '../services/html.service';
+import { empty } from 'rxjs/observable/empty';
 
 @Injectable()
 export class WordsUnitService {
@@ -12,7 +14,8 @@ export class WordsUnitService {
 
   constructor(private unitWordService: UnitWordService,
               private settingsService: SettingsService,
-              private appService: AppService) {
+              private appService: AppService,
+              private htmlService: HtmlService) {
     appService.initializeComplete.subscribe(_ => this.getData());
   }
 
@@ -52,5 +55,18 @@ export class WordsUnitService {
     o.PART = maxElem ? maxElem.PART : this.settingsService.USPARTTO;
     o.SEQNUM = (maxElem ? maxElem.SEQNUM : 0) + 1;
     return o;
+  }
+
+  getNote(index: number): Observable<number> {
+    const dictNote = this.settingsService.selectedDictNote;
+    if (!dictNote) return empty();
+    const item = this.unitWords[index];
+    const url = dictNote.urlString(item.WORD);
+    return this.htmlService.getHtml(url)
+      .mergeMap(html => {
+        console.log(html);
+        item.NOTE = HtmlService.extractTextFrom(html, dictNote.TRANSFORM_MAC, '', (text, _) => text);
+        return this.unitWordService.updateNote(item.ID, item.NOTE);
+      });
   }
 }

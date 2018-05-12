@@ -8,6 +8,12 @@ class Dictionary {
   TRANSFORM_MAC: string;
   WAIT: number;
   TEMPLATE: string;
+
+  urlString(word: string): string {
+    const url = encodeURIComponent(this.URL.replace('{0}', word));
+    console.log(url);
+    return url;
+  }
 }
 
 export class DictsOnline {
@@ -26,5 +32,4 @@ export class DictsNote {
   VDICTSNOTE: DictNote[];
 }
 export class DictNote extends Dictionary {
-
 }
