@@ -17,7 +17,7 @@ export class DictOnlineService extends BaseService {
     const url = `${this.baseUrl}VDICTSONLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsOnline>(url)
       .pipe(
-        map(result => result.VDICTSONLINE),
+        map(result => result.VDICTSONLINE.map(value => Object.assign(new DictsOnline(), value))),
         tap(result => this.log(`fetched DictsOnline`)),
         catchError(this.handleError('getDataByLang DictsOnline', []))
       );
@@ -36,7 +36,7 @@ export class DictOfflineService extends BaseService {
     const url = `${this.baseUrl}VDICTSOFFLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsOffline>(url)
       .pipe(
-        map(result => result.VDICTSOFFLINE),
+        map(result => result.VDICTSOFFLINE.map(value => Object.assign(new DictOffline(), value))),
         tap(result => this.log(`fetched DictsOffline`)),
         catchError(this.handleError('getDataByLang DictsOffline', []))
       );
@@ -55,7 +55,7 @@ export class DictNoteService extends BaseService {
     const url = `${this.baseUrl}VDICTSNOTE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsNote>(url)
       .pipe(
-        map(result => result.VDICTSNOTE),
+        map(result => result.VDICTSNOTE.map(value => Object.assign(new DictNote(), value))),
         tap(result => this.log(`fetched DictsNote`)),
         catchError(this.handleError('getDataByLang DictsNote', []))
       );

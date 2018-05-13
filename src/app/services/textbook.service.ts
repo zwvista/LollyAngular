@@ -17,7 +17,7 @@ export class TextbookService extends BaseService {
     const url = `${this.baseUrl}TEXTBOOKS?transform=1&filter=LANGID,eq,${langid}`;
     return this.http.get<Textbooks>(url)
       .pipe(
-        map(result => result.TEXTBOOKS),
+        map(result => result.TEXTBOOKS.map(value => Object.assign(new Textbook(), value))),
         tap(result => this.log(`fetched Textbooks`)),
         catchError(this.handleError('getDataByLang Textbooks', []))
       );

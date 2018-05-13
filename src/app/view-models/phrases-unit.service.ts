@@ -40,10 +40,21 @@ export class PhrasesUnitService {
     return this.unitPhraseService.delete(id);
   }
 
+  reindex(onNext: (index: number) => void) {
+    for (let i = 1; i <= this.unitPhrases.length; i++) {
+      const item = this.unitPhrases[i - 1];
+      if (item.SEQNUM === i) continue;
+      item.SEQNUM = i;
+      this.unitPhraseService.updateSeqNum(item.ID, item.SEQNUM).subscribe(_ => {
+        onNext(i - 1);
+      });
+    }
+  }
+
   newUnitPhrase(): UnitPhrase {
     const o = new UnitPhrase();
     o.TEXTBOOKID = this.settingsService.USTEXTBOOKID;
-    const maxElem = this.unitPhrases.reduce((p, v) => [p.UNIT, p.PART, p.SEQNUM] > [v.UNIT, v.PART, v.SEQNUM] ? p : v);
+    const maxElem = this.unitPhrases.reduce((p, v) => [p.UNIT, p.PART, p.SEQNUM] < [v.UNIT, v.PART, v.SEQNUM] ? v : p);
     o.UNIT = maxElem ? maxElem.UNIT : this.settingsService.USUNITTO;
     o.PART = maxElem ? maxElem.PART : this.settingsService.USPARTTO;
     o.SEQNUM = (maxElem ? maxElem.SEQNUM : 0) + 1;

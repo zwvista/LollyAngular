@@ -7,6 +7,7 @@ import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { ToolbarModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import { WordsUnitComponent } from './components/words-unit/words-unit.component';
@@ -30,6 +31,8 @@ import { UnitPhraseService } from './services/unit-phrase.service';
 import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
 import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
 import { HtmlService } from './services/html.service';
+import { DictionaryComponent } from './components/dictionary/dictionary.component';
+import { WordsDictComponent } from './components/words-dict/words-dict.component';
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { HtmlService } from './services/html.service';
     SettingsComponent,
     PhrasesUnitComponent,
     WordsUnitDetailComponent,
-    PhrasesUnitDetailComponent
+    PhrasesUnitDetailComponent,
+    DictionaryComponent,
+    WordsDictComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { HtmlService } from './services/html.service';
     TabMenuModule,
     InputTextModule,
     ButtonModule,
+    ToolbarModule,
   ],
   providers: [
     DictOnlineService,
@@ -65,12 +71,12 @@ import { HtmlService } from './services/html.service';
     UnitPhraseService,
     UnitWordService,
     UserSettingService,
+    HtmlService,
     // view models
     AppService,
     PhrasesUnitService,
     SettingsService,
     WordsUnitService,
-    HtmlService,
   ],
   bootstrap: [AppComponent]
 })

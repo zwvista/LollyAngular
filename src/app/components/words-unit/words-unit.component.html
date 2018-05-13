@@ -1,8 +1,19 @@
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <a routerLink="/words-unit-detail/0">
+      <button pButton type="button" label="Add" icon="fa-plus"></button>
+    </a>
+    <button pButton type="button" label="Refresh" icon="fa-refresh" (click)="onRefresh"></button>
+    <button pButton type="button" label="Retrieve All Notes"></button>
+    <button pButton type="button" label="Retrieve Notes If Empty"></button>
+  </div>
+</p-toolbar>
 <span class="ui-float-label">
     <input id="word" type="text" size="30" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
     <label for="word">New Word</label>
 </span>
-<p-table [value]="wordsUnitService.unitWords" selectionMode="single" [(selection)]="selectedUnitWord" [autoLayout]="true">
+<p-table [value]="wordsUnitService.unitWords" selectionMode="single" [(selection)]="selectedUnitWord" [autoLayout]="true"
+(onRowReorder)="onWordReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
   <tr>
     <th style="width:2em"></th>

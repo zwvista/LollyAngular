@@ -17,7 +17,7 @@ export class UnitWordService extends BaseService {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
     return this.http.get<UnitWords>(url)
       .pipe(
-        map(result => result.VUNITWORDS),
+        map(result => result.VUNITWORDS.map(value => Object.assign(new UnitWord(), value))),
         tap(result => this.log(`fetched UnitWords`)),
         catchError(this.handleError('getDataByTextbook UnitWords', []))
       );

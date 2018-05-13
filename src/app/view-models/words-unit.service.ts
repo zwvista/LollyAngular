@@ -47,10 +47,21 @@ export class WordsUnitService {
     return this.unitWordService.delete(id);
   }
 
+  reindex(onNext: (index: number) => void) {
+    for (let i = 1; i <= this.unitWords.length; i++) {
+      const item = this.unitWords[i - 1];
+      if (item.SEQNUM === i) continue;
+      item.SEQNUM = i;
+      this.unitWordService.updateSeqNum(item.ID, item.SEQNUM).subscribe(_ => {
+        onNext(i - 1);
+      });
+    }
+  }
+
   newUnitWord(): UnitWord {
     const o = new UnitWord();
     o.TEXTBOOKID = this.settingsService.USTEXTBOOKID;
-    const maxElem = this.unitWords.reduce((p, v) => [p.UNIT, p.PART, p.SEQNUM] > [v.UNIT, v.PART, v.SEQNUM] ? p : v);
+    const maxElem = this.unitWords.reduce((p, v) => [p.UNIT, p.PART, p.SEQNUM] < [v.UNIT, v.PART, v.SEQNUM] ? v : p);
     o.UNIT = maxElem ? maxElem.UNIT : this.settingsService.USUNITTO;
     o.PART = maxElem ? maxElem.PART : this.settingsService.USPARTTO;
     o.SEQNUM = (maxElem ? maxElem.SEQNUM : 0) + 1;
@@ -61,6 +72,7 @@ export class WordsUnitService {
     const dictNote = this.settingsService.selectedDictNote;
     if (!dictNote) return empty();
     const item = this.unitWords[index];
+    console.log(dictNote);
     const url = dictNote.urlString(item.WORD);
     return this.htmlService.getHtml(url)
       .mergeMap(html => {

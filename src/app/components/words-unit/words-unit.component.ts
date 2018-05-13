@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
 import { UnitWord } from '../../models/unit-word';
+import '../../common/array-prototype-move';
 
 @Component({
   selector: 'app-words-unit',
@@ -29,11 +30,22 @@ export class WordsUnitComponent implements OnInit {
     });
   }
 
+  private reindex() {
+    this.wordsUnitService.reindex(index => {});
+  }
+
+  onWordReorder(from: number, to: number) {
+    console.log(`${from},${to}`);
+    this.wordsUnitService.unitWords.move(from, to);
+    this.reindex();
+  }
+
   deleteWord(index: number) {
     console.log(index);
   }
 
   getNote(index: number) {
+    console.log(index);
     this.wordsUnitService.getNote(index).subscribe();
   }
 }

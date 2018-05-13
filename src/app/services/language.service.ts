@@ -17,7 +17,8 @@ export class LanguageService extends BaseService {
     const url = `${this.baseUrl}LANGUAGES?transform=1&filter=ID,neq,0`;
     return this.http.get<Languages>(url)
       .pipe(
-        map(result => result.LANGUAGES ),
+        // https://stackoverflow.com/questions/5873624/parse-json-string-into-a-particular-object-prototype-in-javascript
+        map(result => result.LANGUAGES.map(value => Object.assign(new Language(), value))),
         tap(result => this.log(`fetched Languages`)),
         catchError(this.handleError('getData Languages', []))
       );

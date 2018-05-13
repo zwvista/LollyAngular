@@ -21,7 +21,7 @@ export class UserSettingService extends BaseService {
     const url = `${this.baseUrl}USERSETTINGS?transform=1&filter=USERID,eq,${userid}`;
     return this.http.get<UserSettings>(url)
       .pipe(
-        map(result => result.USERSETTINGS),
+        map(result => result.USERSETTINGS.map(value => Object.assign(new UserSetting(), value))),
         tap(result => this.log(`fetched UserSettings`)),
         catchError(this.handleError('getDataByUser UserSettings', []))
       );

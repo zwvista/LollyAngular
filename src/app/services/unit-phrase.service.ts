@@ -17,7 +17,7 @@ export class UnitPhraseService extends BaseService {
     const url = `${this.baseUrl}VUNITPHRASES?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
     return this.http.get<UnitPhrases>(url)
       .pipe(
-        map(result => result.VUNITPHRASES),
+        map(result => result.VUNITPHRASES.map(value => Object.assign(new UnitPhrase(), value))),
         tap(result => this.log(`fetched UnitPhrases`)),
         catchError(this.handleError('getDataByTextbook UnitPhrases', []))
       );
