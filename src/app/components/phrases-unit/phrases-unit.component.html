@@ -1,4 +1,12 @@
-<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [(selection)]="selectedUnitPhrase" [autoLayout]="true">
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <a routerLink="/phrases-unit-detail/0">
+      <button pButton type="button" label="Add" icon="fa-plus"></button>
+    </a>
+    <button pButton type="button" label="Refresh" icon="fa-refresh" (click)="onRefresh"></button>
+  </div>
+</p-toolbar>
+<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
   <tr>
     <th style="width:2em"></th>
@@ -22,7 +30,8 @@
     <td>{{unitPhrase.SEQNUM}}</td>
     <td>{{unitPhrase.PHRASE}}</td>
     <td>{{unitPhrase.TRANSLATION}}</td>
-    <td><p-button label="Delete" styleClass="ui-button-danger" (onClick)="deletePhrase(index)"></p-button>
+    <td>
+      <p-button label="Delete" styleClass="ui-button-danger" (onClick)="deletePhrase(index)"></p-button>
       <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
         <p-button label="Edit"></p-button>
       </a>

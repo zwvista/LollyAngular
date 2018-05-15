@@ -106,7 +106,7 @@ export class SettingsService {
     this._selectedDictOnlineIndex = newValue;
     this.USDICTONLINEID = this.selectedDictOnline.ID;
   }
-  private get selectedDictOnline(): DictOnline {
+  get selectedDictOnline(): DictOnline {
     return this.dictsOnline[this._selectedDictOnlineIndex];
   }
 

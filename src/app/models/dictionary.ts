@@ -10,7 +10,8 @@ class Dictionary {
   TEMPLATE: string;
 
   urlString(word: string): string {
-    const url = this.URL.replace('{0}', encodeURIComponent(word));
+    const url = this.URL.replace('{0}', encodeURIComponent(word))
+      .replace('http://', 'https://');
     console.log(url);
     return url;
   }

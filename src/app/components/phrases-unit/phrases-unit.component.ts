@@ -10,8 +10,6 @@ import { UnitPhrase } from '../../models/unit-phrase';
 })
 export class PhrasesUnitComponent implements OnInit {
 
-  selectedUnitPhrase: UnitPhrase;
-
   constructor(private phrasesUnitService: PhrasesUnitService) { }
 
   ngOnInit() {

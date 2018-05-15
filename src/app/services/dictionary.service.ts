@@ -17,7 +17,7 @@ export class DictOnlineService extends BaseService {
     const url = `${this.baseUrl}VDICTSONLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsOnline>(url)
       .pipe(
-        map(result => result.VDICTSONLINE.map(value => Object.assign(new DictsOnline(), value))),
+        map(result => result.VDICTSONLINE.map(value => Object.assign(new DictOnline(), value))),
         tap(result => this.log(`fetched DictsOnline`)),
         catchError(this.handleError('getDataByLang DictsOnline', []))
       );

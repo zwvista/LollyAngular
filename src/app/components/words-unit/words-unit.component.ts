@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
 import { UnitWord } from '../../models/unit-word';
-import '../../common/array-prototype-move';
+import '../../common/array';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-words-unit',
@@ -10,10 +11,11 @@ import '../../common/array-prototype-move';
 })
 export class WordsUnitComponent implements OnInit {
 
-  selectedUnitWord: UnitWord;
   newWord: string;
+  dictUrl = 'about:blank';
 
-  constructor(private wordsUnitService: WordsUnitService) { }
+  constructor(private wordsUnitService: WordsUnitService,
+              private settingsService: SettingsService) { }
 
   ngOnInit() {
     this.wordsUnitService.getData();
@@ -40,6 +42,10 @@ export class WordsUnitComponent implements OnInit {
     this.reindex();
   }
 
+  onWordSelect(unitWord: UnitWord) {
+    this.dictUrl = this.settingsService.selectedDictOnline.urlString(unitWord.WORD);
+  }
+
   deleteWord(index: number) {
     console.log(index);
   }
@@ -47,5 +53,17 @@ export class WordsUnitComponent implements OnInit {
   getNote(index: number) {
     console.log(index);
     this.wordsUnitService.getNote(index).subscribe();
+  }
+
+  onload(event: Event) {
+    const iFrame = event.target as HTMLIFrameElement;
+    console.log(iFrame);
+    const iFrameBody = iFrame.contentWindow.document.body.innerHTML;
+    // if ( iFrame.contentDocument ) { // FF
+    //   iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
+    // } else if ( iFrame.contentWindow ) { // IE
+    //   iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
+    // }
+    console.log(iFrameBody);
   }
 }

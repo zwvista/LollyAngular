@@ -31,8 +31,8 @@ import { UnitPhraseService } from './services/unit-phrase.service';
 import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
 import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
 import { HtmlService } from './services/html.service';
-import { DictionaryComponent } from './components/dictionary/dictionary.component';
 import { WordsDictComponent } from './components/words-dict/words-dict.component';
+import { DictBrowserComponent } from './components/dict-browser/dict-browser.component';
 
 
 @NgModule({
@@ -44,8 +44,8 @@ import { WordsDictComponent } from './components/words-dict/words-dict.component
     PhrasesUnitComponent,
     WordsUnitDetailComponent,
     PhrasesUnitDetailComponent,
-    DictionaryComponent,
-    WordsDictComponent
+    WordsDictComponent,
+    DictBrowserComponent
   ],
   imports: [
     BrowserModule,

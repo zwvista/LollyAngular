@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs/Observable';
-import { UserSetting } from '../models/user-setting';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable()
 export class HtmlService extends BaseService {
 
-  constructor(
-    http: HttpClient,
-    messageService: MessageService)  { super(http, messageService); }
+  constructor(http: HttpClient,
+              messageService: MessageService)  {
+    super(http, messageService);
+  }
 
   static extractTextFrom(html: string, transform: string, template: string,
                          templateHandler: (text: string, template: string) => string): string {

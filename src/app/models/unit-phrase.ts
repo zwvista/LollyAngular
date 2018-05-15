@@ -1,3 +1,5 @@
+import { padLeft } from '../common/string';
+
 export class UnitPhrases {
   VUNITPHRASES: UnitPhrase[];
 }
@@ -9,5 +11,10 @@ export class UnitPhrase {
   SEQNUM: number;
   PHRASE: string;
   TRANSLATION: string;
-  UNITPART: number;
+
+  get unitPartSeqnum(): string {
+    return padLeft(String(this.UNIT), ' ', 3) +
+      padLeft(String(this.PART), ' ', 3) +
+      padLeft(String(this.SEQNUM), ' ', 3);
+  }
 }
