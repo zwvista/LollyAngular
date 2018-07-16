@@ -4,7 +4,7 @@ import {of} from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 
 export class BaseService {
-  protected baseUrl = 'http://13.231.236.234/lolly/api.php/';
+  protected baseUrl = 'https://zwvista.tk/lolly/api.php/';
   protected httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
