@@ -3,9 +3,9 @@ import { UnitWordService } from '../services/unit-word.service';
 import { SettingsService } from './settings.service';
 import { UnitWord } from '../models/unit-word';
 import { AppService } from './app.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  EMPTY as empty } from 'rxjs';
 import { HtmlService } from '../services/html.service';
-import { empty } from 'rxjs/observable/empty';
+import { mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class WordsUnitService {
@@ -70,15 +70,15 @@ export class WordsUnitService {
 
   getNote(index: number): Observable<number> {
     const dictNote = this.settingsService.selectedDictNote;
-    if (!dictNote) return empty();
+    if (!dictNote) return empty;
     const item = this.unitWords[index];
     console.log(dictNote);
     const url = dictNote.urlString(item.WORD);
-    return this.htmlService.getHtml(url)
-      .mergeMap(html => {
+    return this.htmlService.getHtml(url).pipe(
+      mergeMap(html => {
         console.log(html);
         item.NOTE = HtmlService.extractTextFrom(html, dictNote.TRANSFORM_MAC, '', (text, _) => text);
         return this.unitWordService.updateNote(item.ID, item.NOTE);
-      });
+      }));
   }
 }

@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import { SettingsService } from './settings.service';
 import { UnitPhrase } from '../models/unit-phrase';
 import { UnitPhraseService } from '../services/unit-phrase.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class PhrasesUnitService {

@@ -1,3 +1,5 @@
+
+import {map, mergeMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { LanguageService } from '../services/language.service';
 import { UserSettingService } from '../services/user-setting.service';
@@ -5,10 +7,7 @@ import { UserSetting } from '../models/user-setting';
 import { Language } from '../models/language';
 import { DictNote, DictOnline } from '../models/dictionary';
 import { Textbook } from '../models/textbook';
-import { forkJoin } from 'rxjs/observable/forkJoin';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
-import { Observable } from 'rxjs/Observable';
+import { forkJoin ,  Observable } from 'rxjs';
 import { DictNoteService, DictOnlineService } from '../services/dictionary.service';
 import { TextbookService } from '../services/textbook.service';
 
@@ -146,13 +145,13 @@ export class SettingsService {
               private textbookService: TextbookService) { }
 
   getData(): Observable<void> {
-    return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)])
-      .mergeMap(res => {
+    return forkJoin([this.langService.getData(), this.userSettingService.getDataByUser(userid)]).pipe(
+      mergeMap(res => {
         this.languages = res[0] as Language[];
         this.userSettings = res[1] as UserSetting[];
         this.selectedUSUserIndex = this.userSettings.findIndex(value => value.KIND === 1);
         return this.setSelectedLangIndex(this.languages.findIndex(value => value.ID === this.USLANGID));
-      });
+      }));
   }
 
   setSelectedLangIndex(langindex: number): Observable<void> {
@@ -160,8 +159,8 @@ export class SettingsService {
     this.USLANGID = this.selectedLang.ID;
     this.selectedUSLangIndex = this.userSettings.findIndex(value => value.KIND === 2 && value.ENTITYID === this.USLANGID);
     return forkJoin([this.dictOnlineService.getDataByLang(this.USLANGID),
-    this.dictNoteService.getDataByLang(this.USLANGID), this.textbookService.getDataByLang(this.USLANGID)])
-      .map(res => {
+    this.dictNoteService.getDataByLang(this.USLANGID), this.textbookService.getDataByLang(this.USLANGID)]).pipe(
+      map(res => {
         this.dictsOnline = res[0] as DictOnline[];
         this.selectedDictOnlineIndex = this.dictsOnline.findIndex(value => value.ID === this.USDICTONLINEID);
         this.dictsNote = res[1] as DictNote[];
@@ -170,7 +169,7 @@ export class SettingsService {
         }
         this.textbooks = res[2] as Textbook[];
         this.selectedTextbookIndex = this.textbooks.findIndex(value => value.ID === this.USTEXTBOOKID);
-      });
+      }));
   }
 
   private setSelectedTextbookIndex() {

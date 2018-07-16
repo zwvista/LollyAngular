@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UnitWord, UnitWords } from '../models/unit-word';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import { BaseService } from './base.service';

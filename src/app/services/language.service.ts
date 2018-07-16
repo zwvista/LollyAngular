@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Language, Languages } from '../models/language';
 

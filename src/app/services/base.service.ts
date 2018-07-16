@@ -1,7 +1,6 @@
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {of} from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
+import {of,  Observable } from 'rxjs';
 
 export class BaseService {
   protected baseUrl = 'https://zwvista.tk/lolly/api.php/';
