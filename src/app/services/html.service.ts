@@ -21,7 +21,7 @@ export class HtmlService extends BaseService {
     do {
       if (!transform) break;
       const arr = transform.split('\r\n');
-      let regex = new RegExp(arr[0]);
+      let regex = new RegExp(arr[0], 'g');
       const m = regex.exec(html);
       if (!m) break;
       text = m[0];
@@ -34,7 +34,7 @@ export class HtmlService extends BaseService {
       f(arr[1]);
       for (let i = 2; i < arr.length; i++)
         if (i % 2 === 0)
-          regex = new RegExp(arr[i]);
+          regex = new RegExp(arr[i], 'g');
         else
           f(arr[i]);
 
@@ -46,7 +46,8 @@ export class HtmlService extends BaseService {
   }
 
   getHtml(url: string): Observable<string> {
-    return this.http.get<string>(url).pipe(
+    // https://www.concretepage.com/angular-2/angular-httpclient-get-example#Text
+    return this.http.get(url, {responseType: 'text'}).pipe(
       tap(_ => this.log(`get html`)),
       catchError(this.handleError<any>('get html'))
     );
