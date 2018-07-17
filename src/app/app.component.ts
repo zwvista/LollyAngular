@@ -10,9 +10,9 @@ import { MenuItem } from 'primeng/api';
 export class AppComponent implements OnInit {
   title = 'Lolly Angular';
   items: MenuItem[] = [
-    {label: 'Words in Unit', icon: 'fa-book', routerLink: 'words-unit'},
-    {label: 'Phrases in Unit', icon: 'fa-book', routerLink: 'phrases-unit'},
-    {label: 'Settings', icon: 'fa-book', routerLink: 'settings'},
+    {label: 'Words in Unit', icon: 'fa fa-book', routerLink: 'words-unit'},
+    {label: 'Phrases in Unit', icon: 'fa fa-book', routerLink: 'phrases-unit'},
+    {label: 'Settings', icon: 'fa fa-book', routerLink: 'settings'},
   ];
   tabLinks: {label: string, link: string}[] = [
     {label: 'Words in Unit', link: 'words-unit'},

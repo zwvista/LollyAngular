@@ -11,6 +11,9 @@ import { mergeMap } from 'rxjs/operators';
 export class WordsUnitService {
 
   unitWords: UnitWord[] = new Array(0);
+  noteFromIndex = 0;
+  noteToIndex = 0;
+  noteIfEmpty = true;
 
   constructor(private unitWordService: UnitWordService,
               private settingsService: SettingsService,
@@ -80,5 +83,29 @@ export class WordsUnitService {
         item.NOTE = HtmlService.extractTextFrom(html, dictNote.TRANSFORM_MAC, '', (text, _) => text);
         return this.unitWordService.updateNote(item.ID, item.NOTE);
       }));
+  }
+
+  getNotes(ifEmpty: boolean, complete: (number) => void) {
+    const dictNote = this.settingsService.selectedDictNote;
+    if (!dictNote) return;
+    this.noteFromIndex = 0;
+    this.noteToIndex = this.unitWords.length;
+    this.noteIfEmpty = ifEmpty;
+    complete(dictNote.WAIT);
+  }
+
+  getNextNote(rowComplete: (number) => void, allComplete: () => void) {
+    if (this.noteIfEmpty)
+      while (this.noteFromIndex < this.noteToIndex && this.unitWords[this.noteFromIndex].NOTE)
+        this.noteFromIndex++;
+    if (this.noteFromIndex >= this.noteToIndex)
+      allComplete();
+    else {
+      const i = this.noteFromIndex;
+      this.getNote(i).subscribe(() => {
+        rowComplete(i);
+      });
+      this.noteFromIndex++;
+    }
   }
 }

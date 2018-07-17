@@ -13,8 +13,9 @@ export class WordsUnitComponent implements OnInit {
 
   newWord: string;
   dictUrl = 'about:blank';
+  timer: number;
 
-  constructor(private wordsUnitService: WordsUnitService,
+  constructor(public wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
@@ -70,5 +71,13 @@ export class WordsUnitComponent implements OnInit {
   // https://stackoverflow.com/questions/42775017/angular-2-redirect-to-an-external-url-and-open-in-a-new-tab
   googleWord(WORD: string) {
     window.open('https://www.google.com/search?q=' + encodeURIComponent(WORD), '_blank');
+  }
+
+  getNotes(ifEmpty: boolean) {
+    this.wordsUnitService.getNotes(ifEmpty, n => this.timer = setTimeout(() => {
+      this.wordsUnitService.getNextNote(() => {}, () => {
+        clearTimeout(this.timer);
+      });
+      }, n / 1000.));
   }
 }

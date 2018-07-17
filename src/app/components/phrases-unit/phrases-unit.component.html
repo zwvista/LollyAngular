@@ -1,9 +1,9 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
     <a routerLink="/phrases-unit-detail/0">
-      <button pButton type="button" label="Add" icon="fa-plus"></button>
+      <button pButton type="button" label="Add" icon="fa fa-plus"></button>
     </a>
-    <button pButton type="button" label="Refresh" icon="fa-refresh" (click)="onRefresh"></button>
+    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
   </div>
 </p-toolbar>
 <p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [autoLayout]="true">
