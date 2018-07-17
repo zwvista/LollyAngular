@@ -8,6 +8,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/primeng';
+// 3rd-party
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { AppComponent } from './app.component';
 import { WordsUnitComponent } from './components/words-unit/words-unit.component';
@@ -60,6 +62,7 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     InputTextModule,
     ButtonModule,
     ToolbarModule,
+    ClipboardModule,
   ],
   providers: [
     DictOnlineService,

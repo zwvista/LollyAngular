@@ -66,4 +66,9 @@ export class WordsUnitComponent implements OnInit {
     // }
     console.log(iFrameBody);
   }
+
+  // https://stackoverflow.com/questions/42775017/angular-2-redirect-to-an-external-url-and-open-in-a-new-tab
+  googleWord(WORD: string) {
+    window.open('https://www.google.com/search?q=' + encodeURIComponent(WORD), '_blank');
+  }
 }
