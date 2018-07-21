@@ -54,7 +54,8 @@ export class PhrasesUnitService {
   newUnitPhrase(): UnitPhrase {
     const o = new UnitPhrase();
     o.TEXTBOOKID = this.settingsService.USTEXTBOOKID;
-    const maxElem = this.unitPhrases.reduce((p, v) => p.unitPartSeqnum < v.unitPartSeqnum ? v : p);
+    const maxElem = this.unitPhrases.length === 0 ? null :
+      this.unitPhrases.reduce((p, v) => p.unitPartSeqnum < v.unitPartSeqnum ? v : p);
     o.UNIT = maxElem ? maxElem.UNIT : this.settingsService.USUNITTO;
     o.PART = maxElem ? maxElem.PART : this.settingsService.USPARTTO;
     o.SEQNUM = (maxElem ? maxElem.SEQNUM : 0) + 1;

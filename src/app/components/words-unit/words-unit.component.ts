@@ -74,10 +74,10 @@ export class WordsUnitComponent implements OnInit {
   }
 
   getNotes(ifEmpty: boolean) {
-    this.wordsUnitService.getNotes(ifEmpty, n => this.timer = setTimeout(() => {
+    this.wordsUnitService.getNotes(ifEmpty, n => this.timer = setInterval(() => {
       this.wordsUnitService.getNextNote(() => {}, () => {
-        clearTimeout(this.timer);
+        clearInterval(this.timer);
       });
-      }, n / 1000.));
+    }, n));
   }
 }

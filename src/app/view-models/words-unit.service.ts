@@ -64,7 +64,8 @@ export class WordsUnitService {
   newUnitWord(): UnitWord {
     const o = new UnitWord();
     o.TEXTBOOKID = this.settingsService.USTEXTBOOKID;
-    const maxElem = this.unitWords.reduce((p, v) => p.unitPartSeqnum < v.unitPartSeqnum ? v : p);
+    const maxElem = this.unitWords.length === 0 ? null :
+      this.unitWords.reduce((p, v) => p.unitPartSeqnum < v.unitPartSeqnum ? v : p);
     o.UNIT = maxElem ? maxElem.UNIT : this.settingsService.USUNITTO;
     o.PART = maxElem ? maxElem.PART : this.settingsService.USPARTTO;
     o.SEQNUM = (maxElem ? maxElem.SEQNUM : 0) + 1;
