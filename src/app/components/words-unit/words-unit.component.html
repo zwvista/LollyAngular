@@ -6,6 +6,9 @@
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
     <button pButton type="button" label="Retrieve All Notes" (click)="getNotes(false)"></button>
     <button pButton type="button" label="Retrieve Notes If Empty" (click)="getNotes(true)"></button>
+    <a routerLink="/words-dict/0">
+      <button pButton type="button" label="Dictionary"></button>
+    </a>
   </div>
 </p-toolbar>
 <span class="ui-float-label">
@@ -13,8 +16,7 @@
     <label for="word">New Word</label>
 </span>
 <p-table [value]="wordsUnitService.unitWords" selectionMode="single" [autoLayout]="true"
-(onRowReorder)="onWordReorder($event.dragIndex, $event.dropIndex)"
-(onRowSelect)="onWordSelect($event.data)">
+(onRowReorder)="onWordReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
   <tr>
     <th style="width:2em"></th>
@@ -47,8 +49,10 @@
       <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
       <p-button label="Copy Word" (onClick)="copyToClipboard()" ngxClipboard [cbContent]="unitWord.WORD"></p-button>
       <p-button label="Google Word" (onClick)="googleWord(unitWord.WORD)"></p-button>
+      <a routerLink="/words-dict/{{index}}">
+        <p-button label="Dictionary"></p-button>
+      </a>
     </td>
   </tr>
   </ng-template>
 </p-table>
-<app-dict-browser [url]="dictUrl" (load)="onload($event)"></app-dict-browser>

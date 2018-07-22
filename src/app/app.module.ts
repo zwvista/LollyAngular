@@ -8,6 +8,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/primeng';
+import { ListboxModule } from 'primeng/listbox';
 // 3rd-party
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -62,6 +63,8 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     InputTextModule,
     ButtonModule,
     ToolbarModule,
+    ListboxModule,
+    // 3rd-party
     ClipboardModule,
   ],
   providers: [

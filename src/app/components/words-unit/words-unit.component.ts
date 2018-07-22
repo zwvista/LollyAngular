@@ -3,6 +3,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { UnitWord } from '../../models/unit-word';
 import '../../common/array';
 import { SettingsService } from '../../view-models/settings.service';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-unit',
@@ -12,8 +13,6 @@ import { SettingsService } from '../../view-models/settings.service';
 export class WordsUnitComponent implements OnInit {
 
   newWord: string;
-  dictUrl = 'about:blank';
-  timer: number;
 
   constructor(public wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
@@ -43,10 +42,6 @@ export class WordsUnitComponent implements OnInit {
     this.reindex();
   }
 
-  onWordSelect(unitWord: UnitWord) {
-    this.dictUrl = this.settingsService.selectedDictOnline.urlString(unitWord.WORD);
-  }
-
   deleteWord(index: number) {
     console.log(index);
   }
@@ -56,28 +51,18 @@ export class WordsUnitComponent implements OnInit {
     this.wordsUnitService.getNote(index).subscribe();
   }
 
-  onload(event: Event) {
-    const iFrame = event.target as HTMLIFrameElement;
-    console.log(iFrame);
-    const iFrameBody = iFrame.contentWindow.document.body.innerHTML;
-    // if ( iFrame.contentDocument ) { // FF
-    //   iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
-    // } else if ( iFrame.contentWindow ) { // IE
-    //   iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
-    // }
-    console.log(iFrameBody);
-  }
-
   // https://stackoverflow.com/questions/42775017/angular-2-redirect-to-an-external-url-and-open-in-a-new-tab
   googleWord(WORD: string) {
     window.open('https://www.google.com/search?q=' + encodeURIComponent(WORD), '_blank');
   }
 
   getNotes(ifEmpty: boolean) {
-    this.wordsUnitService.getNotes(ifEmpty, n => this.timer = setInterval(() => {
+    let subscription: Subscription;
+    // https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
+    this.wordsUnitService.getNotes(ifEmpty, n => subscription = interval(n).subscribe(_ =>
       this.wordsUnitService.getNextNote(() => {}, () => {
-        clearInterval(this.timer);
-      });
-    }, n));
+        subscription.unsubscribe();
+      })
+    ));
   }
 }

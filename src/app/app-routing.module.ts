@@ -5,6 +5,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PhrasesUnitComponent } from './components/phrases-unit/phrases-unit.component';
 import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
 import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
+import { WordsDictComponent } from './components/words-dict/words-dict.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/words-unit', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'phrases-unit-detail/:id', component: PhrasesUnitDetailComponent },
   { path: 'words-unit', component: WordsUnitComponent },
   { path: 'words-unit-detail/:id', component: WordsUnitDetailComponent },
+  { path: 'words-dict/:index', component: WordsDictComponent },
   { path: 'settings', component: SettingsComponent }
 ];
 
