@@ -4,7 +4,7 @@ export class Textbooks {
 export class Textbook {
   ID: number;
   LANGID: number;
-  LANGNAME: string;
+  NAME: string;
   UNITS: number;
   PARTS: string;
 }

@@ -4,6 +4,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
+import { DictOnline } from '../../models/dictionary';
 
 @Component({
   selector: 'app-words-dict',
@@ -15,9 +16,10 @@ export class WordsDictComponent implements OnInit {
   words: SelectItem[];
   selectedWord: string;
   dictUrl = 'about:blank';
+  selectedDictOnline: DictOnline;
 
   constructor(private wordsUnitService: WordsUnitService,
-              private settingsService: SettingsService,
+              public settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
   ) { }
@@ -25,15 +27,16 @@ export class WordsDictComponent implements OnInit {
   ngOnInit() {
     this.words = this.wordsUnitService.unitWords.map(v  => ({label: v.WORD, value: v.WORD}));
     this.selectedWord = this.words[+this.route.snapshot.paramMap.get('index')].value;
-    if (this.selectedWord) this.onWordSelect();
+    this.selectedDictOnline = this.settingsService.selectedDictOnline;
+    if (this.selectedWord) this.refreshDict();
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  onWordSelect() {
-    this.dictUrl = this.settingsService.selectedDictOnline.urlString(this.selectedWord);
+  refreshDict() {
+    this.dictUrl = this.selectedDictOnline.urlString(this.selectedWord);
   }
 
   onload(event: Event) {

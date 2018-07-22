@@ -50,7 +50,7 @@ export class SettingsService {
     this.selectedUSLang.VALUE3 = newValue;
   }
   private selectedUSTextbookIndex: number;
-  private get selectedUSTextbook(): UserSetting {
+  get selectedUSTextbook(): UserSetting {
     return this.userSettings[this.selectedUSTextbookIndex];
   }
   get USUNITFROM(): number {
@@ -92,7 +92,7 @@ export class SettingsService {
 
   languages: Language[] = new Array(0);
   private selectedLangIndex: number;
-  private get selectedLang(): Language {
+  get selectedLang(): Language {
     return this.languages[this.selectedLangIndex];
   }
 
@@ -131,7 +131,7 @@ export class SettingsService {
     this._selectedTextbookIndex = newValue;
     this.setSelectedTextbookIndex();
   }
-  private get selectedTextbook(): Textbook {
+  get selectedTextbook(): Textbook {
     return this.textbooks[this._selectedTextbookIndex];
   }
 
