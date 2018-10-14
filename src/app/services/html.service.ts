@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from './message.service';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 
 @Injectable()
 export class HtmlService extends BaseService {
 
-  constructor(http: HttpClient,
-              messageService: MessageService)  {
-    super(http, messageService);
+  constructor(http: HttpClient)  {
+    super(http);
   }
 
   static extractTextFrom(html: string, transform: string, template: string,
@@ -48,8 +45,6 @@ export class HtmlService extends BaseService {
   getHtml(url: string): Observable<string> {
     // https://www.concretepage.com/angular-2/angular-httpclient-get-example#Text
     return this.http.get(url, {responseType: 'text'}).pipe(
-      tap(_ => this.log(`get html`)),
-      catchError(this.handleError<any>('get html'))
     );
   }
 

@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { MessageService } from './message.service';
 import { BaseService } from './base.service';
 import { DictNote, DictOffline, DictOnline, DictsNote, DictsOffline, DictsOnline } from '../models/dictionary';
 
 @Injectable()
 export class DictOnlineService extends BaseService {
 
-  constructor(
-    http: HttpClient,
-    messageService: MessageService)  { super(http, messageService); }
+  constructor(http: HttpClient)  {
+    super(http);
+  }
 
   getDataByLang(langid: number): Observable<DictOnline[]> {
     const url = `${this.baseUrl}VDICTSONLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsOnline>(url)
       .pipe(
         map(result => result.VDICTSONLINE.map(value => Object.assign(new DictOnline(), value))),
-        tap(result => this.log(`fetched DictsOnline`)),
-        catchError(this.handleError('getDataByLang DictsOnline', []))
       );
   }
 
@@ -28,17 +25,15 @@ export class DictOnlineService extends BaseService {
 @Injectable()
 export class DictOfflineService extends BaseService {
 
-  constructor(
-    http: HttpClient,
-    messageService: MessageService)  { super(http, messageService); }
+  constructor(http: HttpClient)  {
+    super(http);
+  }
 
   getDataByLang(langid: number): Observable<DictOffline[]> {
     const url = `${this.baseUrl}VDICTSOFFLINE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsOffline>(url)
       .pipe(
         map(result => result.VDICTSOFFLINE.map(value => Object.assign(new DictOffline(), value))),
-        tap(result => this.log(`fetched DictsOffline`)),
-        catchError(this.handleError('getDataByLang DictsOffline', []))
       );
   }
 
@@ -47,17 +42,15 @@ export class DictOfflineService extends BaseService {
 @Injectable()
 export class DictNoteService extends BaseService {
 
-  constructor(
-    http: HttpClient,
-    messageService: MessageService)  { super(http, messageService); }
+  constructor(http: HttpClient)  {
+    super(http);
+  }
 
   getDataByLang(langid: number): Observable<DictNote[]> {
     const url = `${this.baseUrl}VDICTSNOTE?transform=1&filter=LANGIDFROM,eq,${langid}`;
     return this.http.get<DictsNote>(url)
       .pipe(
         map(result => result.VDICTSNOTE.map(value => Object.assign(new DictNote(), value))),
-        tap(result => this.log(`fetched DictsNote`)),
-        catchError(this.handleError('getDataByLang DictsNote', []))
       );
   }
 

@@ -14,11 +14,9 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 import { AppComponent } from './app.component';
 import { WordsUnitComponent } from './components/words-unit/words-unit.component';
-import { MessagesComponent } from './components/messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MessageService } from './services/message.service';
 import { DictNoteService, DictOfflineService, DictOnlineService } from './services/dictionary.service';
 import { LanguageService } from './services/language.service';
 import { TextbookService } from './services/textbook.service';
@@ -42,7 +40,6 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
   declarations: [
     AppComponent,
     WordsUnitComponent,
-    MessagesComponent,
     SettingsComponent,
     PhrasesUnitComponent,
     WordsUnitDetailComponent,
@@ -72,7 +69,6 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     DictOfflineService,
     DictNoteService,
     LanguageService,
-    MessageService,
     TextbookService,
     UnitPhraseService,
     UnitWordService,
