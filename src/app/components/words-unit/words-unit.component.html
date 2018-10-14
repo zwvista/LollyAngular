@@ -47,7 +47,7 @@
       </a>
       <p-button label="Retrieve Note" (onClick)="getNote(index)"></p-button>
       <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-      <p-button label="Copy Word" (onClick)="copyToClipboard()" ngxClipboard [cbContent]="unitWord.WORD"></p-button>
+      <p-button label="Copy Word" ngxClipboard [cbContent]="unitWord.WORD"></p-button>
       <p-button label="Google Word" (onClick)="googleWord(unitWord.WORD)"></p-button>
       <a routerLink="/words-dict/{{index}}">
         <p-button label="Dictionary"></p-button>

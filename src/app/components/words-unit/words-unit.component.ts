@@ -14,11 +14,10 @@ export class WordsUnitComponent implements OnInit {
 
   newWord: string;
 
-  constructor(public wordsUnitService: WordsUnitService,
-              private settingsService: SettingsService) { }
+  constructor(public wordsUnitService: WordsUnitService) { }
 
   ngOnInit() {
-    this.wordsUnitService.getData();
+    this.wordsUnitService.getData().subscribe();
   }
 
   onEnter() {
