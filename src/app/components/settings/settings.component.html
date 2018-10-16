@@ -23,7 +23,7 @@
     <option *ngFor="let textbook of settingsService.textbooks" [ngValue]="textbook">{{textbook.NAME}}</option>
   </select>
 </div>
-<div class="row" *ngIf="settingsService.selectedUSTextbook">
+<div class="row">
   <label class="col-2 control-label">Unit:</label>
   <select class="col-2 form-control" [(ngModel)]="unitFrom" (change)="onUnitFromChange($event.target.selectedIndex)">
     <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
@@ -32,7 +32,7 @@
     <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
   </select>
 </div>
-<div class="row" *ngIf="settingsService.selectedUSTextbook">
+<div class="row">
   <label class="col-2 control-label">
     <input type="checkbox" [(ngModel)]="unitPartTo">To:
   </label>

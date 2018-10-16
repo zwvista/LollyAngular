@@ -54,7 +54,6 @@ export class SettingsComponent implements OnInit {
     this.settingsService.USUNITFROM = index + 1;
     this.settingsService.updateUnitFrom()
       .subscribe(_ => {
-        console.log('aaaaaa');
         if (!this.unitPartTo || this.settingsService.isInvalidUnitPart) {
           this.updateUnitPartTo();
         }
