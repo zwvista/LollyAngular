@@ -10,10 +10,10 @@ import { UnitPhrase } from '../../models/unit-phrase';
 })
 export class PhrasesUnitComponent implements OnInit {
 
-  constructor(private phrasesUnitService: PhrasesUnitService) { }
+  constructor(public phrasesUnitService: PhrasesUnitService) { }
 
   ngOnInit() {
-    this.phrasesUnitService.getData();
+    this.phrasesUnitService.getData().subscribe();
   }
 
 }
