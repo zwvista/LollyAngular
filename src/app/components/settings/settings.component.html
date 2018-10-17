@@ -1,42 +1,42 @@
-<div class="container">
-<div class="row">
-  <label class="col-2 control-label">Languages:</label>
-  <select class="col-4 form-control" [(ngModel)]="settingsService.selectedLang" (change)="onLangChange($event.target.selectedIndex)">
+<div class="container mt-2">
+<div class="form-inline mb-2">
+  <label for="lang" class="col-2 control-label text-left">Languages:</label>
+  <select id="lang" class="col-4 form-control" [(ngModel)]="settingsService.selectedLang" (change)="onLangChange($event.target.selectedIndex)">
     <option *ngFor="let lang of settingsService.languages" [ngValue]="lang">{{lang.NAME}}</option>
   </select>
 </div>
-<div class="row">
-  <label class="col-2 control-label">Dictionary(Online):</label>
-  <select class="col-4 form-control" [(ngModel)]="settingsService.selectedDictOnline" (change)="onDictOnlineChange($event.target.selectedIndex)">
+<div class="form-inline mb-2">
+  <label for="dictOnlne" class="col-2 control-label">Dictionary(Online):</label>
+  <select id="dictOnlne" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictOnline" (change)="onDictOnlineChange($event.target.selectedIndex)">
     <option *ngFor="let dict of settingsService.dictsOnline" [ngValue]="dict">{{dict.DICTNAME}}</option>
   </select>
 </div>
-<div class="row">
-  <label class="col-2 control-label">Dictionary(Note):</label>
-  <select class="col-4 form-control" [(ngModel)]="settingsService.selectedDictNote" (change)="onDictNoteChange($event.target.selectedIndex)">
+<div class="form-inline mb-2">
+  <label for="dictNote" class="col-2 control-label">Dictionary(Note):</label>
+  <select id="dictNote" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictNote" (change)="onDictNoteChange($event.target.selectedIndex)">
     <option *ngFor="let dict of settingsService.dictsNote" [ngValue]="dict">{{dict.DICTNAME}}</option>
   </select>
 </div>
-<div class="row">
-  <label class="col-2 control-label">Textbook:</label>
-  <select class="col-4 form-control" [(ngModel)]="settingsService.selectedTextbook" (change)="onTextbookChange($event.target.selectedIndex)">
+<div class="form-inline mb-2">
+  <label for="textbook" class="col-2 control-label">Textbook:</label>
+  <select id="textbook" class="col-4 form-control" [(ngModel)]="settingsService.selectedTextbook" (change)="onTextbookChange($event.target.selectedIndex)">
     <option *ngFor="let textbook of settingsService.textbooks" [ngValue]="textbook">{{textbook.NAME}}</option>
   </select>
 </div>
-<div class="row">
-  <label class="col-2 control-label">Unit:</label>
-  <select class="col-2 form-control" [(ngModel)]="unitFrom" (change)="onUnitFromChange($event.target.selectedIndex)">
+<div class="form-inline mb-2">
+  <label for="unitFrom" class="col-2 control-label">Unit:</label>
+  <select id="unitFrom" class="col-2 form-control" [(ngModel)]="unitFrom" (change)="onUnitFromChange($event.target.selectedIndex)">
     <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
   </select>
   <select class="col-2 form-control" [(ngModel)]="partFrom" (change)="onPartFromChange($event.target.selectedIndex)">
     <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
   </select>
 </div>
-<div class="row">
-  <label class="col-2 control-label">
+<div class="form-inline mb-2">
+  <label for="unitTo" class="col-2 control-label">
     <input type="checkbox" [(ngModel)]="unitPartTo">To:
   </label>
-  <select class="col-2 form-control" [disabled]="!unitPartTo" [(ngModel)]="unitTo" (change)="onUnitToChange($event.target.selectedIndex)">
+  <select id="unitTo" class="col-2 form-control" [disabled]="!unitPartTo" [(ngModel)]="unitTo" (change)="onUnitToChange($event.target.selectedIndex)">
     <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
   </select>
   <select class="col-2 form-control" [disabled]="!unitPartTo" [(ngModel)]="partTo" (change)="onPartToChange($event.target.selectedIndex)">
