@@ -4,7 +4,7 @@ export class UnitWords {
   VUNITWORDS: UnitWord[];
 }
 export class UnitWord {
-  ID: number;
+  ID = 0;
   TEXTBOOKID: number;
   UNIT: number;
   PART: number;
