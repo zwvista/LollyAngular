@@ -12,7 +12,7 @@
   </div>
 </p-toolbar>
 <span class="ui-float-label">
-    <input id="word" type="text" size="30" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
+    <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
     <label for="word">New Word</label>
 </span>
 <p-table [value]="wordsUnitService.unitWords" selectionMode="single" [autoLayout]="true"
