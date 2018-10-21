@@ -1,13 +1,13 @@
 <p-toolbar>
-  <div class="ui-toolbar-group-left">
+  <div class="p-toolbar-group-left">
     <p-button label="Back" (click)="goBack()"></p-button>
+    <p-dropdown class="p-col-2" [options]="settingsService.dictsOnline" [(ngModel)]="selectedDictOnline"
+                optionLabel="DICTNAME" (onChange)="refreshDict()">
+    </p-dropdown>
   </div>
-  <select class="ui-g-2" [(ngModel)]="selectedDictOnline" (change)="refreshDict()">
-    <option *ngFor="let dict of settingsService.dictsOnline" [ngValue]="dict">{{dict.DICTNAME}}</option>
-  </select>
 </p-toolbar>
-<div class="ui-g-12">
+<div class="p-grid">
   <!-- https://github.com/primefaces/primeng/issues/3948 -->
-  <p-listbox class="ui-g-2" [listStyle]="{'max-height':'480px'}" [options]="words" [(ngModel)]="selectedWord" (onChange)="refreshDict()"></p-listbox>
-  <app-dict-browser class="ui-g-10" [url]="dictUrl" (load)="onload($event)"></app-dict-browser>
+  <p-listbox class="p-col-2" [listStyle]="{'max-height':'480px'}" [options]="words" [(ngModel)]="selectedWord" (onChange)="refreshDict()"></p-listbox>
+  <app-dict-browser class="p-col-10" [url]="dictUrl" (load)="onload($event)"></app-dict-browser>
 </div>

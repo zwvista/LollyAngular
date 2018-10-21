@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 // Material
 import { MatTabsModule } from '@angular/material/tabs';
@@ -9,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/primeng';
 import { ListboxModule } from 'primeng/listbox';
+import { DropdownModule } from 'primeng/dropdown';
 // 3rd-party
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -49,6 +51,7 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -61,6 +64,7 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     ButtonModule,
     ToolbarModule,
     ListboxModule,
+    DropdownModule,
     // 3rd-party
     ClipboardModule,
   ],
