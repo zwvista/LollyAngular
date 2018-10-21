@@ -7,7 +7,7 @@ import { UnitWord } from '../../models/unit-word';
 @Component({
   selector: 'app-words-unit-detail',
   templateUrl: './words-unit-detail.component.html',
-  styleUrls: ['./words-unit-detail.component.css']
+  styleUrls: ['./words-unit-detail.component.css', '../../common/common.css']
 })
 export class WordsUnitDetailComponent implements OnInit {
 

@@ -1,9 +1,9 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
     <a routerLink="/phrases-unit-detail/0">
-      <p-button class="button-margin-right" type="button" label="Add" icon="fa fa-plus"></p-button>
+      <p-button type="button" label="Add" icon="fa fa-plus"></p-button>
     </a>
-    <p-button class="button-margin-right" type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></p-button>
+    <p-button type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></p-button>
   </div>
 </p-toolbar>
 <p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [autoLayout]="true">
@@ -31,9 +31,9 @@
     <td>{{unitPhrase.PHRASE}}</td>
     <td>{{unitPhrase.TRANSLATION}}</td>
     <td>
-      <p-button class="button-margin-right" icon="fa fa-trash" styleClass="ui-button-danger" (onClick)="deletePhrase(index)"></p-button>
+      <p-button icon="fa fa-trash" styleClass="ui-button-danger" (onClick)="deletePhrase(index)"></p-button>
       <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
-        <p-button class="button-margin-right" icon="fa fa-edit"></p-button>
+        <p-button icon="fa fa-edit"></p-button>
       </a>
     </td>
   </tr>

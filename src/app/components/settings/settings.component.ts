@@ -4,7 +4,7 @@ import { SettingsService } from '../../view-models/settings.service';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css', '../../common/common.css']
 })
 export class SettingsComponent implements OnInit {
 

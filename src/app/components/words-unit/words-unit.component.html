@@ -1,13 +1,13 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
     <a routerLink="/words-unit-detail/0">
-      <p-button class="button-margin-right" type="button" label="Add" icon="fa fa-plus"></p-button>
+      <p-button type="button" label="Add" icon="fa fa-plus"></p-button>
     </a>
-    <p-button class="button-margin-right" type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></p-button>
-    <p-button class="button-margin-right" type="button" label="Retrieve All Notes" (click)="getNotes(false)"></p-button>
-    <p-button class="button-margin-right" type="button" label="Retrieve Notes If Empty" (click)="getNotes(true)"></p-button>
+    <p-button type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></p-button>
+    <p-button type="button" label="Retrieve All Notes" (click)="getNotes(false)"></p-button>
+    <p-button type="button" label="Retrieve Notes If Empty" (click)="getNotes(true)"></p-button>
     <a routerLink="/words-dict/0">
-      <p-button class="button-margin-right" type="button" label="Dictionary"></p-button>
+      <p-button type="button" label="Dictionary"></p-button>
     </a>
   </div>
 </p-toolbar>
@@ -41,16 +41,16 @@
     <td>{{unitWord.WORD}}</td>
     <td>{{unitWord.NOTE}}</td>
     <td>
-      <p-button class="button-margin-right" icon="fa fa-trash" styleClass="ui-button-danger" (onClick)="deleteWord(index)"></p-button>
+      <p-button icon="fa fa-trash" styleClass="ui-button-danger" (onClick)="deleteWord(index)"></p-button>
       <a routerLink="/words-unit-detail/{{unitWord.ID}}">
-        <p-button class="button-margin-right" icon="fa fa-edit"></p-button>
+        <p-button icon="fa fa-edit"></p-button>
       </a>
-      <p-button class="button-margin-right" label="Retrieve Note" (onClick)="getNote(index)"></p-button>
+      <p-button label="Retrieve Note" (onClick)="getNote(index)"></p-button>
       <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-      <p-button class="button-margin-right" icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"></p-button>
-      <p-button class="button-margin-right" label="Google Word" (onClick)="googleWord(unitWord.WORD)"></p-button>
+      <p-button icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"></p-button>
+      <p-button label="Google Word" (onClick)="googleWord(unitWord.WORD)"></p-button>
       <a routerLink="/words-dict/{{index}}">
-        <p-button class="button-margin-right" label="Dictionary"></p-button>
+        <p-button label="Dictionary"></p-button>
       </a>
     </td>
   </tr>

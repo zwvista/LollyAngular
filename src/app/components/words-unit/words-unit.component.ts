@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
-import { UnitWord } from '../../models/unit-word';
 import '../../common/array';
-import { SettingsService } from '../../view-models/settings.service';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-unit',
   templateUrl: './words-unit.component.html',
-  styleUrls: ['./words-unit.component.css']
+  styleUrls: ['./words-unit.component.css', '../../common/common.css']
 })
 export class WordsUnitComponent implements OnInit {
 

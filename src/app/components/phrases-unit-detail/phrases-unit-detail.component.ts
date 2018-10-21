@@ -7,7 +7,7 @@ import { UnitPhrase } from '../../models/unit-phrase';
 @Component({
   selector: 'app-phrases-unit-detail',
   templateUrl: './phrases-unit-detail.component.html',
-  styleUrls: ['./phrases-unit-detail.component.css']
+  styleUrls: ['./phrases-unit-detail.component.css', '../../common/common.css']
 })
 export class PhrasesUnitDetailComponent implements OnInit {
 
