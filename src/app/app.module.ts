@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/primeng';
 import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
+import { TooltipModule } from 'primeng/tooltip';
 // 3rd-party
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -65,6 +66,7 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     ToolbarModule,
     ListboxModule,
     DropdownModule,
+    TooltipModule,
     // 3rd-party
     ClipboardModule,
   ],

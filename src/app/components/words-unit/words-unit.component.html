@@ -41,13 +41,15 @@
     <td>{{unitWord.WORD}}</td>
     <td>{{unitWord.NOTE}}</td>
     <td>
-      <p-button icon="fa fa-trash" styleClass="ui-button-danger" (onClick)="deleteWord(index)"></p-button>
+      <p-button icon="fa fa-trash" styleClass="ui-button-danger"
+                pTooltip="Delete" tooltipPosition="top" (onClick)="deleteWord(index)"></p-button>
       <a routerLink="/words-unit-detail/{{unitWord.ID}}">
-        <p-button icon="fa fa-edit"></p-button>
+        <p-button icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></p-button>
       </a>
-      <p-button label="Retrieve Note" (onClick)="getNote(index)"></p-button>
       <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-      <p-button icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"></p-button>
+      <p-button icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
+                pTooltip="Copy" tooltipPosition="top"></p-button>
+      <p-button label="Retrieve Note" (onClick)="getNote(index)"></p-button>
       <p-button label="Google Word" (onClick)="googleWord(unitWord.WORD)"></p-button>
       <a routerLink="/words-dict/{{index}}">
         <p-button label="Dictionary"></p-button>
