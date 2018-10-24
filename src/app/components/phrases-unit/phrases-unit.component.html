@@ -6,7 +6,8 @@
     <p-button type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></p-button>
   </div>
 </p-toolbar>
-<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [autoLayout]="true">
+<p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [autoLayout]="true"
+         (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
   <tr>
     <th style="width:2em"></th>

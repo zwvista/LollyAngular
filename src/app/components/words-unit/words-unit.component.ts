@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
-import '../../common/array';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -29,14 +28,9 @@ export class WordsUnitComponent implements OnInit {
     });
   }
 
-  private reindex() {
-    this.wordsUnitService.reindex(index => {});
-  }
-
-  onWordReorder(from: number, to: number) {
+  onReorder(from: number, to: number) {
     console.log(`${from},${to}`);
-    this.wordsUnitService.unitWords.move(from, to);
-    this.reindex();
+    this.wordsUnitService.reindex(index => {});
   }
 
   deleteWord(index: number) {

@@ -16,7 +16,7 @@
     <label for="word">New Word</label>
 </span>
 <p-table [value]="wordsUnitService.unitWords" selectionMode="single" [autoLayout]="true"
-(onRowReorder)="onWordReorder($event.dragIndex, $event.dropIndex)">
+         (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
   <tr>
     <th style="width:2em"></th>

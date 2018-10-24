@@ -16,4 +16,9 @@ export class PhrasesUnitComponent implements OnInit {
     this.phrasesUnitService.getData().subscribe();
   }
 
+  onReorder(from: number, to: number) {
+    console.log(`${from},${to}`);
+    this.phrasesUnitService.reindex(index => {});
+  }
+
 }
