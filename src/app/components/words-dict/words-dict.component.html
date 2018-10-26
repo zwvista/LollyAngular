@@ -1,6 +1,6 @@
 <p-toolbar>
   <div class="p-toolbar-group-left">
-    <p-button label="Back" (click)="goBack()"></p-button>
+    <button pButton label="Back" (click)="goBack()"></button>
     <p-dropdown class="p-col-2" [options]="settingsService.dictsOnline" [(ngModel)]="selectedDictOnline"
                 optionLabel="DICTNAME" (onChange)="refreshDict()">
     </p-dropdown>

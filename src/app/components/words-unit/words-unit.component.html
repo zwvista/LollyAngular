@@ -1,13 +1,13 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
     <a routerLink="/words-unit-detail/0">
-      <p-button type="button" label="Add" icon="fa fa-plus"></p-button>
+      <button pButton type="button" label="Add" icon="fa fa-plus"></button>
     </a>
-    <p-button type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></p-button>
-    <p-button type="button" label="Retrieve All Notes" (click)="getNotes(false)"></p-button>
-    <p-button type="button" label="Retrieve Notes If Empty" (click)="getNotes(true)"></p-button>
+    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
+    <button pButton type="button" label="Retrieve All Notes" (click)="getNotes(false)"></button>
+    <button pButton type="button" label="Retrieve Notes If Empty" (click)="getNotes(true)"></button>
     <a routerLink="/words-dict/0">
-      <p-button type="button" label="Dictionary"></p-button>
+      <button pButton type="button" label="Dictionary"></button>
     </a>
   </div>
 </p-toolbar>
@@ -41,18 +41,18 @@
     <td>{{unitWord.WORD}}</td>
     <td>{{unitWord.NOTE}}</td>
     <td>
-      <p-button icon="fa fa-trash" styleClass="ui-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (onClick)="deleteWord(index)"></p-button>
+      <button pButton icon="fa fa-trash" class="ui-button-danger"
+                pTooltip="Delete" tooltipPosition="top" (onClick)="deleteWord(index)"></button>
       <a routerLink="/words-unit-detail/{{unitWord.ID}}">
-        <p-button icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></p-button>
+        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
       </a>
       <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-      <p-button icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
-                pTooltip="Copy" tooltipPosition="top"></p-button>
-      <p-button label="Retrieve Note" (onClick)="getNote(index)"></p-button>
-      <p-button label="Google Word" (onClick)="googleWord(unitWord.WORD)"></p-button>
+      <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
+                pTooltip="Copy" tooltipPosition="top"></button>
+      <button pButton label="Retrieve Note" (onClick)="getNote(index)"></button>
+      <button pButton label="Google Word" (onClick)="googleWord(unitWord.WORD)"></button>
       <a routerLink="/words-dict/{{index}}">
-        <p-button label="Dictionary"></p-button>
+        <button pButton label="Dictionary"></button>
       </a>
     </td>
   </tr>
