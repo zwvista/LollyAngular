@@ -21,7 +21,7 @@ export class WordsUnitDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsUnitService.unitWords.find(value => value.ID === id);
-    this.unitWord = o ? {...o} : this.wordsUnitService.newUnitWord();
+    this.unitWord = o ? {...o} as UnitWord : this.wordsUnitService.newUnitWord();
   }
 
   goBack(): void {
