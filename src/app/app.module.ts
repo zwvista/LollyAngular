@@ -32,6 +32,7 @@ import { AppService } from './view-models/app.service';
 import { PhrasesUnitComponent } from './components/phrases-unit/phrases-unit.component';
 import { PhrasesUnitService } from './view-models/phrases-unit.service';
 import { UnitPhraseService } from './services/unit-phrase.service';
+import { AutoCorrectService } from './services/autocorrect.service';
 import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
 import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
 import { HtmlService } from './services/html.service';
@@ -80,6 +81,7 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     UnitWordService,
     UserSettingService,
     HtmlService,
+    AutoCorrectService,
     // view models
     AppService,
     PhrasesUnitService,

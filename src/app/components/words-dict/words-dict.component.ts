@@ -36,7 +36,7 @@ export class WordsDictComponent implements OnInit {
   }
 
   refreshDict() {
-    this.dictUrl = this.selectedDictOnline.urlString(this.selectedWord);
+    this.dictUrl = this.selectedDictOnline.urlString(this.selectedWord, this.settingsService.autoCorrects);
   }
 
   onload(event: Event) {
