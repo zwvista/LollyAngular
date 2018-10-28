@@ -33,7 +33,7 @@
     <td>{{unitPhrase.TRANSLATION}}</td>
     <td>
       <button pButton icon="fa fa-trash" class="ui-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (onClick)="deletePhrase(index)"></button>
+                pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(index)"></button>
       <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
         <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
       </a>
