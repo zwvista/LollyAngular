@@ -1,3 +1,47 @@
-<p>
-  words-lang works!
-</p>
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <a routerLink="/words-lang-detail/0">
+      <button pButton type="button" label="Add" icon="fa fa-plus"></button>
+    </a>
+    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
+    <a routerLink="/words-dict/0">
+      <button pButton type="button" label="Dictionary"></button>
+    </a>
+  </div>
+</p-toolbar>
+<span class="ui-float-label">
+    <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
+    <label for="word">New Word</label>
+</span>
+<p-table [value]="wordsLangService.langWords" selectionMode="single" [autoLayout]="true"
+         (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>WORD</th>
+      <th>LEVEL</th>
+      <th>ACTIONS</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-langWord let-index="rowIndex">
+    <tr [pSelectableRow]="langWord">
+      <td>{{langWord.ID}}</td>
+      <td>{{langWord.WORD}}</td>
+      <td>{{langWord.LEVEL}}</td>
+      <td>
+        <button pButton icon="fa fa-trash" class="ui-button-danger"
+                pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>
+        <a routerLink="/words-lang-detail/{{langWord.ID}}">
+          <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
+        </a>
+        <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
+        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="langWord.WORD"
+                pTooltip="Copy" tooltipPosition="top"></button>
+        <button pButton label="Google Word" (click)="googleWord(langWord.WORD)"></button>
+        <a routerLink="/words-dict/{{index}}">
+          <button pButton label="Dictionary"></button>
+        </a>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

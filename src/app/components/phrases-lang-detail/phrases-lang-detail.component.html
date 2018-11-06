@@ -1,3 +1,16 @@
-<p>
-  phrases-lang-detail works!
-</p>
+<div class="p-grid mt-2 mb-2">
+  <label class="p-col-1" for="ID">ID:</label>
+  <input id="ID" type="text" pInputText [(ngModel)]="langPhrase.ID" disabled>
+</div>
+<div class="p-grid mb-2">
+  <label class="p-col-1" for="PHRASE">PHRASE:</label>
+  <input id="PHRASE" type="text" pInputText [(ngModel)]="langPhrase.PHRASE">
+</div>
+<div class="p-grid mb-2">
+  <label class="p-col-1" for="TRANSLATION">TRANSLATION:</label>
+  <input id="TRANSLATION" type="text" pInputText [(ngModel)]="langPhrase.TRANSLATION">
+</div>
+<div>
+  <button pButton label="Back" (click)="goBack()"></button>
+  <button pButton label="Save" (click)="save()"></button>
+</div>

@@ -1,3 +1,16 @@
-<p>
-  words-lang-detail works!
-</p>
+<div class="p-grid mt-2 mb-2">
+  <label class="p-col-1" for="ID">ID:</label>
+  <input id="ID" type="text" pInputText [(ngModel)]="langWord.ID" disabled>
+</div>
+<div class="p-grid mb-2">
+  <label class="p-col-1" for="WORD">WORD:</label>
+  <input id="WORD" type="text" pInputText [(ngModel)]="langWord.WORD">
+</div>
+<div class="p-grid mb-2">
+  <label class="p-col-1" for="LEVEL">LEVEL:</label>
+  <input id="LEVEL" type="text" pInputText [(ngModel)]="langWord.LEVEL">
+</div>
+<div>
+  <button pButton label="Back" (click)="goBack()"></button>
+  <button pButton label="Save" (click)="save()"></button>
+</div>

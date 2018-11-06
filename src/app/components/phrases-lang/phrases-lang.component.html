@@ -1,3 +1,37 @@
-<p>
-  phrases-lang works!
-</p>
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <a routerLink="/phrases-lang-detail/0">
+      <button pButton type="button" label="Add" icon="fa fa-plus"></button>
+    </a>
+    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
+  </div>
+</p-toolbar>
+<p-table [value]="phrasesLangService.langPhrases" selectionMode="single" [autoLayout]="true"
+         (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:2em"></th>
+      <th>ID</th>
+      <th>PHRASE</th>
+      <th>TRANSLATION</th>
+      <th>ACTIONS</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-langPhrase let-index="rowIndex">
+    <tr [pSelectableRow]="langPhrase">
+      <td>
+        <i class="fa fa-bars" pReorderableRowHandle></i>
+      </td>
+      <td>{{langPhrase.ID}}</td>
+      <td>{{langPhrase.PHRASE}}</td>
+      <td>{{langPhrase.TRANSLATION}}</td>
+      <td>
+        <button pButton icon="fa fa-trash" class="ui-button-danger"
+                pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(index)"></button>
+        <a routerLink="/phrases-lang-detail/{{langPhrase.ID}}">
+          <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
+        </a>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
