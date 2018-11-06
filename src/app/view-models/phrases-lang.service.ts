@@ -5,11 +5,8 @@ import { AppService } from './app.service';
 import { concatMap, map } from 'rxjs/operators';
 import { LangPhrase } from '../models/lang-phrase';
 import { Observable } from 'rxjs';
-import { LangPhrase } from '../models/unit-phrase';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PhrasesLangService {
 
   langPhrases: LangPhrase[] = new Array(0);

@@ -5,5 +5,5 @@ export class LangWord {
   ID = 0;
   LANGID = 0;
   WORD: string;
-  LEVEL: string;
+  LEVEL: number;
 }
