@@ -38,6 +38,14 @@ import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phr
 import { HtmlService } from './services/html.service';
 import { WordsDictComponent } from './components/words-dict/words-dict.component';
 import { DictBrowserComponent } from './components/dict-browser/dict-browser.component';
+import { PhrasesLangComponent } from './components/phrases-lang/phrases-lang.component';
+import { PhrasesLangDetailComponent } from './components/phrases-lang-detail/phrases-lang-detail.component';
+import { WordsLangComponent } from './components/words-lang/words-lang.component';
+import { WordsLangDetailComponent } from './components/words-lang-detail/words-lang-detail.component';
+import { LangPhraseService } from './services/lang-phrase.service';
+import { LangWordService } from './services/lang-word.service';
+import { PhrasesLangService } from './view-models/phrases-lang.service';
+import { WordsLangService } from './view-models/words-lang.service';
 
 
 @NgModule({
@@ -49,7 +57,11 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     WordsUnitDetailComponent,
     PhrasesUnitDetailComponent,
     WordsDictComponent,
-    DictBrowserComponent
+    DictBrowserComponent,
+    PhrasesLangComponent,
+    PhrasesLangDetailComponent,
+    WordsLangComponent,
+    WordsLangDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -82,11 +94,15 @@ import { DictBrowserComponent } from './components/dict-browser/dict-browser.com
     UserSettingService,
     HtmlService,
     AutoCorrectService,
+    LangPhraseService,
+    LangWordService,
     // view models
     AppService,
     PhrasesUnitService,
     SettingsService,
     WordsUnitService,
+    PhrasesLangService,
+    WordsLangService,
   ],
   bootstrap: [AppComponent]
 })
