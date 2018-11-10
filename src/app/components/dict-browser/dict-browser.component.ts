@@ -22,6 +22,8 @@ export class DictBrowserComponent implements OnInit {
     return this._url;
   }
 
+  @Input() htmlString: string;
+
   @Output() load = new EventEmitter();
 
   constructor(public sanitizer: DomSanitizer) {

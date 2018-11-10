@@ -13,8 +13,7 @@
     <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
     <label for="word">New Word</label>
 </span>
-<p-table [value]="wordsLangService.langWords" selectionMode="single" [autoLayout]="true"
-         (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
+<p-table [value]="wordsLangService.langWords" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>
       <th>ID</th>

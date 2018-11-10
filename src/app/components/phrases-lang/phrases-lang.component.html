@@ -6,11 +6,9 @@
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
   </div>
 </p-toolbar>
-<p-table [value]="phrasesLangService.langPhrases" selectionMode="single" [autoLayout]="true"
-         (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
+<p-table [value]="phrasesLangService.langPhrases" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>
-      <th style="width:2em"></th>
       <th>ID</th>
       <th>PHRASE</th>
       <th>TRANSLATION</th>
@@ -19,9 +17,6 @@
   </ng-template>
   <ng-template pTemplate="body" let-langPhrase let-index="rowIndex">
     <tr [pSelectableRow]="langPhrase">
-      <td>
-        <i class="fa fa-bars" pReorderableRowHandle></i>
-      </td>
       <td>{{langPhrase.ID}}</td>
       <td>{{langPhrase.PHRASE}}</td>
       <td>{{langPhrase.TRANSLATION}}</td>

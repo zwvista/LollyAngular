@@ -5,6 +5,7 @@ import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
 import { DictOnline } from '../../models/dictionary';
+import { HtmlService } from '../../services/html.service';
 
 @Component({
   selector: 'app-words-dict',
@@ -16,10 +17,12 @@ export class WordsDictComponent implements OnInit {
   words: SelectItem[];
   selectedWord: string;
   dictUrl = 'about:blank';
+  dictSrc = null;
   selectedDictOnline: DictOnline;
 
   constructor(private wordsUnitService: WordsUnitService,
               public settingsService: SettingsService,
+              private htmlService: HtmlService,
               private route: ActivatedRoute,
               private location: Location
   ) { }
@@ -36,7 +39,18 @@ export class WordsDictComponent implements OnInit {
   }
 
   refreshDict() {
-    this.dictUrl = this.selectedDictOnline.urlString(this.selectedWord, this.settingsService.autoCorrects);
+    const url = this.selectedDictOnline.urlString(this.selectedWord, this.settingsService.autoCorrects);
+    if (this.selectedDictOnline.DICTTYPENAME === 'OFFLINE') {
+      this.dictUrl = 'about:blank';
+      this.htmlService.getHtml(url).subscribe(html => {
+        this.dictSrc = this.selectedDictOnline.htmlString(html, this.selectedWord)
+          .replace(/\n/g, ' ').replace(/"/g, '&quot;');
+        console.log(this.dictSrc);
+      });
+    } else {
+      this.dictSrc = null;
+      this.dictUrl = url;
+    }
   }
 
   onload(event: Event) {

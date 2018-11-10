@@ -9,5 +9,5 @@
 <div class="p-grid">
   <!-- https://github.com/primefaces/primeng/issues/3948 -->
   <p-listbox class="p-col-2" [listStyle]="{'max-height':'480px'}" [options]="words" [(ngModel)]="selectedWord" (onChange)="refreshDict()"></p-listbox>
-  <app-dict-browser class="p-col-10" [url]="dictUrl" (load)="onload($event)"></app-dict-browser>
+  <app-dict-browser class="p-col-10" [url]="dictUrl" [htmlString]="dictSrc" (load)="onload($event)"></app-dict-browser>
 </div>
