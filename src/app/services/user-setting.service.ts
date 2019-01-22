@@ -26,49 +26,49 @@ export class UserSettingService extends BaseService {
 
   updateLang(id: number, langid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE1: langid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE1: String(langid)} as UserSetting, httpOptions).pipe(
     );
   }
 
   updateTextbook(id: number, textbookid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE1: textbookid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE1: String(textbookid)} as UserSetting, httpOptions).pipe(
     );
   }
 
-  updateDictOnline(id: number, dictonlineid: number): Observable<number> {
+  updateDictPicker(id: number, dictpicker: string): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE2: dictonlineid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE2: dictpicker} as UserSetting, httpOptions).pipe(
     );
   }
 
   updateDictNote(id: number, dictnoteid: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE3: dictnoteid} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE3: String(dictnoteid)} as UserSetting, httpOptions).pipe(
     );
   }
 
   updateUnitFrom(id: number, unitfrom: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE1: unitfrom} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE1: String(unitfrom)} as UserSetting, httpOptions).pipe(
     );
   }
 
   updatePartFrom(id: number, partfrom: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE2: partfrom} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE2: String(partfrom)} as UserSetting, httpOptions).pipe(
     );
   }
 
   updateUnitTo(id: number, unitto: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE3: unitto} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE3: String(unitto)} as UserSetting, httpOptions).pipe(
     );
   }
 
   updatePartTo(id: number, partto: number): Observable<number> {
     const url = `${this.baseUrl}USERSETTINGS/${id}`;
-    return this.http.put<number>(url, {VALUE4: partto} as UserSetting, httpOptions).pipe(
+    return this.http.put<number>(url, {VALUE4: String(partto)} as UserSetting, httpOptions).pipe(
     );
   }
 }

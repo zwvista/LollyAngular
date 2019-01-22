@@ -1,27 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DictOnlineService, DictOfflineService, DictNoteService } from './dictionary.service';
+import { DictWordService, DictNoteService } from './dictionary.service';
 
-describe('DictOnlineService', () => {
+describe('DictWordService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DictOnlineService]
+      providers: [DictWordService]
     });
   });
 
-  it('should be created', inject([DictOnlineService], (service: DictOnlineService) => {
-    expect(service).toBeTruthy();
-  }));
-});
-
-describe('DictOfflineService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [DictOfflineService]
-    });
-  });
-
-  it('should be created', inject([DictOfflineService], (service: DictOfflineService) => {
+  it('should be created', inject([DictWordService], (service: DictWordService) => {
     expect(service).toBeTruthy();
   }));
 });
