@@ -46,6 +46,7 @@ import { LangPhraseService } from './services/lang-phrase.service';
 import { LangWordService } from './services/lang-word.service';
 import { PhrasesLangService } from './view-models/phrases-lang.service';
 import { WordsLangService } from './view-models/words-lang.service';
+import { NoteService } from './view-models/note.service';
 
 
 @NgModule({
@@ -102,6 +103,7 @@ import { WordsLangService } from './view-models/words-lang.service';
     WordsUnitService,
     PhrasesLangService,
     WordsLangService,
+    NoteService,
   ],
   bootstrap: [AppComponent]
 })

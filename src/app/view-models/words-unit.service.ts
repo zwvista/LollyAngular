@@ -39,7 +39,7 @@ export class WordsUnitService {
           const itemLang = arrLang[0];
           const langwordid = itemLang.ID;
           const b = itemLang.combineNote(item.NOTE);
-          return b ? this.updateNote(langwordid, item.NOTE ? item.NOTE : '').pipe(map(_ => langwordid)) : of(langwordid);
+          return b ? this.updateNote(langwordid, item.NOTE || '').pipe(map(_ => langwordid)) : of(langwordid);
         }
       }),
       concatMap(langwordid => {
@@ -68,7 +68,7 @@ export class WordsUnitService {
           return this.langWordService.getDataById(langwordid).pipe(
             concatMap(arrLangOld => {
               if (arrLangOld.length > 0 && arrLangOld[0].WORD === item.WORD)
-                return this.langWordService.updateNote(langwordid, item.NOTE ? item.NOTE : '').pipe(map(_ => langwordid));
+                return this.langWordService.updateNote(langwordid, item.NOTE || '').pipe(map(_ => langwordid));
               else
                 return this.langWordService.getDataByLangWord(item.LANGID, item.WORD).pipe(
                   concatMap(arrLangNew => {
@@ -77,7 +77,7 @@ export class WordsUnitService {
                       const langwordid = itemLang.ID;
                       const b = itemLang.combineNote(item.NOTE);
                       item.NOTE = itemLang.NOTE;
-                      return b ? this.langWordService.updateNote(langwordid, item.NOTE ? item.NOTE : '')
+                      return b ? this.langWordService.updateNote(langwordid, item.NOTE || '')
                         .pipe(map(_ => langwordid)) : of(langwordid);
                     };
                     if (arrUnit.length === 1)
