@@ -20,6 +20,14 @@ export class UnitWordService extends BaseService {
       );
   }
 
+  getDataByLangWord(langwordid: number): Observable<UnitWord[]> {
+    const url = `${this.baseUrl}VUNITWORDS?transform=1&filter=LANGWORDID,eq,${langwordid}`;
+    return this.http.get<UnitWords>(url)
+      .pipe(
+        map(result => result.VUNITWORDS.map(value => Object.assign(new UnitWord(), value))),
+      );
+  }
+
   create(item: UnitWord): Observable<number | any[]> {
     const url = `${this.baseUrl}UNITWORDS`;
     return this.http.post<number | any[]>(url, item, this.httpOptions)
@@ -30,12 +38,6 @@ export class UnitWordService extends BaseService {
   updateSeqNum(id: number, seqnum: number): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${id}`;
     return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as UnitWord, this.httpOptions).pipe(
-    );
-  }
-
-  updateNote(id: number, note: string): Observable<number> {
-    const url = `${this.baseUrl}UNITWORDS/${id}`;
-    return this.http.put<number>(url, {ID: id, NOTE: note} as UnitWord, this.httpOptions).pipe(
     );
   }
 
