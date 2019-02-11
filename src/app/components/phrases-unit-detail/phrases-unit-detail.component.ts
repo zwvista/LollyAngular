@@ -3,6 +3,7 @@ import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UnitPhrase } from '../../models/unit-phrase';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-phrases-unit-detail',
@@ -14,6 +15,7 @@ export class PhrasesUnitDetailComponent implements OnInit {
   unitPhrase: UnitPhrase;
 
   constructor(private phrasesUnitService: PhrasesUnitService,
+              private settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
   ) { }
@@ -29,6 +31,7 @@ export class PhrasesUnitDetailComponent implements OnInit {
   }
 
   save(): void {
+    this.unitPhrase.PHRASE = this.settingsService.autoCorrectInput(this.unitPhrase.PHRASE);
     if (this.unitPhrase.ID) {
       this.phrasesUnitService.update(this.unitPhrase).subscribe(_ => this.goBack());
     } else {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsLangService } from '../../view-models/words-lang.service';
-import { interval, Subscription } from 'rxjs';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-words-lang',
@@ -11,7 +11,8 @@ export class WordsLangComponent implements OnInit {
 
   newWord: string;
 
-  constructor(public wordsLangService: WordsLangService) { }
+  constructor(public wordsLangService: WordsLangService,
+              private settingsService: SettingsService) { }
 
   ngOnInit() {
     this.wordsLangService.getData().subscribe();
@@ -20,7 +21,7 @@ export class WordsLangComponent implements OnInit {
   onEnter() {
     if (!this.newWord) return;
     const o = this.wordsLangService.newLangWord();
-    o.WORD = this.newWord;
+    o.WORD = this.settingsService.autoCorrectInput(this.newWord);
     this.wordsLangService.create(o).subscribe(id => {
       o.ID = id as number;
       this.wordsLangService.langWords.push(o);

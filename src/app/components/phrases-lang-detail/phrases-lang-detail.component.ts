@@ -3,6 +3,7 @@ import { LangPhrase } from '../../models/lang-phrase';
 import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-phrases-lang-detail',
@@ -14,6 +15,7 @@ export class PhrasesLangDetailComponent implements OnInit {
   langPhrase: LangPhrase;
 
   constructor(private phrasesLangService: PhrasesLangService,
+              private settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
   ) { }
@@ -29,6 +31,7 @@ export class PhrasesLangDetailComponent implements OnInit {
   }
 
   save(): void {
+    this.langPhrase.PHRASE = this.settingsService.autoCorrectInput(this.langPhrase.PHRASE);
     if (this.langPhrase.ID) {
       this.phrasesLangService.update(this.langPhrase).subscribe(_ => this.goBack());
     } else {

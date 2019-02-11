@@ -10,6 +10,10 @@
   <label class="p-col-1" for="LEVEL">LEVEL:</label>
   <input id="LEVEL" type="text" pInputText [(ngModel)]="langWord.LEVEL">
 </div>
+<div class="p-grid mb-2">
+  <label class="p-col-1" for="NOTE">NOTE:</label>
+  <input id="NOTE" type="text" pInputText [(ngModel)]="langWord.NOTE">
+</div>
 <div>
   <button pButton label="Back" (click)="goBack()"></button>
   <button pButton label="Save" (click)="save()"></button>

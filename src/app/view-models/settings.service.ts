@@ -10,7 +10,7 @@ import { Textbook } from '../models/textbook';
 import { forkJoin ,  Observable } from 'rxjs';
 import { DictNoteService, DictWordService } from '../services/dictionary.service';
 import { TextbookService } from '../services/textbook.service';
-import { AutoCorrect, AutoCorrects } from '../models/autocorrect';
+import { autoCorrect, AutoCorrect, AutoCorrects } from '../models/autocorrect';
 import { AutoCorrectService } from '../services/autocorrect.service';
 import * as _ from 'lodash';
 
@@ -250,4 +250,7 @@ export class SettingsService {
     return this.userSettingService.updatePartTo(this.selectedUSTextbook.ID, this.USPARTTO);
   }
 
+  autoCorrectInput(text: string): string {
+    return autoCorrect(text, this.autoCorrects, row => row.INPUT, row => row.EXTENDED)
+  }
 }
