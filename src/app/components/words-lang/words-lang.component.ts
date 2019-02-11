@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsLangService } from '../../view-models/words-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
+import { googleString } from '../../common/common';
 
 @Component({
   selector: 'app-words-lang',
@@ -33,8 +34,7 @@ export class WordsLangComponent implements OnInit {
     console.log(index);
   }
 
-  // https://stackoverflow.com/questions/42775017/angular-2-redirect-to-an-external-url-and-open-in-a-new-tab
-  googleWord(WORD: string) {
-    window.open('https://www.google.com/search?q=' + encodeURIComponent(WORD), '_blank');
+  googleWord(word: string) {
+    googleString(word);
   }
 }

@@ -37,6 +37,10 @@
       <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
         <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
       </a>
+      <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
+      <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitPhrase.PHRASE"
+              pTooltip="Copy" tooltipPosition="top"></button>
+      <button pButton label="Google Phrase" (click)="googlePhrase(unitPhrase.PHRASE)"></button>
     </td>
   </tr>
   </ng-template>

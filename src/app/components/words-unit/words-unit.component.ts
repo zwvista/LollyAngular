@@ -4,6 +4,7 @@ import { interval, Subscription } from 'rxjs';
 import { UserSettingService } from '../../services/user-setting.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { LangWordService } from '../../services/lang-word.service';
+import { googleString } from '../../common/common';
 
 @Component({
   selector: 'app-words-unit',
@@ -46,9 +47,8 @@ export class WordsUnitComponent implements OnInit {
     this.wordsUnitService.getNote(index).subscribe();
   }
 
-  // https://stackoverflow.com/questions/42775017/angular-2-redirect-to-an-external-url-and-open-in-a-new-tab
-  googleWord(WORD: string) {
-    window.open('https://www.google.com/search?q=' + encodeURIComponent(WORD), '_blank');
+  googleWord(word: string) {
+    googleString(word);
   }
 
   getNotes(ifEmpty: boolean) {
