@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UnitPhrase } from '../../models/unit-phrase';
 import { SettingsService } from '../../view-models/settings.service';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-phrases-unit-detail',
@@ -13,6 +14,8 @@ import { SettingsService } from '../../view-models/settings.service';
 export class PhrasesUnitDetailComponent implements OnInit {
 
   unitPhrase: UnitPhrase;
+  units: SelectItem[];
+  parts: SelectItem[];
 
   constructor(private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService,
@@ -24,6 +27,8 @@ export class PhrasesUnitDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.phrasesUnitService.unitPhrases.find(value => value.ID === id);
     this.unitPhrase = o ? {...o} as UnitPhrase : this.phrasesUnitService.newUnitPhrase();
+    this.units = this.settingsService.units.map(v => ({label: v, value: Number(v)}));
+    this.parts = this.settingsService.parts.map((v, i) => ({label: v, value: i + 1}));
   }
 
   goBack(): void {

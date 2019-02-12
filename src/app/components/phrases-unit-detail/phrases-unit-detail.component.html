@@ -4,11 +4,13 @@
 </div>
 <div class="p-grid mb-2">
   <label class="p-col-1" for="UNIT">UNIT:</label>
-  <input id="UNIT" type="text" pInputText [(ngModel)]="unitPhrase.UNIT">
+  <p-dropdown id="UNIT" class="p-col-2" [options]="units" [(ngModel)]="unitWord.UNIT">
+  </p-dropdown>
 </div>
 <div class="p-grid mb-2">
   <label class="p-col-1" for="PART">PART:</label>
-  <input id="PART" type="text" pInputText [(ngModel)]="unitPhrase.PART">
+  <p-dropdown id="PART" class="p-col-2" [options]="parts" [(ngModel)]="unitWord.PART">
+  </p-dropdown>
 </div>
 <div class="p-grid mb-2">
   <label class="p-col-1" for="SEQNUM">SEQNUM:</label>
