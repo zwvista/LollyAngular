@@ -4,7 +4,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
-import { DictPicker, DictWord } from '../../models/dictionary';
+import { DictPicker, DictMean } from '../../models/dictionary';
 import { HtmlService } from '../../services/html.service';
 
 @Component({
@@ -43,7 +43,7 @@ export class WordsDictComponent implements OnInit {
     if (item.DICTNAME.startsWith('Custom'))
       this.dictSrc = this.settingsService.dictHtml(this.selectedWord, item.dictids());
     else {
-      const item2 = this.settingsService.dictsWord.find(v => v.DICTNAME === item.DICTNAME);
+      const item2 = this.settingsService.dictsMean.find(v => v.DICTNAME === item.DICTNAME);
       const url = item2.urlString(this.selectedWord, this.settingsService.autoCorrects);
       if (item2.DICTTYPENAME === 'OFFLINE') {
         this.dictUrl = 'about:blank';
