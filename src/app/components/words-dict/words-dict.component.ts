@@ -4,7 +4,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
-import { DictPicker, DictMean } from '../../models/dictionary';
+import { DictGroup, DictMean } from '../../models/dictionary';
 import { HtmlService } from '../../services/html.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class WordsDictComponent implements OnInit {
   selectedWord: string;
   dictUrl = 'about:blank';
   dictSrc = null;
-  selectedDictPicker: DictPicker;
+  selectedDictGroup: DictGroup;
 
   constructor(private wordsUnitService: WordsUnitService,
               public settingsService: SettingsService,
@@ -30,7 +30,7 @@ export class WordsDictComponent implements OnInit {
   ngOnInit() {
     this.words = this.wordsUnitService.unitWords.map(v  => ({label: v.WORD, value: v.WORD}));
     this.selectedWord = this.words[+this.route.snapshot.paramMap.get('index')].value;
-    this.selectedDictPicker = this.settingsService.selectedDictPicker;
+    this.selectedDictGroup = this.settingsService.selectedDictGroup;
     if (this.selectedWord) this.refreshDict();
   }
 
@@ -39,7 +39,7 @@ export class WordsDictComponent implements OnInit {
   }
 
   refreshDict() {
-    const item = this.selectedDictPicker;
+    const item = this.selectedDictGroup;
     if (item.DICTNAME.startsWith('Custom'))
       this.dictSrc = this.settingsService.dictHtml(this.selectedWord, item.dictids());
     else {

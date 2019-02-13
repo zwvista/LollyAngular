@@ -34,9 +34,9 @@ export class SettingsComponent implements OnInit {
     this.settingsService.updateLang().subscribe();
   }
 
-  onDictPickerChange(index) {
-    this.settingsService.selectedDictPickerIndex = index;
-    this.settingsService.updateDictPicker().subscribe();
+  onDictGroupChange(index) {
+    this.settingsService.selectedDictGroupIndex = index;
+    this.settingsService.updateDictGroup().subscribe();
   }
 
   onDictNoteChange(index) {

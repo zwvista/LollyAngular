@@ -6,9 +6,9 @@
   </select>
 </div>
 <div class="form-inline mb-2">
-  <label for="dictPicker" class="col-2 control-label">Dictionary(Word):</label>
-  <select id="dictPicker" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictPicker" (change)="onDictPickerChange($event.target.selectedIndex)">
-    <option *ngFor="let dict of settingsService.dictsPicker" [ngValue]="dict">{{dict.DICTNAME}}</option>
+  <label for="dictGroup" class="col-2 control-label">Dictionary(Word):</label>
+  <select id="dictGroup" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictGroup" (change)="onDictGroupChange($event.target.selectedIndex)">
+    <option *ngFor="let dict of settingsService.dictsGroup" [ngValue]="dict">{{dict.DICTNAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
