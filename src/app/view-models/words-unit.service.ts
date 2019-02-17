@@ -37,13 +37,13 @@ export class WordsUnitService {
           return this.langWordService.create(itemLang);
         } else {
           const itemLang = arrLang[0];
-          const langwordid = itemLang.ID;
+          const wordid = itemLang.ID;
           const b = itemLang.combineNote(item.NOTE);
-          return b ? this.updateNote(langwordid, item.NOTE || '').pipe(map(_ => langwordid)) : of(langwordid);
+          return b ? this.updateNote(wordid, item.NOTE || '').pipe(map(_ => wordid)) : of(wordid);
         }
       }),
-      concatMap(langwordid => {
-        item.LANGWORDID = langwordid as number;
+      concatMap(wordid => {
+        item.WORDID = wordid as number;
         return this.unitWordService.create(item);
       }),
     );
@@ -53,38 +53,38 @@ export class WordsUnitService {
     return this.unitWordService.updateSeqNum(id, seqnum);
   }
 
-  updateNote(langwordid: number, note: string): Observable<number> {
-    return this.langWordService.updateNote(langwordid, note);
+  updateNote(wordid: number, note: string): Observable<number> {
+    return this.langWordService.updateNote(wordid, note);
   }
 
   update(item: UnitWord): Observable<number> {
-    const langwordid = item.LANGWORDID;
-    return this.unitWordService.getDataByLangWord(langwordid).pipe(
+    const wordid = item.WORDID;
+    return this.unitWordService.getDataByLangWord(wordid).pipe(
       concatMap(arrUnit => {
         if (arrUnit.length === 0)
           return empty;
         else {
           const itemLang = LangWord.fromUnit(item);
-          return this.langWordService.getDataById(langwordid).pipe(
+          return this.langWordService.getDataById(wordid).pipe(
             concatMap(arrLangOld => {
               if (arrLangOld.length > 0 && arrLangOld[0].WORD === item.WORD)
-                return this.langWordService.updateNote(langwordid, item.NOTE || '').pipe(map(_ => langwordid));
+                return this.langWordService.updateNote(wordid, item.NOTE || '').pipe(map(_ => wordid));
               else
                 return this.langWordService.getDataByLangWord(item.LANGID, item.WORD).pipe(
                   concatMap(arrLangNew => {
                     const f = () => {
                       const itemLang = arrLangNew[0];
-                      const langwordid = itemLang.ID;
+                      const wordid = itemLang.ID;
                       const b = itemLang.combineNote(item.NOTE);
                       item.NOTE = itemLang.NOTE;
-                      return b ? this.langWordService.updateNote(langwordid, item.NOTE || '')
-                        .pipe(map(_ => langwordid)) : of(langwordid);
+                      return b ? this.langWordService.updateNote(wordid, item.NOTE || '')
+                        .pipe(map(_ => wordid)) : of(wordid);
                     };
                     if (arrUnit.length === 1)
                       if (arrLangNew.length === 0)
-                        return this.langWordService.update(itemLang).pipe(map(_ => langwordid));
+                        return this.langWordService.update(itemLang).pipe(map(_ => wordid));
                       else
-                        return this.langWordService.delete(langwordid).pipe(concatMap(_ => f()));
+                        return this.langWordService.delete(wordid).pipe(concatMap(_ => f()));
                     else
                       if (arrLangNew.length === 0) {
                         itemLang.ID = 0;
@@ -94,8 +94,8 @@ export class WordsUnitService {
                   }),
                 );
             }),
-            concatMap(langwordid => {
-              item.LANGWORDID = langwordid as number;
+            concatMap(wordid => {
+              item.WORDID = wordid as number;
               return this.unitWordService.update(item);
             }),
           );
@@ -136,7 +136,7 @@ export class WordsUnitService {
     return this.noteService.getNote(item.WORD).pipe(
       concatMap(note => {
         item.NOTE = note;
-        return this.updateNote(item.LANGWORDID, note);
+        return this.updateNote(item.WORDID, note);
       }),
     );
   }
