@@ -38,6 +38,7 @@
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="langWord.WORD"
                 pTooltip="Copy" tooltipPosition="top"></button>
+        <button pButton label="Retrieve Note" (click)="getNote(index)"></button>
         <button pButton label="Google Word" (click)="googleWord(langWord.WORD)"></button>
         <a routerLink="/words-dict/{{index}}">
           <button pButton label="Dictionary"></button>

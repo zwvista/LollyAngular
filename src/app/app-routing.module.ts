@@ -10,17 +10,25 @@ import { WordsLangDetailComponent } from './components/words-lang-detail/words-l
 import { WordsLangComponent } from './components/words-lang/words-lang.component';
 import { PhrasesLangComponent } from './components/phrases-lang/phrases-lang.component';
 import { PhrasesLangDetailComponent } from './components/phrases-lang-detail/phrases-lang-detail.component';
+import { WordsTextbookComponent } from './components/words-textbook/words-textbook.component';
+import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-textbook.component';
+import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
+import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/words-unit', pathMatch: 'full' },
-  { path: 'phrases-unit', component: PhrasesUnitComponent },
-  { path: 'phrases-unit-detail/:id', component: PhrasesUnitDetailComponent },
   { path: 'words-unit', component: WordsUnitComponent },
   { path: 'words-unit-detail/:id', component: WordsUnitDetailComponent },
-  { path: 'phrases-lang', component: PhrasesLangComponent },
-  { path: 'phrases-lang-detail/:id', component: PhrasesLangDetailComponent },
+  { path: 'words-textbook', component: WordsTextbookComponent },
+  { path: 'words-textbook-detail/:id', component: WordsTextbookDetailComponent },
   { path: 'words-lang', component: WordsLangComponent },
   { path: 'words-lang-detail/:id', component: WordsLangDetailComponent },
+  { path: 'phrases-unit', component: PhrasesUnitComponent },
+  { path: 'phrases-unit-detail/:id', component: PhrasesUnitDetailComponent },
+  { path: 'phrases-textbook', component: PhrasesTextbookComponent },
+  { path: 'phrases-textbook-detail/:id', component: PhrasesTextbookDetailComponent },
+  { path: 'phrases-lang', component: PhrasesLangComponent },
+  { path: 'phrases-lang-detail/:id', component: PhrasesLangDetailComponent },
   { path: 'words-dict/:index', component: WordsDictComponent },
   { path: 'settings', component: SettingsComponent }
 ];

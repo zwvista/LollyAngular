@@ -51,6 +51,10 @@ import { WordsTextbookComponent } from './components/words-textbook/words-textbo
 import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
 import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
+import { TextbookWordService } from './services/textbook-word.service';
+import { TextbookPhraseService } from './services/textbook-phrase.service';
+import { WordsTextbookService } from './view-models/words-textbook.service';
+import { PhrasesTextbookService } from './view-models/phrases-textbook.service';
 
 
 @NgModule({
@@ -104,6 +108,8 @@ import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-de
     AutoCorrectService,
     LangPhraseService,
     LangWordService,
+    TextbookWordService,
+    TextbookPhraseService,
     // view models
     AppService,
     PhrasesUnitService,
@@ -112,6 +118,8 @@ import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-de
     PhrasesLangService,
     WordsLangService,
     NoteService,
+    WordsTextbookService,
+    PhrasesTextbookService,
   ],
   bootstrap: [AppComponent]
 })

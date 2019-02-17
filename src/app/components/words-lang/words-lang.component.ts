@@ -12,7 +12,7 @@ export class WordsLangComponent implements OnInit {
 
   newWord: string;
 
-  constructor(public wordsLangService: WordsLangService,
+  constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
@@ -32,6 +32,11 @@ export class WordsLangComponent implements OnInit {
 
   deleteWord(index: number) {
     console.log(index);
+  }
+
+  getNote(index: number) {
+    console.log(index);
+    this.wordsLangService.getNote(index).subscribe();
   }
 
   googleWord(word: string) {
