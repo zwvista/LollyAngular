@@ -23,7 +23,7 @@ export class SettingsComponent implements OnInit {
 
   unitPartTo: boolean;
 
-  constructor(public settingsService: SettingsService) { }
+  constructor(private settingsService: SettingsService) { }
 
   ngOnInit() {
     this.settingsService.getData().subscribe(_ => this.updateTextbook());

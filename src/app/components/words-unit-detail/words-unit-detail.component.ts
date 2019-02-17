@@ -13,7 +13,7 @@ import { SelectItem } from 'primeng/api';
 })
 export class WordsUnitDetailComponent implements OnInit {
 
-  unitWord: UnitWord;
+  item: UnitWord;
   units: SelectItem[];
   parts: SelectItem[];
 
@@ -26,7 +26,7 @@ export class WordsUnitDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsUnitService.unitWords.find(value => value.ID === id);
-    this.unitWord = o ? {...o} as UnitWord : this.wordsUnitService.newUnitWord();
+    this.item = o ? {...o} as UnitWord : this.wordsUnitService.newUnitWord();
     this.units = this.settingsService.units.map(v => ({label: v, value: Number(v)}));
     this.parts = this.settingsService.parts.map((v, i) => ({label: v, value: i + 1}));
   }
@@ -36,11 +36,11 @@ export class WordsUnitDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.unitWord.WORD = this.settingsService.autoCorrectInput(this.unitWord.WORD);
-    if (this.unitWord.ID) {
-      this.wordsUnitService.update(this.unitWord).subscribe(_ => this.goBack());
+    this.item.WORD = this.settingsService.autoCorrectInput(this.item.WORD);
+    if (this.item.ID) {
+      this.wordsUnitService.update(this.item).subscribe(_ => this.goBack());
     } else {
-      this.wordsUnitService.create(this.unitWord).subscribe(_ => this.goBack());
+      this.wordsUnitService.create(this.item).subscribe(_ => this.goBack());
     }
   }
 

@@ -8,7 +8,7 @@ import { PhrasesTextbookService } from '../../view-models/phrases-textbook.servi
 })
 export class PhrasesTextbookComponent implements OnInit {
 
-  constructor(public phrasesTextbookService: PhrasesTextbookService) { }
+  constructor(private phrasesTextbookService: PhrasesTextbookService) { }
 
   ngOnInit() {
     this.phrasesTextbookService.getData().subscribe();

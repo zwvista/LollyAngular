@@ -4,7 +4,7 @@
       <button pButton type="button" label="Add" icon="fa fa-plus"></button>
     </a>
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
-    <a routerLink="/words-dict/0">
+    <a routerLink="/words-dict/lang/0">
       <button pButton type="button" label="Dictionary"></button>
     </a>
   </div>
@@ -40,7 +40,7 @@
                 pTooltip="Copy" tooltipPosition="top"></button>
         <button pButton label="Retrieve Note" (click)="getNote(index)"></button>
         <button pButton label="Google Word" (click)="googleWord(langWord.WORD)"></button>
-        <a routerLink="/words-dict/{{index}}">
+        <a routerLink="/words-dict/lang/{{index}}">
           <button pButton label="Dictionary"></button>
         </a>
       </td>

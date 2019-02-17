@@ -9,7 +9,7 @@ import { googleString } from '../../common/common';
 })
 export class PhrasesLangComponent implements OnInit {
 
-  constructor(public phrasesLangService: PhrasesLangService) { }
+  constructor(private phrasesLangService: PhrasesLangService) { }
 
   ngOnInit() {
     this.phrasesLangService.getData().subscribe();

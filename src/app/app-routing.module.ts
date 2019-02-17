@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'phrases-textbook-detail/:id', component: PhrasesTextbookDetailComponent },
   { path: 'phrases-lang', component: PhrasesLangComponent },
   { path: 'phrases-lang-detail/:id', component: PhrasesLangDetailComponent },
-  { path: 'words-dict/:index', component: WordsDictComponent },
+  { path: 'words-dict/:type/:index', component: WordsDictComponent },
   { path: 'settings', component: SettingsComponent }
 ];
 

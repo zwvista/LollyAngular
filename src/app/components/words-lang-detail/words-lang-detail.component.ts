@@ -13,7 +13,7 @@ import { SettingsService } from '../../view-models/settings.service';
 })
 export class WordsLangDetailComponent implements OnInit {
 
-  langWord: LangWord;
+  item: LangWord;
 
   constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService,
@@ -24,7 +24,7 @@ export class WordsLangDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsLangService.langWords.find(value => value.ID === id);
-    this.langWord = o ? {...o} as LangWord : this.wordsLangService.newLangWord();
+    this.item = o ? {...o} as LangWord : this.wordsLangService.newLangWord();
   }
 
   goBack(): void {
@@ -32,11 +32,11 @@ export class WordsLangDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.langWord.WORD = this.settingsService.autoCorrectInput(this.langWord.WORD);
-    if (this.langWord.ID) {
-      this.wordsLangService.update(this.langWord).subscribe(_ => this.goBack());
+    this.item.WORD = this.settingsService.autoCorrectInput(this.item.WORD);
+    if (this.item.ID) {
+      this.wordsLangService.update(this.item).subscribe(_ => this.goBack());
     } else {
-      this.wordsLangService.create(this.langWord).subscribe(_ => this.goBack());
+      this.wordsLangService.create(this.item).subscribe(_ => this.goBack());
     }
   }
 

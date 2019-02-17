@@ -6,7 +6,7 @@
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
     <button pButton type="button" label="Retrieve All Notes" (click)="getNotes(false)"></button>
     <button pButton type="button" label="Retrieve Notes If Empty" (click)="getNotes(true)"></button>
-    <a routerLink="/words-dict/0">
+    <a routerLink="/words-dict/unit/0">
       <button pButton type="button" label="Dictionary"></button>
     </a>
   </div>
@@ -51,7 +51,7 @@
                 pTooltip="Copy" tooltipPosition="top"></button>
       <button pButton label="Retrieve Note" (click)="getNote(index)"></button>
       <button pButton label="Google Word" (click)="googleWord(unitWord.WORD)"></button>
-      <a routerLink="/words-dict/{{index}}">
+      <a routerLink="/words-dict/unit/{{index}}">
         <button pButton label="Dictionary"></button>
       </a>
     </td>

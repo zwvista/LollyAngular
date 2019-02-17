@@ -13,7 +13,7 @@ import { SelectItem } from 'primeng/api';
 })
 export class PhrasesUnitDetailComponent implements OnInit {
 
-  unitPhrase: UnitPhrase;
+  item: UnitPhrase;
   units: SelectItem[];
   parts: SelectItem[];
 
@@ -26,7 +26,7 @@ export class PhrasesUnitDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.phrasesUnitService.unitPhrases.find(value => value.ID === id);
-    this.unitPhrase = o ? {...o} as UnitPhrase : this.phrasesUnitService.newUnitPhrase();
+    this.item = o ? {...o} as UnitPhrase : this.phrasesUnitService.newUnitPhrase();
     this.units = this.settingsService.units.map(v => ({label: v, value: Number(v)}));
     this.parts = this.settingsService.parts.map((v, i) => ({label: v, value: i + 1}));
   }
@@ -36,11 +36,11 @@ export class PhrasesUnitDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.unitPhrase.PHRASE = this.settingsService.autoCorrectInput(this.unitPhrase.PHRASE);
-    if (this.unitPhrase.ID) {
-      this.phrasesUnitService.update(this.unitPhrase).subscribe(_ => this.goBack());
+    this.item.PHRASE = this.settingsService.autoCorrectInput(this.item.PHRASE);
+    if (this.item.ID) {
+      this.phrasesUnitService.update(this.item).subscribe(_ => this.goBack());
     } else {
-      this.phrasesUnitService.create(this.unitPhrase).subscribe(_ => this.goBack());
+      this.phrasesUnitService.create(this.item).subscribe(_ => this.goBack());
     }
   }
 

@@ -12,7 +12,7 @@ import { SettingsService } from '../../view-models/settings.service';
 })
 export class PhrasesLangDetailComponent implements OnInit {
 
-  langPhrase: LangPhrase;
+  item: LangPhrase;
 
   constructor(private phrasesLangService: PhrasesLangService,
               private settingsService: SettingsService,
@@ -23,7 +23,7 @@ export class PhrasesLangDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.phrasesLangService.langPhrases.find(value => value.ID === id);
-    this.langPhrase = o ? {...o} as LangPhrase : this.phrasesLangService.newLangPhrase();
+    this.item = o ? {...o} as LangPhrase : this.phrasesLangService.newLangPhrase();
   }
 
   goBack(): void {
@@ -31,11 +31,11 @@ export class PhrasesLangDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.langPhrase.PHRASE = this.settingsService.autoCorrectInput(this.langPhrase.PHRASE);
-    if (this.langPhrase.ID) {
-      this.phrasesLangService.update(this.langPhrase).subscribe(_ => this.goBack());
+    this.item.PHRASE = this.settingsService.autoCorrectInput(this.item.PHRASE);
+    if (this.item.ID) {
+      this.phrasesLangService.update(this.item).subscribe(_ => this.goBack());
     } else {
-      this.phrasesLangService.create(this.langPhrase).subscribe(_ => this.goBack());
+      this.phrasesLangService.create(this.item).subscribe(_ => this.goBack());
     }
   }
 
