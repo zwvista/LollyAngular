@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../view-models/settings.service';
+import { concatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-settings',
@@ -113,6 +114,36 @@ export class SettingsComponent implements OnInit {
     if (this.settingsService.USPARTTO !== this.settingsService.USPARTFROM) {
       this.settingsService.USPARTTO = this.settingsService.USPARTFROM;
       this.settingsService.updatePartTo().subscribe();
+    }
+  }
+
+  previousUnitPart() {
+    if (this.settingsService.USPARTFROM > 1) {
+      this.settingsService.USPARTFROM--;
+      this.updateUnitPartTo();
+      this.settingsService.updatePartFrom().subscribe();
+    } else if (this.settingsService.USUNITFROM > 1) {
+      this.settingsService.USUNITFROM--;
+      this.settingsService.USPARTFROM = this.settingsService.parts.length;
+      this.updateUnitPartTo();
+      this.settingsService.updateUnitFrom().pipe(
+        concatMap(_ => this.settingsService.updatePartFrom())
+      ).subscribe();
+    }
+  }
+
+  nextUnitPart() {
+    if (this.settingsService.USPARTFROM < this.settingsService.parts.length) {
+      this.settingsService.USPARTFROM++;
+      this.updateUnitPartTo();
+      this.settingsService.updatePartFrom().subscribe();
+    } else if (this.settingsService.USUNITFROM > 1) {
+      this.settingsService.USUNITFROM++;
+      this.settingsService.USPARTFROM = 1;
+      this.updateUnitPartTo();
+      this.settingsService.updateUnitFrom().pipe(
+        concatMap(_ => this.settingsService.updatePartFrom())
+      ).subscribe();
     }
   }
 }

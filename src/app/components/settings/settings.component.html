@@ -43,4 +43,10 @@
     <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
   </select>
 </div>
+<div class="form-inline mb-2">
+  <label class="col-2 control-label"></label>
+  <button class="btn btn-primary mr-2" (click)="previousUnitPart()">Previous</button>
+  <button class="btn btn-primary mr-2" (click)="nextUnitPart()">Next</button>
+</div>
+
 </div>
