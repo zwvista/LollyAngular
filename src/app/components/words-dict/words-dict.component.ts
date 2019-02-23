@@ -4,7 +4,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
-import { DictGroup, DictMean } from '../../models/dictionary';
+import { DictItem, DictMean } from '../../models/dictionary';
 import { HtmlService } from '../../services/html.service';
 import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { WordsLangService } from '../../view-models/words-lang.service';
@@ -20,7 +20,7 @@ export class WordsDictComponent implements OnInit {
   selectedWord: string;
   dictUrl = 'about:blank';
   dictSrc = null;
-  selectedDictGroup: DictGroup;
+  selectedDictItem: DictItem;
 
   constructor(private wordsUnitService: WordsUnitService,
               private wordsTextbookService: WordsTextbookService,
@@ -38,7 +38,7 @@ export class WordsDictComponent implements OnInit {
       dictType === 'textbook' ? this.wordsTextbookService.textbookWords.map(v  => ({label: v.WORD, value: v.WORD})) :
       this.wordsLangService.langWords.map(v  => ({label: v.WORD, value: v.WORD}));
     this.selectedWord = this.words[+this.route.snapshot.paramMap.get('index')].value;
-    this.selectedDictGroup = this.settingsService.selectedDictGroup;
+    this.selectedDictItem = this.settingsService.selectedDictItem;
     if (this.selectedWord) this.refreshDict();
   }
 
@@ -47,7 +47,7 @@ export class WordsDictComponent implements OnInit {
   }
 
   refreshDict() {
-    const item = this.selectedDictGroup;
+    const item = this.selectedDictItem;
     if (item.DICTNAME.startsWith('Custom'))
       this.dictSrc = this.settingsService.dictHtml(this.selectedWord, item.dictids());
     else {

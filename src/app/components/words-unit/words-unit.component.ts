@@ -14,6 +14,7 @@ import { googleString } from '../../common/common';
 export class WordsUnitComponent implements OnInit {
 
   newWord: string;
+  hasNoNote = this.settingsService.dictsNote.length === 0;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
@@ -26,10 +27,10 @@ export class WordsUnitComponent implements OnInit {
     if (!this.newWord) return;
     const o = this.wordsUnitService.newUnitWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
+    this.newWord = '';
     this.wordsUnitService.create(o).subscribe(id => {
       o.ID = id as number;
       this.wordsUnitService.unitWords.push(o);
-      this.newWord = '';
     });
   }
 

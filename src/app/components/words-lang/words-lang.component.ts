@@ -11,6 +11,7 @@ import { googleString } from '../../common/common';
 export class WordsLangComponent implements OnInit {
 
   newWord: string;
+  hasNoNote = this.settingsService.dictsNote.length === 0;
 
   constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService) { }
@@ -23,10 +24,10 @@ export class WordsLangComponent implements OnInit {
     if (!this.newWord) return;
     const o = this.wordsLangService.newLangWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
+    this.newWord = '';
     this.wordsLangService.create(o).subscribe(id => {
       o.ID = id as number;
       this.wordsLangService.langWords.push(o);
-      this.newWord = '';
     });
   }
 
