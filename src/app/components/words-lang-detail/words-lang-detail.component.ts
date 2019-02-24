@@ -3,7 +3,6 @@ import { LangWord } from '../../models/lang-word';
 import { WordsLangService } from '../../view-models/words-lang.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { LangWordService } from '../../services/lang-word.service';
 import { SettingsService } from '../../view-models/settings.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { DictNote, DictMean, DictsNote, DictsMean } from '../models/dictionary';
+import { DictMean, DictNote, DictsMean, DictsNote } from '../models/dictionary';
 
 @Injectable()
 export class DictMeanService extends BaseService {

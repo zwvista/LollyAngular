@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LangPhrase, LangPhrases } from '../models/lang-phrase';
 import { map } from 'rxjs/operators';
-import { LangWord } from '../models/lang-word';
 
 @Injectable()
 export class LangPhraseService extends BaseService {

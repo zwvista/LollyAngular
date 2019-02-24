@@ -5,7 +5,6 @@ import { LangWordService } from '../services/lang-word.service';
 import { Observable } from 'rxjs';
 import { LangWord } from '../models/lang-word';
 import { concatMap, map } from 'rxjs/operators';
-import { UnitWord } from '../models/unit-word';
 import { NoteService } from './note.service';
 
 @Injectable()

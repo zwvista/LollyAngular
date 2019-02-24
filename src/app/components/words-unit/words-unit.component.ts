@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
-import { interval, Subscription } from 'rxjs';
-import { UserSettingService } from '../../services/user-setting.service';
 import { SettingsService } from '../../view-models/settings.service';
-import { LangWordService } from '../../services/lang-word.service';
 import { googleString } from '../../common/common';
 
 @Component({
