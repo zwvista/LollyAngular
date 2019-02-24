@@ -27,7 +27,7 @@ export class WordsUnitDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsUnitService.unitWords.find(value => value.ID === id);
     this.item = o ? {...o} as UnitWord : this.wordsUnitService.newUnitWord();
-    this.units = this.settingsService.units.map(v => ({label: v, value: Number(v)}));
+    this.units = this.settingsService.units.map((v, i) => ({label: v, value: i + 1}));
     this.parts = this.settingsService.parts.map((v, i) => ({label: v, value: i + 1}));
   }
 
