@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class WordsTextbookService {
 
-  textbookWords: TextbookWord[] = new Array(0);
+  textbookWords: TextbookWord[] = [];
+  textbookWordCount = 0;
 
   constructor(private textbookWordService: TextbookWordService,
               private langWordService: LangWordService,
@@ -20,10 +21,13 @@ export class WordsTextbookService {
               private noteService: NoteService) {
   }
 
-  getData() {
+  getData(page: number, rows: number) {
     return this.appService.initializeComplete.pipe(
-      concatMap(_ => this.textbookWordService.getDataByLang(this.settingsService.selectedLang.ID)),
-      map(res => this.textbookWords = res),
+      concatMap(_ => this.textbookWordService.getDataByLang(this.settingsService.selectedLang.ID, page, rows)),
+      map(res => {
+        this.textbookWords = res.VTEXTBOOKWORDS;
+        this.textbookWordCount = res._results;
+      }),
     );
   }
 

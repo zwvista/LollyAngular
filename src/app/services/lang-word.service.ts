@@ -12,11 +12,14 @@ export class LangWordService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number): Observable<LangWord[]> {
-    const url = `${this.baseUrl}VLANGWORDS?transform=1&filter=LANGID,eq,${langid}&order=WORD`;
+  getDataByLang(langid: number, page: number, rows: number): Observable<LangWords> {
+    const url = `${this.baseUrl}VLANGWORDS?transform=1&filter=LANGID,eq,${langid}&order=WORD&page=${page},${rows}`;
     return this.http.get<LangWords>(url)
       .pipe(
-        map(result => result.VLANGWORDS.map(value => Object.assign(new LangWord(), value))),
+        map(result => ({
+          VLANGWORDS: result.VLANGWORDS.map(value => Object.assign(new LangWord(), value)),
+          _results: result._results,
+        })),
       );
   }
 

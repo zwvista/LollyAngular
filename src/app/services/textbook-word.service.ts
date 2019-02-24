@@ -15,15 +15,18 @@ export class TextbookWordService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number): Observable<TextbookWord[]> {
-    const url = `${this.baseUrl}VTEXTBOOKWORDS?transform=1&filter=LANGID,eq,${langid}&order[]=TEXTBOOKID&order[]=UNIT&order[]=PART&order[]=SEQNUM`;
+  getDataByLang(langid: number, page: number, rows: number): Observable<TextbookWords> {
+    const url = `${this.baseUrl}VTEXTBOOKWORDS?transform=1&filter=LANGID,eq,${langid}&order[]=TEXTBOOKID&order[]=UNIT&order[]=PART&order[]=SEQNUM&page=${page},${rows}`;
     return this.http.get<TextbookWords>(url)
       .pipe(
-        map(result => result.VTEXTBOOKWORDS.map(value => {
-          const v = Object.assign(new TextbookWord(), value);
-          v.units = unitsFrom(v.UNITINFO);
-          v.parts = partsFrom(v.PARTS);
-          return v;
+        map(result => ({
+          VTEXTBOOKWORDS: result.VTEXTBOOKWORDS.map(value => {
+            const v = Object.assign(new TextbookWord(), value);
+            v.units = unitsFrom(v.UNITINFO);
+            v.parts = partsFrom(v.PARTS);
+            return v;
+          }),
+          _results: result._results,
         })),
       );
   }

@@ -1,18 +1,21 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
-    <a routerLink="/words-lang-detail/0">
-      <button pButton type="button" label="Add" icon="fa fa-plus"></button>
-    </a>
-    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
-    <a routerLink="/words-dict/lang/0">
-      <button pButton type="button" label="Dictionary"></button>
-    </a>
+    <span class="ui-float-label">
+        <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
+        <label for="word">New Word</label>
+      <a routerLink="/words-lang-detail/0">
+        <button pButton type="button" label="Add" icon="fa fa-plus"></button>
+      </a>
+      <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
+      <a routerLink="/words-dict/lang/0">
+        <button pButton type="button" label="Dictionary"></button>
+      </a>
+    </span>
   </div>
 </p-toolbar>
-<span class="ui-float-label">
-    <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
-    <label for="word">New Word</label>
-</span>
+<p-paginator [rows]="rows" [totalRecords]="wordsLangService.langWordsCount"
+             [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
+             (onPageChange)="paginate($event)"></p-paginator>
 <p-table [value]="wordsLangService.langWords" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>

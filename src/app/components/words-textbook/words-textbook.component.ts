@@ -11,12 +11,18 @@ import { googleString } from '../../common/common';
 export class WordsTextbookComponent implements OnInit {
 
   hasNoNote = this.settingsService.dictsNote.length === 0;
+  rows = this.settingsService.USROWSPERPAGE;
 
   constructor(private wordsTextbookService: WordsTextbookService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.wordsTextbookService.getData().subscribe();
+    this.wordsTextbookService.getData(1,  this.rows).subscribe();
+  }
+
+  paginate(event) {
+    this.rows = event.rows;
+    this.wordsTextbookService.getData(event.page + 1, this.rows).subscribe();
   }
 
   getNote(index: number) {

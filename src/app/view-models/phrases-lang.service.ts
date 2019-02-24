@@ -9,17 +9,21 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PhrasesLangService {
 
-  langPhrases: LangPhrase[] = new Array(0);
+  langPhrases: LangPhrase[] = [];
+  langPhraseCount = 0;
 
   constructor(private langPhraseService: LangPhraseService,
               private settingsService: SettingsService,
               private appService: AppService) {
   }
 
-  getData() {
+  getData(page: number, rows: number) {
     return this.appService.initializeComplete.pipe(
-      concatMap(_ => this.langPhraseService.getDataByLang(this.settingsService.selectedLang.ID)),
-      map(res => this.langPhrases = res),
+      concatMap(_ => this.langPhraseService.getDataByLang(this.settingsService.selectedLang.ID, page, rows)),
+      map(res => {
+        this.langPhrases = res.LANGPHRASES;
+        this.langPhraseCount = res._results;
+      }),
     );
   }
 

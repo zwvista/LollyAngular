@@ -12,12 +12,18 @@ export class WordsLangComponent implements OnInit {
 
   newWord: string;
   hasNoNote = this.settingsService.dictsNote.length === 0;
+  rows = this.settingsService.USROWSPERPAGE;
 
   constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.wordsLangService.getData().subscribe();
+    this.wordsLangService.getData(1,  this.rows).subscribe();
+  }
+
+  paginate(event) {
+    this.rows = event.rows;
+    this.wordsLangService.getData(event.page + 1, this.rows).subscribe();
   }
 
   onEnter() {

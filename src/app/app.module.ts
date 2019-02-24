@@ -8,7 +8,7 @@ import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { ToolbarModule } from 'primeng/primeng';
+import { PaginatorModule, ToolbarModule } from 'primeng/primeng';
 import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
@@ -93,6 +93,7 @@ import { PhrasesTextbookService } from './view-models/phrases-textbook.service';
     ListboxModule,
     DropdownModule,
     TooltipModule,
+    PaginatorModule,
     // 3rd-party
     ClipboardModule,
   ],

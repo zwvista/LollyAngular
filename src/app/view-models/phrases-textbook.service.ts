@@ -9,7 +9,8 @@ import { concatMap, map } from 'rxjs/operators';
 @Injectable()
 export class PhrasesTextbookService {
 
-  textbookPhrases: TextbookPhrase[] = new Array(0);
+  textbookPhrases: TextbookPhrase[] = [];
+  textbookPhraseCount = 0;
 
   constructor(private textbookPhraseService: TextbookPhraseService,
               private langPhraseService: LangPhraseService,
@@ -17,10 +18,13 @@ export class PhrasesTextbookService {
               private appService: AppService) {
   }
 
-  getData() {
+  getData(page: number, rows: number) {
     return this.appService.initializeComplete.pipe(
-      concatMap(_ => this.textbookPhraseService.getDataByLang(this.settingsService.selectedLang.ID)),
-      map(res => this.textbookPhrases = res),
+      concatMap(_ => this.textbookPhraseService.getDataByLang(this.settingsService.selectedLang.ID, page, rows)),
+      map(res => {
+        this.textbookPhrases = res.VTEXTBOOKPHRASES;
+        this.textbookPhraseCount = res._results;
+      }),
     );
   }
 }

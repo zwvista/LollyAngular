@@ -11,7 +11,7 @@ import { LangPhraseService } from '../services/lang-phrase.service';
 @Injectable()
 export class PhrasesUnitService {
 
-  unitPhrases: UnitPhrase[] = new Array(0);
+  unitPhrases: UnitPhrase[] = [];
 
   constructor(private unitPhraseService: UnitPhraseService,
               private langPhraseService: LangPhraseService,

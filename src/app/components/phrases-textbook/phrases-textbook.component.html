@@ -3,6 +3,9 @@
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
   </div>
 </p-toolbar>
+<p-paginator [rows]="rows" [totalRecords]="phrasesTextbookService.textbookPhraseCount"
+             [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
+             (onPageChange)="paginate($event)"></p-paginator>
 <p-table [value]="phrasesTextbookService.textbookPhrases" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>

@@ -6,6 +6,9 @@
     </a>
   </div>
 </p-toolbar>
+<p-paginator [rows]="rows" [totalRecords]="wordsTextbookService.textbookWordCount"
+             [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
+             (onPageChange)="paginate($event)"></p-paginator>
 <p-table [value]="wordsTextbookService.textbookWords" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>

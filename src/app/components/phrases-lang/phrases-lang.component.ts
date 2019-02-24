@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { googleString } from '../../common/common';
+import { WordsTextbookService } from '../../view-models/words-textbook.service';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-phrases-lang',
@@ -9,10 +11,18 @@ import { googleString } from '../../common/common';
 })
 export class PhrasesLangComponent implements OnInit {
 
-  constructor(private phrasesLangService: PhrasesLangService) { }
+  rows = this.settingsService.USROWSPERPAGE;
+
+  constructor(private phrasesLangService: PhrasesLangService,
+              private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.phrasesLangService.getData().subscribe();
+    this.phrasesLangService.getData(1,  this.rows).subscribe();
+  }
+
+  paginate(event) {
+    this.rows = event.rows;
+    this.phrasesLangService.getData(event.page + 1, this.rows).subscribe();
   }
 
   deletePhrase(index: number) {
