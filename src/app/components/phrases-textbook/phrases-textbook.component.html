@@ -9,10 +9,12 @@
 <p-table [value]="phrasesTextbookService.textbookPhrases" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>
+      <th>ID</th>
       <th>TEXTBOOKNAME</th>
       <th>UNIT</th>
       <th>PART</th>
       <th>SEQNUM</th>
+      <th>PHRASEID</th>
       <th>PHRASE</th>
       <th>TRANSLATION</th>
       <th>ACTIONS</th>
@@ -20,10 +22,12 @@
   </ng-template>
   <ng-template pTemplate="body" let-textbookPhrase let-index="rowIndex">
     <tr [pSelectableRow]="textbookPhrase">
+      <td>{{textbookPhrase.ID}}</td>
       <td>{{textbookPhrase.TEXTBOOKNAME}}</td>
       <td>{{textbookPhrase.UNITSTR}}</td>
       <td>{{textbookPhrase.PARTSTR}}</td>
       <td>{{textbookPhrase.SEQNUM}}</td>
+      <td>{{textbookPhrase.PHRASEID}}</td>
       <td>{{textbookPhrase.PHRASE}}</td>
       <td>{{textbookPhrase.TRANSLATION}}</td>
       <td>

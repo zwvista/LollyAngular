@@ -18,43 +18,45 @@
 <p-table [value]="wordsUnitService.unitWords" selectionMode="single" [autoLayout]="true"
          (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
-  <tr>
-    <th style="width:2em"></th>
-    <th>ID</th>
-    <th>UNIT</th>
-    <th>PART</th>
-    <th>SEQNUM</th>
-    <th>WORD</th>
-    <th>NOTE</th>
-    <th>ACTIONS</th>
-  </tr>
+    <tr>
+      <th style="width:2em"></th>
+      <th>ID</th>
+      <th>UNIT</th>
+      <th>PART</th>
+      <th>SEQNUM</th>
+      <th>WORDID</th>
+      <th>WORD</th>
+      <th>NOTE</th>
+      <th>ACTIONS</th>
+    </tr>
   </ng-template>
   <ng-template pTemplate="body" let-unitWord let-index="rowIndex">
-  <tr [pReorderableRow]="index" [pSelectableRow]="unitWord">
-    <td>
-      <i class="fa fa-bars" pReorderableRowHandle></i>
-    </td>
-    <td>{{unitWord.ID}}</td>
-    <td>{{unitWord.UNITSTR(settingsService.units)}}</td>
-    <td>{{unitWord.PARTSTR(settingsService.parts)}}</td>
-    <td>{{unitWord.SEQNUM}}</td>
-    <td>{{unitWord.WORD}}</td>
-    <td>{{unitWord.NOTE}}</td>
-    <td>
-      <button pButton icon="fa fa-trash" class="ui-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>
-      <a routerLink="/words-unit-detail/{{unitWord.ID}}">
-        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
-      </a>
-      <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-      <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
-                pTooltip="Copy" tooltipPosition="top"></button>
-      <button pButton label="Retrieve Note" [hidden]="!settingsService.hasNote" (click)="getNote(index)"></button>
-      <button pButton label="Google Word" (click)="googleWord(unitWord.WORD)"></button>
-      <a routerLink="/words-dict/unit/{{index}}">
-        <button pButton label="Dictionary"></button>
-      </a>
-    </td>
-  </tr>
+    <tr [pReorderableRow]="index" [pSelectableRow]="unitWord">
+      <td>
+        <i class="fa fa-bars" pReorderableRowHandle></i>
+      </td>
+      <td>{{unitWord.ID}}</td>
+      <td>{{unitWord.UNITSTR(settingsService.units)}}</td>
+      <td>{{unitWord.PARTSTR(settingsService.parts)}}</td>
+      <td>{{unitWord.SEQNUM}}</td>
+      <td>{{unitWord.WORDID}}</td>
+      <td>{{unitWord.WORD}}</td>
+      <td>{{unitWord.NOTE}}</td>
+      <td>
+        <button pButton icon="fa fa-trash" class="ui-button-danger"
+                  pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>
+        <a routerLink="/words-unit-detail/{{unitWord.ID}}">
+          <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
+        </a>
+        <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
+        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
+                  pTooltip="Copy" tooltipPosition="top"></button>
+        <button pButton label="Retrieve Note" [hidden]="!settingsService.hasNote" (click)="getNote(index)"></button>
+        <button pButton label="Google Word" (click)="googleWord(unitWord.WORD)"></button>
+        <a routerLink="/words-dict/unit/{{index}}">
+          <button pButton label="Dictionary"></button>
+        </a>
+      </td>
+    </tr>
   </ng-template>
 </p-table>

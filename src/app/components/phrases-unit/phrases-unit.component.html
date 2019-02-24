@@ -9,39 +9,41 @@
 <p-table [value]="phrasesUnitService.unitPhrases" selectionMode="single" [autoLayout]="true"
          (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
-  <tr>
-    <th style="width:2em"></th>
-    <th>ID</th>
-    <th>UNIT</th>
-    <th>PART</th>
-    <th>SEQNUM</th>
-    <th>PHRASE</th>
-    <th>TRANSLATION</th>
-    <th>ACTIONS</th>
-  </tr>
+    <tr>
+      <th style="width:2em"></th>
+      <th>ID</th>
+      <th>UNIT</th>
+      <th>PART</th>
+      <th>SEQNUM</th>
+      <th>PHRASE</th>
+      <th>PHRASEID</th>
+      <th>TRANSLATION</th>
+      <th>ACTIONS</th>
+    </tr>
   </ng-template>
   <ng-template pTemplate="body" let-unitPhrase let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="unitPhrase">
       <td>
         <i class="fa fa-bars" pReorderableRowHandle></i>
       </td>
-    <td>{{unitPhrase.ID}}</td>
-    <td>{{unitPhrase.UNITSTR(settingsService.units)}}</td>
-    <td>{{unitPhrase.PARTSTR(settingsService.parts)}}</td>
-    <td>{{unitPhrase.SEQNUM}}</td>
-    <td>{{unitPhrase.PHRASE}}</td>
-    <td>{{unitPhrase.TRANSLATION}}</td>
-    <td>
-      <button pButton icon="fa fa-trash" class="ui-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(index)"></button>
-      <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
-        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
-      </a>
-      <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-      <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitPhrase.PHRASE"
-              pTooltip="Copy" tooltipPosition="top"></button>
-      <button pButton label="Google Phrase" (click)="googlePhrase(unitPhrase.PHRASE)"></button>
-    </td>
-  </tr>
+      <td>{{unitPhrase.ID}}</td>
+      <td>{{unitPhrase.UNITSTR(settingsService.units)}}</td>
+      <td>{{unitPhrase.PARTSTR(settingsService.parts)}}</td>
+      <td>{{unitPhrase.SEQNUM}}</td>
+      <td>{{unitPhrase.PHRASEID}}</td>
+      <td>{{unitPhrase.PHRASE}}</td>
+      <td>{{unitPhrase.TRANSLATION}}</td>
+      <td>
+        <button pButton icon="fa fa-trash" class="ui-button-danger"
+                  pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(index)"></button>
+        <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
+          <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
+        </a>
+        <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
+        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitPhrase.PHRASE"
+                pTooltip="Copy" tooltipPosition="top"></button>
+        <button pButton label="Google Phrase" (click)="googlePhrase(unitPhrase.PHRASE)"></button>
+      </td>
+    </tr>
   </ng-template>
 </p-table>

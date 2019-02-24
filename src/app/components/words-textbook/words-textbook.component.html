@@ -12,10 +12,12 @@
 <p-table [value]="wordsTextbookService.textbookWords" selectionMode="single" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>
+      <th>ID</th>
       <th>TEXTBOOKNAME</th>
       <th>UNIT</th>
       <th>PART</th>
       <th>SEQNUM</th>
+      <th>WORDID</th>
       <th>WORD</th>
       <th>NOTE</th>
       <th>ACTIONS</th>
@@ -23,10 +25,12 @@
   </ng-template>
   <ng-template pTemplate="body" let-textbookWord let-index="rowIndex">
     <tr [pSelectableRow]="textbookWord">
+      <td>{{textbookWord.ID}}</td>
       <td>{{textbookWord.TEXTBOOKNAME}}</td>
       <td>{{textbookWord.UNITSTR}}</td>
       <td>{{textbookWord.PARTSTR}}</td>
       <td>{{textbookWord.SEQNUM}}</td>
+      <td>{{textbookWord.WORDID}}</td>
       <td>{{textbookWord.WORD}}</td>
       <td>{{textbookWord.NOTE}}</td>
       <td>
