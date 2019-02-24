@@ -11,7 +11,6 @@ import { googleString } from '../../common/common';
 export class WordsLangComponent implements OnInit {
 
   newWord: string;
-  hasNoNote = this.settingsService.dictsNote.length === 0;
   rows = this.settingsService.USROWSPERPAGE;
 
   constructor(private wordsLangService: WordsLangService,

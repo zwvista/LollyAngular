@@ -10,7 +10,6 @@ import { googleString } from '../../common/common';
 })
 export class WordsTextbookComponent implements OnInit {
 
-  hasNoNote = this.settingsService.dictsNote.length === 0;
   rows = this.settingsService.USROWSPERPAGE;
 
   constructor(private wordsTextbookService: WordsTextbookService,

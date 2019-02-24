@@ -11,7 +11,6 @@ import { googleString } from '../../common/common';
 export class WordsUnitComponent implements OnInit {
 
   newWord: string;
-  hasNoNote = this.settingsService.dictsNote.length === 0;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
