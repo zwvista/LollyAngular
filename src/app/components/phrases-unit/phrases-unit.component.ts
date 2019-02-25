@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { googleString } from '../../common/common';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-phrases-unit',
@@ -9,7 +10,8 @@ import { googleString } from '../../common/common';
 })
 export class PhrasesUnitComponent implements OnInit {
 
-  constructor(private phrasesUnitService: PhrasesUnitService) { }
+  constructor(private phrasesUnitService: PhrasesUnitService,
+              private settingsService: SettingsService) { }
 
   ngOnInit() {
     this.phrasesUnitService.getData().subscribe();
