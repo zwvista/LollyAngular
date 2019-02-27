@@ -2,51 +2,52 @@
 <div class="form-inline mb-2">
   <label for="lang" class="col-2 control-label text-left">Languages:</label>
   <select id="lang" class="col-4 form-control" [(ngModel)]="settingsService.selectedLang" (change)="onLangChange($event.target.selectedIndex)">
-    <option *ngFor="let lang of settingsService.languages" [ngValue]="lang">{{lang.NAME}}</option>
+    <option *ngFor="let o of settingsService.languages" [ngValue]="o">{{o.NAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label for="dictItem" class="col-2 control-label">Dictionary(Word):</label>
   <select id="dictItem" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictItem" (change)="onDictItemChange($event.target.selectedIndex)">
-    <option *ngFor="let dict of settingsService.dictItems" [ngValue]="dict">{{dict.DICTNAME}}</option>
+    <option *ngFor="let o of settingsService.dictItems" [ngValue]="o">{{o.DICTNAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label for="dictNote" class="col-2 control-label">Dictionary(Note):</label>
   <select id="dictNote" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictNote" (change)="onDictNoteChange($event.target.selectedIndex)">
-    <option *ngFor="let dict of settingsService.dictsNote" [ngValue]="dict">{{dict.DICTNAME}}</option>
+    <option *ngFor="let o of settingsService.dictsNote" [ngValue]="o">{{o.DICTNAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label for="textbook" class="col-2 control-label">Textbook:</label>
   <select id="textbook" class="col-4 form-control" [(ngModel)]="settingsService.selectedTextbook" (change)="onTextbookChange($event.target.selectedIndex)">
-    <option *ngFor="let textbook of settingsService.textbooks" [ngValue]="textbook">{{textbook.NAME}}</option>
+    <option *ngFor="let o of settingsService.textbooks" [ngValue]="o">{{o.NAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label for="unitFrom" class="col-2 control-label">Unit:</label>
   <select id="unitFrom" class="col-2 form-control" [(ngModel)]="unitFrom" (change)="onUnitFromChange($event.target.selectedIndex)">
-    <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
+    <option *ngFor="let o of settingsService.units" [ngValue]="o">{{o}}</option>
   </select>
-  <select class="col-2 form-control" [(ngModel)]="partFrom" (change)="onPartFromChange($event.target.selectedIndex)">
-    <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
+  <select id="partFrom" class="col-2 form-control" [disabled]="toTypeIsUnit" [(ngModel)]="partFrom" (change)="onPartFromChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.parts" [ngValue]="o">{{o}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
-  <label for="unitTo" class="col-2 control-label">
-    <input type="checkbox" [(ngModel)]="unitPartTo">To:
-  </label>
-  <select id="unitTo" class="col-2 form-control" [disabled]="!unitPartTo" [(ngModel)]="unitTo" (change)="onUnitToChange($event.target.selectedIndex)">
-    <option *ngFor="let unit of settingsService.units" [ngValue]="unit">{{unit}}</option>
+  <select id="toType" class="col-1 form-control" [(ngModel)]="toType" (change)="onToTypeChange($event.target.selectedIndex)">
+    <option *ngFor="let o of toTypes" [ngValue]="o.value">{{o.label}}</option>
   </select>
-  <select class="col-2 form-control" [disabled]="!unitPartTo" [(ngModel)]="partTo" (change)="onPartToChange($event.target.selectedIndex)">
-    <option *ngFor="let part of settingsService.parts" [ngValue]="part">{{part}}</option>
+  <label class="col-1 control-label"></label>
+  <select id="unitTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="unitTo" (change)="onUnitToChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.units" [ngValue]="o">{{o}}</option>
+  </select>
+  <select id="partTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="partTo" (change)="onPartToChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.parts" [ngValue]="o">{{o}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label class="col-2 control-label"></label>
-  <button class="btn btn-primary mr-2" [disabled]="unitPartTo" (click)="previousUnitPart()">Previous</button>
-  <button class="btn btn-primary mr-2" [disabled]="unitPartTo" (click)="nextUnitPart()">Next</button>
+  <button class="btn btn-primary mr-2" [disabled]="toTypeIsTo" (click)="previousUnitPart()">Previous</button>
+  <button class="btn btn-primary mr-2" [disabled]="toTypeIsTo" (click)="nextUnitPart()">Next</button>
 </div>
 
 </div>
