@@ -95,7 +95,7 @@ export class SettingsComponent implements OnInit {
   }
 
   updateTextbook() {
-    this.toType = this.settingsService.isSingleUnitPart ? 1 : this.settingsService.isSingleUnit ? 0 : 2;
+    this.toType = this.settingsService.isSingleUnit ? 0 : this.settingsService.isSingleUnitPart ? 1 : 2;
   }
 
   previousUnitPart() {
