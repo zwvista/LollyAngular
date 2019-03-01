@@ -4,6 +4,7 @@ import { UnitWord, UnitWords } from '../models/unit-word';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from './base.service';
+import { partsFrom, unitsFrom } from '../common/common';
 
 @Injectable()
 export class UnitWordService extends BaseService {
@@ -16,7 +17,14 @@ export class UnitWordService extends BaseService {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
     return this.http.get<UnitWords>(url)
       .pipe(
-        map(result => result.VUNITWORDS.map(value => Object.assign(new UnitWord(), value))),
+        map(result => {
+          const result2 = result.VUNITWORDS.map(value => Object.assign(new UnitWord(), value));
+          result2.forEach(o => {
+            o.units = unitsFrom(o.UNITS);
+            o.parts = partsFrom(o.PARTS);
+          });
+          return result2;
+        }),
       );
   }
 

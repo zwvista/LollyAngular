@@ -25,11 +25,11 @@
 </div>
 <div class="form-inline mb-2">
   <label for="unitFrom" class="col-2 control-label">Unit:</label>
-  <select id="unitFrom" class="col-2 form-control" [(ngModel)]="unitFrom" (change)="onUnitFromChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.units" [ngValue]="o">{{o}}</option>
+  <select id="unitFrom" class="col-2 form-control" [(ngModel)]="settingsService.USUNITFROM" (change)="onUnitFromChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
   </select>
-  <select id="partFrom" class="col-2 form-control" [disabled]="toTypeIsUnit" [(ngModel)]="partFrom" (change)="onPartFromChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.parts" [ngValue]="o">{{o}}</option>
+  <select id="partFrom" class="col-2 form-control" [disabled]="toTypeIsUnit" [(ngModel)]="settingsService.USPARTFROM" (change)="onPartFromChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.parts" [ngValue]="o.value">{{o.label}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
@@ -37,11 +37,11 @@
     <option *ngFor="let o of toTypes" [ngValue]="o.value">{{o.label}}</option>
   </select>
   <label class="col-1 control-label"></label>
-  <select id="unitTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="unitTo" (change)="onUnitToChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.units" [ngValue]="o">{{o}}</option>
+  <select id="unitTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (change)="onUnitToChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
   </select>
-  <select id="partTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="partTo" (change)="onPartToChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.parts" [ngValue]="o">{{o}}</option>
+  <select id="partTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USPARTTO" (change)="onPartToChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.parts" [ngValue]="o.value">{{o.label}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">

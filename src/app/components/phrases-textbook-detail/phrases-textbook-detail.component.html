@@ -8,12 +8,12 @@
 </div>
 <div class="p-grid mb-2">
   <label class="p-col-1" for="UNIT">UNIT:</label>
-  <p-dropdown id="UNIT" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="units" [(ngModel)]="item.UNIT">
+  <p-dropdown id="UNIT" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="settingsService.units" [(ngModel)]="item.UNIT">
   </p-dropdown>
 </div>
 <div class="p-grid mb-2">
   <label class="p-col-1" for="PART">PART:</label>
-  <p-dropdown id="PART" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="parts" [(ngModel)]="item.PART">
+  <p-dropdown id="PART" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="settingsService.parts" [(ngModel)]="item.PART">
   </p-dropdown>
 </div>
 <div class="p-grid mb-2">

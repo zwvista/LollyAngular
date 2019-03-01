@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { UnitPhrase, UnitPhrases } from '../models/unit-phrase';
 import { BaseService } from './base.service';
+import { partsFrom, unitsFrom } from '../common/common';
 
 @Injectable()
 export class UnitPhraseService extends BaseService {
@@ -16,7 +17,14 @@ export class UnitPhraseService extends BaseService {
     const url = `${this.baseUrl}VUNITPHRASES?transform=1&filter[]=TEXTBOOKID,eq,${textbookid}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
     return this.http.get<UnitPhrases>(url)
       .pipe(
-        map(result => result.VUNITPHRASES.map(value => Object.assign(new UnitPhrase(), value))),
+        map(result => {
+          const result2 = result.VUNITPHRASES.map(value => Object.assign(new UnitPhrase(), value));
+          result2.forEach(o => {
+            o.units = unitsFrom(o.UNITS);
+            o.parts = partsFrom(o.PARTS);
+          });
+          return result2;
+        }),
       );
   }
 

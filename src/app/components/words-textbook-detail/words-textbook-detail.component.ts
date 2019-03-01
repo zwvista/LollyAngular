@@ -14,8 +14,6 @@ import { Location } from '@angular/common';
 export class WordsTextbookDetailComponent implements OnInit {
 
   item: TextbookWord;
-  units: SelectItem[];
-  parts: SelectItem[];
 
   constructor(private wordsTextbookService: WordsTextbookService,
               private settingsService: SettingsService,
@@ -26,8 +24,6 @@ export class WordsTextbookDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.item = this.wordsTextbookService.textbookWords.find(value => value.ID === id);
-    this.units = this.item.units.map((v, i) => ({label: v, value: i + 1}));
-    this.parts = this.item.parts.map((v, i) => ({label: v, value: i + 1}));
   }
 
   goBack(): void {

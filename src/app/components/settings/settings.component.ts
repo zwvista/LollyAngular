@@ -9,18 +9,6 @@ import { concatMap } from 'rxjs/operators';
 })
 export class SettingsComponent implements OnInit {
 
-  get unitFrom() {
-    return this.settingsService.units[this.settingsService.USUNITFROM - 1];
-  }
-  get partFrom() {
-    return this.settingsService.parts[this.settingsService.USPARTFROM - 1];
-  }
-  get unitTo() {
-    return this.settingsService.units[this.settingsService.USUNITTO - 1];
-  }
-  get partTo() {
-    return this.settingsService.parts[this.settingsService.USPARTTO - 1];
-  }
   get toTypeIsUnit() {
     return this.toType === 0;
   }
