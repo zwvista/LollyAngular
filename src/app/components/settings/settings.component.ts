@@ -29,28 +29,28 @@ export class SettingsComponent implements OnInit {
   }
 
   onLangChange(index) {
-    this.settingsService.setSelectedLangIndex(index).subscribe();
+    this.settingsService.setSelectedLang(this.settingsService.languages[index]).subscribe();
     this.settingsService.updateLang().subscribe();
   }
 
   onDictItemChange(index) {
-    this.settingsService.selectedDictItemIndex = index;
+    this.settingsService.selectedDictItem = this.settingsService.dictItems[index];
     this.settingsService.updateDictItem().subscribe();
   }
 
   onDictNoteChange(index) {
-    this.settingsService.selectedDictNoteIndex = index;
+    this.settingsService.selectedDictNote = this.settingsService.dictsNote[index];
     this.settingsService.updateDictNote().subscribe();
   }
 
   onTextbookChange(index) {
-    this.settingsService.selectedTextbookIndex = index;
+    this.settingsService.selectedTextbook = this.settingsService.textbooks[index];
     this.settingsService.updateTextbook().subscribe();
     this.updateTextbook();
   }
 
   onUnitFromChange(index) {
-    if (!this.updateUnitFrom(index + 1)) return;
+    if (!this.updateUnitFrom(this.settingsService.units[index].value, false)) return;
     if (this.toType === 0)
       this.updateSingleUnit();
     else if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
@@ -58,7 +58,7 @@ export class SettingsComponent implements OnInit {
   }
 
   onPartFromChange(index) {
-    if (!this.updatePartFrom(index + 1)) return;
+    if (!this.updatePartFrom(this.settingsService.parts[index].value, false)) return;
     if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
       this.updateUnitPartTo();
   }
@@ -68,22 +68,6 @@ export class SettingsComponent implements OnInit {
       this.updateSingleUnit();
     else if (index === 1)
       this.updateUnitPartTo();
-  }
-
-  onUnitToChange(index) {
-    if (!this.updateUnitTo(index + 1)) return;
-    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
-      this.updateUnitPartFrom();
-  }
-
-  onPartToChange(index) {
-    if (!this.updatePartTo(index + 1)) return;
-    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
-      this.updateUnitPartFrom();
-  }
-
-  updateTextbook() {
-    this.toType = this.settingsService.isSingleUnit ? 0 : this.settingsService.isSingleUnitPart ? 1 : 2;
   }
 
   previousUnitPart() {
@@ -118,6 +102,22 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  onUnitToChange(index) {
+    if (!this.updateUnitTo(this.settingsService.units[index].value, false)) return;
+    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
+      this.updateUnitPartFrom();
+  }
+
+  onPartToChange(index) {
+    if (!this.updatePartTo(this.settingsService.parts[index].value, false)) return;
+    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
+      this.updateUnitPartFrom();
+  }
+
+  updateTextbook() {
+    this.toType = this.settingsService.isSingleUnit ? 0 : this.settingsService.isSingleUnitPart ? 1 : 2;
+  }
+
   updateUnitPartFrom() {
     this.updateUnitFrom(this.settingsService.USUNITTO);
     this.updatePartFrom(this.settingsService.USPARTTO);
@@ -134,29 +134,29 @@ export class SettingsComponent implements OnInit {
     this.updatePartTo(this.settingsService.partCount);
   }
 
-  updateUnitFrom(v: number): boolean {
-    if (this.settingsService.USUNITFROM === v) return false;
+  updateUnitFrom(v: number, check: boolean = true): boolean {
+    if (check && this.settingsService.USUNITFROM === v) return false;
     this.settingsService.USUNITFROM = v;
     this.settingsService.updateUnitFrom().subscribe();
     return true;
   }
 
-  updatePartFrom(v: number): boolean {
-    if (this.settingsService.USPARTFROM === v) return false;
+  updatePartFrom(v: number, check: boolean = true): boolean {
+    if (check && this.settingsService.USPARTFROM === v) return false;
     this.settingsService.USPARTFROM = v;
     this.settingsService.updatePartFrom().subscribe();
     return true;
   }
 
-  updateUnitTo(v: number): boolean {
-    if (this.settingsService.USUNITTO === v) return false;
+  updateUnitTo(v: number, check: boolean = true): boolean {
+    if (check && this.settingsService.USUNITTO === v) return false;
     this.settingsService.USUNITTO = v;
     this.settingsService.updateUnitTo().subscribe();
     return true;
   }
 
-  updatePartTo(v: number): boolean {
-    if (this.settingsService.USPARTTO === v) return false;
+  updatePartTo(v: number, check: boolean = true): boolean {
+    if (check && this.settingsService.USPARTTO === v) return false;
     this.settingsService.USPARTTO = v;
     this.settingsService.updatePartTo().subscribe();
     return true;
