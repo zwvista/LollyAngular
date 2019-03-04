@@ -2,7 +2,7 @@
   <div class="ui-toolbar-group-left">
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
     <a routerLink="/words-dict/textbook/0">
-      <button pButton type="button" label="Dictionary"></button>
+      <button pButton type="button" label="Dictionary" icon="fa fa-book"></button>
     </a>
   </div>
 </p-toolbar>
@@ -43,9 +43,10 @@
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="textbookWord.WORD"
                 pTooltip="Copy" tooltipPosition="top"></button>
         <button pButton label="Retrieve Note" [hidden]="!settingsService.hasNote" (click)="getNote(index)"></button>
-        <button pButton label="Google Word" (click)="googleWord(textbookWord.WORD)"></button>
+        <button pButton icon="fa fa-google" (click)="googleWord(textbookWord.WORD)"
+                pTooltip="Google Word" tooltipPosition="top"></button>
         <a routerLink="/words-dict/textbook/{{index}}">
-          <button pButton label="Dictionary"></button>
+          <button pButton icon="fa fa-book" pTooltip="Dictionary" tooltipPosition="top"></button>
         </a>
       </td>
     </tr>

@@ -35,6 +35,7 @@ export class SettingsService {
   get USROWSPERPAGE(): number {
     return +this.selectedUSUser0.VALUE3;
   }
+  USLEVELCOLORS!: {number: [string]} | {};
   private selectedUSLang!: UserSetting;
   get USTEXTBOOKID(): number {
     return +this.selectedUSLang.VALUE1;
@@ -166,6 +167,10 @@ export class SettingsService {
         this.userSettings = res[1] as UserSetting[];
         this.selectedUSUser0 = this.userSettings.find(value => value.KIND === 1 && value.ENTITYID === 0);
         this.selectedUSUser1 = this.userSettings.find(value => value.KIND === 1 && value.ENTITYID === 1);
+        this.USLEVELCOLORS = {};
+        this.selectedUSUser0.VALUE4.split('\r\n').map(v => v.split(','))
+          .forEach(v => this.USLEVELCOLORS[+v[0]] = [v[1], v[2]]);
+        console.log(this.USLEVELCOLORS);
         return this.setSelectedLang(this.languages.find(value => value.ID === this.USLANGID));
       }));
   }

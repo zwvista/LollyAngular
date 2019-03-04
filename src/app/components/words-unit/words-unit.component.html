@@ -10,7 +10,7 @@
       <button pButton type="button" [hidden]="!settingsService.hasNote" label="Retrieve All Notes" (click)="getNotes(false)"></button>
       <button pButton type="button" [hidden]="!settingsService.hasNote" label="Retrieve Notes If Empty" (click)="getNotes(true)"></button>
       <a routerLink="/words-dict/unit/0">
-        <button pButton type="button" label="Dictionary"></button>
+        <button pButton type="button" label="Dictionary" icon="fa fa-book"></button>
       </a>
     </span>
   </div>
@@ -51,10 +51,15 @@
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
                   pTooltip="Copy" tooltipPosition="top"></button>
+        <button pButton icon="fa fa-arrow-up" (click)="updateLevel(index, 1)"
+                pTooltip="Level Up" tooltipPosition="top"></button>
+        <button pButton icon="fa fa-arrow-down" (click)="updateLevel(index, -1)"
+                pTooltip="Level Down" tooltipPosition="top"></button>
         <button pButton label="Retrieve Note" [hidden]="!settingsService.hasNote" (click)="getNote(index)"></button>
-        <button pButton label="Google Word" (click)="googleWord(unitWord.WORD)"></button>
+        <button pButton icon="fa fa-google" (click)="googleWord(unitWord.WORD)"
+                pTooltip="Google Word" tooltipPosition="top"></button>
         <a routerLink="/words-dict/unit/{{index}}">
-          <button pButton label="Dictionary"></button>
+          <button pButton icon="fa fa-book" pTooltip="Dictionary" tooltipPosition="top"></button>
         </a>
       </td>
     </tr>

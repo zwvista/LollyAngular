@@ -51,4 +51,8 @@ export class WordsUnitComponent implements OnInit {
   getNotes(ifEmpty: boolean) {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
   }
+
+  updateLevel(index: number, delta: number) {
+    console.log(index);
+  }
 }

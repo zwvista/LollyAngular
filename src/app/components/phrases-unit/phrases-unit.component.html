@@ -42,7 +42,8 @@
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitPhrase.PHRASE"
                 pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton label="Google Phrase" (click)="googlePhrase(unitPhrase.PHRASE)"></button>
+        <button pButton icon="fa fa-google" (click)="googlePhrase(unitPhrase.PHRASE)"
+                pTooltip="Google Phrase" tooltipPosition="top"></button>
       </td>
     </tr>
   </ng-template>
