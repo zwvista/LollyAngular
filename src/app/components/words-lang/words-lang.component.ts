@@ -17,7 +17,7 @@ export class WordsLangComponent implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.wordsLangService.getData(1,  this.rows).subscribe();
+    this.onRefresh();
   }
 
   paginate(event) {
@@ -34,6 +34,10 @@ export class WordsLangComponent implements OnInit {
       o.ID = id as number;
       this.wordsLangService.langWords.push(o);
     });
+  }
+
+  onRefresh() {
+    this.wordsLangService.getData(1,  this.rows).subscribe();
   }
 
   deleteWord(index: number) {

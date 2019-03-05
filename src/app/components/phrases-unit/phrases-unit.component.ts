@@ -14,12 +14,16 @@ export class PhrasesUnitComponent implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.phrasesUnitService.getData().subscribe();
+    this.onRefresh();
   }
 
   onReorder(from: number, to: number) {
     console.log(`${from},${to}`);
     this.phrasesUnitService.reindex(index => {});
+  }
+
+  onRefresh() {
+    this.phrasesUnitService.getData().subscribe();
   }
 
   deletePhrase(index: number) {

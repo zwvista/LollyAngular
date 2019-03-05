@@ -16,7 +16,7 @@ export class WordsUnitComponent implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.wordsUnitService.getData().subscribe();
+    this.onRefresh();
   }
 
   onEnter() {
@@ -28,6 +28,10 @@ export class WordsUnitComponent implements OnInit {
       o.ID = id as number;
       this.wordsUnitService.unitWords.push(o);
     });
+  }
+
+  onRefresh() {
+    this.wordsUnitService.getData().subscribe();
   }
 
   onReorder(from: number, to: number) {

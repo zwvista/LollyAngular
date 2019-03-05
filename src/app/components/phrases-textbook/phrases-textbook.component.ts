@@ -16,12 +16,16 @@ export class PhrasesTextbookComponent implements OnInit {
   rows = this.settingsService.USROWSPERPAGE;
 
   ngOnInit() {
-    this.phrasesTextbookService.getData(1,  this.rows).subscribe();
+    this.onRefresh();
   }
 
   paginate(event) {
     this.rows = event.rows;
     this.phrasesTextbookService.getData(event.page + 1, this.rows).subscribe();
+  }
+
+  onRefresh() {
+    this.phrasesTextbookService.getData(1,  this.rows).subscribe();
   }
 
 }

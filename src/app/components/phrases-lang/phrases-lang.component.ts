@@ -17,12 +17,16 @@ export class PhrasesLangComponent implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.phrasesLangService.getData(1,  this.rows).subscribe();
+    this.onRefresh();
   }
 
   paginate(event) {
     this.rows = event.rows;
     this.phrasesLangService.getData(event.page + 1, this.rows).subscribe();
+  }
+
+  onRefresh() {
+    this.phrasesLangService.getData(1,  this.rows).subscribe();
   }
 
   deletePhrase(index: number) {

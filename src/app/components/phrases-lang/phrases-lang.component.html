@@ -3,7 +3,7 @@
     <a routerLink="/phrases-lang-detail/0">
       <button pButton type="button" label="Add" icon="fa fa-plus"></button>
     </a>
-    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh"></button>
+    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh()"></button>
   </div>
 </p-toolbar>
 <p-paginator [rows]="rows" [totalRecords]="phrasesLangService.langPhraseCount"
