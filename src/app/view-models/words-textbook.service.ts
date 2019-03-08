@@ -3,7 +3,7 @@ import { LangWordService } from '../services/lang-word.service';
 import { SettingsService } from './settings.service';
 import { AppService } from './app.service';
 import { NoteService } from './note.service';
-import { TextbookWord } from '../models/textbook-word';
+import { TextbookWord, TextbookWords } from '../models/textbook-word';
 import { TextbookWordService } from '../services/textbook-word.service';
 import { concatMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -21,10 +21,11 @@ export class WordsTextbookService {
               private noteService: NoteService) {
   }
 
-  getData(page: number, rows: number) {
+  getData(page: number, rows: number): Observable<void> {
     return this.appService.initializeComplete.pipe(
       concatMap(_ => this.textbookWordService.getDataByLang(this.settingsService.selectedLang.ID, page, rows)),
       map(res => {
+        this.settingsService.setColorStyle(res.VTEXTBOOKWORDS);
         this.textbookWords = res.VTEXTBOOKWORDS;
         this.textbookWordCount = res._results;
       }),

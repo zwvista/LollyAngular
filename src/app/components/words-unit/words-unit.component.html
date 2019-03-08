@@ -31,7 +31,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-unitWord let-index="rowIndex">
-    <tr [pReorderableRow]="index" [pSelectableRow]="unitWord">
+    <tr [pReorderableRow]="index" [pSelectableRow]="unitWord" [ngStyle]="unitWord.colorStyle">
       <td>
         <i class="fa fa-bars" pReorderableRowHandle></i>
       </td>
@@ -48,6 +48,8 @@
         <a routerLink="/words-unit-detail/{{unitWord.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
+        <button pButton icon="fa fa-volume-up" (click)="speak(unitWord.WORD)"
+                pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"
                   pTooltip="Copy" tooltipPosition="top"></button>

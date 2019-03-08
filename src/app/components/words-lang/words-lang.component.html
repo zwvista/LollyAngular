@@ -27,7 +27,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-langWord let-index="rowIndex">
-    <tr [pSelectableRow]="langWord">
+    <tr [pSelectableRow]="langWord" [ngStyle]="langWord.colorStyle">
       <td>{{langWord.ID}}</td>
       <td>{{langWord.WORD}}</td>
       <td>{{langWord.LEVEL}}</td>

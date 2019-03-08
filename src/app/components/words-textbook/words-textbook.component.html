@@ -24,7 +24,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-textbookWord let-index="rowIndex">
-    <tr [pSelectableRow]="textbookWord">
+    <tr [pSelectableRow]="textbookWord" [ngStyle]="textbookWord.colorStyle">
       <td>{{textbookWord.ID}}</td>
       <td>{{textbookWord.TEXTBOOKNAME}}</td>
       <td>{{textbookWord.UNITSTR}}</td>
