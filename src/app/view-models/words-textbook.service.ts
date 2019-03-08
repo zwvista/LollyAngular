@@ -23,7 +23,8 @@ export class WordsTextbookService {
 
   getData(page: number, rows: number): Observable<void> {
     return this.appService.initializeComplete.pipe(
-      concatMap(_ => this.textbookWordService.getDataByLang(this.settingsService.selectedLang.ID, page, rows)),
+      concatMap(_ => this.textbookWordService.getDataByLang(this.settingsService.selectedLang.ID,
+        this.settingsService.textbooks, page, rows)),
       map(res => {
         this.settingsService.setColorStyle(res.VTEXTBOOKWORDS);
         this.textbookWords = res.VTEXTBOOKWORDS;
