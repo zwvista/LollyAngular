@@ -1,4 +1,4 @@
-import { SelectItem } from 'primeng/api';
+import { SelectItem } from '../common/selectitem';
 
 export class Textbooks {
   TEXTBOOKS: Textbook[];
