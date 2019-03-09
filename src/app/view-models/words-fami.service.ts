@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserSettingService } from '../services/user-setting.service';
 import { WordFamiService } from '../services/word-fami.service';
-import { WordFami } from '../models/word-fami';
+import { MWordFami } from '../models/word-fami';
 import { EMPTY as empty, Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 
@@ -18,7 +18,7 @@ export class WordsFamiService {
   update(wordid: number, level: number): Observable<number | any> {
     return this.wordFamiService.getDataByUserWord(this.userid, wordid).pipe(
       concatMap(arr => {
-        const item = new WordFami();
+        const item = new MWordFami();
         item.USERID = this.userid;
         item.WORDID = wordid;
         item.LEVEL = level;

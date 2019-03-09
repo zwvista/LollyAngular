@@ -59,4 +59,11 @@ export class WordsUnitComponent implements OnInit {
   updateLevel(index: number, delta: number) {
     console.log(index);
   }
+
+  speak(word: string) {
+    this.wordsUnitService.speech.speak({
+      text: word,
+      queue: false,
+    });
+  }
 }

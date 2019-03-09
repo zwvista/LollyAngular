@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LangPhrase, LangPhrases } from '../models/lang-phrase';
+import { MLangPhrase, MLangPhrases } from '../models/lang-phrase';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -12,44 +12,44 @@ export class LangPhraseService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number, page: number, rows: number): Observable<LangPhrases> {
+  getDataByLang(langid: number, page: number, rows: number): Observable<MLangPhrases> {
     const url = `${this.baseUrl}LANGPHRASES?transform=1&filter=LANGID,eq,${langid}&order=PHRASE&page=${page},${rows}`;
-    return this.http.get<LangPhrases>(url)
+    return this.http.get<MLangPhrases>(url)
       .pipe(
         map(result => ({
-          LANGPHRASES: result.LANGPHRASES.map(value => Object.assign(new LangPhrase(), value)),
+          LANGPHRASES: result.LANGPHRASES.map(value => Object.assign(new MLangPhrase(), value)),
           _results: result._results,
         })),
       );
   }
 
-  getDataByLangPhrase(langid: number, phrase: string): Observable<LangPhrase[]> {
+  getDataByLangPhrase(langid: number, phrase: string): Observable<MLangPhrase[]> {
     const url = `${this.baseUrl}LANGPHRASES?transform=1&filter[]=LANGID,eq,${langid}&filter[]=PHRASE,eq,${encodeURIComponent(phrase)}`;
-    return this.http.get<LangPhrases>(url)
+    return this.http.get<MLangPhrases>(url)
       .pipe(
-        map(result => result.LANGPHRASES.map(value => Object.assign(new LangPhrase(), value))
+        map(result => result.LANGPHRASES.map(value => Object.assign(new MLangPhrase(), value))
           // Api is case insensitive
             .filter(value => value.PHRASE === phrase)
         ),
       );
   }
 
-  getDataById(id: number): Observable<LangPhrase[]> {
+  getDataById(id: number): Observable<MLangPhrase[]> {
     const url = `${this.baseUrl}LANGPHRASES?transform=1&filter=ID,eq,${id}`;
-    return this.http.get<LangPhrases>(url)
+    return this.http.get<MLangPhrases>(url)
       .pipe(
-        map(result => result.LANGPHRASES.map(value => Object.assign(new LangPhrase(), value))),
+        map(result => result.LANGPHRASES.map(value => Object.assign(new MLangPhrase(), value))),
       );
   }
 
-  create(item: LangPhrase): Observable<number | any[]> {
+  create(item: MLangPhrase): Observable<number | any[]> {
     const url = `${this.baseUrl}LANGPHRASES`;
     return this.http.post<number | any[]>(url, item)
       .pipe(
       );
   }
 
-  update(item: LangPhrase): Observable<number> {
+  update(item: MLangPhrase): Observable<number> {
     const url = `${this.baseUrl}LANGPHRASES/${item.ID}`;
     return this.http.put<number>(url, item, this.httpOptions).pipe(
     );
@@ -57,7 +57,7 @@ export class LangPhraseService extends BaseService {
 
   updateTranslation(id: number, translation: string): Observable<number> {
     const url = `${this.baseUrl}LANGPHRASES/${id}`;
-    return this.http.put<number>(url, {ID: id, TRANSLATION: translation} as LangPhrase, this.httpOptions).pipe(
+    return this.http.put<number>(url, {ID: id, TRANSLATION: translation} as MLangPhrase, this.httpOptions).pipe(
     );
   }
 

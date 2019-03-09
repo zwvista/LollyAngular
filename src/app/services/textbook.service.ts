@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Textbook, Textbooks } from '../models/textbook';
-import { SelectItem } from '../common/selectitem';
+import { MTextbook, MTextbooks } from '../models/textbook';
+import { MSelectItem } from '../common/selectitem';
 
 @Injectable()
 export class TextbookService extends BaseService {
@@ -13,7 +13,7 @@ export class TextbookService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number): Observable<Textbook[]> {
+  getDataByLang(langid: number): Observable<MTextbook[]> {
     const url = `${this.baseUrl}TEXTBOOKS?transform=1&filter=LANGID,eq,${langid}`;
     const f = (UNITS: string) => {
       let m = /UNITS,(\d+)/g.exec(UNITS);
@@ -34,12 +34,12 @@ export class TextbookService extends BaseService {
         return m[1].split(',');
       return [];
     };
-    return this.http.get<Textbooks>(url)
+    return this.http.get<MTextbooks>(url)
       .pipe(
         map(result => result.TEXTBOOKS.map(value => {
-            const o = Object.assign(new Textbook(), value);
-            o.units = f(o.UNITS).map((v, i) => new SelectItem(i + 1, v));
-            o.parts = o.PARTS.split(',').map((v, i) => new SelectItem(i + 1, v));
+            const o = Object.assign(new MTextbook(), value);
+            o.units = f(o.UNITS).map((v, i) => new MSelectItem(i + 1, v));
+            o.parts = o.PARTS.split(',').map((v, i) => new MSelectItem(i + 1, v));
             return o;
           })
         ),

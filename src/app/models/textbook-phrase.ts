@@ -1,10 +1,10 @@
 import { SelectItem } from 'primeng/api';
 
-export class TextbookPhrases {
-  VTEXTBOOKPHRASES: TextbookPhrase[];
+export class MTextbookPhrases {
+  VTEXTBOOKPHRASES: MTextbookPhrase[];
   _results = 0;
 }
-export class TextbookPhrase {
+export class MTextbookPhrase {
   TEXTBOOKID = 0;
   LANGID = 0;
   TEXTBOOKNAME = '';

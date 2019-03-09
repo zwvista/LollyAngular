@@ -1,11 +1,11 @@
 import { SelectItem } from 'primeng/api';
-import { WordColor } from './word-color';
+import { MWordColor } from './word-color';
 
-export class TextbookWords {
-  VTEXTBOOKWORDS: TextbookWord[];
+export class MTextbookWords {
+  VTEXTBOOKWORDS: MTextbookWord[];
   _results = 0;
 }
-export class TextbookWord implements WordColor {
+export class MTextbookWord implements MWordColor {
   TEXTBOOKID = 0;
   LANGID = 0;
   TEXTBOOKNAME = '';

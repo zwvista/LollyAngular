@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { UnitWord } from '../../models/unit-word';
+import { MUnitWord } from '../../models/unit-word';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 
@@ -13,7 +13,7 @@ import { SelectItem } from 'primeng/api';
 })
 export class WordsUnitDetailComponent implements OnInit {
 
-  item: UnitWord;
+  item: MUnitWord;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService,
@@ -24,7 +24,7 @@ export class WordsUnitDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsUnitService.unitWords.find(value => value.ID === id);
-    this.item = o ? {...o} as UnitWord : this.wordsUnitService.newUnitWord();
+    this.item = o ? {...o} as MUnitWord : this.wordsUnitService.newUnitWord();
   }
 
   goBack(): void {

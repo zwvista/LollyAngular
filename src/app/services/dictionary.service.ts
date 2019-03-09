@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { DictMean, DictNote, DictsMean, DictsNote } from '../models/dictionary';
+import { MDictMean, MDictNote, MDictsMean, MDictsNote } from '../models/dictionary';
 
 @Injectable()
 export class DictMeanService extends BaseService {
@@ -12,11 +12,11 @@ export class DictMeanService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number): Observable<DictMean[]> {
+  getDataByLang(langid: number): Observable<MDictMean[]> {
     const url = `${this.baseUrl}VDICTSMEAN?transform=1&filter[]=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictsMean>(url)
+    return this.http.get<MDictsMean>(url)
       .pipe(
-        map(result => result.VDICTSMEAN.map(value => Object.assign(new DictMean(), value))),
+        map(result => result.VDICTSMEAN.map(value => Object.assign(new MDictMean(), value))),
       );
   }
 
@@ -29,11 +29,11 @@ export class DictNoteService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number): Observable<DictNote[]> {
+  getDataByLang(langid: number): Observable<MDictNote[]> {
     const url = `${this.baseUrl}VDICTSNOTE?transform=1&filter=LANGIDFROM,eq,${langid}`;
-    return this.http.get<DictsNote>(url)
+    return this.http.get<MDictsNote>(url)
       .pipe(
-        map(result => result.VDICTSNOTE.map(value => Object.assign(new DictNote(), value))),
+        map(result => result.VDICTSNOTE.map(value => Object.assign(new MDictNote(), value))),
       );
   }
 

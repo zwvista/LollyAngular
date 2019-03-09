@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UnitWord, UnitWords } from '../models/unit-word';
+import { MUnitWord, MUnitWords } from '../models/unit-word';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from './base.service';
-import { Textbook } from '../models/textbook';
+import { MTextbook } from '../models/textbook';
 
 @Injectable()
 export class UnitWordService extends BaseService {
@@ -13,12 +13,12 @@ export class UnitWordService extends BaseService {
     super(http);
   }
 
-  getDataByTextbookUnitPart(textbook: Textbook, unitPartFrom: number, unitPartTo: number): Observable<UnitWord[]> {
+  getDataByTextbookUnitPart(textbook: MTextbook, unitPartFrom: number, unitPartTo: number): Observable<MUnitWord[]> {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter[]=TEXTBOOKID,eq,${textbook.ID}&filter[]=UNITPART,bt,${unitPartFrom},${unitPartTo}&order[]=UNITPART&order[]=SEQNUM`;
-    return this.http.get<UnitWords>(url)
+    return this.http.get<MUnitWords>(url)
       .pipe(
         map(result => {
-          const result2 = result.VUNITWORDS.map(value => Object.assign(new UnitWord(), value));
+          const result2 = result.VUNITWORDS.map(value => Object.assign(new MUnitWord(), value));
           result2.forEach(o => {
             o.units = textbook.units;
             o.parts = textbook.parts;
@@ -28,15 +28,15 @@ export class UnitWordService extends BaseService {
       );
   }
 
-  getDataByLangWord(wordid: number): Observable<UnitWord[]> {
+  getDataByLangWord(wordid: number): Observable<MUnitWord[]> {
     const url = `${this.baseUrl}VUNITWORDS?transform=1&filter=WORDID,eq,${wordid}`;
-    return this.http.get<UnitWords>(url)
+    return this.http.get<MUnitWords>(url)
       .pipe(
-        map(result => result.VUNITWORDS.map(value => Object.assign(new UnitWord(), value))),
+        map(result => result.VUNITWORDS.map(value => Object.assign(new MUnitWord(), value))),
       );
   }
 
-  create(item: UnitWord): Observable<number | any[]> {
+  create(item: MUnitWord): Observable<number | any[]> {
     const url = `${this.baseUrl}UNITWORDS`;
     return this.http.post<number | any[]>(url, item, this.httpOptions)
       .pipe(
@@ -45,11 +45,11 @@ export class UnitWordService extends BaseService {
 
   updateSeqNum(id: number, seqnum: number): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${id}`;
-    return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as UnitWord, this.httpOptions).pipe(
+    return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as MUnitWord, this.httpOptions).pipe(
     );
   }
 
-  update(item: UnitWord): Observable<number> {
+  update(item: MUnitWord): Observable<number> {
     const url = `${this.baseUrl}UNITWORDS/${item.ID}`;
     return this.http.put<number>(url, item, this.httpOptions).pipe(
     );

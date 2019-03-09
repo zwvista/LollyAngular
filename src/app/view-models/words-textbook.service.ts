@@ -3,7 +3,7 @@ import { LangWordService } from '../services/lang-word.service';
 import { SettingsService } from './settings.service';
 import { AppService } from './app.service';
 import { NoteService } from './note.service';
-import { TextbookWord, TextbookWords } from '../models/textbook-word';
+import { MTextbookWord, MTextbookWords } from '../models/textbook-word';
 import { TextbookWordService } from '../services/textbook-word.service';
 import { concatMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class WordsTextbookService {
 
-  textbookWords: TextbookWord[] = [];
+  textbookWords: MTextbookWord[] = [];
   textbookWordCount = 0;
 
   constructor(private textbookWordService: TextbookWordService,

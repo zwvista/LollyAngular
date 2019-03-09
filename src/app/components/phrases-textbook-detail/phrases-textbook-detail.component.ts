@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TextbookPhrase } from '../../models/textbook-phrase';
+import { MTextbookPhrase } from '../../models/textbook-phrase';
 import { SelectItem } from 'primeng/api';
 import { PhrasesTextbookService } from '../../view-models/phrases-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
 })
 export class PhrasesTextbookDetailComponent implements OnInit {
 
-  item: TextbookPhrase;
+  item: MTextbookPhrase;
 
   constructor(private phrasesTextbookService: PhrasesTextbookService,
               private settingsService: SettingsService,

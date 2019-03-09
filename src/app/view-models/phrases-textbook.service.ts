@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { LangPhraseService } from '../services/lang-phrase.service';
 import { SettingsService } from './settings.service';
 import { AppService } from './app.service';
-import { TextbookPhrase } from '../models/textbook-phrase';
+import { MTextbookPhrase } from '../models/textbook-phrase';
 import { TextbookPhraseService } from '../services/textbook-phrase.service';
 import { concatMap, map } from 'rxjs/operators';
 
 @Injectable()
 export class PhrasesTextbookService {
 
-  textbookPhrases: TextbookPhrase[] = [];
+  textbookPhrases: MTextbookPhrase[] = [];
   textbookPhraseCount = 0;
 
   constructor(private textbookPhraseService: TextbookPhraseService,

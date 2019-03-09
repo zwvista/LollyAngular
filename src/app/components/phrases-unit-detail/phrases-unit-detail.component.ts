@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { UnitPhrase } from '../../models/unit-phrase';
+import { MUnitPhrase } from '../../models/unit-phrase';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 
@@ -13,7 +13,7 @@ import { SelectItem } from 'primeng/api';
 })
 export class PhrasesUnitDetailComponent implements OnInit {
 
-  item: UnitPhrase;
+  item: MUnitPhrase;
 
   constructor(private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService,
@@ -24,7 +24,7 @@ export class PhrasesUnitDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.phrasesUnitService.unitPhrases.find(value => value.ID === id);
-    this.item = o ? {...o} as UnitPhrase : this.phrasesUnitService.newUnitPhrase();
+    this.item = o ? {...o} as MUnitPhrase : this.phrasesUnitService.newUnitPhrase();
   }
 
   goBack(): void {

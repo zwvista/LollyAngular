@@ -1,9 +1,9 @@
 import { SelectItem } from 'primeng/api';
 
-export class UnitPhrases {
-  VUNITPHRASES: UnitPhrase[];
+export class MUnitPhrases {
+  VUNITPHRASES: MUnitPhrase[];
 }
-export class UnitPhrase {
+export class MUnitPhrase {
   ID = 0;
   LANGID = 0;
   TEXTBOOKID = 0;

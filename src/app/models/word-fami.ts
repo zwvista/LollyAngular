@@ -1,7 +1,7 @@
-export class WordsFami {
-  WORDSFAMI: WordFami[];
+export class MWordsFami {
+  WORDSFAMI: MWordFami[];
 }
-export class WordFami {
+export class MWordFami {
   ID = 0;
   USERID = 0;
   WORDID = 0;

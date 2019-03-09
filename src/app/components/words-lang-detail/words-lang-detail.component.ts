@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LangWord } from '../../models/lang-word';
+import { MLangWord } from '../../models/lang-word';
 import { WordsLangService } from '../../view-models/words-lang.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -12,7 +12,7 @@ import { SettingsService } from '../../view-models/settings.service';
 })
 export class WordsLangDetailComponent implements OnInit {
 
-  item: LangWord;
+  item: MLangWord;
 
   constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService,
@@ -23,7 +23,7 @@ export class WordsLangDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsLangService.langWords.find(value => value.ID === id);
-    this.item = o ? {...o} as LangWord : this.wordsLangService.newLangWord();
+    this.item = o ? {...o} as MLangWord : this.wordsLangService.newLangWord();
   }
 
   goBack(): void {

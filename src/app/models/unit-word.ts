@@ -1,10 +1,10 @@
 import { SelectItem } from 'primeng/api';
-import { WordColor } from './word-color';
+import { MWordColor } from './word-color';
 
-export class UnitWords {
-  VUNITWORDS: UnitWord[];
+export class MUnitWords {
+  VUNITWORDS: MUnitWord[];
 }
-export class UnitWord implements WordColor {
+export class MUnitWord implements MWordColor {
   ID = 0;
   LANGID = 0;
   TEXTBOOKID = 0;

@@ -3,14 +3,14 @@ import { SettingsService } from './settings.service';
 import { AppService } from './app.service';
 import { LangWordService } from '../services/lang-word.service';
 import { Observable } from 'rxjs';
-import { LangWord } from '../models/lang-word';
+import { MLangWord } from '../models/lang-word';
 import { concatMap, map } from 'rxjs/operators';
 import { NoteService } from './note.service';
 
 @Injectable()
 export class WordsLangService {
 
-  langWords: LangWord[] = [];
+  langWords: MLangWord[] = [];
   langWordsCount = 0;
 
   constructor(private langWordService: LangWordService,
@@ -30,7 +30,7 @@ export class WordsLangService {
     );
   }
 
-  create(item: LangWord): Observable<number | any[]> {
+  create(item: MLangWord): Observable<number | any[]> {
     return this.langWordService.create(item);
   }
 
@@ -38,7 +38,7 @@ export class WordsLangService {
     return this.langWordService.updateNote(id, note);
   }
 
-  update(item: LangWord): Observable<number> {
+  update(item: MLangWord): Observable<number> {
     return this.langWordService.update(item);
   }
 
@@ -56,8 +56,8 @@ export class WordsLangService {
     );
   }
 
-  newLangWord(): LangWord {
-    const o = new LangWord();
+  newLangWord(): MLangWord {
+    const o = new MLangWord();
     o.LANGID = this.settingsService.selectedLang.ID;
     return o;
   }
