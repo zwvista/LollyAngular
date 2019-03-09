@@ -61,7 +61,7 @@ export class WordsUnitComponent implements OnInit {
   }
 
   speak(word: string) {
-    this.wordsUnitService.speech.speak({
+    this.settingsService.speech.speak({
       text: word,
       queue: false,
     });

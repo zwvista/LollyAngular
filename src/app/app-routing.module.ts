@@ -16,7 +16,7 @@ import { WordsTextbookDetailComponent } from './components/words-textbook-detail
 import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/words-unit', pathMatch: 'full' },
+  { path: '', redirectTo: 'words-unit', pathMatch: 'full' },
   { path: 'words-unit', component: WordsUnitComponent },
   { path: 'words-unit-detail/:id', component: WordsUnitDetailComponent },
   { path: 'words-textbook', component: WordsTextbookComponent },

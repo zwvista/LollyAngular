@@ -8,35 +8,17 @@ import { concatMap, map } from 'rxjs/operators';
 import { NoteService } from './note.service';
 import { LangWordService } from '../services/lang-word.service';
 import { MLangWord } from '../models/lang-word';
-import Speech from 'speak-tts';
 
 @Injectable()
 export class WordsUnitService {
 
   unitWords: MUnitWord[] = [];
-  speech = new Speech();
 
   constructor(private unitWordService: UnitWordService,
               private langWordService: LangWordService,
               private settingsService: SettingsService,
               private appService: AppService,
               private noteService: NoteService) {
-    this.speech
-      .init({
-        volume: 0.5,
-        lang: "en-GB",
-        rate: 1,
-        pitch: 1,
-        //'voice':'Google UK English Male',
-        //'splitSentences': false,
-        listeners: {
-          onvoiceschanged: voices => {
-            console.log("Voices changed", voices);
-          }
-        }
-      });
-    this.speech.setLanguage('ja-JP');
-    this.speech.setVoice('Kyoko');
   }
 
   getData(): Observable<void> {

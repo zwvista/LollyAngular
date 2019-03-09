@@ -5,9 +5,7 @@ import { MWordFami } from '../models/word-fami';
 import { EMPTY as empty, Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WordsFamiService {
 
   userid = 1;

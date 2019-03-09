@@ -55,6 +55,7 @@ import { TextbookWordService } from './services/textbook-word.service';
 import { TextbookPhraseService } from './services/textbook-phrase.service';
 import { WordsTextbookService } from './view-models/words-textbook.service';
 import { PhrasesTextbookService } from './view-models/phrases-textbook.service';
+import { VoicesService } from './services/voices.service';
 
 
 @NgModule({
@@ -111,6 +112,7 @@ import { PhrasesTextbookService } from './view-models/phrases-textbook.service';
     LangWordService,
     TextbookWordService,
     TextbookPhraseService,
+    VoicesService,
     // view models
     AppService,
     PhrasesUnitService,
