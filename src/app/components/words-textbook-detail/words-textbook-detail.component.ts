@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MTextbookWord } from '../../models/textbook-word';
-import { SelectItem } from 'primeng/api';
 import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MUnitWord } from '../../models/unit-word';
 
 @Component({
   selector: 'app-words-textbook-detail',
@@ -13,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class WordsTextbookDetailComponent implements OnInit {
 
-  item: MTextbookWord;
+  item: MUnitWord;
 
   constructor(private wordsTextbookService: WordsTextbookService,
               private settingsService: SettingsService,

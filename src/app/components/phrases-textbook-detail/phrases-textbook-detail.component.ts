@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MTextbookPhrase } from '../../models/textbook-phrase';
-import { SelectItem } from 'primeng/api';
 import { PhrasesTextbookService } from '../../view-models/phrases-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MUnitPhrase } from '../../models/unit-phrase';
 
 @Component({
   selector: 'app-phrases-textbook-detail',
@@ -13,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class PhrasesTextbookDetailComponent implements OnInit {
 
-  item: MTextbookPhrase;
+  item: MUnitPhrase;
 
   constructor(private phrasesTextbookService: PhrasesTextbookService,
               private settingsService: SettingsService,

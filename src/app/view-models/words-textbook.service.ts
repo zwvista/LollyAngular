@@ -3,18 +3,18 @@ import { LangWordService } from '../services/lang-word.service';
 import { SettingsService } from './settings.service';
 import { AppService } from './app.service';
 import { NoteService } from './note.service';
-import { MTextbookWord, MTextbookWords } from '../models/textbook-word';
-import { TextbookWordService } from '../services/textbook-word.service';
 import { concatMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { UnitWordService } from '../services/unit-word.service';
+import { MUnitWord } from '../models/unit-word';
 
 @Injectable()
 export class WordsTextbookService {
 
-  textbookWords: MTextbookWord[] = [];
+  textbookWords: MUnitWord[] = [];
   textbookWordCount = 0;
 
-  constructor(private textbookWordService: TextbookWordService,
+  constructor(private unitWordService: UnitWordService,
               private langWordService: LangWordService,
               private settingsService: SettingsService,
               private appService: AppService,
@@ -23,11 +23,11 @@ export class WordsTextbookService {
 
   getData(page: number, rows: number): Observable<void> {
     return this.appService.initializeComplete.pipe(
-      concatMap(_ => this.textbookWordService.getDataByLang(this.settingsService.selectedLang.ID,
+      concatMap(_ => this.unitWordService.getDataByLang(this.settingsService.selectedLang.ID,
         this.settingsService.textbooks, page, rows)),
       map(res => {
-        this.settingsService.setColorStyle(res.VTEXTBOOKWORDS);
-        this.textbookWords = res.VTEXTBOOKWORDS;
+        this.settingsService.setColorStyle(res.VUNITWORDS);
+        this.textbookWords = res.VUNITWORDS;
         this.textbookWordCount = res._results;
       }),
     );

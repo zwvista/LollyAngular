@@ -1,13 +1,15 @@
-import { SelectItem } from 'primeng/api';
 import { MWordColor } from './word-color';
+import { MSelectItem } from '../common/selectitem';
 
 export class MUnitWords {
   VUNITWORDS: MUnitWord[];
+  _results = 0;
 }
 export class MUnitWord implements MWordColor {
   ID = 0;
   LANGID = 0;
   TEXTBOOKID = 0;
+  TEXTBOOKNAME = '';
   UNIT = 0;
   PART = 0;
   SEQNUM = 0;
@@ -18,8 +20,8 @@ export class MUnitWord implements MWordColor {
   LEVEL = 0;
   colorStyle: {string: string} | {} = {};
 
-  units: SelectItem[] = [];
-  parts: SelectItem[] = [];
+  units: MSelectItem[] = [];
+  parts: MSelectItem[] = [];
   get UNITSTR(): string {
     return this.units.find(o => o.value === this.UNIT).label;
   }
