@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhrasesTextbookService } from '../../view-models/phrases-textbook.service';
 import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
+import { googleString } from '../../common/common';
 
 @Component({
   selector: 'app-phrases-textbook',
@@ -28,4 +29,14 @@ export class PhrasesTextbookComponent implements OnInit {
     this.phrasesTextbookService.getData(1,  this.rows).subscribe();
   }
 
+  googlePhrase(phrase: string) {
+    googleString(phrase);
+  }
+
+  speak(phrase: string) {
+    this.settingsService.speech.speak({
+      text: phrase,
+      queue: false,
+    });
+  }
 }
