@@ -27,6 +27,7 @@
       <th>WORDID</th>
       <th>WORD</th>
       <th>NOTE</th>
+      <th>LEVEL</th>
       <th>ACTIONS</th>
     </tr>
   </ng-template>
@@ -42,6 +43,7 @@
       <td>{{unitWord.WORDID}}</td>
       <td>{{unitWord.WORD}}</td>
       <td>{{unitWord.NOTE}}</td>
+      <td>{{unitWord.LEVEL}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
                   pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>
