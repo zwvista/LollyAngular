@@ -7,8 +7,8 @@
         <button pButton type="button" label="Add" icon="fa fa-plus"></button>
       </a>
       <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh()"></button>
-      <button pButton type="button" [hidden]="!settingsService.hasNote" label="Retrieve All Notes" (click)="getNotes(false)"></button>
-      <button pButton type="button" [hidden]="!settingsService.hasNote" label="Retrieve Notes If Empty" (click)="getNotes(true)"></button>
+      <button pButton type="button" [hidden]="!settingsService.selectedDictNote" label="Retrieve All Notes" (click)="getNotes(false)"></button>
+      <button pButton type="button" [hidden]="!settingsService.selectedDictNote" label="Retrieve Notes If Empty" (click)="getNotes(true)"></button>
       <a routerLink="/words-dict/unit/0">
         <button pButton type="button" label="Dictionary" icon="fa fa-book"></button>
       </a>
