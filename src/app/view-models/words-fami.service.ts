@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UserSettingService } from '../services/user-setting.service';
 import { WordFamiService } from '../services/word-fami.service';
 import { MWordFami } from '../models/word-fami';
 import { EMPTY as empty, Observable } from 'rxjs';
@@ -10,8 +9,7 @@ export class WordsFamiService {
 
   userid = 1;
 
-  constructor(private wordFamiService: WordFamiService,
-              private userSettingService: UserSettingService) { }
+  constructor(private wordFamiService: WordFamiService) { }
 
   update(wordid: number, level: number): Observable<number | any> {
     return this.wordFamiService.getDataByUserWord(this.userid, wordid).pipe(

@@ -57,7 +57,8 @@ export class WordsUnitComponent implements OnInit {
   }
 
   updateLevel(index: number, delta: number) {
-    console.log(index);
+    const o = this.wordsUnitService.unitWords[index];
+    this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
   }
 
   speak(word: string) {
