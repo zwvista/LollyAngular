@@ -49,6 +49,11 @@ export class WordsLangComponent implements OnInit {
     this.wordsLangService.getNote(index).subscribe();
   }
 
+  updateLevel(index: number, delta: number) {
+    const o = this.wordsLangService.langWords[index];
+    this.settingsService.updateLevel(o, o.ID, delta).subscribe();
+  }
+
   googleWord(word: string) {
     googleString(word);
   }

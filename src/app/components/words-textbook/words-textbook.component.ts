@@ -33,6 +33,11 @@ export class WordsTextbookComponent implements OnInit {
     this.wordsTextbookService.getNote(index).subscribe();
   }
 
+  updateLevel(index: number, delta: number) {
+    const o = this.wordsTextbookService.textbookWords[index];
+    this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
+  }
+
   googleWord(word: string) {
     googleString(word);
   }
