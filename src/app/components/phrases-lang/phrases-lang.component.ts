@@ -12,6 +12,7 @@ import { SettingsService } from '../../view-models/settings.service';
 export class PhrasesLangComponent implements OnInit {
 
   rows = this.settingsService.USROWSPERPAGE;
+  page = 1;
 
   constructor(private phrasesLangService: PhrasesLangService,
               private settingsService: SettingsService) { }
@@ -22,11 +23,12 @@ export class PhrasesLangComponent implements OnInit {
 
   paginate(event) {
     this.rows = event.rows;
-    this.phrasesLangService.getData(event.page + 1, this.rows).subscribe();
+    this.page = event.page + 1;
+    this.onRefresh();
   }
 
   onRefresh() {
-    this.phrasesLangService.getData(1,  this.rows).subscribe();
+    this.phrasesLangService.getData(this.page,  this.rows).subscribe();
   }
 
   deletePhrase(index: number) {

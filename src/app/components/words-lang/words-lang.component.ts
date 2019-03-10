@@ -12,6 +12,7 @@ export class WordsLangComponent implements OnInit {
 
   newWord: string;
   rows = this.settingsService.USROWSPERPAGE;
+  page = 1;
 
   constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService) { }
@@ -22,7 +23,8 @@ export class WordsLangComponent implements OnInit {
 
   paginate(event) {
     this.rows = event.rows;
-    this.wordsLangService.getData(event.page + 1, this.rows).subscribe();
+    this.page = event.page + 1;
+    this.onRefresh();
   }
 
   onEnter() {
@@ -37,7 +39,7 @@ export class WordsLangComponent implements OnInit {
   }
 
   onRefresh() {
-    this.wordsLangService.getData(1,  this.rows).subscribe();
+    this.wordsLangService.getData(this.page,  this.rows).subscribe();
   }
 
   deleteWord(index: number) {

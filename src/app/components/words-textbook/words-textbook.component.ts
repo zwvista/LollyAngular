@@ -11,6 +11,7 @@ import { googleString } from '../../common/common';
 export class WordsTextbookComponent implements OnInit {
 
   rows = this.settingsService.USROWSPERPAGE;
+  page = 1;
 
   constructor(private wordsTextbookService: WordsTextbookService,
               private settingsService: SettingsService) { }
@@ -21,11 +22,12 @@ export class WordsTextbookComponent implements OnInit {
 
   paginate(event) {
     this.rows = event.rows;
-    this.wordsTextbookService.getData(event.page + 1, this.rows).subscribe();
+    this.page = event.page + 1;
+    this.onRefresh();
   }
 
   onRefresh() {
-    this.wordsTextbookService.getData(1,  this.rows).subscribe();
+    this.wordsTextbookService.getData(this.page,  this.rows).subscribe();
   }
 
   getNote(index: number) {

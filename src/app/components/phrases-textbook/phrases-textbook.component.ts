@@ -15,6 +15,7 @@ export class PhrasesTextbookComponent implements OnInit {
               private settingsService: SettingsService) { }
 
   rows = this.settingsService.USROWSPERPAGE;
+  page = 1;
 
   ngOnInit() {
     this.onRefresh();
@@ -22,11 +23,12 @@ export class PhrasesTextbookComponent implements OnInit {
 
   paginate(event) {
     this.rows = event.rows;
-    this.phrasesTextbookService.getData(event.page + 1, this.rows).subscribe();
+    this.page = event.page + 1;
+    this.onRefresh();
   }
 
   onRefresh() {
-    this.phrasesTextbookService.getData(1,  this.rows).subscribe();
+    this.phrasesTextbookService.getData(this.page,  this.rows).subscribe();
   }
 
   googlePhrase(phrase: string) {
