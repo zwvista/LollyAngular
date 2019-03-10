@@ -40,3 +40,6 @@
     </tr>
   </ng-template>
 </p-table>
+<p-paginator [rows]="rows" [totalRecords]="phrasesLangService.langPhraseCount"
+             [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
+             (onPageChange)="paginate($event)"></p-paginator>

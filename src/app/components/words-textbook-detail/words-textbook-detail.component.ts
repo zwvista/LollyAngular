@@ -4,6 +4,7 @@ import { SettingsService } from '../../view-models/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MUnitWord } from '../../models/unit-word';
+import { WordsUnitService } from '../../view-models/words-unit.service';
 
 @Component({
   selector: 'app-words-textbook-detail',
@@ -15,6 +16,7 @@ export class WordsTextbookDetailComponent implements OnInit {
   item: MUnitWord;
 
   constructor(private wordsTextbookService: WordsTextbookService,
+              private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
@@ -31,6 +33,7 @@ export class WordsTextbookDetailComponent implements OnInit {
 
   save(): void {
     this.item.WORD = this.settingsService.autoCorrectInput(this.item.WORD);
+    this.wordsUnitService.update(this.item).subscribe(_ => this.goBack());
   }
 
 }

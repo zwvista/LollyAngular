@@ -4,6 +4,7 @@ import { SettingsService } from '../../view-models/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MUnitPhrase } from '../../models/unit-phrase';
+import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 
 @Component({
   selector: 'app-phrases-textbook-detail',
@@ -15,6 +16,7 @@ export class PhrasesTextbookDetailComponent implements OnInit {
   item: MUnitPhrase;
 
   constructor(private phrasesTextbookService: PhrasesTextbookService,
+              private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
@@ -31,5 +33,6 @@ export class PhrasesTextbookDetailComponent implements OnInit {
 
   save(): void {
     this.item.PHRASE = this.settingsService.autoCorrectInput(this.item.PHRASE);
+    this.phrasesUnitService.update(this.item).subscribe(_ => this.goBack());
   }
 }
