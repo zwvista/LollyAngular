@@ -41,7 +41,7 @@
         <a routerLink="/words-textbook-detail/{{textbookWord.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
-        <button pButton icon="fa fa-volume-up" (click)="speak(textbookWord.WORD)"
+        <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="speak(textbookWord.WORD)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="textbookWord.WORD"
@@ -50,12 +50,12 @@
                 pTooltip="Level Up" tooltipPosition="top"></button>
         <button pButton icon="fa fa-arrow-down" (click)="updateLevel(index, -1)"
                 pTooltip="Level Down" tooltipPosition="top"></button>
-        <button pButton label="Retrieve Note" [hidden]="!settingsService.hasNote" (click)="getNote(index)"></button>
         <button pButton icon="fa fa-google" (click)="googleWord(textbookWord.WORD)"
                 pTooltip="Google Word" tooltipPosition="top"></button>
         <a routerLink="/words-dict/textbook/{{index}}">
           <button pButton icon="fa fa-book" pTooltip="Dictionary" tooltipPosition="top"></button>
         </a>
+        <button pButton label="Retrieve Note" [hidden]="!settingsService.selectedDictNote" (click)="getNote(index)"></button>
       </td>
     </tr>
   </ng-template>
