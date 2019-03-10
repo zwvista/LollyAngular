@@ -39,7 +39,7 @@
         <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
-        <button pButton icon="fa fa-volume-up" (click)="speak(unitPhrase.PHRASE)"
+        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(unitPhrase.PHRASE)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitPhrase.PHRASE"

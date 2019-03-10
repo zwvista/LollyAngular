@@ -43,11 +43,4 @@ export class WordsTextbookComponent implements OnInit {
   googleWord(word: string) {
     googleString(word);
   }
-
-  speak(word: string) {
-    this.settingsService.speech.speak({
-      text: word,
-      queue: false,
-    });
-  }
 }

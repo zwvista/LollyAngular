@@ -33,11 +33,4 @@ export class PhrasesUnitComponent implements OnInit {
   googlePhrase(phrase: string) {
     googleString(phrase);
   }
-
-  speak(phrase: string) {
-    this.settingsService.speech.speak({
-      text: phrase,
-      queue: false,
-    });
-  }
 }

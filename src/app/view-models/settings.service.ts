@@ -18,6 +18,7 @@ import Speech from 'speak-tts';
 import { MVoice } from '../models/voice';
 import { VoicesService } from '../services/voices.service';
 import { WordsFamiService } from './words-fami.service';
+import { googleString } from '../common/common';
 
 const userid = 1;
 
@@ -293,5 +294,12 @@ export class SettingsService {
       this.setColorStyle(o);
       return empty;
     }
+  }
+
+  speak(text: string) {
+    this.speech.speak({
+      text,
+      queue: false,
+    });
   }
 }

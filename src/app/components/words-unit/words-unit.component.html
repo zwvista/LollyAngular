@@ -3,6 +3,8 @@
     <span class="ui-float-label">
       <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnter()">
       <label for="word">New Word</label>
+      <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(newWord)"
+              pTooltip="Speak" tooltipPosition="top"></button>
       <a routerLink="/words-unit-detail/0">
         <button pButton type="button" label="Add" icon="fa fa-plus"></button>
       </a>
@@ -50,7 +52,7 @@
         <a routerLink="/words-unit-detail/{{unitWord.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
-        <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="speak(unitWord.WORD)"
+        <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(unitWord.WORD)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitWord.WORD"

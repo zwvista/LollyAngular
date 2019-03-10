@@ -60,11 +60,4 @@ export class WordsUnitComponent implements OnInit {
     const o = this.wordsUnitService.unitWords[index];
     this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
   }
-
-  speak(word: string) {
-    this.settingsService.speech.speak({
-      text: word,
-      queue: false,
-    });
-  }
 }
