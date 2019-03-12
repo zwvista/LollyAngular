@@ -40,7 +40,8 @@ export class WordsUnitComponent implements OnInit {
   }
 
   deleteWord(index: number) {
-    console.log(index);
+    const o = this.wordsUnitService.unitWords[index];
+    this.wordsUnitService.delete(o);
   }
 
   getNote(index: number) {

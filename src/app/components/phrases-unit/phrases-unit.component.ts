@@ -27,7 +27,8 @@ export class PhrasesUnitComponent implements OnInit {
   }
 
   deletePhrase(index: number) {
-    console.log(index);
+    const o = this.phrasesUnitService.unitPhrases[index];
+    this.phrasesUnitService.delete(o);
   }
 
   googlePhrase(phrase: string) {
