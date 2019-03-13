@@ -31,7 +31,7 @@ export class WordsUnitComponent implements OnInit {
   }
 
   onRefresh() {
-    this.wordsUnitService.getData().subscribe();
+    this.wordsUnitService.getDataInTextbook().subscribe();
   }
 
   onReorder(from: number, to: number) {

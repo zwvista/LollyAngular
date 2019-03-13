@@ -51,8 +51,6 @@ import { WordsTextbookComponent } from './components/words-textbook/words-textbo
 import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
 import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
-import { WordsTextbookService } from './view-models/words-textbook.service';
-import { PhrasesTextbookService } from './view-models/phrases-textbook.service';
 import { VoicesService } from './services/voices.service';
 import { WordsFamiService } from './view-models/words-fami.service';
 import { WordFamiService } from './services/word-fami.service';
@@ -121,8 +119,6 @@ import { WordFamiService } from './services/word-fami.service';
     PhrasesLangService,
     WordsLangService,
     NoteService,
-    WordsTextbookService,
-    PhrasesTextbookService,
   ],
   bootstrap: [AppComponent]
 })

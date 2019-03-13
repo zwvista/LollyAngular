@@ -23,7 +23,7 @@ export class PhrasesUnitComponent implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesUnitService.getData().subscribe();
+    this.phrasesUnitService.getDataInTextbook().subscribe();
   }
 
   deletePhrase(index: number) {

@@ -6,7 +6,6 @@ import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
 import { MDictItem } from '../../models/dictionary';
 import { HtmlService } from '../../services/html.service';
-import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { WordsLangService } from '../../view-models/words-lang.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class WordsDictComponent implements OnInit {
   selectedDictItem: MDictItem;
 
   constructor(private wordsUnitService: WordsUnitService,
-              private wordsTextbookService: WordsTextbookService,
               private wordsLangService: WordsLangService,
               private settingsService: SettingsService,
               private htmlService: HtmlService,
@@ -35,7 +33,7 @@ export class WordsDictComponent implements OnInit {
     const dictType = this.route.snapshot.paramMap.get('type');
     this.words =
       dictType === 'unit' ? this.wordsUnitService.unitWords.map(v  => ({label: v.WORD, value: v.WORD})) :
-      dictType === 'textbook' ? this.wordsTextbookService.textbookWords.map(v  => ({label: v.WORD, value: v.WORD})) :
+      dictType === 'textbook' ? this.wordsUnitService.textbookWords.map(v  => ({label: v.WORD, value: v.WORD})) :
       this.wordsLangService.langWords.map(v  => ({label: v.WORD, value: v.WORD}));
     this.selectedWord = this.words[+this.route.snapshot.paramMap.get('index')].value;
     this.selectedDictItem = this.settingsService.selectedDictItem;

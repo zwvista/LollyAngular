@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -15,8 +14,7 @@ export class WordsTextbookDetailComponent implements OnInit {
 
   item: MUnitWord;
 
-  constructor(private wordsTextbookService: WordsTextbookService,
-              private wordsUnitService: WordsUnitService,
+  constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
@@ -24,7 +22,7 @@ export class WordsTextbookDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.item = this.wordsTextbookService.textbookWords.find(value => value.ID === id);
+    this.item = this.wordsUnitService.textbookWords.find(value => value.ID === id);
   }
 
   goBack(): void {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { googleString } from '../../common/common';
-import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
 
 @Component({

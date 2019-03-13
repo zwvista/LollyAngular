@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
+import { WordsUnitService } from '../../view-models/words-unit.service';
 
 @Component({
   selector: 'app-words-textbook',
@@ -13,7 +13,7 @@ export class WordsTextbookComponent implements OnInit {
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
 
-  constructor(private wordsTextbookService: WordsTextbookService,
+  constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
@@ -27,16 +27,16 @@ export class WordsTextbookComponent implements OnInit {
   }
 
   onRefresh() {
-    this.wordsTextbookService.getData(this.page,  this.rows).subscribe();
+    this.wordsUnitService.getDataInLang(this.page,  this.rows).subscribe();
   }
 
   getNote(index: number) {
     console.log(index);
-    this.wordsTextbookService.getNote(index).subscribe();
+    this.wordsUnitService.getNote(index).subscribe();
   }
 
   updateLevel(index: number, delta: number) {
-    const o = this.wordsTextbookService.textbookWords[index];
+    const o = this.wordsUnitService.textbookWords[index];
     this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
   }
 

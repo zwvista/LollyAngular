@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PhrasesTextbookService } from '../../view-models/phrases-textbook.service';
-import { WordsTextbookService } from '../../view-models/words-textbook.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
+import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 
 @Component({
   selector: 'app-phrases-textbook',
@@ -11,7 +10,7 @@ import { googleString } from '../../common/common';
 })
 export class PhrasesTextbookComponent implements OnInit {
 
-  constructor(private phrasesTextbookService: PhrasesTextbookService,
+  constructor(private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService) { }
 
   rows = this.settingsService.USROWSPERPAGE;
@@ -28,7 +27,7 @@ export class PhrasesTextbookComponent implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesTextbookService.getData(this.page,  this.rows).subscribe();
+    this.phrasesUnitService.getDataInLang(this.page,  this.rows).subscribe();
   }
 
   googlePhrase(phrase: string) {
