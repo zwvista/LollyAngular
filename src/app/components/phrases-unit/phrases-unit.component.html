@@ -24,7 +24,7 @@
   <ng-template pTemplate="body" let-unitPhrase let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="unitPhrase">
       <td>
-        <i class="fa fa-bars" pReorderableRowHandle></i>
+        <i [hidden]="!settingsService.isSingleUnitPart" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
       <td>{{unitPhrase.ID}}</td>
       <td>{{unitPhrase.UNITSTR}}</td>

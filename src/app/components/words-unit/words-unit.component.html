@@ -36,7 +36,7 @@
   <ng-template pTemplate="body" let-unitWord let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="unitWord" [ngStyle]="unitWord.colorStyle">
       <td>
-        <i class="fa fa-bars" pReorderableRowHandle></i>
+        <i [hidden]="!settingsService.isSingleUnitPart" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
       <td>{{unitWord.ID}}</td>
       <td>{{unitWord.UNITSTR}}</td>

@@ -1,6 +1,6 @@
 <div class="container mt-2">
 <div class="form-inline mb-2">
-  <label for="lang" class="col-2 control-label text-left">Languages:</label>
+  <label for="lang" class="col-2 control-label text-left">Language:</label>
   <select id="lang" class="col-4 form-control" [(ngModel)]="settingsService.selectedLang" (change)="onLangChange($event.target.selectedIndex)">
     <option *ngFor="let o of settingsService.languages" [ngValue]="o">{{o.NAME}}</option>
   </select>
