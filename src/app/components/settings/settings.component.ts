@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../../view-models/settings.service';
+import { SettingsListener, SettingsService } from '../../view-models/settings.service';
 import { concatMap } from 'rxjs/operators';
 
 @Component({
@@ -7,25 +7,23 @@ import { concatMap } from 'rxjs/operators';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css', '../../common/common.css']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, SettingsListener {
 
   get toTypeIsUnit() {
-    return this.toType === 0;
+    return this.settingsService.toType === 0;
   }
   get toTypeIsPart() {
-    return this.toType === 1;
+    return this.settingsService.toType === 1;
   }
   get toTypeIsTo() {
-    return this.toType === 2;
+    return this.settingsService.toType === 2;
   }
-
-  toTypes = ['Unit', 'Part', 'To'].map((v, i) => ({value: i, label: v}));
-  toType = 0;
 
   constructor(private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.settingsService.getData().subscribe(_ => this.updateTextbook());
+    this.settingsService.settingsListener = this;
+    this.settingsService.getData().subscribe();
   }
 
   onLangChange(index) {
@@ -51,119 +49,63 @@ export class SettingsComponent implements OnInit {
   onTextbookChange(index) {
     this.settingsService.selectedTextbook = this.settingsService.textbooks[index];
     this.settingsService.updateTextbook().subscribe();
-    this.updateTextbook();
   }
 
   onUnitFromChange(index) {
-    if (!this.updateUnitFrom(this.settingsService.units[index].value, false)) return;
-    if (this.toType === 0)
-      this.updateSingleUnit();
-    else if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
-      this.updateUnitPartTo();
+    this.settingsService.updateUnitFrom(this.settingsService.units[index].value).subscribe();
   }
 
   onPartFromChange(index) {
-    if (!this.updatePartFrom(this.settingsService.parts[index].value, false)) return;
-    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
-      this.updateUnitPartTo();
+    this.settingsService.updatePartFrom(this.settingsService.parts[index].value).subscribe();
   }
 
   onToTypeChange(index) {
-    if (index === 0)
-      this.updateSingleUnit();
-    else if (index === 1)
-      this.updateUnitPartTo();
+    this.settingsService.updateToType(this.settingsService.toTypes[index].value).subscribe();
   }
 
   previousUnitPart() {
-    if (this.toType === 0) {
-      if (this.settingsService.USUNITFROM > 1) {
-        this.updateUnitFrom(this.settingsService.USUNITFROM - 1);
-        this.updateUnitTo(this.settingsService.USUNITFROM);
-      }
-    } else if (this.settingsService.USPARTFROM > 1) {
-      this.updatePartFrom(this.settingsService.USPARTFROM - 1);
-      this.updateUnitPartTo();
-    } else if (this.settingsService.USUNITFROM > 1) {
-      this.updateUnitFrom(this.settingsService.USUNITFROM - 1);
-      this.updatePartFrom(this.settingsService.partCount);
-      this.updateUnitPartTo();
-    }
+    this.settingsService.previousUnitPart().subscribe();
   }
 
   nextUnitPart() {
-    if (this.toType === 0) {
-      if (this.settingsService.USUNITFROM < this.settingsService.unitCount) {
-        this.updateUnitFrom(this.settingsService.USUNITFROM + 1);
-        this.updateUnitTo(this.settingsService.USUNITFROM);
-      }
-    } else if (this.settingsService.USPARTFROM < this.settingsService.partCount) {
-      this.updatePartFrom(this.settingsService.USPARTFROM + 1);
-      this.updateUnitPartTo();
-    } else if (this.settingsService.USUNITFROM < this.settingsService.unitCount) {
-      this.updateUnitFrom(this.settingsService.USUNITFROM + 1);
-      this.updatePartFrom(1);
-      this.updateUnitPartTo();
-    }
+    this.settingsService.nextUnitPart().subscribe();
   }
 
   onUnitToChange(index) {
-    if (!this.updateUnitTo(this.settingsService.units[index].value, false)) return;
-    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
-      this.updateUnitPartFrom();
+    this.settingsService.updateUnitTo(this.settingsService.units[index].value).subscribe();
   }
 
   onPartToChange(index) {
-    if (!this.updatePartTo(this.settingsService.parts[index].value, false)) return;
-    if (this.toType === 1 || this.settingsService.isInvalidUnitPart)
-      this.updateUnitPartFrom();
+    this.settingsService.updateUnitTo(this.settingsService.parts[index].value).subscribe();
   }
 
-  updateTextbook() {
-    this.toType = this.settingsService.isSingleUnit ? 0 : this.settingsService.isSingleUnitPart ? 1 : 2;
+  onGetData(): void {
   }
 
-  updateUnitPartFrom() {
-    this.updateUnitFrom(this.settingsService.USUNITTO);
-    this.updatePartFrom(this.settingsService.USPARTTO);
+  onUpdateDictItem(): void {
   }
 
-  updateUnitPartTo() {
-    this.updateUnitTo(this.settingsService.USUNITFROM);
-    this.updatePartTo(this.settingsService.USPARTFROM);
+  onUpdateDictNote(): void {
   }
 
-  updateSingleUnit() {
-    this.updateUnitTo(this.settingsService.USUNITFROM);
-    this.updatePartFrom(1);
-    this.updatePartTo(this.settingsService.partCount);
+  onUpdateLang(): void {
   }
 
-  updateUnitFrom(v: number, check: boolean = true): boolean {
-    if (check && this.settingsService.USUNITFROM === v) return false;
-    this.settingsService.USUNITFROM = v;
-    this.settingsService.updateUnitFrom().subscribe();
-    return true;
+  onUpdatePartFrom(): void {
   }
 
-  updatePartFrom(v: number, check: boolean = true): boolean {
-    if (check && this.settingsService.USPARTFROM === v) return false;
-    this.settingsService.USPARTFROM = v;
-    this.settingsService.updatePartFrom().subscribe();
-    return true;
+  onUpdatePartTo(): void {
   }
 
-  updateUnitTo(v: number, check: boolean = true): boolean {
-    if (check && this.settingsService.USUNITTO === v) return false;
-    this.settingsService.USUNITTO = v;
-    this.settingsService.updateUnitTo().subscribe();
-    return true;
+  onUpdateTextbook(): void {
   }
 
-  updatePartTo(v: number, check: boolean = true): boolean {
-    if (check && this.settingsService.USPARTTO === v) return false;
-    this.settingsService.USPARTTO = v;
-    this.settingsService.updatePartTo().subscribe();
-    return true;
+  onUpdateUnitFrom(): void {
+  }
+
+  onUpdateUnitTo(): void {
+  }
+
+  onUpdateVoice(): void {
   }
 }

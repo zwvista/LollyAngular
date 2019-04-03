@@ -39,8 +39,8 @@
   </select>
 </div>
 <div class="form-inline mb-2">
-  <select id="toType" class="col-1 form-control" [(ngModel)]="toType" (change)="onToTypeChange($event.target.selectedIndex)">
-    <option *ngFor="let o of toTypes" [ngValue]="o.value">{{o.label}}</option>
+  <select id="toType" class="col-1 form-control" [(ngModel)]="settingsService.toType" (change)="onToTypeChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.toTypes" [ngValue]="o.value">{{o.label}}</option>
   </select>
   <label class="col-1 control-label"></label>
   <select id="unitTo" class="col-2 form-control" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (change)="onUnitToChange($event.target.selectedIndex)">
