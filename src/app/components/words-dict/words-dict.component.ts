@@ -49,7 +49,7 @@ export class WordsDictComponent implements OnInit {
     if (item.DICTNAME.startsWith('Custom'))
       this.dictSrc = this.settingsService.dictHtml(this.selectedWord, item.dictids());
     else {
-      const item2 = this.settingsService.dictsMean.find(v => v.DICTNAME === item.DICTNAME);
+      const item2 = this.settingsService.dictsReference.find(v => v.DICTNAME === item.DICTNAME);
       const url = item2.urlString(this.selectedWord, this.settingsService.autoCorrects);
       if (item2.DICTTYPENAME === 'OFFLINE') {
         this.dictUrl = 'about:blank';

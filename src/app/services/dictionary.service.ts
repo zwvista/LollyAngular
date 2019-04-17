@@ -3,20 +3,20 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { MDictMean, MDictNote, MDictsMean, MDictsNote } from '../models/dictionary';
+import { MDictReference, MDictNote, MDictsReference, MDictsNote } from '../models/dictionary';
 
 @Injectable()
-export class DictMeanService extends BaseService {
+export class DictReferenceService extends BaseService {
 
   constructor(http: HttpClient)  {
     super(http);
   }
 
-  getDataByLang(langid: number): Observable<MDictMean[]> {
-    const url = `${this.baseUrl}VDICTSMEAN?transform=1&filter[]=LANGIDFROM,eq,${langid}`;
-    return this.http.get<MDictsMean>(url)
+  getDataByLang(langid: number): Observable<MDictReference[]> {
+    const url = `${this.baseUrl}VDICTSREFERENCE?transform=1&filter[]=LANGIDFROM,eq,${langid}`;
+    return this.http.get<MDictsReference>(url)
       .pipe(
-        map(result => result.VDICTSMEAN.map(value => Object.assign(new MDictMean(), value))),
+        map(result => result.VDICTSREFERENCE.map(value => Object.assign(new MDictReference(), value))),
       );
   }
 

@@ -1,15 +1,15 @@
 import { inject, TestBed } from '@angular/core/testing';
 
-import { DictMeanService, DictNoteService } from './dictionary.service';
+import { DictReferenceService, DictNoteService } from './dictionary.service';
 
-describe('DictMeanService', () => {
+describe('DictReferenceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DictMeanService]
+      providers: [DictReferenceService]
     });
   });
 
-  it('should be created', inject([DictMeanService], (service: DictMeanService) => {
+  it('should be created', inject([DictReferenceService], (service: DictReferenceService) => {
     expect(service).toBeTruthy();
   }));
 });
