@@ -24,6 +24,12 @@
   </select>
 </div>
 <div class="form-inline mb-2">
+  <label for="dictTranslation" class="col-2 control-label">Dictionary(Translation):</label>
+  <select id="dictTranslation" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictTranslation" (change)="onDictTranslationChange($event.target.selectedIndex)">
+    <option *ngFor="let o of settingsService.dictsTranslation" [ngValue]="o">{{o.DICTNAME}}</option>
+  </select>
+</div>
+<div class="form-inline mb-2">
   <label for="textbook" class="col-2 control-label">Textbook:</label>
   <select id="textbook" class="col-4 form-control" [(ngModel)]="settingsService.selectedTextbook" (change)="onTextbookChange($event.target.selectedIndex)">
     <option *ngFor="let o of settingsService.textbooks" [ngValue]="o">{{o.NAME}}</option>

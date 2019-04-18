@@ -46,6 +46,11 @@ export class SettingsComponent implements OnInit, SettingsListener {
     this.settingsService.updateDictNote().subscribe();
   }
 
+  onDictTranslationChange(index) {
+    this.settingsService.selectedDictTranslation = this.settingsService.dictsTranslation[index];
+    this.settingsService.updateDictTranslation().subscribe();
+  }
+
   onTextbookChange(index) {
     this.settingsService.selectedTextbook = this.settingsService.textbooks[index];
     this.settingsService.updateTextbook().subscribe();
@@ -86,6 +91,9 @@ export class SettingsComponent implements OnInit, SettingsListener {
   }
 
   onUpdateDictNote(): void {
+  }
+
+  onUpdateDictTranslation(): void {
   }
 
   onUpdateLang(): void {

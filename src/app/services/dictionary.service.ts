@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { MDictReference, MDictNote, MDictsReference, MDictsNote } from '../models/dictionary';
+import { MDictReference, MDictNote, MDictsReference, MDictsNote, MDictTranslation, MDictsTranslation } from '../models/dictionary';
 
 @Injectable()
 export class DictReferenceService extends BaseService {
@@ -34,6 +34,23 @@ export class DictNoteService extends BaseService {
     return this.http.get<MDictsNote>(url)
       .pipe(
         map(result => result.VDICTSNOTE.map(value => Object.assign(new MDictNote(), value))),
+      );
+  }
+
+}
+
+@Injectable()
+export class DictTranslationService extends BaseService {
+
+  constructor(http: HttpClient)  {
+    super(http);
+  }
+
+  getDataByLang(langid: number): Observable<MDictTranslation[]> {
+    const url = `${this.baseUrl}VDICTSTRANSLATION?transform=1&filter=LANGIDFROM,eq,${langid}`;
+    return this.http.get<MDictsTranslation>(url)
+      .pipe(
+        map(result => result.VDICTSTRANSLATION.map(value => Object.assign(new MDictTranslation(), value))),
       );
   }
 

@@ -20,7 +20,7 @@ import { WordsUnitComponent } from './components/words-unit/words-unit.component
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DictReferenceService, DictNoteService } from './services/dictionary.service';
+import { DictReferenceService, DictNoteService, DictTranslationService } from './services/dictionary.service';
 import { LanguageService } from './services/language.service';
 import { TextbookService } from './services/textbook.service';
 import { UnitWordService } from './services/unit-word.service';
@@ -99,6 +99,7 @@ import { WordFamiService } from './services/word-fami.service';
   providers: [
     DictReferenceService,
     DictNoteService,
+    DictTranslationService,
     LanguageService,
     TextbookService,
     UnitPhraseService,
