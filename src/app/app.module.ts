@@ -54,6 +54,13 @@ import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-de
 import { VoicesService } from './services/voices.service';
 import { WordsFamiService } from './view-models/words-fami.service';
 import { WordFamiService } from './services/word-fami.service';
+import { WordsUnit2Component } from './components/words-unit2/words-unit2.component';
+import { MatButtonModule, MatIconModule, MatTableModule, MatTooltipModule } from '@angular/material';
+import { WordsTextbook2Component } from './components/words-textbook2/words-textbook2.component';
+import { WordsLang2Component } from './components/words-lang2/words-lang2.component';
+import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.component';
+import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrases-textbook2.component';
+import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
 
 
 @NgModule({
@@ -73,7 +80,13 @@ import { WordFamiService } from './services/word-fami.service';
     WordsTextbookComponent,
     PhrasesTextbookComponent,
     WordsTextbookDetailComponent,
-    PhrasesTextbookDetailComponent
+    PhrasesTextbookDetailComponent,
+    WordsUnit2Component,
+    WordsTextbook2Component,
+    WordsLang2Component,
+    PhrasesUnit2Component,
+    PhrasesTextbook2Component,
+    PhrasesLang2Component
   ],
   imports: [
     BrowserModule,
@@ -82,7 +95,11 @@ import { WordFamiService } from './services/word-fami.service';
     HttpClientModule,
     FormsModule,
     // Material
+    MatButtonModule,
+    MatIconModule,
     MatTabsModule,
+    MatTableModule,
+    MatTooltipModule,
     // PrimeNG
     TableModule,
     TabMenuModule,

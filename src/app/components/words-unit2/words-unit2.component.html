@@ -1,0 +1,68 @@
+<table style="width:100%;" mat-table [dataSource]="wordsUnitService.unitWords" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+  </ng-container>
+  <ng-container matColumnDef="UNIT">
+    <th mat-header-cell *matHeaderCellDef> UNIT </th>
+    <td mat-cell *matCellDef="let element"> {{element.UNIT}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PART">
+    <th mat-header-cell *matHeaderCellDef> PART </th>
+    <td mat-cell *matCellDef="let element"> {{element.PART}} </td>
+  </ng-container>
+  <ng-container matColumnDef="SEQNUM">
+    <th mat-header-cell *matHeaderCellDef> SEQNUM </th>
+    <td mat-cell *matCellDef="let element"> {{element.SEQNUM}} </td>
+  </ng-container>
+  <ng-container matColumnDef="WORDID">
+    <th mat-header-cell *matHeaderCellDef> WORDID </th>
+    <td mat-cell *matCellDef="let element"> {{element.WORDID}} </td>
+  </ng-container>
+  <ng-container matColumnDef="WORD">
+    <th mat-header-cell *matHeaderCellDef> WORD </th>
+    <td mat-cell *matCellDef="let element"> {{element.WORD}} </td>
+  </ng-container>
+  <ng-container matColumnDef="NOTE">
+    <th mat-header-cell *matHeaderCellDef> NOTE </th>
+    <td mat-cell *matCellDef="let element"> {{element.NOTE}} </td>
+  </ng-container>
+  <ng-container matColumnDef="LEVEL">
+    <th mat-header-cell *matHeaderCellDef> LEVEL </th>
+    <td mat-cell *matCellDef="let element"> {{element.LEVEL}} </td>
+  </ng-container>
+  <ng-container matColumnDef="ACTION">
+    <th mat-header-cell *matHeaderCellDef> ACTION </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab color="warn" matTooltip="Delete">
+        <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" matTooltip="Edit">
+        <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" matTooltip="Speak">
+        <mat-icon fontSet="fa" fontIcon="fa-volume-up"></mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" matTooltip="Copy">
+        <mat-icon fontSet="fa" fontIcon="fa-copy"></mat-icon>
+      </button>
+      <button mat-mini-fab color="accent" matTooltip="Level Up">
+        <mat-icon fontSet="fa" fontIcon="fa-arrow-up"></mat-icon>
+      </button>
+      <button mat-mini-fab color="accent" matTooltip="Level Down">
+        <mat-icon fontSet="fa" fontIcon="fa-arrow-down"></mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" matTooltip="Google Word">
+        <mat-icon fontSet="fa" fontIcon="fa-google"></mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" matTooltip="Dictionary">
+        <mat-icon fontSet="fa" fontIcon="fa-book"></mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
     {label: 'Settings', icon: 'fa fa-fw fa-gear', routerLink: 'settings'},
   ];
   tabLinks: {label: string, link: string}[] = [
-    {label: 'Words in Unit', link: 'words-unit'},
-    {label: 'Phrases in Unit', link: 'phrases-unit'},
-    {label: 'Words in Language', link: 'words-lang'},
-    {label: 'Phrases in Language', link: 'phrases-lang'},
-    {label: 'Words in Textbook', link: 'words-textbook'},
-    {label: 'Phrases in Textbook', link: 'phrases-textbook'},
+    {label: 'Words in Unit', link: 'words-unit2'},
+    {label: 'Phrases in Unit', link: 'phrases-unit2'},
+    {label: 'Words in Language', link: 'words-lang2'},
+    {label: 'Phrases in Language', link: 'phrases-lang2'},
+    {label: 'Words in Textbook', link: 'words-textbook2'},
+    {label: 'Phrases in Textbook', link: 'phrases-textbook2'},
     {label: 'Settings', link: 'settings'},
   ];
 
