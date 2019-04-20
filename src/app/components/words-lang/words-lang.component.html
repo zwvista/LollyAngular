@@ -23,8 +23,8 @@
     <tr>
       <th>ID</th>
       <th>WORD</th>
-      <th>LEVEL</th>
       <th>NOTE</th>
+      <th>LEVEL</th>
       <th>ACTIONS</th>
     </tr>
   </ng-template>
@@ -32,8 +32,8 @@
     <tr [pSelectableRow]="langWord" [ngStyle]="langWord.colorStyle">
       <td>{{langWord.ID}}</td>
       <td>{{langWord.WORD}}</td>
-      <td>{{langWord.LEVEL}}</td>
       <td>{{langWord.NOTE}}</td>
+      <td>{{langWord.LEVEL}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
                 pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PhrasesLangService } from '../../view-models/phrases-lang.service';
+import { SettingsService } from '../../view-models/settings.service';
 
 @Component({
   selector: 'app-phrases-lang2',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhrasesLang2Component implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['ID', 'PHRASE', 'TRANSLATION', 'ACTION'];
+
+  rows = this.settingsService.USROWSPERPAGE;
+  page = 1;
+
+  constructor(private phrasesLangService: PhrasesLangService,
+              private settingsService: SettingsService) { }
 
   ngOnInit() {
+    this.onRefresh();
+  }
+
+  onRefresh() {
+    this.phrasesLangService.getData(this.page,  this.rows).subscribe();
   }
 
 }
