@@ -9,7 +9,7 @@ import { SettingsService } from '../../view-models/settings.service';
 })
 export class WordsTextbook2Component implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL'];
+  displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL', 'ACTION'];
 
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
