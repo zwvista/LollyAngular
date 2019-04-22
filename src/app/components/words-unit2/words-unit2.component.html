@@ -39,58 +39,58 @@
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element">
-      <mat-icon cdkDragHandle>reorder</mat-icon>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle">
+      <mat-icon cdkDragHandle [hidden]="!settingsService.isSingleUnitPart">reorder</mat-icon>
     </td>
   </ng-container>
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.ID}} </td>
   </ng-container>
   <ng-container matColumnDef="UNIT">
     <th mat-header-cell *matHeaderCellDef> UNIT </th>
-    <td mat-cell *matCellDef="let element"> {{element.UNIT}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.UNITSTR}} </td>
   </ng-container>
   <ng-container matColumnDef="PART">
     <th mat-header-cell *matHeaderCellDef> PART </th>
-    <td mat-cell *matCellDef="let element"> {{element.PART}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.PARTSTR}} </td>
   </ng-container>
   <ng-container matColumnDef="SEQNUM">
     <th mat-header-cell *matHeaderCellDef> SEQNUM </th>
-    <td mat-cell *matCellDef="let element"> {{element.SEQNUM}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.SEQNUM}} </td>
   </ng-container>
   <ng-container matColumnDef="WORDID">
     <th mat-header-cell *matHeaderCellDef> WORDID </th>
-    <td mat-cell *matCellDef="let element"> {{element.WORDID}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.WORDID}} </td>
   </ng-container>
   <ng-container matColumnDef="WORD">
     <th mat-header-cell *matHeaderCellDef> WORD </th>
-    <td mat-cell *matCellDef="let element"> {{element.WORD}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.WORD}} </td>
   </ng-container>
   <ng-container matColumnDef="NOTE">
     <th mat-header-cell *matHeaderCellDef> NOTE </th>
-    <td mat-cell *matCellDef="let element"> {{element.NOTE}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.NOTE}} </td>
   </ng-container>
   <ng-container matColumnDef="LEVEL">
     <th mat-header-cell *matHeaderCellDef> LEVEL </th>
-    <td mat-cell *matCellDef="let element"> {{element.LEVEL}} </td>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.LEVEL}} </td>
   </ng-container>
   <ng-container matColumnDef="ACTION">
     <th mat-header-cell *matHeaderCellDef> ACTION </th>
-    <td mat-cell *matCellDef="let element; let index = index;">
+    <td mat-cell *matCellDef="let row; let index = index;" [ngStyle]="row.colorStyle">
       <button mat-mini-fab color="warn" matTooltip="Delete" (click)="deleteWord(index)">
         <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
       </button>
-      <a routerLink="/words-unit-detail/{{element.ID}}">
+      <a routerLink="/words-unit-detail/{{row.ID}}">
       <button mat-mini-fab color="primary" matTooltip="Edit">
         <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
       </button>
       </a>
       <button mat-mini-fab color="primary" matTooltip="Speak"
-              [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(element.WORD)">
+              [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)">
         <mat-icon fontSet="fa" fontIcon="fa-volume-up"></mat-icon>
       </button>
-      <button mat-mini-fab color="primary" matTooltip="Copy" ngxClipboard [cbContent]="element.WORD">
+      <button mat-mini-fab color="primary" matTooltip="Copy" ngxClipboard [cbContent]="row.WORD">
         <mat-icon fontSet="fa" fontIcon="fa-copy"></mat-icon>
       </button>
       <button mat-mini-fab color="accent" matTooltip="Level Up" (click)="updateLevel(index, 1)">
@@ -99,7 +99,7 @@
       <button mat-mini-fab color="accent" matTooltip="Level Down" (click)="updateLevel(index, -1)">
         <mat-icon fontSet="fa" fontIcon="fa-arrow-down"></mat-icon>
       </button>
-      <button mat-mini-fab color="primary" matTooltip="Google Word" (click)="googleWord(element.WORD)">
+      <button mat-mini-fab color="primary" matTooltip="Google Word" (click)="googleWord(row.WORD)">
         <mat-icon fontSet="fa" fontIcon="fa-google"></mat-icon>
       </button>
       <a routerLink="/words-dict/unit/{{index}}">
