@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 // Material
 import { MatTabsModule } from '@angular/material/tabs';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 // PrimeNG
 import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -55,7 +56,7 @@ import { VoicesService } from './services/voices.service';
 import { WordsFamiService } from './view-models/words-fami.service';
 import { WordFamiService } from './services/word-fami.service';
 import { WordsUnit2Component } from './components/words-unit2/words-unit2.component';
-import { MatButtonModule, MatIconModule, MatTableModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatTableModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { WordsTextbook2Component } from './components/words-textbook2/words-textbook2.component';
 import { WordsLang2Component } from './components/words-lang2/words-lang2.component';
 import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.component';
@@ -94,11 +95,14 @@ import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    DragDropModule,
     // Material
     MatButtonModule,
     MatIconModule,
+    MatInputModule,
     MatTabsModule,
     MatTableModule,
+    MatToolbarModule,
     MatTooltipModule,
     // PrimeNG
     TableModule,
