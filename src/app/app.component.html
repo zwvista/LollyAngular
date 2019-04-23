@@ -4,10 +4,13 @@
 <nav mat-tab-nav-bar *ngIf="activeItemApp === itemsApp[1]">
   <a mat-tab-link
      *ngFor="let tabLink of tabLinks; let i = index"
-     [routerLink]="tabLink.link"
+     [routerLink]="tabLink.routerLink"
      routerLinkActive #rla="routerLinkActive"
      [active]="rla.isActive">
-    {{tabLink.label}}
+    <span>
+      <mat-icon fontSet="fa" fontIcon={{tabLink.icon}}></mat-icon>
+      {{tabLink.label}}
+    </span>
   </a>
 </nav>
 <router-outlet></router-outlet>
