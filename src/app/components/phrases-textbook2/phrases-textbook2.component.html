@@ -1,3 +1,15 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-raised-button color="primary" (click)="onRefresh()">
+      <span><mat-icon fontSet="fa" fontIcon="fa-refresh"></mat-icon>Refresh</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-paginator [length]="phrasesUnitService.textbookPhraseCount"
+               [pageSize]="rows"
+               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+               (page)="paginate($event)">
+</mat-paginator>
 <table style="width:100%;" mat-table [dataSource]="phrasesUnitService.textbookPhrases" class="mat-elevation-z8">
 
   <ng-container matColumnDef="ID">
@@ -57,3 +69,8 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
+<mat-paginator [length]="phrasesUnitService.textbookPhraseCount"
+               [pageSize]="rows"
+               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+               (page)="paginate($event)">
+</mat-paginator>

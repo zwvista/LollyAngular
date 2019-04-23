@@ -1,3 +1,20 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <a routerLink="/phrases-lang-detail/0">
+      <button mat-raised-button color="primary">
+        <span><mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon>Add</span>
+      </button>
+    </a>
+    <button mat-raised-button color="primary" (click)="onRefresh()">
+      <span><mat-icon fontSet="fa" fontIcon="fa-refresh"></mat-icon>Refresh</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-paginator [length]="phrasesLangService.langPhraseCount"
+               [pageSize]="rows"
+               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+               (page)="paginate($event)">
+</mat-paginator>
 <table style="width:100%;" mat-table [dataSource]="phrasesLangService.langPhrases" class="mat-elevation-z8">
 
   <ng-container matColumnDef="ID">
@@ -37,3 +54,8 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
+<mat-paginator [length]="phrasesLangService.langPhraseCount"
+               [pageSize]="rows"
+               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+               (page)="paginate($event)">
+</mat-paginator>

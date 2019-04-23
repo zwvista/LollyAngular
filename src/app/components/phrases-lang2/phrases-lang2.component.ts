@@ -21,6 +21,12 @@ export class PhrasesLang2Component implements OnInit {
     this.onRefresh();
   }
 
+  paginate(event) {
+    this.rows = event.pageSize;
+    this.page = event.pageIndex + 1;
+    this.onRefresh();
+  }
+
   onRefresh() {
     this.phrasesLangService.getData(this.page,  this.rows).subscribe();
   }
