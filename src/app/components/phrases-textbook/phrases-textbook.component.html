@@ -20,28 +20,28 @@
       <th>ACTIONS</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-textbookPhrase let-index="rowIndex">
-    <tr [pSelectableRow]="textbookPhrase">
-      <td>{{textbookPhrase.ID}}</td>
-      <td>{{textbookPhrase.TEXTBOOKNAME}}</td>
-      <td>{{textbookPhrase.UNITSTR}}</td>
-      <td>{{textbookPhrase.PARTSTR}}</td>
-      <td>{{textbookPhrase.SEQNUM}}</td>
-      <td>{{textbookPhrase.PHRASEID}}</td>
-      <td>{{textbookPhrase.PHRASE}}</td>
-      <td>{{textbookPhrase.TRANSLATION}}</td>
+  <ng-template pTemplate="body" let-row let-index="rowIndex">
+    <tr [pSelectableRow]="row">
+      <td>{{row.ID}}</td>
+      <td>{{row.TEXTBOOKNAME}}</td>
+      <td>{{row.UNITSTR}}</td>
+      <td>{{row.PARTSTR}}</td>
+      <td>{{row.SEQNUM}}</td>
+      <td>{{row.PHRASEID}}</td>
+      <td>{{row.PHRASE}}</td>
+      <td>{{row.TRANSLATION}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
                 pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(index)"></button>
-        <a routerLink="/phrases-textbook-detail/{{textbookPhrase.ID}}">
+        <a routerLink="/phrases-textbook-detail/{{row.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
-        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(textbookPhrase.PHRASE)"
+        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(row.PHRASE)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="textbookPhrase.PHRASE"
+        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.PHRASE"
                 pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-google" (click)="googlePhrase(textbookPhrase.PHRASE)"
+        <button pButton icon="fa fa-google" (click)="googlePhrase(row.PHRASE)"
                 pTooltip="Google Phrase" tooltipPosition="top"></button>
       </td>
     </tr>

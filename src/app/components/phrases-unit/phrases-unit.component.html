@@ -10,7 +10,7 @@
          (onRowReorder)="onReorder($event.dragIndex, $event.dropIndex)">
   <ng-template pTemplate="header">
     <tr>
-      <th style="width:2em"></th>
+      <th style="width:2em">No.</th>
       <th>ID</th>
       <th>UNIT</th>
       <th>PART</th>
@@ -21,30 +21,30 @@
       <th>ACTIONS</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-unitPhrase let-index="rowIndex">
-    <tr [pReorderableRow]="index" [pSelectableRow]="unitPhrase">
+  <ng-template pTemplate="body" let-row let-index="rowIndex">
+    <tr [pReorderableRow]="index" [pSelectableRow]="row">
       <td>
         <i [hidden]="!settingsService.isSingleUnitPart" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
-      <td>{{unitPhrase.ID}}</td>
-      <td>{{unitPhrase.UNITSTR}}</td>
-      <td>{{unitPhrase.PARTSTR}}</td>
-      <td>{{unitPhrase.SEQNUM}}</td>
-      <td>{{unitPhrase.PHRASEID}}</td>
-      <td>{{unitPhrase.PHRASE}}</td>
-      <td>{{unitPhrase.TRANSLATION}}</td>
+      <td>{{row.ID}}</td>
+      <td>{{row.UNITSTR}}</td>
+      <td>{{row.PARTSTR}}</td>
+      <td>{{row.SEQNUM}}</td>
+      <td>{{row.PHRASEID}}</td>
+      <td>{{row.PHRASE}}</td>
+      <td>{{row.TRANSLATION}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
                   pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(index)"></button>
-        <a routerLink="/phrases-unit-detail/{{unitPhrase.ID}}">
+        <a routerLink="/phrases-unit-detail/{{row.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
-        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(unitPhrase.PHRASE)"
+        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(row.PHRASE)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="unitPhrase.PHRASE"
+        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.PHRASE"
                 pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-google" (click)="googlePhrase(unitPhrase.PHRASE)"
+        <button pButton icon="fa fa-google" (click)="googlePhrase(row.PHRASE)"
                 pTooltip="Google Phrase" tooltipPosition="top"></button>
       </td>
     </tr>

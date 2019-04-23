@@ -24,33 +24,33 @@
       <th>ACTIONS</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-textbookWord let-index="rowIndex">
-    <tr [pSelectableRow]="textbookWord" [ngStyle]="textbookWord.colorStyle">
-      <td>{{textbookWord.ID}}</td>
-      <td>{{textbookWord.TEXTBOOKNAME}}</td>
-      <td>{{textbookWord.UNITSTR}}</td>
-      <td>{{textbookWord.PARTSTR}}</td>
-      <td>{{textbookWord.SEQNUM}}</td>
-      <td>{{textbookWord.WORDID}}</td>
-      <td>{{textbookWord.WORD}}</td>
-      <td>{{textbookWord.NOTE}}</td>
-      <td>{{textbookWord.LEVEL}}</td>
+  <ng-template pTemplate="body" let-row let-index="rowIndex">
+    <tr [pSelectableRow]="row" [ngStyle]="row.colorStyle">
+      <td>{{row.ID}}</td>
+      <td>{{row.TEXTBOOKNAME}}</td>
+      <td>{{row.UNITSTR}}</td>
+      <td>{{row.PARTSTR}}</td>
+      <td>{{row.SEQNUM}}</td>
+      <td>{{row.WORDID}}</td>
+      <td>{{row.WORD}}</td>
+      <td>{{row.NOTE}}</td>
+      <td>{{row.LEVEL}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
                 pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>
-        <a routerLink="/words-textbook-detail/{{textbookWord.ID}}">
+        <a routerLink="/words-textbook-detail/{{row.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>
-        <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(textbookWord.WORD)"
+        <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="textbookWord.WORD"
+        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.WORD"
                 pTooltip="Copy" tooltipPosition="top"></button>
         <button pButton icon="fa fa-arrow-up" (click)="updateLevel(index, 1)" class="ui-button-warning"
                 pTooltip="Level Up" tooltipPosition="top"></button>
         <button pButton icon="fa fa-arrow-down" (click)="updateLevel(index, -1)" class="ui-button-warning"
                 pTooltip="Level Down" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-google" (click)="googleWord(textbookWord.WORD)"
+        <button pButton icon="fa fa-google" (click)="googleWord(row.WORD)"
                 pTooltip="Google Word" tooltipPosition="top"></button>
         <a routerLink="/words-dict/textbook/{{index}}">
           <button pButton icon="fa fa-book" pTooltip="Dictionary" tooltipPosition="top"></button>
