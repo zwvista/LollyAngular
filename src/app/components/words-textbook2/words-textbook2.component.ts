@@ -21,6 +21,12 @@ export class WordsTextbook2Component implements OnInit {
     this.onRefresh();
   }
 
+  paginate(event) {
+    this.rows = event.pageSize;
+    this.page = event.pageIndex + 1;
+    this.onRefresh();
+  }
+
   onRefresh() {
     this.wordsUnitService.getDataInLang(this.page,  this.rows).subscribe();
   }
