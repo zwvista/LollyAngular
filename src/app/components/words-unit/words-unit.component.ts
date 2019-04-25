@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
+import { MUnitWord } from '../../models/unit-word';
 
 @Component({
   selector: 'app-words-unit',
@@ -39,9 +40,8 @@ export class WordsUnitComponent implements OnInit {
     this.wordsUnitService.reindex(index => {});
   }
 
-  deleteWord(index: number) {
-    const o = this.wordsUnitService.unitWords[index];
-    this.wordsUnitService.delete(o);
+  deleteWord(item: MUnitWord) {
+    this.wordsUnitService.delete(item);
   }
 
   getNote(index: number) {
@@ -57,8 +57,7 @@ export class WordsUnitComponent implements OnInit {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
   }
 
-  updateLevel(index: number, delta: number) {
-    const o = this.wordsUnitService.unitWords[index];
-    this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
+  updateLevel(item: MUnitWord, delta: number) {
+    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
   }
 }

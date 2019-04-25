@@ -75,7 +75,7 @@
   <ng-container matColumnDef="ACTION">
     <th mat-header-cell *matHeaderCellDef> ACTION </th>
     <td mat-cell *matCellDef="let row; let index = index;" [ngStyle]="row.colorStyle">
-      <button mat-mini-fab color="warn" matTooltip="Delete" (click)="deleteWord(index)">
+      <button mat-mini-fab color="warn" matTooltip="Delete" (click)="deleteWord(row)">
         <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
       </button>
       <a routerLink="/words-unit-detail/{{row.ID}}">
@@ -90,10 +90,10 @@
       <button mat-mini-fab color="primary" matTooltip="Copy" ngxClipboard [cbContent]="row.WORD">
         <mat-icon fontSet="fa" fontIcon="fa-copy"></mat-icon>
       </button>
-      <button mat-mini-fab color="accent" matTooltip="Level Up" (click)="updateLevel(index, 1)">
+      <button mat-mini-fab color="accent" matTooltip="Level Up" (click)="updateLevel(row, 1)">
         <mat-icon fontSet="fa" fontIcon="fa-arrow-up"></mat-icon>
       </button>
-      <button mat-mini-fab color="accent" matTooltip="Level Down" (click)="updateLevel(index, -1)">
+      <button mat-mini-fab color="accent" matTooltip="Level Down" (click)="updateLevel(row, -1)">
         <mat-icon fontSet="fa" fontIcon="fa-arrow-down"></mat-icon>
       </button>
       <button mat-mini-fab color="primary" matTooltip="Google Word" (click)="googleWord(row.WORD)">

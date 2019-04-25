@@ -47,9 +47,8 @@ export class WordsUnit2Component implements OnInit {
     this.table.renderRows();
   }
 
-  deleteWord(index: number) {
-    const o = this.wordsUnitService.unitWords[index];
-    this.wordsUnitService.delete(o);
+  deleteWord(item: MUnitWord) {
+    this.wordsUnitService.delete(item);
   }
 
   getNote(index: number) {
@@ -65,9 +64,8 @@ export class WordsUnit2Component implements OnInit {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
   }
 
-  updateLevel(index: number, delta: number) {
-    const o = this.wordsUnitService.unitWords[index];
-    this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
+  updateLevel(item: MUnitWord, delta: number) {
+    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
 import { WordsUnitService } from '../../view-models/words-unit.service';
+import { MUnitWord } from '../../models/unit-word';
 
 @Component({
   selector: 'app-words-textbook',
@@ -30,14 +31,17 @@ export class WordsTextbookComponent implements OnInit {
     this.wordsUnitService.getDataInLang(this.page,  this.rows).subscribe();
   }
 
+  deleteWord(item: MUnitWord) {
+    this.wordsUnitService.delete(item);
+  }
+
   getNote(index: number) {
     console.log(index);
     this.wordsUnitService.getNote(index).subscribe();
   }
 
-  updateLevel(index: number, delta: number) {
-    const o = this.wordsUnitService.textbookWords[index];
-    this.settingsService.updateLevel(o, o.WORDID, delta).subscribe();
+  updateLevel(item: MUnitWord, delta: number) {
+    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
   }
 
   googleWord(word: string) {

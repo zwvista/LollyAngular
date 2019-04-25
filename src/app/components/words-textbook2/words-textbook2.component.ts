@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
+import { googleString } from '../../common/common';
+import { MUnitWord } from '../../models/unit-word';
 
 @Component({
   selector: 'app-words-textbook2',
@@ -29,6 +31,18 @@ export class WordsTextbook2Component implements OnInit {
 
   onRefresh() {
     this.wordsUnitService.getDataInLang(this.page,  this.rows).subscribe();
+  }
+
+  deleteWord(item: MUnitWord) {
+    this.wordsUnitService.delete(item);
+  }
+
+  updateLevel(item: MUnitWord, delta: number) {
+    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
+  }
+
+  googleWord(word: string) {
+    googleString(word);
   }
 
 }
