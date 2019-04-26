@@ -36,7 +36,7 @@
       <td>{{row.LEVEL}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(index)"></button>
+                pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(row.ID)"></button>
         <a routerLink="/words-lang-detail/{{row.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
         </a>

@@ -37,6 +37,11 @@ export class WordsTextbook2Component implements OnInit {
     this.wordsUnitService.delete(item);
   }
 
+  getNote(index: number) {
+    console.log(index);
+    this.wordsUnitService.getNote(index).subscribe();
+  }
+
   updateLevel(item: MUnitWord, delta: number) {
     this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
   }
