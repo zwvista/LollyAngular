@@ -47,19 +47,21 @@
   <ng-container matColumnDef="ACTION">
     <th mat-header-cell *matHeaderCellDef> ACTION </th>
     <td mat-cell *matCellDef="let row">
-      <button mat-mini-fab color="warn" matTooltip="Delete">
+      <button mat-mini-fab color="warn" matTooltip="Delete" (click)="deletePhrase(row)">
         <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
       </button>
-      <button mat-mini-fab color="primary" matTooltip="Edit">
-        <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
-      </button>
-      <button mat-mini-fab color="primary" matTooltip="Speak">
+      <a routerLink="/phrases-textbook-detail/{{row.ID}}">
+        <button mat-mini-fab color="primary" matTooltip="Edit">
+          <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
+        </button>
+      </a>
+      <button mat-mini-fab color="primary" matTooltip="Speak" (click)="settingsService.speak(row.PHRASE)">
         <mat-icon fontSet="fa" fontIcon="fa-volume-up"></mat-icon>
       </button>
-      <button mat-mini-fab color="primary" matTooltip="Copy">
+      <button mat-mini-fab color="primary" matTooltip="Copy" ngxClipboard [cbContent]="row.PHRASE">
         <mat-icon fontSet="fa" fontIcon="fa-copy"></mat-icon>
       </button>
-      <button mat-mini-fab color="primary" matTooltip="Google Phrase">
+      <button mat-mini-fab color="primary" matTooltip="Google Phrase" (click)="googlePhrase(row.PHRASE)">
         <mat-icon fontSet="fa" fontIcon="fa-google"></mat-icon>
       </button>
     </td>

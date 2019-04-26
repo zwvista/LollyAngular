@@ -5,6 +5,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MUnitWord } from '../../models/unit-word';
 import { MatTable } from '@angular/material';
 import { googleString } from '../../common/common';
+import { MUnitPhrase } from '../../models/unit-phrase';
 
 @Component({
   selector: 'app-phrases-unit2',
@@ -27,15 +28,14 @@ export class PhrasesUnit2Component implements OnInit {
     this.phrasesUnitService.getDataInTextbook().subscribe();
   }
 
-  dropTable(event: CdkDragDrop<MUnitWord[]>) {
+  dropTable(event: CdkDragDrop<MUnitPhrase[]>) {
     const prevIndex = this.phrasesUnitService.unitPhrases.findIndex((d) => d === event.item.data);
     moveItemInArray(this.phrasesUnitService.unitPhrases, prevIndex, event.currentIndex);
     this.table.renderRows();
   }
 
-  deletePhrase(index: number) {
-    const o = this.phrasesUnitService.unitPhrases[index];
-    this.phrasesUnitService.delete(o);
+  deletePhrase(item: MUnitPhrase) {
+    this.phrasesUnitService.delete(item);
   }
 
   googlePhrase(phrase: string) {

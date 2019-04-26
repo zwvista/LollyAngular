@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WordsLangService } from '../../view-models/words-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
+import { MLangWord } from '../../models/lang-word';
 
 @Component({
   selector: 'app-words-lang2',
@@ -53,9 +54,8 @@ export class WordsLang2Component implements OnInit {
     this.wordsLangService.getNote(index).subscribe();
   }
 
-  updateLevel(index: number, delta: number) {
-    const o = this.wordsLangService.langWords[index];
-    this.settingsService.updateLevel(o, o.ID, delta).subscribe();
+  updateLevel(item: MLangWord, delta: number) {
+    this.settingsService.updateLevel(item, item.ID, delta).subscribe();
   }
 
   googleWord(word: string) {

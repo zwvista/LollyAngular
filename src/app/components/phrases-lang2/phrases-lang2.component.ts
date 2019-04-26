@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
+import { googleString } from '../../common/common';
 
 @Component({
   selector: 'app-phrases-lang2',
@@ -31,4 +32,11 @@ export class PhrasesLang2Component implements OnInit {
     this.phrasesLangService.getData(this.page,  this.rows).subscribe();
   }
 
+  deletePhrase(id: number) {
+    this.phrasesLangService.delete(id);
+  }
+
+  googlePhrase(phrase: string) {
+    googleString(phrase);
+  }
 }

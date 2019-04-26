@@ -30,8 +30,8 @@ export class PhrasesLangComponent implements OnInit {
     this.phrasesLangService.getData(this.page,  this.rows).subscribe();
   }
 
-  deletePhrase(index: number) {
-    console.log(index);
+  deletePhrase(id: number) {
+    this.phrasesLangService.delete(id);
   }
 
   googlePhrase(phrase: string) {

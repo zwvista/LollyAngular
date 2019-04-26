@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
+import { MUnitPhrase } from '../../models/unit-phrase';
 
 @Component({
   selector: 'app-phrases-textbook',
@@ -28,6 +29,10 @@ export class PhrasesTextbookComponent implements OnInit {
 
   onRefresh() {
     this.phrasesUnitService.getDataInLang(this.page,  this.rows).subscribe();
+  }
+
+  deletePhrase(item: MUnitPhrase) {
+    this.phrasesUnitService.delete(item);
   }
 
   googlePhrase(phrase: string) {

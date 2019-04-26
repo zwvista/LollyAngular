@@ -45,9 +45,9 @@
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.WORD"
                 pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-arrow-up" (click)="updateLevel(index, 1)" class="ui-button-warning"
+        <button pButton icon="fa fa-arrow-up" (click)="updateLevel(row, 1)" class="ui-button-warning"
                 pTooltip="Level Up" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-arrow-down" (click)="updateLevel(index, -1)" class="ui-button-warning"
+        <button pButton icon="fa fa-arrow-down" (click)="updateLevel(row, -1)" class="ui-button-warning"
                 pTooltip="Level Down" tooltipPosition="top"></button>
         <button pButton pButton icon="fa fa-google" (click)="googleWord(row.WORD)"
                 pTooltip="Google Word" tooltipPosition="top"></button>
