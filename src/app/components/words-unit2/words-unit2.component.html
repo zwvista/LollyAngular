@@ -72,6 +72,10 @@
     <th mat-header-cell *matHeaderCellDef> LEVEL </th>
     <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.LEVEL}} </td>
   </ng-container>
+  <ng-container matColumnDef="ACCURACY">
+    <th mat-header-cell *matHeaderCellDef> ACCURACY </th>
+    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.ACCURACY}} </td>
+  </ng-container>
   <ng-container matColumnDef="ACTION">
     <th mat-header-cell *matHeaderCellDef> ACTION </th>
     <td mat-cell *matCellDef="let row; let index = index;" [ngStyle]="row.colorStyle">

@@ -11,7 +11,7 @@ import { MLangWord } from '../../models/lang-word';
 })
 export class WordsLang2Component implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'WORD', 'NOTE', 'LEVEL', 'ACTION'];
+  displayedColumns: string[] = ['ID', 'WORD', 'NOTE', 'LEVEL', 'ACCURACY', 'ACTION'];
 
   newWord: string;
   rows = this.settingsService.USROWSPERPAGE;

@@ -11,7 +11,7 @@ import { MUnitWord } from '../../models/unit-word';
 })
 export class WordsTextbook2Component implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL', 'ACTION'];
+  displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL', 'ACCURACY', 'ACTION'];
 
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
