@@ -23,7 +23,7 @@ export class WordsLangDetailComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     const o = this.wordsLangService.langWords.find(value => value.ID === id);
-    this.item = o ? {...o} as MLangWord : this.wordsLangService.newLangWord();
+    this.item = o || this.wordsLangService.newLangWord();
   }
 
   goBack(): void {
