@@ -43,8 +43,8 @@ export class WordsLangComponent implements OnInit {
     this.wordsLangService.getData(this.page,  this.rows).subscribe();
   }
 
-  deleteWord(id: number) {
-    this.wordsLangService.delete(id);
+  deleteWord(item: MLangWord) {
+    this.wordsLangService.delete(item);
   }
 
   getNote(index: number) {
