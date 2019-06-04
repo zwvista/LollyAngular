@@ -15,10 +15,10 @@ export class AutoCorrectService extends BaseService {
   }
 
   getDataByLang(langid: number): Observable<MAutoCorrect[]> {
-    const url = `${this.baseUrl}AUTOCORRECT?transform=1&filter=LANGID,eq,${langid}`;
+    const url = `${this.baseUrl}AUTOCORRECT?filter=LANGID,eq,${langid}`;
     return this.http.get<MAutoCorrects>(url)
       .pipe(
-        map(result => result.AUTOCORRECT.map(value => Object.assign(new MAutoCorrect(), value))),
+        map(result => result.records.map(value => Object.assign(new MAutoCorrect(), value))),
       );
   }
 }
