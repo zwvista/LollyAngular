@@ -22,6 +22,7 @@ export class WordFamiService extends BaseService {
 
   create(item: MWordFami): Observable<number | any[]> {
     const url = `${this.baseUrl}WORDSFAMI`;
+    (item as any).ID = null;
     return this.http.post<number | any[]>(url, item, this.httpOptions)
       .pipe(
       );
