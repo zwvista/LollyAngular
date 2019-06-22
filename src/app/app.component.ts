@@ -1,8 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AppService } from './view-models/app.service';
 import { MenuItem } from 'primeng/api';
-import { detectChanges } from '@angular/core/src/render3';
-import { MatTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 
 @Component({

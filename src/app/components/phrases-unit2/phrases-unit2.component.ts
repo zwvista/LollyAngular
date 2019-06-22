@@ -3,7 +3,7 @@ import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MUnitWord } from '../../models/unit-word';
-import { MatTable } from '@angular/material';
+import { MatTable } from '@angular/material/table';
 import { googleString } from '../../common/common';
 import { MUnitPhrase } from '../../models/unit-phrase';
 
@@ -13,7 +13,7 @@ import { MUnitPhrase } from '../../models/unit-phrase';
   styleUrls: ['./phrases-unit2.component.css']
 })
 export class PhrasesUnit2Component implements OnInit {
-  @ViewChild('table') table: MatTable<MUnitWord>;
+  @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
 

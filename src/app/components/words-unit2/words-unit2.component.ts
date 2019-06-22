@@ -3,7 +3,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MatTable } from '@angular/material';
+import { MatTable } from '@angular/material/table';
 import { MUnitWord } from '../../models/unit-word';
 
 @Component({
@@ -13,7 +13,7 @@ import { MUnitWord } from '../../models/unit-word';
 })
 export class WordsUnit2Component implements OnInit {
   // https://stackoverflow.com/questions/53377450/reorder-mat-table-rows-with-angular-materials-drag-and-drop
-  @ViewChild('table') table: MatTable<MUnitWord>;
+  @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL', 'ACCURACY', 'ACTION'];
 

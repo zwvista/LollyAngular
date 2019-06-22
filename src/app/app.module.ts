@@ -56,15 +56,13 @@ import { VoicesService } from './services/voices.service';
 import { WordsFamiService } from './view-models/words-fami.service';
 import { WordFamiService } from './services/word-fami.service';
 import { WordsUnit2Component } from './components/words-unit2/words-unit2.component';
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatInputModule,
-  MatPaginatorModule,
-  MatTableModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { WordsTextbook2Component } from './components/words-textbook2/words-textbook2.component';
 import { WordsLang2Component } from './components/words-lang2/words-lang2.component';
 import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.component';
