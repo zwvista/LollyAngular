@@ -18,7 +18,7 @@ export class LangPhraseService extends BaseService {
       .pipe(
         map(result => ({
           records: result.records.map(value => Object.assign(new MLangPhrase(), value)),
-          _results: result._results,
+          results: result.results,
         })),
       );
   }
