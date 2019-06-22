@@ -10,7 +10,7 @@
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<table mat-table #table style="width:100%;" [dataSource]="phrasesUnitService.unitPhrases" class="mat-elevation-z8"
+<table mat-table #table [dataSource]="phrasesUnitService.unitPhrases" class="mat-elevation-z8"
        cdkDropList
        [cdkDropListData]="phrasesUnitService.unitPhrases"
        (cdkDropListDropped)="dropTable($event)">

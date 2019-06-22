@@ -10,7 +10,7 @@
                [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
                (page)="paginate($event)">
 </mat-paginator>
-<table style="width:100%;" mat-table [dataSource]="phrasesUnitService.textbookPhrases" class="mat-elevation-z8">
+<table mat-table [dataSource]="phrasesUnitService.textbookPhrases" class="mat-elevation-z8">
 
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef> ID </th>
