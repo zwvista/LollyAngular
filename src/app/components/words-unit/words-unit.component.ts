@@ -12,6 +12,7 @@ import { MUnitWord } from '../../models/unit-word';
 export class WordsUnitComponent implements OnInit {
 
   newWord: string;
+  filter: string;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
@@ -20,7 +21,7 @@ export class WordsUnitComponent implements OnInit {
     this.onRefresh();
   }
 
-  onEnter() {
+  onEnterNewWord() {
     if (!this.newWord) return;
     const o = this.wordsUnitService.newUnitWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
