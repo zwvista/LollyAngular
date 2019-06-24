@@ -15,7 +15,7 @@ export class UnitPhraseService extends BaseService {
 
   getDataByTextbookUnitPart(textbook: MTextbook, unitPartFrom: number, unitPartTo: number, filter: string, filterType: number): Observable<MUnitPhrase[]> {
     let url = `${this.baseUrl}VUNITPHRASES?filter=TEXTBOOKID,eq,${textbook.ID}&filter=UNITPART,bt,${unitPartFrom},${unitPartTo}&order=UNITPART&order=SEQNUM`;
-    if (filterType !== 0)
+    if (filterType !== 0 && filter)
       url += `&filter=${filterType === 1 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     return this.http.get<MUnitPhrases>(url)
       .pipe(
@@ -31,7 +31,7 @@ export class UnitPhraseService extends BaseService {
 
   getDataByLang(langid: number, textbooks: MTextbook[], page: number, rows: number, filter: string, filterType: number): Observable<MUnitPhrases> {
     let url = `${this.baseUrl}VUNITPHRASES?filter=LANGID,eq,${langid}&order=TEXTBOOKID&order=UNIT&order=PART&order=SEQNUM&page=${page},${rows}`;
-    if (filterType !== 0)
+    if (filterType !== 0 && filter)
       url += `&filter=${filterType === 1 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     return this.http.get<MUnitPhrases>(url)
       .pipe(

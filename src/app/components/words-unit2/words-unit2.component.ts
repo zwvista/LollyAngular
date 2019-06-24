@@ -28,7 +28,7 @@ export class WordsUnit2Component implements OnInit {
     this.onRefresh();
   }
 
-  onEnter() {
+  onEnterNewWord() {
     if (!this.newWord) return;
     const o = this.wordsUnitService.newUnitWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
@@ -41,6 +41,14 @@ export class WordsUnit2Component implements OnInit {
 
   onRefresh() {
     this.wordsUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
+  }
+
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
   }
 
   dropTable(event: CdkDragDrop<MUnitWord[]>) {

@@ -34,6 +34,14 @@ export class PhrasesLang2Component implements OnInit {
     this.phrasesLangService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
   }
 
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
+  }
+
   deletePhrase(id: number) {
     this.phrasesLangService.delete(id);
   }

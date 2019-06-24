@@ -35,6 +35,14 @@ export class WordsTextbook2Component implements OnInit {
     this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType).subscribe();
   }
 
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
+  }
+
   deleteWord(item: MUnitWord) {
     this.wordsUnitService.delete(item);
   }

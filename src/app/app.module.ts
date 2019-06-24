@@ -68,6 +68,7 @@ import { WordsLang2Component } from './components/words-lang2/words-lang2.compon
 import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.component';
 import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrases-textbook2.component';
 import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
+import { MatSelectModule } from '@angular/material';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.
     MatIconModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatTabsModule,
     MatTableModule,
     MatToolbarModule,

@@ -30,6 +30,14 @@ export class PhrasesUnit2Component implements OnInit {
     this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
   }
 
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
+  }
+
   dropTable(event: CdkDragDrop<MUnitPhrase[]>) {
     const prevIndex = this.phrasesUnitService.unitPhrases.findIndex((d) => d === event.item.data);
     moveItemInArray(this.phrasesUnitService.unitPhrases, prevIndex, event.currentIndex);

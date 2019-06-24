@@ -1,5 +1,15 @@
 <mat-toolbar>
   <mat-toolbar-row>
+    <mat-form-field>
+      <mat-select [(value)]="filterType" (selectionChange)="onEnterFilter()">
+        <mat-option *ngFor="let o of settingsService.phraseFilterTypes" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Filter" [(ngModel)]="filter" (keyup.enter)="onEnterFilter()">
+    </mat-form-field>
     <a routerLink="/phrases-lang-detail/0">
       <button mat-raised-button color="primary">
         <span><mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon>Add</span>

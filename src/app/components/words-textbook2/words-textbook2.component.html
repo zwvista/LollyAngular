@@ -1,5 +1,15 @@
 <mat-toolbar>
   <mat-toolbar-row>
+    <mat-form-field>
+      <mat-select [(value)]="filterType" (selectionChange)="onEnterFilter()">
+        <mat-option *ngFor="let o of settingsService.wordFilterTypes" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Filter" [(ngModel)]="filter" (keyup.enter)="onEnterFilter()">
+    </mat-form-field>
     <button mat-raised-button color="primary" (click)="onRefresh()">
       <span><mat-icon fontSet="fa" fontIcon="fa-refresh"></mat-icon>Refresh</span>
     </button>
