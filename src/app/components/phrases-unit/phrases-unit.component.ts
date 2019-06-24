@@ -3,6 +3,7 @@ import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { googleString } from '../../common/common';
 import { SettingsService } from '../../view-models/settings.service';
 import { MUnitPhrase } from '../../models/unit-phrase';
+import { AppService } from '../../view-models/app.service';
 
 @Component({
   selector: 'app-phrases-unit',
@@ -11,14 +12,17 @@ import { MUnitPhrase } from '../../models/unit-phrase';
 })
 export class PhrasesUnitComponent implements OnInit {
 
-  constructor(private phrasesUnitService: PhrasesUnitService,
+  constructor(private appService: AppService,
+              private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService) { }
 
   filter: string;
   filterType = 0;
 
   ngOnInit() {
-    this.onRefresh();
+    this.appService.initializeComplete.subscribe(_ => {
+      this.onRefresh();
+    });
   }
 
   onReorder(from: number, to: number) {

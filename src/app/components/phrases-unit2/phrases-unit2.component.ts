@@ -6,6 +6,7 @@ import { MUnitWord } from '../../models/unit-word';
 import { MatTable } from '@angular/material/table';
 import { googleString } from '../../common/common';
 import { MUnitPhrase } from '../../models/unit-phrase';
+import { AppService } from '../../view-models/app.service';
 
 @Component({
   selector: 'app-phrases-unit2',
@@ -19,11 +20,14 @@ export class PhrasesUnit2Component implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor(private phrasesUnitService: PhrasesUnitService,
+  constructor(private appService: AppService,
+              private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.onRefresh();
+    this.appService.initializeComplete.subscribe(_ => {
+      this.onRefresh();
+    });
   }
 
   onRefresh() {

@@ -3,6 +3,7 @@ import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { MUnitPhrase } from '../../models/unit-phrase';
 import { googleString } from '../../common/common';
+import { AppService } from '../../view-models/app.service';
 
 @Component({
   selector: 'app-phrases-textbook2',
@@ -13,7 +14,8 @@ export class PhrasesTextbook2Component implements OnInit {
 
   displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
 
-  constructor(private phrasesUnitService: PhrasesUnitService,
+  constructor(private appService: AppService,
+              private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService) { }
 
   rows = this.settingsService.USROWSPERPAGE;
@@ -23,7 +25,9 @@ export class PhrasesTextbook2Component implements OnInit {
   textbookFilter = 0;
 
   ngOnInit() {
-    this.onRefresh();
+    this.appService.initializeComplete.subscribe(_ => {
+      this.onRefresh();
+    });
   }
 
   paginate(event) {

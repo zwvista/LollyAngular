@@ -5,6 +5,7 @@ import { googleString } from '../../common/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatTable } from '@angular/material/table';
 import { MUnitWord } from '../../models/unit-word';
+import { AppService } from '../../view-models/app.service';
 
 @Component({
   selector: 'app-words-unit2',
@@ -21,11 +22,14 @@ export class WordsUnit2Component implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor(private wordsUnitService: WordsUnitService,
+  constructor(private appService: AppService,
+              private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.onRefresh();
+    this.appService.initializeComplete.subscribe(_ => {
+      this.onRefresh();
+    });
   }
 
   onEnterNewWord() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
+import { AppService } from '../../view-models/app.service';
 
 @Component({
   selector: 'app-phrases-lang2',
@@ -17,11 +18,14 @@ export class PhrasesLang2Component implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor(private phrasesLangService: PhrasesLangService,
+  constructor(private appService: AppService,
+              private phrasesLangService: PhrasesLangService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.onRefresh();
+    this.appService.initializeComplete.subscribe(_ => {
+      this.onRefresh();
+    });
   }
 
   paginate(event) {

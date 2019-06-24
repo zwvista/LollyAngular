@@ -3,6 +3,7 @@ import { WordsLangService } from '../../view-models/words-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
 import { MLangWord } from '../../models/lang-word';
+import { AppService } from '../../view-models/app.service';
 
 @Component({
   selector: 'app-words-lang',
@@ -17,11 +18,14 @@ export class WordsLangComponent implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor(private wordsLangService: WordsLangService,
+  constructor(private appService: AppService,
+              private wordsLangService: WordsLangService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.onRefresh();
+    this.appService.initializeComplete.subscribe(_ => {
+      this.onRefresh();
+    });
   }
 
   paginate(event) {
