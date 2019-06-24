@@ -12,7 +12,7 @@ import { AppService } from '../../view-models/app.service';
 })
 export class WordsTextbookComponent implements OnInit {
 
-  rows = this.settingsService.USROWSPERPAGE;
+  rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
@@ -24,6 +24,7 @@ export class WordsTextbookComponent implements OnInit {
 
   ngOnInit() {
     this.appService.initializeComplete.subscribe(_ => {
+      this.rows = this.settingsService.USROWSPERPAGE;
       this.onRefresh();
     });
   }

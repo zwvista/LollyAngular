@@ -13,7 +13,7 @@ export class PhrasesLang2Component implements OnInit {
 
   displayedColumns: string[] = ['ID', 'PHRASE', 'TRANSLATION', 'ACTION'];
 
-  rows = this.settingsService.USROWSPERPAGE;
+  rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
@@ -24,6 +24,7 @@ export class PhrasesLang2Component implements OnInit {
 
   ngOnInit() {
     this.appService.initializeComplete.subscribe(_ => {
+      this.rows = this.settingsService.USROWSPERPAGE;
       this.onRefresh();
     });
   }
