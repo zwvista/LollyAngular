@@ -207,6 +207,9 @@ export class SettingsService {
 
   settingsListener: SettingsListener | null = null;
 
+  wordFilterTypes = ['None', 'Word', 'Note'].map((v, i) => new MSelectItem(i, v));
+  phraseFilterTypes = ['None', 'Phrase', 'Translation'].map((v, i) => new MSelectItem(i, v));
+
   constructor(private langService: LanguageService,
               private userSettingService: UserSettingService,
               private dictReferenceService: DictReferenceService,

@@ -13,6 +13,8 @@ export class WordsTextbookComponent implements OnInit {
 
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
+  filter: string;
+  filterType = 0;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
@@ -28,7 +30,15 @@ export class WordsTextbookComponent implements OnInit {
   }
 
   onRefresh() {
-    this.wordsUnitService.getDataInLang(this.page,  this.rows).subscribe();
+    this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType).subscribe();
+  }
+
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
   }
 
   deleteWord(item: MUnitWord) {

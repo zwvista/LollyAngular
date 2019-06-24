@@ -13,8 +13,10 @@ export class UnitPhraseService extends BaseService {
     super(http);
   }
 
-  getDataByTextbookUnitPart(textbook: MTextbook, unitPartFrom: number, unitPartTo: number): Observable<MUnitPhrase[]> {
-    const url = `${this.baseUrl}VUNITPHRASES?filter=TEXTBOOKID,eq,${textbook.ID}&filter=UNITPART,bt,${unitPartFrom},${unitPartTo}&order=UNITPART&order=SEQNUM`;
+  getDataByTextbookUnitPart(textbook: MTextbook, unitPartFrom: number, unitPartTo: number, filter: string, filterType: number): Observable<MUnitPhrase[]> {
+    let url = `${this.baseUrl}VUNITPHRASES?filter=TEXTBOOKID,eq,${textbook.ID}&filter=UNITPART,bt,${unitPartFrom},${unitPartTo}&order=UNITPART&order=SEQNUM`;
+    if (filterType !== 0)
+      url += `&filter=${filterType === 1 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     return this.http.get<MUnitPhrases>(url)
       .pipe(
         map(result => {
@@ -27,8 +29,10 @@ export class UnitPhraseService extends BaseService {
       );
   }
 
-  getDataByLang(langid: number, textbooks: MTextbook[], page: number, rows: number): Observable<MUnitPhrases> {
-    const url = `${this.baseUrl}VUNITPHRASES?filter=LANGID,eq,${langid}&order=TEXTBOOKID&order=UNIT&order=PART&order=SEQNUM&page=${page},${rows}`;
+  getDataByLang(langid: number, textbooks: MTextbook[], page: number, rows: number, filter: string, filterType: number): Observable<MUnitPhrases> {
+    let url = `${this.baseUrl}VUNITPHRASES?filter=LANGID,eq,${langid}&order=TEXTBOOKID&order=UNIT&order=PART&order=SEQNUM&page=${page},${rows}`;
+    if (filterType !== 0)
+      url += `&filter=${filterType === 1 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     return this.http.get<MUnitPhrases>(url)
       .pipe(
         map(result => ({

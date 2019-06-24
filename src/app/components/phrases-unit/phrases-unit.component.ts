@@ -14,6 +14,9 @@ export class PhrasesUnitComponent implements OnInit {
   constructor(private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService) { }
 
+  filter: string;
+  filterType = 0;
+
   ngOnInit() {
     this.onRefresh();
   }
@@ -24,7 +27,15 @@ export class PhrasesUnitComponent implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesUnitService.getDataInTextbook().subscribe();
+    this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
+  }
+
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
   }
 
   deletePhrase(item: MUnitPhrase) {

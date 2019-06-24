@@ -16,6 +16,8 @@ export class PhrasesTextbookComponent implements OnInit {
 
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
+  filter: string;
+  filterType = 0;
 
   ngOnInit() {
     this.onRefresh();
@@ -28,7 +30,15 @@ export class PhrasesTextbookComponent implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesUnitService.getDataInLang(this.page,  this.rows).subscribe();
+    this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType).subscribe();
+  }
+
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
   }
 
   deletePhrase(item: MUnitPhrase) {

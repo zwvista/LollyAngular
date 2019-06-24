@@ -14,6 +14,8 @@ export class WordsLangComponent implements OnInit {
   newWord: string;
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
+  filter: string;
+  filterType = 0;
 
   constructor(private wordsLangService: WordsLangService,
               private settingsService: SettingsService) { }
@@ -28,7 +30,7 @@ export class WordsLangComponent implements OnInit {
     this.onRefresh();
   }
 
-  onEnter() {
+  onEnterNewWord() {
     if (!this.newWord) return;
     const o = this.wordsLangService.newLangWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
@@ -40,7 +42,15 @@ export class WordsLangComponent implements OnInit {
   }
 
   onRefresh() {
-    this.wordsLangService.getData(this.page,  this.rows).subscribe();
+    this.wordsLangService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
+  }
+
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
   }
 
   deleteWord(item: MLangWord) {

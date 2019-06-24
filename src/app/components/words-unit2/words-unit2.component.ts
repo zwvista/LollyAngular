@@ -18,6 +18,8 @@ export class WordsUnit2Component implements OnInit {
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL', 'ACCURACY', 'ACTION'];
 
   newWord: string;
+  filter: string;
+  filterType = 0;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
@@ -38,7 +40,7 @@ export class WordsUnit2Component implements OnInit {
   }
 
   onRefresh() {
-    this.wordsUnitService.getDataInTextbook().subscribe();
+    this.wordsUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
   }
 
   dropTable(event: CdkDragDrop<MUnitWord[]>) {

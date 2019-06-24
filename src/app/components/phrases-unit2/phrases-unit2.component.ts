@@ -16,6 +16,8 @@ export class PhrasesUnit2Component implements OnInit {
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
+  filter: string;
+  filterType = 0;
 
   constructor(private phrasesUnitService: PhrasesUnitService,
               private settingsService: SettingsService) { }
@@ -25,7 +27,7 @@ export class PhrasesUnit2Component implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesUnitService.getDataInTextbook().subscribe();
+    this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
   }
 
   dropTable(event: CdkDragDrop<MUnitPhrase[]>) {

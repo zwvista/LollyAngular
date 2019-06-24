@@ -12,8 +12,10 @@ export class LangPhraseService extends BaseService {
     super(http);
   }
 
-  getDataByLang(langid: number, page: number, rows: number): Observable<MLangPhrases> {
-    const url = `${this.baseUrl}LANGPHRASES?filter=LANGID,eq,${langid}&order=PHRASE&page=${page},${rows}`;
+  getDataByLang(langid: number, page: number, rows: number, filter: string, filterType: number): Observable<MLangPhrases> {
+    let url = `${this.baseUrl}LANGPHRASES?filter=LANGID,eq,${langid}&order=PHRASE&page=${page},${rows}`;
+    if (filterType !== 0)
+      url += `&filter=${filterType === 1 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     return this.http.get<MLangPhrases>(url)
       .pipe(
         map(result => ({

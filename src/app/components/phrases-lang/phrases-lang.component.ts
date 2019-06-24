@@ -12,6 +12,8 @@ export class PhrasesLangComponent implements OnInit {
 
   rows = this.settingsService.USROWSPERPAGE;
   page = 1;
+  filter: string;
+  filterType = 0;
 
   constructor(private phrasesLangService: PhrasesLangService,
               private settingsService: SettingsService) { }
@@ -27,7 +29,15 @@ export class PhrasesLangComponent implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesLangService.getData(this.page,  this.rows).subscribe();
+    this.phrasesLangService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
+  }
+
+  onEnterFilter() {
+    if (this.filter && this.filterType === 0)
+      this.filterType = 1;
+    else if (!this.filter && this.filterType !== 0)
+      this.filterType = 0;
+    this.onRefresh();
   }
 
   deletePhrase(id: number) {

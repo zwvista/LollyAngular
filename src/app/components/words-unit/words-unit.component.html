@@ -6,9 +6,11 @@
       </span>
       <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(newWord)"
               pTooltip="Speak" tooltipPosition="top"></button>
+      <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onEnterFilter()">
+      </p-dropdown>
       <span class="ui-float-label">
         <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onEnterFilter()">
-        <label for="word">Filter</label>
+        <label for="filter">Filter</label>
       </span>
       <a routerLink="/words-unit-detail/0">
         <button pButton type="button" label="Add" icon="fa fa-plus"></button>
@@ -41,7 +43,7 @@
   <ng-template pTemplate="body" let-row let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="row" [ngStyle]="row.colorStyle">
       <td>
-        <i [hidden]="!settingsService.isSingleUnitPart" class="fa fa-bars" pReorderableRowHandle></i>
+        <i [hidden]="!settingsService.isSingleUnitPart || filterType !== 0" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
       <td>{{row.ID}}</td>
       <td>{{row.UNITSTR}}</td>
