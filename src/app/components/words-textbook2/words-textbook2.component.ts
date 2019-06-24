@@ -17,6 +17,7 @@ export class WordsTextbook2Component implements OnInit {
   page = 1;
   filter: string;
   filterType = 0;
+  textbookFilter = 0;
 
   constructor(private wordsUnitService: WordsUnitService,
               private settingsService: SettingsService) { }
@@ -32,7 +33,7 @@ export class WordsTextbook2Component implements OnInit {
   }
 
   onRefresh() {
-    this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType).subscribe();
+    this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter).subscribe();
   }
 
   onEnterFilter() {

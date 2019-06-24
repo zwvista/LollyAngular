@@ -18,6 +18,7 @@ export class PhrasesTextbookComponent implements OnInit {
   page = 1;
   filter: string;
   filterType = 0;
+  textbookFilter = 0;
 
   ngOnInit() {
     this.onRefresh();
@@ -30,7 +31,7 @@ export class PhrasesTextbookComponent implements OnInit {
   }
 
   onRefresh() {
-    this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType).subscribe();
+    this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter).subscribe();
   }
 
   onEnterFilter() {

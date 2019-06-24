@@ -37,10 +37,10 @@ export class WordsUnitService {
     );
   }
 
-  getDataInLang(page: number, rows: number, filter: string, filterType: number): Observable<void> {
+  getDataInLang(page: number, rows: number, filter: string, filterType: number, textbookFilter: number): Observable<void> {
     return this.appService.initializeComplete.pipe(
       concatMap(_ => this.unitWordService.getDataByLang(this.settingsService.selectedLang.ID,
-        this.settingsService.textbooks, page, rows, filter, filterType)),
+        this.settingsService.textbooks, page, rows, filter, filterType, textbookFilter)),
       map(res => {
         this.settingsService.setColorStyles(res.records);
         this.textbookWords = res.records;

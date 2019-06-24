@@ -10,6 +10,13 @@
     <mat-form-field>
       <input matInput placeholder="Filter" [(ngModel)]="filter" (keyup.enter)="onEnterFilter()">
     </mat-form-field>
+    <mat-form-field>
+      <mat-select [(value)]="textbookFilter" (selectionChange)="onRefresh()">
+        <mat-option *ngFor="let o of settingsService.textbookFilters" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button color="primary" (click)="onRefresh()">
       <span><mat-icon fontSet="fa" fontIcon="fa-refresh"></mat-icon>Refresh</span>
     </button>

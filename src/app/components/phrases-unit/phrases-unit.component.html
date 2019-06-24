@@ -30,7 +30,7 @@
   <ng-template pTemplate="body" let-row let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="row">
       <td>
-        <i [hidden]="!settingsService.isSingleUnitPart" class="fa fa-bars" pReorderableRowHandle></i>
+        <i [hidden]="!settingsService.isSingleUnitPart || filterType !== 0" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
       <td>{{row.ID}}</td>
       <td>{{row.UNITSTR}}</td>
