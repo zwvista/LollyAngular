@@ -25,7 +25,7 @@ export class PhrasesUnit2Component implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.appService.initializeComplete.subscribe(_ => {
+    this.appService.initializeObject.subscribe(_ => {
       this.onRefresh();
     });
   }

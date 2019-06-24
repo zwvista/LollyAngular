@@ -20,7 +20,7 @@ export class PhrasesUnitComponent implements OnInit {
   filterType = 0;
 
   ngOnInit() {
-    this.appService.initializeComplete.subscribe(_ => {
+    this.appService.initializeObject.subscribe(_ => {
       this.onRefresh();
     });
   }

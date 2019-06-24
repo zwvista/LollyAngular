@@ -27,7 +27,7 @@ export class WordsUnit2Component implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.appService.initializeComplete.subscribe(_ => {
+    this.appService.initializeObject.subscribe(_ => {
       this.onRefresh();
     });
   }

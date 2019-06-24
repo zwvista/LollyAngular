@@ -21,7 +21,7 @@ export class PhrasesLangComponent implements OnInit {
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.appService.initializeComplete.subscribe(_ => {
+    this.appService.initializeObject.subscribe(_ => {
       this.rows = this.settingsService.USROWSPERPAGE;
       this.onRefresh();
     });
