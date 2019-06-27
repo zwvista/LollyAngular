@@ -69,6 +69,7 @@ import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.
 import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrases-textbook2.component';
 import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
 import { MatSelectModule } from '@angular/material';
+import { UsMappingService } from './services/us-mapping.service';
 
 
 @NgModule({
@@ -139,6 +140,7 @@ import { MatSelectModule } from '@angular/material';
     AutoCorrectService,
     LangPhraseService,
     LangWordService,
+    UsMappingService,
     VoicesService,
     WordFamiService,
     WordsFamiService,
