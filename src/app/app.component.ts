@@ -19,19 +19,19 @@ export class AppComponent implements OnInit {
   items: MenuItem[] = [
     {label: 'Words in Unit', icon: 'fa fa-fw fa-bus', routerLink: '/words-unit'},
     {label: 'Phrases in Unit', icon: 'fa fa-fw fa-train', routerLink: '/phrases-unit'},
-    {label: 'Words in Language', icon: 'fa fa-fw fa-plane', routerLink: '/words-lang'},
-    {label: 'Phrases in Language', icon: 'fa fa-fw fa-rocket', routerLink: '/phrases-lang'},
     {label: 'Words in Textbook', icon: 'fa fa-fw fa-car', routerLink: '/words-textbook'},
     {label: 'Phrases in Textbook', icon: 'fa fa-fw fa-taxi', routerLink: '/phrases-textbook'},
+    {label: 'Words in Language', icon: 'fa fa-fw fa-plane', routerLink: '/words-lang'},
+    {label: 'Phrases in Language', icon: 'fa fa-fw fa-rocket', routerLink: '/phrases-lang'},
     {label: 'Settings', icon: 'fa fa-fw fa-gear', routerLink: '/settings'},
   ];
   tabLinks: MenuItem[] = [
     {label: 'Words in Unit', icon: 'fa-bus', routerLink: '/words-unit2'},
     {label: 'Phrases in Unit', icon: 'fa-train', routerLink: '/phrases-unit2'},
-    {label: 'Words in Language', icon: 'fa-plane', routerLink: '/words-lang2'},
-    {label: 'Phrases in Language', icon: 'fa-rocket', routerLink: '/phrases-lang2'},
     {label: 'Words in Textbook', icon: 'fa-car', routerLink: '/words-textbook2'},
     {label: 'Phrases in Textbook', icon: 'fa-taxi', routerLink: '/phrases-textbook2'},
+    {label: 'Words in Language', icon: 'fa-plane', routerLink: '/words-lang2'},
+    {label: 'Phrases in Language', icon: 'fa-rocket', routerLink: '/phrases-lang2'},
     {label: 'Settings', icon: 'fa-gear', routerLink: '/settings'},
   ];
 
