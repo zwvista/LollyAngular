@@ -36,9 +36,9 @@ export class SettingsComponent implements OnInit, SettingsListener {
     this.settingsService.updateVoice().subscribe();
   }
 
-  onDictItemChange(index) {
-    this.settingsService.selectedDictItem = this.settingsService.dictItems[index];
-    this.settingsService.updateDictItem().subscribe();
+  onDictReferenceChange(index) {
+    this.settingsService.selectedDictReference = this.settingsService.dictsReference[index];
+    this.settingsService.updateDictReference().subscribe();
   }
 
   onDictNoteChange(index) {
@@ -87,7 +87,7 @@ export class SettingsComponent implements OnInit, SettingsListener {
   onGetData(): void {
   }
 
-  onUpdateDictItem(): void {
+  onUpdateDictReference(): void {
   }
 
   onUpdateDictNote(): void {

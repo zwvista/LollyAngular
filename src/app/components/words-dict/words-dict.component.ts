@@ -4,7 +4,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
-import { MDictItem } from '../../models/dictionary';
+import { MDictionary } from '../../models/dictionary';
 import { HtmlService } from '../../services/html.service';
 import { WordsLangService } from '../../view-models/words-lang.service';
 
@@ -19,7 +19,7 @@ export class WordsDictComponent implements OnInit {
   selectedWord: string;
   dictUrl = 'about:blank';
   dictSrc = null;
-  selectedDictItem: MDictItem;
+  selectedDictReference: MDictionary;
 
   constructor(private wordsUnitService: WordsUnitService,
               private wordsLangService: WordsLangService,
@@ -36,7 +36,7 @@ export class WordsDictComponent implements OnInit {
       dictType === 'textbook' ? this.wordsUnitService.textbookWords.map(v  => ({label: v.WORD, value: v.WORD})) :
       this.wordsLangService.langWords.map(v  => ({label: v.WORD, value: v.WORD}));
     this.selectedWord = this.words[+this.route.snapshot.paramMap.get('index')].value;
-    this.selectedDictItem = this.settingsService.selectedDictItem;
+    this.selectedDictReference = this.settingsService.selectedDictReference;
     if (this.selectedWord) this.refreshDict();
   }
 
@@ -45,7 +45,7 @@ export class WordsDictComponent implements OnInit {
   }
 
   refreshDict() {
-    const item = this.selectedDictItem;
+    const item = this.selectedDictReference;
     const item2 = this.settingsService.dictsReference.find(v => v.DICTNAME === item.DICTNAME);
     const url = item2.urlString(this.selectedWord, this.settingsService.autoCorrects);
     if (item2.DICTTYPENAME === 'OFFLINE') {

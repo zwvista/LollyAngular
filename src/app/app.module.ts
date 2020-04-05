@@ -21,7 +21,7 @@ import { WordsUnitComponent } from './components/words-unit/words-unit.component
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DictReferenceService, DictNoteService, DictTranslationService } from './services/dictionary.service';
+import { DictionaryService } from './services/dictionary.service';
 import { LanguageService } from './services/language.service';
 import { TextbookService } from './services/textbook.service';
 import { UnitWordService } from './services/unit-word.service';
@@ -128,9 +128,7 @@ import { UsMappingService } from './services/us-mapping.service';
     ClipboardModule,
   ],
   providers: [
-    DictReferenceService,
-    DictNoteService,
-    DictTranslationService,
+    DictionaryService,
     LanguageService,
     TextbookService,
     UnitPhraseService,
