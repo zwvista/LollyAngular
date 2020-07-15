@@ -21,8 +21,8 @@ export class WordsTextbook2Component implements OnInit {
   textbookFilter = 0;
 
   constructor(private appService: AppService,
-              private wordsUnitService: WordsUnitService,
-              private settingsService: SettingsService) { }
+              public wordsUnitService: WordsUnitService,
+              public settingsService: SettingsService) { }
 
   ngOnInit() {
     this.appService.initializeObject.subscribe(_ => {

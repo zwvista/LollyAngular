@@ -15,8 +15,8 @@ export class PhrasesTextbook2Component implements OnInit {
   displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
 
   constructor(private appService: AppService,
-              private phrasesUnitService: PhrasesUnitService,
-              private settingsService: SettingsService) { }
+              public phrasesUnitService: PhrasesUnitService,
+              public settingsService: SettingsService) { }
 
   rows = 0;
   page = 1;

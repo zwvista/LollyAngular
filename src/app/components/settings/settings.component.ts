@@ -19,7 +19,7 @@ export class SettingsComponent implements OnInit, SettingsListener {
     return this.settingsService.toType === 2;
   }
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(public settingsService: SettingsService) { }
 
   ngOnInit() {
     this.settingsService.settingsListener = this;

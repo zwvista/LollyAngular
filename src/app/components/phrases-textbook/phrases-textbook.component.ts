@@ -13,8 +13,8 @@ import { AppService } from '../../view-models/app.service';
 export class PhrasesTextbookComponent implements OnInit {
 
   constructor(private appService: AppService,
-              private phrasesUnitService: PhrasesUnitService,
-              private settingsService: SettingsService) { }
+              public phrasesUnitService: PhrasesUnitService,
+              public settingsService: SettingsService) { }
 
   rows = 0;
   page = 1;

@@ -17,8 +17,8 @@ export class PhrasesLangComponent implements OnInit {
   filterType = 0;
 
   constructor(private appService: AppService,
-              private phrasesLangService: PhrasesLangService,
-              private settingsService: SettingsService) { }
+              public phrasesLangService: PhrasesLangService,
+              public settingsService: SettingsService) { }
 
   ngOnInit() {
     this.appService.initializeObject.subscribe(_ => {

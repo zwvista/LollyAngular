@@ -15,7 +15,7 @@ export class WordsTextbookDetailComponent implements OnInit {
   item: MUnitWord;
 
   constructor(private wordsUnitService: WordsUnitService,
-              private settingsService: SettingsService,
+              public settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
   ) { }

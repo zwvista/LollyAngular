@@ -21,8 +21,8 @@ export class WordsLang2Component implements OnInit {
   filterType = 0;
 
   constructor(private appService: AppService,
-              private wordsLangService: WordsLangService,
-              private settingsService: SettingsService) { }
+              public wordsLangService: WordsLangService,
+              public settingsService: SettingsService) { }
 
   ngOnInit() {
     this.appService.initializeObject.subscribe(_ => {

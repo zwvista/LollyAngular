@@ -16,7 +16,7 @@ export class PhrasesUnitDetailComponent implements OnInit {
   item: MUnitPhrase;
 
   constructor(private phrasesUnitService: PhrasesUnitService,
-              private settingsService: SettingsService,
+              public settingsService: SettingsService,
               private route: ActivatedRoute,
               private location: Location
   ) { }

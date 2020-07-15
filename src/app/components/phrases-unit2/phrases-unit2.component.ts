@@ -21,8 +21,8 @@ export class PhrasesUnit2Component implements OnInit {
   filterType = 0;
 
   constructor(private appService: AppService,
-              private phrasesUnitService: PhrasesUnitService,
-              private settingsService: SettingsService) { }
+              public phrasesUnitService: PhrasesUnitService,
+              public settingsService: SettingsService) { }
 
   ngOnInit() {
     this.appService.initializeObject.subscribe(_ => {

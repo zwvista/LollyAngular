@@ -23,8 +23,8 @@ export class WordsUnit2Component implements OnInit {
   filterType = 0;
 
   constructor(private appService: AppService,
-              private wordsUnitService: WordsUnitService,
-              private settingsService: SettingsService) { }
+              public wordsUnitService: WordsUnitService,
+              public settingsService: SettingsService) { }
 
   ngOnInit() {
     this.appService.initializeObject.subscribe(_ => {

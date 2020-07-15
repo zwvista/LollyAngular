@@ -23,7 +23,7 @@ export class WordsDictComponent implements OnInit {
 
   constructor(private wordsUnitService: WordsUnitService,
               private wordsLangService: WordsLangService,
-              private settingsService: SettingsService,
+              public settingsService: SettingsService,
               private htmlService: HtmlService,
               private route: ActivatedRoute,
               private location: Location

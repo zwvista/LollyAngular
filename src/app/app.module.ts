@@ -9,7 +9,8 @@ import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { PaginatorModule, ToolbarModule } from 'primeng/primeng';
+import { PaginatorModule } from 'primeng/paginator';
+import { ToolbarModule } from 'primeng/toolbar';
 import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
@@ -68,7 +69,7 @@ import { WordsLang2Component } from './components/words-lang2/words-lang2.compon
 import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.component';
 import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrases-textbook2.component';
 import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
-import { MatSelectModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 import { UsMappingService } from './services/us-mapping.service';
 
 
