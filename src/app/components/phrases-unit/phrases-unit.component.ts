@@ -34,14 +34,6 @@ export class PhrasesUnitComponent implements OnInit {
     this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
   }
 
-  onEnterFilter() {
-    if (this.filter && this.filterType === 0)
-      this.filterType = 1;
-    else if (!this.filter && this.filterType !== 0)
-      this.filterType = 0;
-    this.onRefresh();
-  }
-
   deletePhrase(item: MUnitPhrase) {
     this.phrasesUnitService.delete(item);
   }

@@ -41,14 +41,6 @@ export class WordsUnitComponent implements OnInit {
     this.wordsUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
   }
 
-  onEnterFilter() {
-    if (this.filter && this.filterType === 0)
-      this.filterType = 1;
-    else if (!this.filter && this.filterType !== 0)
-      this.filterType = 0;
-    this.onRefresh();
-  }
-
   onReorder(from: number, to: number) {
     console.log(`${from},${to}`);
     this.wordsUnitService.reindex(index => {});

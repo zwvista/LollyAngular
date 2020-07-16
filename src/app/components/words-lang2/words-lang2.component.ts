@@ -52,14 +52,6 @@ export class WordsLang2Component implements OnInit {
     this.wordsLangService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
   }
 
-  onEnterFilter() {
-    if (this.filter && this.filterType === 0)
-      this.filterType = 1;
-    else if (!this.filter && this.filterType !== 0)
-      this.filterType = 0;
-    this.onRefresh();
-  }
-
   deleteWord(item: MLangWord) {
     this.wordsLangService.delete(item);
   }

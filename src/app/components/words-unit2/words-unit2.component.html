@@ -8,14 +8,14 @@
       <mat-icon fontSet="fa" fontIcon="fa-volume-up"></mat-icon>
     </button>
     <mat-form-field>
-      <mat-select [(value)]="filterType" (selectionChange)="onEnterFilter()">
+      <mat-select [(value)]="filterType" (selectionChange)="onRefresh()">
         <mat-option *ngFor="let o of settingsService.wordFilterTypes" [value]="o.value">
           {{o.label}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Filter" [(ngModel)]="filter" (keyup.enter)="onEnterFilter()">
+      <input matInput placeholder="Filter" [(ngModel)]="filter" (keyup.enter)="onRefresh()">
     </mat-form-field>
     <a routerLink="/words-unit-detail/0">
       <button mat-raised-button color="primary">

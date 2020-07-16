@@ -47,14 +47,6 @@ export class WordsUnit2Component implements OnInit {
     this.wordsUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
   }
 
-  onEnterFilter() {
-    if (this.filter && this.filterType === 0)
-      this.filterType = 1;
-    else if (!this.filter && this.filterType !== 0)
-      this.filterType = 0;
-    this.onRefresh();
-  }
-
   dropTable(event: CdkDragDrop<MUnitWord[]>) {
     const prevIndex = this.wordsUnitService.unitWords.findIndex((d) => d === event.item.data);
     moveItemInArray(this.wordsUnitService.unitWords, prevIndex, event.currentIndex);

@@ -6,10 +6,10 @@
       </span>
       <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(newWord)"
               pTooltip="Speak" tooltipPosition="top"></button>
-      <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onEnterFilter()">
+      <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()">
       </p-dropdown>
       <span class="ui-float-label">
-        <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onEnterFilter()">
+        <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
         <label for="filter">Filter</label>
       </span>
       <a routerLink="/words-unit-detail/0">
