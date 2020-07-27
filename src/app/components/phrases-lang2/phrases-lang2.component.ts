@@ -3,6 +3,7 @@ import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
 import { AppService } from '../../view-models/app.service';
+import { MLangPhrase } from '../../models/lang-phrase';
 
 @Component({
   selector: 'app-phrases-lang2',
@@ -39,8 +40,8 @@ export class PhrasesLang2Component implements OnInit {
     this.phrasesLangService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
   }
 
-  deletePhrase(id: number) {
-    this.phrasesLangService.delete(id);
+  deletePhrase(item: MLangPhrase) {
+    this.phrasesLangService.delete(item);
   }
 
   googlePhrase(phrase: string) {

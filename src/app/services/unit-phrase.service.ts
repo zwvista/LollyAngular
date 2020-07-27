@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { MUnitPhrase, MUnitPhrases } from '../models/unit-phrase';
 import { BaseService } from './base.service';
 import { MTextbook } from '../models/textbook';
+import { MSPResult } from '../common/sp-result';
+import { toParameters } from '../common/common';
 
 @Injectable()
 export class UnitPhraseService extends BaseService {
@@ -14,7 +16,7 @@ export class UnitPhraseService extends BaseService {
   }
 
   getDataByTextbookUnitPart(textbook: MTextbook, unitPartFrom: number, unitPartTo: number, filter: string, filterType: number): Observable<MUnitPhrase[]> {
-    let url = `${this.baseUrl}VUNITPHRASES?filter=TEXTBOOKID,eq,${textbook.ID}&filter=UNITPART,bt,${unitPartFrom},${unitPartTo}&order=UNITPART&order=SEQNUM`;
+    let url = `${this.baseUrlAPI}VUNITPHRASES?filter=TEXTBOOKID,eq,${textbook.ID}&filter=UNITPART,bt,${unitPartFrom},${unitPartTo}&order=UNITPART&order=SEQNUM`;
     if (filter)
       url += `&filter=${filterType === 0 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     return this.http.get<MUnitPhrases>(url)
@@ -30,7 +32,7 @@ export class UnitPhraseService extends BaseService {
   }
 
   getDataByLang(langid: number, textbooks: MTextbook[], page: number, rows: number, filter: string, filterType: number, textbookFilter: number): Observable<MUnitPhrases> {
-    let url = `${this.baseUrl}VUNITPHRASES?filter=LANGID,eq,${langid}&order=TEXTBOOKID&order=UNIT&order=PART&order=SEQNUM&page=${page},${rows}`;
+    let url = `${this.baseUrlAPI}VUNITPHRASES?filter=LANGID,eq,${langid}&order=TEXTBOOKID&order=UNIT&order=PART&order=SEQNUM&page=${page},${rows}`;
     if (filterType !== 0 && filter)
       url += `&filter=${filterType === 1 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
     if (textbookFilter !== 0)
@@ -49,7 +51,7 @@ export class UnitPhraseService extends BaseService {
   }
 
   getDataByLangPhrase(phraseid: number): Observable<MUnitPhrase[]> {
-    const url = `${this.baseUrl}VUNITPHRASES?filter=PHRASEID,eq,${phraseid}`;
+    const url = `${this.baseUrlAPI}VUNITPHRASES?filter=PHRASEID,eq,${phraseid}`;
     return this.http.get<MUnitPhrases>(url)
       .pipe(
         map(result => result.records.map(value => Object.assign(new MUnitPhrase(), value))),
@@ -57,28 +59,30 @@ export class UnitPhraseService extends BaseService {
   }
 
   create(item: MUnitPhrase): Observable<number | any[]> {
-    const url = `${this.baseUrl}UNITPHRASES`;
-    (item as any).ID = null;
-    return this.http.post<number | any[]>(url, item)
+    const url = `${this.baseUrlSP}UNITPHRASES_CREATE`;
+    return this.http.post<MSPResult[][] | any[]>(url, toParameters(item))
       .pipe(
+        map(result => result[0][0].NEW_ID),
       );
   }
 
   updateSeqNum(id: number, seqnum: number): Observable<number> {
-    const url = `${this.baseUrl}UNITPHRASES/${id}`;
+    const url = `${this.baseUrlAPI}UNITPHRASES/${id}`;
     return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as MUnitPhrase, this.httpOptions).pipe(
     );
   }
 
-  update(item: MUnitPhrase): Observable<number> {
-    const url = `${this.baseUrl}UNITPHRASES/${item.ID}`;
-    return this.http.put<number>(url, item, this.httpOptions).pipe(
+  update(item: MUnitPhrase): Observable<string> {
+    const url = `${this.baseUrlSP}UNITPHRASES_UPDATE`;
+    return this.http.post<MSPResult[][]>(url, toParameters(item)).pipe(
+      map(result => result[0][0].result),
     );
   }
 
-  delete(ID: number): Observable<number> {
-    const url = `${this.baseUrl}UNITPHRASES/${ID}`;
-    return this.http.delete<number>(url, this.httpOptions).pipe(
+  delete(item: MUnitPhrase): Observable<string> {
+    const url = `${this.baseUrlSP}UNITPHRASES_DELETE`;
+    return this.http.post<MSPResult[][]>(url, toParameters(item)).pipe(
+      map(result => result[0][0].result),
     );
   }
 

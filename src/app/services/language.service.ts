@@ -13,7 +13,7 @@ export class LanguageService extends BaseService {
   }
 
   getData(): Observable<MLanguage[]> {
-    const url = `${this.baseUrl}LANGUAGES?filter=ID,neq,0`;
+    const url = `${this.baseUrlAPI}LANGUAGES?filter=ID,neq,0`;
     return this.http.get<MLanguages>(url)
       .pipe(
         // https://stackoverflow.com/questions/5873624/parse-json-string-into-a-particular-object-prototype-in-javascript

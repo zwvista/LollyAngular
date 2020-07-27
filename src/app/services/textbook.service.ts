@@ -14,7 +14,7 @@ export class TextbookService extends BaseService {
   }
 
   getDataByLang(langid: number): Observable<MTextbook[]> {
-    const url = `${this.baseUrl}TEXTBOOKS?filter=LANGID,eq,${langid}`;
+    const url = `${this.baseUrlAPI}TEXTBOOKS?filter=LANGID,eq,${langid}`;
     const f = (UNITS: string) => {
       let m = /UNITS,(\d+)/g.exec(UNITS);
       if (m) {

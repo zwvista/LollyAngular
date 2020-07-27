@@ -13,7 +13,7 @@ export class VoicesService extends BaseService {
   }
 
   getDataByLang(langid: number): Observable<MVoice[]> {
-    const url = `${this.baseUrl}VVOICES?filter=LANGID,eq,${langid}&filter=VOICETYPEID,eq,5`;
+    const url = `${this.baseUrlAPI}VVOICES?filter=LANGID,eq,${langid}&filter=VOICETYPEID,eq,5`;
     return this.http.get<MVoices>(url)
       .pipe(
         map(result => result.records.map(value => Object.assign(new MVoice(), value))),
