@@ -32,7 +32,6 @@
       <th>ID</th>
       <th>WORD</th>
       <th>NOTE</th>
-      <th>LEVEL</th>
       <th>ACCURACY</th>
       <th>ACTIONS</th>
     </tr>
@@ -42,7 +41,6 @@
       <td>{{row.ID}}</td>
       <td>{{row.WORD}}</td>
       <td>{{row.NOTE}}</td>
-      <td>{{row.LEVEL}}</td>
       <td>{{row.ACCURACY}}</td>
       <td>
         <button pButton icon="fa fa-trash" class="ui-button-danger"
@@ -55,10 +53,6 @@
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.WORD"
                 pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-arrow-up" (click)="updateLevel(row, 1)" class="ui-button-warning"
-                pTooltip="Level Up" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-arrow-down" (click)="updateLevel(row, -1)" class="ui-button-warning"
-                pTooltip="Level Down" tooltipPosition="top"></button>
         <button pButton icon="fa fa-google" (click)="googleWord(row.WORD)"
                 pTooltip="Google Word" tooltipPosition="top"></button>
         <a routerLink="/words-dict/lang/{{index}}">

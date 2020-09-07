@@ -12,7 +12,7 @@ import { AppService } from '../../view-models/app.service';
 })
 export class WordsLang2Component implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'WORD', 'NOTE', 'LEVEL', 'ACCURACY', 'ACTION'];
+  displayedColumns: string[] = ['ID', 'WORD', 'NOTE', 'ACCURACY', 'ACTION'];
 
   newWord: string;
   rows = 0;
@@ -59,10 +59,6 @@ export class WordsLang2Component implements OnInit {
   getNote(index: number) {
     console.log(index);
     this.wordsLangService.getNote(index).subscribe();
-  }
-
-  updateLevel(item: MLangWord, delta: number) {
-    this.settingsService.updateLevel(item, item.ID, delta).subscribe();
   }
 
   googleWord(word: string) {

@@ -16,7 +16,7 @@ export class WordsUnit2Component implements OnInit {
   // https://stackoverflow.com/questions/53377450/reorder-mat-table-rows-with-angular-materials-drag-and-drop
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
-  displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'LEVEL', 'ACCURACY', 'ACTION'];
+  displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'ACCURACY', 'ACTION'];
 
   newWord: string;
   filter: string;
@@ -68,10 +68,6 @@ export class WordsUnit2Component implements OnInit {
 
   getNotes(ifEmpty: boolean) {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
-  }
-
-  updateLevel(item: MUnitWord, delta: number) {
-    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
   }
 
 }

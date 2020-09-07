@@ -48,10 +48,6 @@ export class WordsTextbookComponent implements OnInit {
     this.wordsUnitService.getNote(index).subscribe();
   }
 
-  updateLevel(item: MUnitWord, delta: number) {
-    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
-  }
-
   googleWord(word: string) {
     googleString(word);
   }

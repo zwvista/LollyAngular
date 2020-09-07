@@ -78,10 +78,6 @@
     <th mat-header-cell *matHeaderCellDef> NOTE </th>
     <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.NOTE}} </td>
   </ng-container>
-  <ng-container matColumnDef="LEVEL">
-    <th mat-header-cell *matHeaderCellDef> LEVEL </th>
-    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.LEVEL}} </td>
-  </ng-container>
   <ng-container matColumnDef="ACCURACY">
     <th mat-header-cell *matHeaderCellDef> ACCURACY </th>
     <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.ACCURACY}} </td>
@@ -103,12 +99,6 @@
       </button>
       <button mat-mini-fab color="primary" matTooltip="Copy" ngxClipboard [cbContent]="row.WORD">
         <mat-icon fontSet="fa" fontIcon="fa-copy"></mat-icon>
-      </button>
-      <button mat-mini-fab color="accent" matTooltip="Level Up" (click)="updateLevel(row, 1)">
-        <mat-icon fontSet="fa" fontIcon="fa-arrow-up"></mat-icon>
-      </button>
-      <button mat-mini-fab color="accent" matTooltip="Level Down" (click)="updateLevel(row, -1)">
-        <mat-icon fontSet="fa" fontIcon="fa-arrow-down"></mat-icon>
       </button>
       <button mat-mini-fab color="primary" matTooltip="Google Word" (click)="googleWord(row.WORD)">
         <mat-icon fontSet="fa" fontIcon="fa-google"></mat-icon>

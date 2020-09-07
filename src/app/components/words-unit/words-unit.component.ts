@@ -62,8 +62,4 @@ export class WordsUnitComponent implements OnInit {
   getNotes(ifEmpty: boolean) {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
   }
-
-  updateLevel(item: MUnitWord, delta: number) {
-    this.settingsService.updateLevel(item, item.WORDID, delta).subscribe();
-  }
 }
