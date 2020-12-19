@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SettingsService } from './settings.service';
 import { EMPTY as empty, interval, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HtmlService } from '../services/html.service';
+import { HtmlService } from '../services/misc/html.service';
 
 @Injectable({
   providedIn: 'root'

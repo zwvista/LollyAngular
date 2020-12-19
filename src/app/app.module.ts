@@ -22,30 +22,30 @@ import { WordsUnitComponent } from './components/words-unit/words-unit.component
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DictionaryService } from './services/dictionary.service';
-import { LanguageService } from './services/language.service';
-import { TextbookService } from './services/textbook.service';
-import { UnitWordService } from './services/unit-word.service';
-import { UserSettingService } from './services/user-setting.service';
+import { DictionaryService } from './services/misc/dictionary.service';
+import { LanguageService } from './services/misc/language.service';
+import { TextbookService } from './services/misc/textbook.service';
+import { UnitWordService } from './services/wpp/unit-word.service';
+import { UserSettingService } from './services/misc/user-setting.service';
 import { SettingsService } from './view-models/settings.service';
 import { WordsUnitService } from './view-models/words-unit.service';
 import { FormsModule } from '@angular/forms';
 import { AppService } from './view-models/app.service';
 import { PhrasesUnitComponent } from './components/phrases-unit/phrases-unit.component';
 import { PhrasesUnitService } from './view-models/phrases-unit.service';
-import { UnitPhraseService } from './services/unit-phrase.service';
-import { AutoCorrectService } from './services/autocorrect.service';
+import { UnitPhraseService } from './services/wpp/unit-phrase.service';
+import { AutoCorrectService } from './services/misc/autocorrect.service';
 import { WordsUnitDetailComponent } from './components/words-unit-detail/words-unit-detail.component';
 import { PhrasesUnitDetailComponent } from './components/phrases-unit-detail/phrases-unit-detail.component';
-import { HtmlService } from './services/html.service';
+import { HtmlService } from './services/misc/html.service';
 import { WordsDictComponent } from './components/words-dict/words-dict.component';
 import { DictBrowserComponent } from './components/dict-browser/dict-browser.component';
 import { PhrasesLangComponent } from './components/phrases-lang/phrases-lang.component';
 import { PhrasesLangDetailComponent } from './components/phrases-lang-detail/phrases-lang-detail.component';
 import { WordsLangComponent } from './components/words-lang/words-lang.component';
 import { WordsLangDetailComponent } from './components/words-lang-detail/words-lang-detail.component';
-import { LangPhraseService } from './services/lang-phrase.service';
-import { LangWordService } from './services/lang-word.service';
+import { LangPhraseService } from './services/wpp/lang-phrase.service';
+import { LangWordService } from './services/wpp/lang-word.service';
 import { PhrasesLangService } from './view-models/phrases-lang.service';
 import { WordsLangService } from './view-models/words-lang.service';
 import { NoteService } from './view-models/note.service';
@@ -53,9 +53,9 @@ import { WordsTextbookComponent } from './components/words-textbook/words-textbo
 import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
 import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
-import { VoicesService } from './services/voices.service';
+import { VoicesService } from './services/misc/voices.service';
 import { WordsFamiService } from './view-models/words-fami.service';
-import { WordFamiService } from './services/word-fami.service';
+import { WordFamiService } from './services/wpp/word-fami.service';
 import { WordsUnit2Component } from './components/words-unit2/words-unit2.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -70,7 +70,7 @@ import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.
 import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrases-textbook2.component';
 import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
 import { MatSelectModule } from '@angular/material/select';
-import { UsMappingService } from './services/us-mapping.service';
+import { UsMappingService } from './services/misc/us-mapping.service';
 
 
 @NgModule({

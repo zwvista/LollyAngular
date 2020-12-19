@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MTextbook, MTextbooks } from '../models/misc/textbook';
-import { MSelectItem } from '../common/selectitem';
+import { MTextbook, MTextbooks } from '../../models/misc/textbook';
+import { MSelectItem } from '../../common/selectitem';
 
 @Injectable()
 export class TextbookService extends BaseService {

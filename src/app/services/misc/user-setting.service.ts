@@ -3,7 +3,7 @@ import { BaseService } from './base.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MUserSetting, MUserSettingInfo, MUserSettings } from '../models/misc/user-setting';
+import { MUserSetting, MUserSettingInfo, MUserSettings } from '../../models/misc/user-setting';
 
 @Injectable()
 export class UserSettingService extends BaseService {

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
+import { BaseService } from '../misc/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MLangPhrase, MLangPhrases } from '../models/wpp/lang-phrase';
+import { MLangPhrase, MLangPhrases } from '../../models/wpp/lang-phrase';
 import { map } from 'rxjs/operators';
-import { MSPResult } from '../common/sp-result';
-import { toParameters } from '../common/common';
+import { MSPResult } from '../../common/sp-result';
+import { toParameters } from '../../common/common';
 
 @Injectable()
 export class LangPhraseService extends BaseService {

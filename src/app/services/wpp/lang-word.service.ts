@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
+import { BaseService } from '../misc/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MLangWord, MLangWords } from '../models/wpp/lang-word';
+import { MLangWord, MLangWords } from '../../models/wpp/lang-word';
 import { map } from 'rxjs/operators';
-import { MSPResult } from '../common/sp-result';
-import { toParameters } from '../common/common';
+import { MSPResult } from '../../common/sp-result';
+import { toParameters } from '../../common/common';
 
 @Injectable()
 export class LangWordService extends BaseService {

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MLanguage, MLanguages } from '../models/misc/language';
+import { MLanguage, MLanguages } from '../../models/misc/language';
 
 @Injectable()
 export class LanguageService extends BaseService {

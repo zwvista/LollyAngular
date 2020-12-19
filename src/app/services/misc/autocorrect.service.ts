@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MAutoCorrect, MAutoCorrects } from '../models/misc/autocorrect';
+import { MAutoCorrect, MAutoCorrects } from '../../models/misc/autocorrect';
 
 @Injectable({
   providedIn: 'root'

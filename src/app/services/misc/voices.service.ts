@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MVoice, MVoices } from '../models/misc/voice';
+import { MVoice, MVoices } from '../../models/misc/voice';
 import { map } from 'rxjs/operators';
 
 @Injectable()

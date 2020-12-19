@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { AppService } from './app.service';
 import { SettingsService } from './settings.service';
 import { MUnitPhrase } from '../models/wpp/unit-phrase';
-import { UnitPhraseService } from '../services/unit-phrase.service';
+import { UnitPhraseService } from '../services/wpp/unit-phrase.service';
 import { EMPTY as empty, Observable, of } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
 import { MLangPhrase } from '../models/wpp/lang-phrase';
-import { LangPhraseService } from '../services/lang-phrase.service';
+import { LangPhraseService } from '../services/wpp/lang-phrase.service';
 
 @Injectable()
 export class PhrasesUnitService {
