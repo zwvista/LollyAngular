@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
-import { MUnitPhrase } from '../../models/unit-phrase';
+import { MUnitPhrase } from '../../models/wpp/unit-phrase';
 import { googleString } from '../../common/common';
 import { AppService } from '../../view-models/app.service';
 

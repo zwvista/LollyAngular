@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MLangWord } from '../../models/lang-word';
+import { MLangWord } from '../../models/wpp/lang-word';
 import { WordsLangService } from '../../view-models/words-lang.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MUnitPhrase } from '../../models/unit-phrase';
+import { MUnitPhrase } from '../../models/wpp/unit-phrase';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 

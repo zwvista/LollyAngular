@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../view-models/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MUnitWord } from '../../models/unit-word';
+import { MUnitWord } from '../../models/wpp/unit-word';
 import { WordsUnitService } from '../../view-models/words-unit.service';
 
 @Component({

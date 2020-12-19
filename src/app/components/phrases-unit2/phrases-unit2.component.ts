@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PhrasesUnitService } from '../../view-models/phrases-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MUnitWord } from '../../models/unit-word';
+import { MUnitWord } from '../../models/wpp/unit-word';
 import { MatTable } from '@angular/material/table';
 import { googleString } from '../../common/common';
-import { MUnitPhrase } from '../../models/unit-phrase';
+import { MUnitPhrase } from '../../models/wpp/unit-phrase';
 import { AppService } from '../../view-models/app.service';
 
 @Component({

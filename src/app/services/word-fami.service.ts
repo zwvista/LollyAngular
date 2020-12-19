@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { MWordFami, MWordsFami } from '../models/word-fami';
+import { MWordFami, MWordsFami } from '../models/wpp/word-fami';
 
 @Injectable()
 export class WordFamiService extends BaseService {

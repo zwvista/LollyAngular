@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { MDictionary, MDictionaries } from '../models/dictionary';
+import { MDictionary, MDictionaries } from '../models/misc/dictionary';
 
 @Injectable()
 export class DictionaryService extends BaseService {

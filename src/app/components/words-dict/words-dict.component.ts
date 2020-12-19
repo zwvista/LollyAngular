@@ -4,7 +4,7 @@ import { WordsUnitService } from '../../view-models/words-unit.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
-import { MDictionary } from '../../models/dictionary';
+import { MDictionary } from '../../models/misc/dictionary';
 import { HtmlService } from '../../services/html.service';
 import { WordsLangService } from '../../view-models/words-lang.service';
 

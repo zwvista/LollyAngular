@@ -3,7 +3,7 @@ import { PhrasesLangService } from '../../view-models/phrases-lang.service';
 import { SettingsService } from '../../view-models/settings.service';
 import { googleString } from '../../common/common';
 import { AppService } from '../../view-models/app.service';
-import { MLangPhrase } from '../../models/lang-phrase';
+import { MLangPhrase } from '../../models/wpp/lang-phrase';
 
 @Component({
   selector: 'app-phrases-lang2',
