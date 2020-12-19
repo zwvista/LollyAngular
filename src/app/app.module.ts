@@ -71,6 +71,11 @@ import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrase
 import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
 import { MatSelectModule } from '@angular/material/select';
 import { UsMappingService } from './services/misc/us-mapping.service';
+import { PatternsComponent } from './components/patterns/patterns.component';
+import { PatternsDetailComponent } from './components/patterns-detail/patterns-detail.component';
+import { Patterns2Component } from './components/patterns2/patterns2.component';
+import { PatternsService } from './view-models/patterns.service';
+import { PatternService } from './services/wpp/pattern.service';
 
 
 @NgModule({
@@ -96,7 +101,10 @@ import { UsMappingService } from './services/misc/us-mapping.service';
     WordsLang2Component,
     PhrasesUnit2Component,
     PhrasesTextbook2Component,
-    PhrasesLang2Component
+    PhrasesLang2Component,
+    PatternsComponent,
+    PatternsDetailComponent,
+    Patterns2Component
   ],
   imports: [
     BrowserModule,
@@ -143,6 +151,7 @@ import { UsMappingService } from './services/misc/us-mapping.service';
     VoicesService,
     WordFamiService,
     WordsFamiService,
+    PatternService,
     // view models
     AppService,
     PhrasesUnitService,
@@ -151,6 +160,7 @@ import { UsMappingService } from './services/misc/us-mapping.service';
     PhrasesLangService,
     WordsLangService,
     NoteService,
+    PatternsService,
   ],
   bootstrap: [AppComponent]
 })

@@ -20,6 +20,9 @@ import { PhrasesTextbook2Component } from './components/phrases-textbook2/phrase
 import { WordsLang2Component } from './components/words-lang2/words-lang2.component';
 import { PhrasesUnit2Component } from './components/phrases-unit2/phrases-unit2.component';
 import { PhrasesLang2Component } from './components/phrases-lang2/phrases-lang2.component';
+import { PatternsComponent } from './components/patterns/patterns.component';
+import { Patterns2Component } from './components/patterns2/patterns2.component';
+import { PatternsDetailComponent } from './components/patterns-detail/patterns-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'words-unit', pathMatch: 'full' },
@@ -41,6 +44,9 @@ const routes: Routes = [
   { path: 'phrases-lang', component: PhrasesLangComponent },
   { path: 'phrases-lang2', component: PhrasesLang2Component },
   { path: 'phrases-lang-detail/:id', component: PhrasesLangDetailComponent },
+  { path: 'patterns', component: PatternsComponent },
+  { path: 'patterns2', component: Patterns2Component },
+  { path: 'patterns-detail/:id', component: PatternsDetailComponent },
   { path: 'words-dict/:type/:index', component: WordsDictComponent },
   { path: 'settings', component: SettingsComponent }
 ];

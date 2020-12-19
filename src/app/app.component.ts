@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from './view-models/app.service';
 import { MenuItem } from 'primeng/api';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,6 +22,7 @@ export class AppComponent implements OnInit {
     {label: 'Phrases in Textbook', icon: 'fa fa-fw fa-taxi', routerLink: '/phrases-textbook'},
     {label: 'Words in Language', icon: 'fa fa-fw fa-plane', routerLink: '/words-lang'},
     {label: 'Phrases in Language', icon: 'fa fa-fw fa-rocket', routerLink: '/phrases-lang'},
+    {label: 'Patterns in Language', icon: 'fa fa-fw fa-motorcycle', routerLink: '/patterns'},
     {label: 'Settings', icon: 'fa fa-fw fa-gear', routerLink: '/settings'},
   ];
   tabLinks: MenuItem[] = [
@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
     {label: 'Phrases in Textbook', icon: 'fa-taxi', routerLink: '/phrases-textbook2'},
     {label: 'Words in Language', icon: 'fa-plane', routerLink: '/words-lang2'},
     {label: 'Phrases in Language', icon: 'fa-rocket', routerLink: '/phrases-lang2'},
+    {label: 'Patterns in Language', icon: 'fa-motorcycle', routerLink: '/patterns2'},
     {label: 'Settings', icon: 'fa-gear', routerLink: '/settings'},
   ];
 
