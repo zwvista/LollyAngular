@@ -20,7 +20,7 @@
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-paginator [length]="patternsService.patternsCount"
+<mat-paginator [length]="patternsService.patternCount"
                [pageSize]="rows"
                [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
                (page)="paginate($event)">
@@ -70,7 +70,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
-<mat-paginator [length]="patternsService.patternsCount"
+<mat-paginator [length]="patternsService.patternCount"
                [pageSize]="rows"
                [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
                (page)="paginate($event)">
