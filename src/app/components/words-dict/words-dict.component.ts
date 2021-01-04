@@ -46,12 +46,11 @@ export class WordsDictComponent implements OnInit {
 
   refreshDict() {
     const item = this.selectedDictReference;
-    const item2 = this.settingsService.dictsReference.find(v => v.DICTNAME === item.DICTNAME);
-    const url = item2.urlString(this.selectedWord, this.settingsService.autoCorrects);
-    if (item2.DICTTYPENAME === 'OFFLINE') {
+    const url = item.urlString(this.selectedWord, this.settingsService.autoCorrects);
+    if (item.DICTTYPENAME === 'OFFLINE') {
       this.dictUrl = 'about:blank';
       this.htmlService.getHtml(url).subscribe(html => {
-        this.dictSrc = item2.htmlString(html, this.selectedWord)
+        this.dictSrc = item.htmlString(html, this.selectedWord)
           .replace(/\n/g, ' ').replace(/"/g, '&quot;');
         console.log(this.dictSrc);
       });
