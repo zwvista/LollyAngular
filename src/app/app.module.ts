@@ -76,6 +76,9 @@ import { PatternsDetailComponent } from './components/patterns-detail/patterns-d
 import { Patterns2Component } from './components/patterns2/patterns2.component';
 import { PatternsService } from './view-models/patterns.service';
 import { PatternService } from './services/wpp/pattern.service';
+import { LoginComponent } from './components/login/login.component';
+import { UserService } from './services/misc/user.service';
+import { LoginService } from './view-models/login.service';
 
 
 @NgModule({
@@ -104,7 +107,8 @@ import { PatternService } from './services/wpp/pattern.service';
     PhrasesLang2Component,
     PatternsComponent,
     PatternsDetailComponent,
-    Patterns2Component
+    Patterns2Component,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -152,6 +156,7 @@ import { PatternService } from './services/wpp/pattern.service';
     WordFamiService,
     WordsFamiService,
     PatternService,
+    UserService,
     // view models
     AppService,
     PhrasesUnitService,
@@ -161,6 +166,7 @@ import { PatternService } from './services/wpp/pattern.service';
     WordsLangService,
     NoteService,
     PatternsService,
+    LoginService,
   ],
   bootstrap: [AppComponent]
 })
