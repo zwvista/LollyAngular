@@ -1,4 +1,5 @@
 <h1>{{title}}</h1>
+<div *ngIf="!isLoginPage">
 <p-tabMenu [model]="itemsApp" [activeItem]="activeItemApp"></p-tabMenu>
 <p-tabMenu [model]="items" *ngIf="activeItemApp === itemsApp[0]"></p-tabMenu>
 <nav mat-tab-nav-bar *ngIf="activeItemApp === itemsApp[1]">
@@ -13,4 +14,5 @@
     </span>
   </a>
 </nav>
+</div>
 <router-outlet></router-outlet>

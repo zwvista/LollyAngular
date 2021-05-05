@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './view-models/app.service';
 import { MenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -35,9 +36,19 @@ export class AppComponent implements OnInit {
     {label: 'Patterns in Language', icon: 'fa-motorcycle', routerLink: '/patterns2'},
     {label: 'Settings', icon: 'fa-gear', routerLink: '/settings'},
   ];
+  // https://stackoverflow.com/questions/62095354/angular-login-page
+  isLoginPage: boolean;
 
   constructor(private appService: AppService,
-              private router: Router) { }
+              private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.isLoginPage = this.router.url === '/login';
+      if (!this.isLoginPage)
+        appService.getData();
+    });
+  }
 
   ngOnInit() {
   }
