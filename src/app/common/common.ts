@@ -8,3 +8,7 @@ export function googleString(str: string) {
 export function toParameters(item: Object): Object {
   return _.mapKeys(item, (v, k) => 'P_' + k);
 }
+
+export class GlobalVars {
+  public static userid: string = '';
+}
