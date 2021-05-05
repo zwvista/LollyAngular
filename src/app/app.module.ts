@@ -53,7 +53,7 @@ import { WordsTextbookComponent } from './components/words-textbook/words-textbo
 import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
 import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
-import { VoicesService } from './services/misc/voices.service';
+import { VoiceService } from './services/misc/voice.service';
 import { WordsFamiService } from './view-models/words-fami.service';
 import { WordFamiService } from './services/wpp/word-fami.service';
 import { WordsUnit2Component } from './components/words-unit2/words-unit2.component';
@@ -148,7 +148,7 @@ import { PatternService } from './services/wpp/pattern.service';
     LangPhraseService,
     LangWordService,
     UsMappingService,
-    VoicesService,
+    VoiceService,
     WordFamiService,
     WordsFamiService,
     PatternService,

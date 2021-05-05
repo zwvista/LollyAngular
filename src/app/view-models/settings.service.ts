@@ -14,7 +14,7 @@ import { AutoCorrectService } from '../services/misc/autocorrect.service';
 import { MSelectItem } from '../common/selectitem';
 import Speech from 'speak-tts';
 import { MVoice } from '../models/misc/voice';
-import { VoicesService } from '../services/misc/voices.service';
+import { VoiceService } from '../services/misc/voice.service';
 import { WordsFamiService } from './words-fami.service';
 import { MUSMapping } from '../models/misc/usmapping';
 import { UsMappingService } from '../services/misc/us-mapping.service';
@@ -237,7 +237,7 @@ export class SettingsService {
               private dictionaryService: DictionaryService,
               private textbookService: TextbookService,
               private autoCorrectService: AutoCorrectService,
-              private voiceService: VoicesService,
+              private voiceService: VoiceService,
               private wordsFamiService: WordsFamiService) {
     this.speech.init();
   }
