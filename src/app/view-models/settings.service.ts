@@ -6,7 +6,7 @@ import { MUserSetting, MUserSettingInfo } from '../models/misc/user-setting';
 import { MLanguage } from '../models/misc/language';
 import { MDictionary } from '../models/misc/dictionary';
 import { MTextbook } from '../models/misc/textbook';
-import { EMPTY as empty, forkJoin, Observable, of } from 'rxjs';
+import { EMPTY as empty, forkJoin, interval, Observable, of, Subscription } from 'rxjs';
 import { DictionaryService } from '../services/misc/dictionary.service';
 import { TextbookService } from '../services/misc/textbook.service';
 import { autoCorrect, MAutoCorrect } from '../models/misc/autocorrect';
@@ -17,6 +17,7 @@ import { MVoice } from '../models/misc/voice';
 import { VoiceService } from '../services/misc/voice.service';
 import { MUSMapping } from '../models/misc/usmapping';
 import { UsMappingService } from '../services/misc/us-mapping.service';
+import { HtmlService } from '../services/misc/html.service';
 
 @Injectable()
 export class SettingsService {
@@ -234,7 +235,8 @@ export class SettingsService {
               private dictionaryService: DictionaryService,
               private textbookService: TextbookService,
               private autoCorrectService: AutoCorrectService,
-              private voiceService: VoiceService) {
+              private voiceService: VoiceService,
+              private htmlService: HtmlService) {
     this.speech.init();
   }
 
@@ -483,6 +485,37 @@ export class SettingsService {
     if (check && this.USPARTTO === v) return empty;
     this.USPARTTO = v;
     return this.userSettingService.updateIntValue(this.INFO_USPARTTO, this.USPARTTO);
+  }
+
+  getNote(word: string): Observable<string> {
+    const dictNote = this.selectedDictNote;
+    if (!dictNote) return empty;
+    const url = dictNote.urlString(word, this.autoCorrects);
+    return this.htmlService.getHtml(url).pipe(
+      map(html => {
+        console.log(html);
+        return HtmlService.extractTextFrom(html, dictNote.TRANSFORM, '', (text, _) => text);
+      }));
+  }
+
+  getNotes(wordCount: number, isNoteEmpty: (number) => boolean, getOne: (number) => void, allComplete: () => void) {
+    const dictNote = this.selectedDictNote;
+    if (!dictNote) return;
+    let i = 0;
+    let subscription: Subscription;
+    // https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
+    subscription = interval(dictNote.WAIT).subscribe(_ => {
+      while (i < wordCount && !isNoteEmpty(i))
+        i++;
+      if (i > wordCount) {
+        allComplete();
+        subscription.unsubscribe();
+      } else {
+        if (i < wordCount)
+          getOne(i);
+        i++;
+      }
+    });
   }
 }
 

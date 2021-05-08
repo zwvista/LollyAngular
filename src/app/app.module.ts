@@ -48,7 +48,6 @@ import { LangPhraseService } from './services/wpp/lang-phrase.service';
 import { LangWordService } from './services/wpp/lang-word.service';
 import { PhrasesLangService } from './view-models/phrases-lang.service';
 import { WordsLangService } from './view-models/words-lang.service';
-import { NoteService } from './view-models/note.service';
 import { WordsTextbookComponent } from './components/words-textbook/words-textbook.component';
 import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
@@ -162,7 +161,6 @@ import { LoginService } from './view-models/login.service';
     WordsUnitService,
     PhrasesLangService,
     WordsLangService,
-    NoteService,
     PatternsService,
     LoginService,
   ],

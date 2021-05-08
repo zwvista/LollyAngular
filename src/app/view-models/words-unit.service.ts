@@ -5,7 +5,6 @@ import { MUnitWord } from '../models/wpp/unit-word';
 import { AppService } from './app.service';
 import { EMPTY as empty, Observable, of } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
-import { NoteService } from './note.service';
 import { LangWordService } from '../services/wpp/lang-word.service';
 
 @Injectable()
@@ -19,8 +18,7 @@ export class WordsUnitService {
   constructor(private unitWordService: UnitWordService,
               private langWordService: LangWordService,
               private settingsService: SettingsService,
-              private appService: AppService,
-              private noteService: NoteService) {
+              private appService: AppService) {
   }
 
   getDataInTextbook(filter: string, filterType: number): Observable<void> {
@@ -90,7 +88,7 @@ export class WordsUnitService {
 
   getNote(index: number): Observable<number> {
     const item = this.unitWords[index];
-    return this.noteService.getNote(item.WORD).pipe(
+    return this.settingsService.getNote(item.WORD).pipe(
       concatMap(note => {
         item.NOTE = note;
         return this.updateNote(item.WORDID, note);
@@ -99,7 +97,7 @@ export class WordsUnitService {
   }
 
   getNotes(ifEmpty: boolean, oneComplete: (number) => void, allComplete: () => void) {
-    this.noteService.getNotes(this.unitWords.length,
+    this.settingsService.getNotes(this.unitWords.length,
       i => !ifEmpty || !this.unitWords[i],
       i => this.getNote(i).subscribe(_ => oneComplete(i)), allComplete);
   }
