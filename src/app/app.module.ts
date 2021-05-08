@@ -54,7 +54,6 @@ import { PhrasesTextbookComponent } from './components/phrases-textbook/phrases-
 import { WordsTextbookDetailComponent } from './components/words-textbook-detail/words-textbook-detail.component';
 import { PhrasesTextbookDetailComponent } from './components/phrases-textbook-detail/phrases-textbook-detail.component';
 import { VoiceService } from './services/misc/voice.service';
-import { WordsFamiService } from './view-models/words-fami.service';
 import { WordFamiService } from './services/wpp/word-fami.service';
 import { WordsUnit2Component } from './components/words-unit2/words-unit2.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -154,7 +153,6 @@ import { LoginService } from './view-models/login.service';
     UsMappingService,
     VoiceService,
     WordFamiService,
-    WordsFamiService,
     PatternService,
     UserService,
     // view models
