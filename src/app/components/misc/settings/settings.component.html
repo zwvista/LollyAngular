@@ -14,19 +14,19 @@
 <div class="form-inline mb-2">
   <label for="dictReference" class="col-2 control-label">Dictionary(Reference):</label>
   <select id="dictReference" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictReference" (change)="onDictReferenceChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.dictsReference" [ngValue]="o">{{o.DICTNAME}}</option>
+    <option *ngFor="let o of settingsService.dictsReference" [ngValue]="o">{{o.NAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label for="dictNote" class="col-2 control-label">Dictionary(Note):</label>
   <select id="dictNote" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictNote" (change)="onDictNoteChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.dictsNote" [ngValue]="o">{{o.DICTNAME}}</option>
+    <option *ngFor="let o of settingsService.dictsNote" [ngValue]="o">{{o.NAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
   <label for="dictTranslation" class="col-2 control-label">Dictionary(Translation):</label>
   <select id="dictTranslation" class="col-4 form-control" [(ngModel)]="settingsService.selectedDictTranslation" (change)="onDictTranslationChange($event.target.selectedIndex)">
-    <option *ngFor="let o of settingsService.dictsTranslation" [ngValue]="o">{{o.DICTNAME}}</option>
+    <option *ngFor="let o of settingsService.dictsTranslation" [ngValue]="o">{{o.NAME}}</option>
   </select>
 </div>
 <div class="form-inline mb-2">
