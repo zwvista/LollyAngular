@@ -27,7 +27,7 @@ export class SettingsComponent implements OnInit, SettingsListener {
   }
 
   onLangChange(index) {
-    this.settingsService.setSelectedLang(this.settingsService.languages[index]).subscribe();
+    this.settingsService.selectedLang = this.settingsService.languages[index];
     this.settingsService.updateLang().subscribe();
   }
 
