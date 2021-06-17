@@ -18,7 +18,7 @@ export class LangPhraseService extends BaseService {
     let url = `${this.baseUrlAPI}LANGPHRASES?filter=LANGID,eq,${langid}&order=PHRASE&page=${page},${rows}`;
     if (filter)
       url += `&filter=${filterType === 0 ? 'PHRASE' : 'TRANSLATION'},cs,${encodeURIComponent(filter)}`;
-    return this.http.get<MLangPhrases>(url).pipe(
+    return this.httpGet<MLangPhrases>(url).pipe(
       map(result => ({
         records: result.records.map(value => Object.assign(new MLangPhrase(), value)),
         results: result.results,
@@ -28,7 +28,7 @@ export class LangPhraseService extends BaseService {
 
   getDataByLangPhrase(langid: number, phrase: string): Observable<MLangPhrase[]> {
     const url = `${this.baseUrlAPI}LANGPHRASES?filter=LANGID,eq,${langid}&filter=PHRASE,eq,${encodeURIComponent(phrase)}`;
-    return this.http.get<MLangPhrases>(url).pipe(
+    return this.httpGet<MLangPhrases>(url).pipe(
       map(result => result.records.map(value => Object.assign(new MLangPhrase(), value))
         // Api is case insensitive
           .filter(value => value.PHRASE === phrase)
@@ -38,7 +38,7 @@ export class LangPhraseService extends BaseService {
 
   getDataById(id: number): Observable<MLangPhrase[]> {
     const url = `${this.baseUrlAPI}LANGPHRASES?filter=ID,eq,${id}`;
-    return this.http.get<MLangPhrases>(url).pipe(
+    return this.httpGet<MLangPhrases>(url).pipe(
       map(result => result.records.map(value => Object.assign(new MLangPhrase(), value))),
     );
   }
@@ -52,13 +52,13 @@ export class LangPhraseService extends BaseService {
 
   update(item: MLangPhrase): Observable<number> {
     const url = `${this.baseUrlAPI}LANGPHRASES/${item.ID}`;
-    return this.http.put<number>(url, item, this.httpOptions).pipe(
+    return this.http.put<number>(url, item).pipe(
     );
   }
 
   updateTranslation(id: number, translation: string): Observable<number> {
     const url = `${this.baseUrlAPI}LANGPHRASES/${id}`;
-    return this.http.put<number>(url, {ID: id, TRANSLATION: translation} as MLangPhrase, this.httpOptions).pipe(
+    return this.http.put<number>(url, {ID: id, TRANSLATION: translation} as MLangPhrase).pipe(
     );
   }
 

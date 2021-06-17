@@ -14,14 +14,14 @@ export class PatternWebpageService extends BaseService {
 
   getDataByPattern(patternid: number): Observable<MPatternWebPage[]> {
     const url = `${this.baseUrlAPI}VPATTERNSWEBPAGES?PATTERNID=ID,eq,${patternid}&order=SEQNUM`;
-    return this.http.get<MPatternWebPages>(url).pipe(
+    return this.httpGet<MPatternWebPages>(url).pipe(
       map(result => result.records.map(value => Object.assign(new MPatternWebPage(), value))),
     );
   }
 
   getDataById(id: number): Observable<MPatternWebPage[]> {
     const url = `${this.baseUrlAPI}VPATTERNSWEBPAGES?filter=ID,eq,${id}`;
-    return this.http.get<MPatternWebPages>(url).pipe(
+    return this.httpGet<MPatternWebPages>(url).pipe(
       map(result => result.records.map(value => Object.assign(new MPatternWebPage(), value))),
     );
   }
@@ -35,7 +35,7 @@ export class PatternWebpageService extends BaseService {
 
   updateSeqNum(id: number, seqnum: number): Observable<number> {
     const url = `${this.baseUrlAPI}PATTERNSWEBPAGES/${id}`;
-    return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as MPatternWebPage, this.httpOptions).pipe(
+    return this.http.put<number>(url, {ID: id, SEQNUM: seqnum} as MPatternWebPage).pipe(
     );
   }
 
