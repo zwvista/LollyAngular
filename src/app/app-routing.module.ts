@@ -27,7 +27,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/misc/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'words-unit', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'words-unit', pathMatch: 'full' },
   { path: 'words-unit', component: WordsUnitComponent, canActivate: [AuthGuard] },
   { path: 'words-unit2', component: WordsUnit2Component, canActivate: [AuthGuard] },
   { path: 'words-unit-detail/:id', component: WordsUnitDetailComponent, canActivate: [AuthGuard] },
@@ -56,7 +56,7 @@ const routes: Routes = [
 
 @NgModule({
   exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }) ],
   providers: [AuthGuard],
 })
 export class AppRoutingModule { }
