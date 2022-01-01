@@ -44,7 +44,7 @@
       <td>{{row.NOTE}}</td>
       <td>{{row.ACCURACY}}</td>
       <td>
-        <button pButton icon="fa fa-trash" class="ui-button-danger"
+        <button pButton icon="fa fa-trash" class="p-button-danger"
                 pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(row)"></button>
         <a routerLink="/words-textbook-detail/{{row.ID}}">
           <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
@@ -59,7 +59,7 @@
         <a routerLink="/words-dict/textbook/{{index}}">
           <button pButton icon="fa fa-book" pTooltip="Dictionary" tooltipPosition="top"></button>
         </a>
-        <button pButton label="Retrieve Note" [hidden]="!settingsService.selectedDictNote" class="ui-button-warning" (click)="getNote(index)"></button>
+        <button pButton label="Retrieve Note" [hidden]="!settingsService.selectedDictNote" class="p-button-warning" (click)="getNote(index)"></button>
       </td>
     </tr>
   </ng-template>
