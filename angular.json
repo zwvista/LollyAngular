@@ -107,7 +107,6 @@
       }
     }
   },
-  "defaultProject": "lolly-angular",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
@@ -116,5 +115,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": "d8c9b6e5-19ce-4dab-bf9f-01ff2a208af5"
   }
 }
