@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 export class BaseService {
-  protected readonly baseUrlAPI = 'https://zwvista2.tk/lolly/api.php/records/';
-  protected readonly baseUrlSP = 'https://zwvista2.tk/lolly/sp.php/';
+  protected readonly baseUrlAPI = 'https://zwvista.com/lolly/api.php/records/';
+  protected readonly baseUrlSP = 'https://zwvista.com/lolly/sp.php/';
 
   constructor(
     protected http: HttpClient) { }
