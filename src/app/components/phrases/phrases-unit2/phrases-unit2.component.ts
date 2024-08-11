@@ -3,7 +3,7 @@ import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.servic
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MUnitWord } from '../../../models/wpp/unit-word';
-import { MatLegacyTable as MatTable } from '@angular/material/legacy-table';
+import { MatTable } from '@angular/material/table';
 import { googleString } from '../../../common/common';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
