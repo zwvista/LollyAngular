@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lolly-angular:build"
+            "buildTarget": "lolly-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lolly-angular:build:production"
+              "buildTarget": "lolly-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lolly-angular:build"
+            "buildTarget": "lolly-angular:build"
           }
         },
         "test": {
