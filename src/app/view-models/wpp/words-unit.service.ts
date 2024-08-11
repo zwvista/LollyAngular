@@ -7,7 +7,7 @@ import { EMPTY as empty, Observable, of } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
 import { LangWordService } from '../../services/wpp/lang-word.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class WordsUnitService {
 
   unitWords: MUnitWord[] = [];

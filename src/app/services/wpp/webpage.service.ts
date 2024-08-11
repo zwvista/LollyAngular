@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MWebPage, MWebPages } from '../../models/wpp/webpage';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class WebpageService extends BaseService {
 
   constructor(http: HttpClient)  {

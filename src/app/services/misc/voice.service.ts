@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { MVoice, MVoices } from '../../models/misc/voice';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class VoiceService extends BaseService {
 
   constructor(http: HttpClient)  {

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { MLangWord } from '../../models/wpp/lang-word';
 import { concatMap, map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class WordsLangService {
 
   langWords: MLangWord[] = [];

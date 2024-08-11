@@ -8,7 +8,7 @@ import { concatMap, map } from 'rxjs/operators';
 import { MLangPhrase } from '../../models/wpp/lang-phrase';
 import { LangPhraseService } from '../../services/wpp/lang-phrase.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class PhrasesUnitService {
 
   unitPhrases: MUnitPhrase[] = [];

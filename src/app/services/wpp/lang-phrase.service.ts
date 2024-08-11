@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { MSPResult } from '../../common/sp-result';
 import { toParameters } from '../../common/common';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class LangPhraseService extends BaseService {
 
   constructor(http: HttpClient)  {

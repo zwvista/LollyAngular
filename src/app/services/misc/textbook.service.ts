@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { MTextbook, MTextbooks } from '../../models/misc/textbook';
 import { MSelectItem } from '../../common/selectitem';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class TextbookService extends BaseService {
 
   constructor(http: HttpClient)  {

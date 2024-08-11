@@ -8,7 +8,7 @@ import { MSPResult } from '../../common/sp-result';
 import { toParameters } from '../../common/common';
 import { MLangWord } from '../../models/wpp/lang-word';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class PatternService extends BaseService {
 
   constructor(http: HttpClient)  {

@@ -19,7 +19,7 @@ import { MUSMapping } from '../../models/misc/usmapping';
 import { UsMappingService } from '../../services/misc/us-mapping.service';
 import { HtmlService } from '../../services/misc/html.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SettingsService {
 
   usMappings: MUSMapping[] = [];

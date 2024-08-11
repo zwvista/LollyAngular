@@ -8,7 +8,7 @@ import { MTextbook } from '../../models/misc/textbook';
 import { MSPResult } from '../../common/sp-result';
 import { toParameters } from '../../common/common';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UnitWordService extends BaseService {
 
   constructor(http: HttpClient)  {

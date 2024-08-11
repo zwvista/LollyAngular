@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { MUser, MUsers } from '../../models/misc/user';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UserService extends BaseService {
 
   constructor(http: HttpClient)  {

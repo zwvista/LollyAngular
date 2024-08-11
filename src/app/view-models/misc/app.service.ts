@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { SettingsService } from './settings.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AppService {
 
   private _initializeObject: ReplaySubject<void> = new ReplaySubject<void>();

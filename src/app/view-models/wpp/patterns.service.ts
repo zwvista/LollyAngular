@@ -6,7 +6,7 @@ import { concatMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PatternService } from '../../services/wpp/pattern.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class PatternsService {
 
   patterns: MPattern[] = [];

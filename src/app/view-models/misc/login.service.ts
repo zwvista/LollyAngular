@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GlobalVars } from '../../common/common';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class LoginService {
 
   item = new MUser();

@@ -6,7 +6,7 @@ import { BaseService } from '../misc/base.service';
 import { MWordFami, MWordsFami } from '../../models/wpp/word-fami';
 import { GlobalVars } from '../../common/common';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class WordFamiService extends BaseService {
 
   constructor(http: HttpClient)  {

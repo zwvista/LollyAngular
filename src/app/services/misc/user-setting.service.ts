@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MUserSetting, MUserSettingInfo, MUserSettings } from '../../models/misc/user-setting';
 import { GlobalVars } from '../../common/common';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UserSettingService extends BaseService {
 
   constructor(http: HttpClient)  {

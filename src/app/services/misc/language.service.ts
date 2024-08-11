@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MLanguage, MLanguages } from '../../models/misc/language';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class LanguageService extends BaseService {
 
   constructor(http: HttpClient)  {

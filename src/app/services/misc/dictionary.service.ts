@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { MDictionary, MDictionaries } from '../../models/misc/dictionary';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class DictionaryService extends BaseService {
 
   constructor(http: HttpClient)  {

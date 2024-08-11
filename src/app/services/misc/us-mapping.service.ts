@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MUSMapping, MUSMappings } from '../../models/misc/usmapping';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UsMappingService extends BaseService {
 
   constructor(http: HttpClient)  {
