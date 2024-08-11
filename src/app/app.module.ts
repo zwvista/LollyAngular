@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 // Material
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 // PrimeNG
 import { TableModule } from 'primeng/table';
@@ -55,19 +55,19 @@ import { PhrasesTextbookDetailComponent } from './components/phrases/phrases-tex
 import { VoiceService } from './services/misc/voice.service';
 import { WordFamiService } from './services/wpp/word-fami.service';
 import { WordsUnit2Component } from './components/words/words-unit2/words-unit2.component';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableModule } from '@angular/material/table';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { WordsTextbook2Component } from './components/words/words-textbook2/words-textbook2.component';
 import { WordsLang2Component } from './components/words/words-lang2/words-lang2.component';
 import { PhrasesUnit2Component } from './components/phrases/phrases-unit2/phrases-unit2.component';
 import { PhrasesTextbook2Component } from './components/phrases/phrases-textbook2/phrases-textbook2.component';
 import { PhrasesLang2Component } from './components/phrases/phrases-lang2/phrases-lang2.component';
-import { MatSelectModule } from '@angular/material/select';
+import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
 import { UsMappingService } from './services/misc/us-mapping.service';
 import { PatternsComponent } from './components/patterns/patterns/patterns.component';
 import { PatternsDetailComponent } from './components/patterns/patterns-detail/patterns-detail.component';

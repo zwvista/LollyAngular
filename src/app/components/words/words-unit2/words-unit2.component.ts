@@ -3,7 +3,7 @@ import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MatTable } from '@angular/material/table';
+import { MatLegacyTable as MatTable } from '@angular/material/legacy-table';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 
