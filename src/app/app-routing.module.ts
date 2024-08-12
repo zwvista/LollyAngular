@@ -13,7 +13,9 @@ import { PhrasesLangDetailComponent } from './components/phrases/phrases-lang-de
 import { WordsTextbookComponent } from './components/words/words-textbook/words-textbook.component';
 import { PhrasesTextbookComponent } from './components/phrases/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words/words-textbook-detail/words-textbook-detail.component';
-import { PhrasesTextbookDetailComponent } from './components/phrases/phrases-textbook-detail/phrases-textbook-detail.component';
+import {
+  PhrasesTextbookDetailComponent
+} from './components/phrases/phrases-textbook-detail/phrases-textbook-detail.component';
 import { WordsUnit2Component } from './components/words/words-unit2/words-unit2.component';
 import { WordsTextbook2Component } from './components/words/words-textbook2/words-textbook2.component';
 import { PhrasesTextbook2Component } from './components/phrases/phrases-textbook2/phrases-textbook2.component';

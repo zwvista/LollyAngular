@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
 import { googleString } from '../../../common/common';
 import { SettingsService } from '../../../view-models/misc/settings.service';

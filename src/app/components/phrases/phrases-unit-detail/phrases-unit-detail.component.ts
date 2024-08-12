@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { SettingsService } from '../../../view-models/misc/settings.service';
-import { SelectItem } from 'primeng/api';
 import { container } from 'tsyringe';
 
 @Component({

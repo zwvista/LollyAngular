@@ -35,7 +35,9 @@ import { WordsLangDetailComponent } from './components/words/words-lang-detail/w
 import { WordsTextbookComponent } from './components/words/words-textbook/words-textbook.component';
 import { PhrasesTextbookComponent } from './components/phrases/phrases-textbook/phrases-textbook.component';
 import { WordsTextbookDetailComponent } from './components/words/words-textbook-detail/words-textbook-detail.component';
-import { PhrasesTextbookDetailComponent } from './components/phrases/phrases-textbook-detail/phrases-textbook-detail.component';
+import {
+  PhrasesTextbookDetailComponent
+} from './components/phrases/phrases-textbook-detail/phrases-textbook-detail.component';
 import { WordsUnit2Component } from './components/words/words-unit2/words-unit2.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';

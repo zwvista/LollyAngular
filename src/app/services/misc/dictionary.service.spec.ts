@@ -1,6 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
 
-import { DictReferenceService, DictNoteService, DictTranslationService } from './dictionary.service';
+import { DictNoteService, DictReferenceService, DictTranslationService } from './dictionary.service';
 
 describe('DictReferenceService', () => {
   beforeEach(() => {

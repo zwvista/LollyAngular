@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MLangPhrase } from '../../../models/wpp/lang-phrase';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';

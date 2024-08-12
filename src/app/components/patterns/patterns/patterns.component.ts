@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../../view-models/misc/app.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';

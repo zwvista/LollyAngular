@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';

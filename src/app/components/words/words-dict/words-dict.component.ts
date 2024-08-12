@@ -8,7 +8,6 @@ import { MDictionary } from '../../../models/misc/dictionary';
 import { HtmlService } from '../../../services/misc/html.service';
 import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
 import { container } from 'tsyringe';
-import { AppService } from '../../../view-models/misc/app.service';
 
 @Component({
   selector: 'app-words-dict',
