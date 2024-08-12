@@ -38,7 +38,7 @@ export class Patterns2Component implements OnInit {
   }
 
   async onRefresh() {
-    this.patternsService.getData(this.page, this.rows, this.filter, this.filterType);
+    await this.patternsService.getData(this.page, this.rows, this.filter, this.filterType);
   }
 
   async deletePattern(id: number) {

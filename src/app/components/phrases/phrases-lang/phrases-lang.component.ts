@@ -39,8 +39,8 @@ export class PhrasesLangComponent implements OnInit {
     await this.phrasesLangService.getData(this.page, this.rows, this.filter, this.filterType);
   }
 
-  deletePhrase(item: MLangPhrase) {
-    this.phrasesLangService.delete(item);
+  async deletePhrase(item: MLangPhrase) {
+    await this.phrasesLangService.delete(item);
   }
 
   googlePhrase(phrase: string) {

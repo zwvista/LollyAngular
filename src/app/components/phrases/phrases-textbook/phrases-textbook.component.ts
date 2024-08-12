@@ -37,7 +37,7 @@ export class PhrasesTextbookComponent implements OnInit {
   }
 
   async onRefresh() {
-    this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter);
+    await this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter);
   }
 
   async deletePhrase(item: MUnitPhrase) {
