@@ -5,19 +5,17 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { AppService } from '../../../view-models/misc/app.service';
 import { MLangPhrase } from '../../../models/wpp/lang-phrase';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phrases-lang',
   templateUrl: './phrases-lang.component.html',
   styleUrls: ['./phrases-lang.component.css', '../../../common.css']
 })
-export class PhrasesLangComponent implements OnInit, OnDestroy {
+export class PhrasesLangComponent implements OnInit {
 
   appService = container.resolve(AppService);
   phrasesLangService = container.resolve(PhrasesLangService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
@@ -25,15 +23,10 @@ export class PhrasesLangComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
   async paginate(event) {

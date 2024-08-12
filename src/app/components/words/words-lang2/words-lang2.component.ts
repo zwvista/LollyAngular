@@ -5,21 +5,19 @@ import { googleString } from '../../../common/common';
 import { MLangWord } from '../../../models/wpp/lang-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-lang2',
   templateUrl: './words-lang2.component.html',
   styleUrls: ['./words-lang2.component.css']
 })
-export class WordsLang2Component implements OnInit, OnDestroy {
+export class WordsLang2Component implements OnInit {
 
   displayedColumns: string[] = ['ID', 'WORD', 'NOTE', 'ACCURACY', 'ACTION'];
 
   appService = container.resolve(AppService);
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   newWord: string;
   rows = 0;
   page = 1;
@@ -28,21 +26,16 @@ export class WordsLang2Component implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    }));
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  paginate(event) {
+  async paginate(event) {
     this.rows = event.pageSize;
     this.page = event.pageIndex + 1;
-    this.onRefresh();
+    await this.onRefresh();
   }
 
   async onRefresh() {

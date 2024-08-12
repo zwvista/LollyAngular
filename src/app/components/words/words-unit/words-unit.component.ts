@@ -5,33 +5,26 @@ import { googleString } from '../../../common/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-unit',
   templateUrl: './words-unit.component.html',
   styleUrls: ['./words-unit.component.css', '../../../common.css']
 })
-export class WordsUnitComponent implements OnInit, OnDestroy {
+export class WordsUnitComponent implements OnInit {
 
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   newWord: string;
   filter: string;
   filterType = 0;
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(async _ => {
-      await this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    await this.onRefresh();
   }
 
   async onEnterNewWord() {

@@ -5,19 +5,17 @@ import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.servic
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phrases-textbook',
   templateUrl: './phrases-textbook.component.html',
   styleUrls: ['./phrases-textbook.component.css', '../../../common.css']
 })
-export class PhrasesTextbookComponent implements OnInit, OnDestroy {
+export class PhrasesTextbookComponent implements OnInit {
 
   appService = container.resolve(AppService);
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
@@ -26,15 +24,10 @@ export class PhrasesTextbookComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
   async paginate(event) {

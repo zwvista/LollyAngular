@@ -8,14 +8,13 @@ import { googleString } from '../../../common/common';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phrases-unit2',
   templateUrl: './phrases-unit2.component.html',
   styleUrls: ['./phrases-unit2.component.css']
 })
-export class PhrasesUnit2Component implements OnInit, OnDestroy {
+export class PhrasesUnit2Component implements OnInit {
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
@@ -23,20 +22,14 @@ export class PhrasesUnit2Component implements OnInit, OnDestroy {
   appService = container.resolve(AppService);
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   filter: string;
   filterType = 0;
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    await this.onRefresh();
   }
 
   async onRefresh() {

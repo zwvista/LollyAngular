@@ -5,21 +5,19 @@ import { googleString } from '../../../common/common';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { MPattern } from '../../../models/wpp/pattern';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-patterns2',
   templateUrl: './patterns2.component.html',
   styleUrls: ['./patterns2.component.css']
 })
-export class Patterns2Component implements OnInit, OnDestroy {
+export class Patterns2Component implements OnInit {
 
   displayedColumns: string[] = ['ID', 'PATTERN', 'NOTE', 'TAGS', 'ACTION'];
 
   appService = container.resolve(AppService);
   patternsService = container.resolve(PatternsService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
@@ -27,15 +25,10 @@ export class Patterns2Component implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
   async paginate(event) {

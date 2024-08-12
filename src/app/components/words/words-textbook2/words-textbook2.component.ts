@@ -5,21 +5,19 @@ import { googleString } from '../../../common/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-textbook2',
   templateUrl: './words-textbook2.component.html',
   styleUrls: ['./words-textbook2.component.css']
 })
-export class WordsTextbook2Component implements OnInit, OnDestroy {
+export class WordsTextbook2Component implements OnInit {
 
   displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'ACCURACY', 'ACTION'];
 
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
@@ -28,15 +26,10 @@ export class WordsTextbook2Component implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(async _ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      await this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
   async paginate(event) {

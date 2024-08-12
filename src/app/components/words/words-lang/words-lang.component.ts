@@ -5,19 +5,17 @@ import { googleString } from '../../../common/common';
 import { MLangWord } from '../../../models/wpp/lang-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-lang',
   templateUrl: './words-lang.component.html',
   styleUrls: ['./words-lang.component.css', '../../../common.css']
 })
-export class WordsLangComponent implements OnInit, OnDestroy {
+export class WordsLangComponent implements OnInit {
 
   appService = container.resolve(AppService);
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   newWord: string;
   rows = 0;
   page = 1;
@@ -26,15 +24,10 @@ export class WordsLangComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
   async paginate(event) {

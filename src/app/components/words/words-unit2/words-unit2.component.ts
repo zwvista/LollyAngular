@@ -7,14 +7,13 @@ import { MatTable } from '@angular/material/table';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-unit2',
   templateUrl: './words-unit2.component.html',
   styleUrls: ['./words-unit2.component.css']
 })
-export class WordsUnit2Component implements OnInit, OnDestroy {
+export class WordsUnit2Component implements OnInit {
   // https://stackoverflow.com/questions/53377450/reorder-mat-table-rows-with-angular-materials-drag-and-drop
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
@@ -23,21 +22,15 @@ export class WordsUnit2Component implements OnInit, OnDestroy {
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   newWord: string;
   filter: string;
   filterType = 0;
 
   constructor() { }
 
-  ngOnInit() {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    await this.onRefresh();
   }
 
   async onEnterNewWord() {

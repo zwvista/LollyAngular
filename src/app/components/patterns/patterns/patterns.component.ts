@@ -4,19 +4,17 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { googleString } from '../../../common/common';
 import { container } from 'tsyringe';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-patterns',
   templateUrl: './patterns.component.html',
   styleUrls: ['./patterns.component.css', '../../../common.css']
 })
-export class PatternsComponent implements OnInit, OnDestroy {
+export class PatternsComponent implements OnInit {
 
   appService = container.resolve(AppService);
   patternsService = container.resolve(PatternsService);
   settingsService = container.resolve(SettingsService);
-  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
@@ -24,15 +22,10 @@ export class PatternsComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
-      this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    await this.appService.getData();
+    this.rows = this.settingsService.USROWSPERPAGE;
+    await this.onRefresh();
   }
 
   async paginate(event) {
