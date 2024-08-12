@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
+import { container } from 'tsyringe';
 
 @Component({
   selector: 'app-phrases-textbook-detail',
@@ -12,11 +13,11 @@ import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.servic
 })
 export class PhrasesTextbookDetailComponent implements OnInit {
 
+  phrasesUnitService = container.resolve(PhrasesUnitService);
+  settingsService = container.resolve(SettingsService);
   item: MUnitPhrase;
 
-  constructor(private phrasesUnitService: PhrasesUnitService,
-              public settingsService: SettingsService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private location: Location
   ) { }
 
@@ -25,12 +26,13 @@ export class PhrasesTextbookDetailComponent implements OnInit {
     this.item = this.phrasesUnitService.textbookPhrases.find(value => value.ID === id);
   }
 
-  goBack(): void {
+  goBack() {
     this.location.back();
   }
 
-  save(): void {
+  async save() {
     this.item.PHRASE = this.settingsService.autoCorrectInput(this.item.PHRASE);
-    this.phrasesUnitService.update(this.item).subscribe(_ => this.goBack());
+    await this.phrasesUnitService.update(this.item);
+    this.goBack();
   }
 }

@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
 import { SettingsService } from '../misc/settings.service';
 import { AppService } from '../misc/app.service';
 import { MPattern } from '../../models/wpp/pattern';
-import { concatMap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { PatternService } from '../../services/wpp/pattern.service';
+import { singleton } from "tsyringe";
 
-@Injectable({providedIn: 'root'})
+@singleton()
 export class PatternsService {
 
   patterns: MPattern[] = [];
@@ -17,26 +16,23 @@ export class PatternsService {
               private appService: AppService) {
   }
 
-  getData(page: number, rows: number, filter: string, filterType: number) {
-    return this.appService.initializeObject.pipe(
-      concatMap(_ => this.patternService.getDataByLang(this.settingsService.selectedLang.ID, page, rows, filter, filterType)),
-      map(res => {
-        this.patterns = res.records;
-        this.patternCount = res.results;
-      }),
-    );
+  async getData(page: number, rows: number, filter: string, filterType: number) {
+    await this.appService.initializeObject.pipe(take(1));
+    const res = await this.patternService.getDataByLang(this.settingsService.selectedLang.ID, page, rows, filter, filterType);
+    this.patterns = res.records;
+    this.patternCount = res.results;
   }
 
-  create(item: MPattern): Observable<number | any[]> {
-    return this.patternService.create(item);
+  async create(item: MPattern): Promise<number | any[]> {
+    return await this.patternService.create(item);
   }
 
-  update(item: MPattern): Observable<number> {
-    return this.patternService.update(item);
+  async update(item: MPattern): Promise<number> {
+    return await this.patternService.update(item);
   }
 
-  delete(id: number): Observable<number> {
-    return this.patternService.delete(id);
+  async delete(id: number): Promise<number> {
+    return await this.patternService.delete(id);
   }
 
   newPattern(): MPattern {

@@ -1,52 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { googleString } from '../../../common/common';
 import { AppService } from '../../../view-models/misc/app.service';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phrases-textbook2',
   templateUrl: './phrases-textbook2.component.html',
   styleUrls: ['./phrases-textbook2.component.css']
 })
-export class PhrasesTextbook2Component implements OnInit {
+export class PhrasesTextbook2Component implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
 
-  constructor(private appService: AppService,
-              public phrasesUnitService: PhrasesUnitService,
-              public settingsService: SettingsService) { }
-
+  appService = container.resolve(AppService);
+  phrasesUnitService = container.resolve(PhrasesUnitService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
   textbookFilter = 0;
 
+  constructor() { }
+
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
+    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
       this.rows = this.settingsService.USROWSPERPAGE;
       this.onRefresh();
-    });
+    }));
   }
 
-  paginate(event) {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async paginate(event) {
     this.rows = event.pageSize;
     this.page = event.pageIndex + 1;
-    this.onRefresh();
+    await this.onRefresh();
   }
 
-  onRefresh() {
-    this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter).subscribe();
+  async onRefresh() {
+    await this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter);
   }
 
-  deletePhrase(item: MUnitPhrase) {
-    this.phrasesUnitService.delete(item);
+  async deletePhrase(item: MUnitPhrase) {
+    await this.phrasesUnitService.delete(item);
   }
 
   googlePhrase(phrase: string) {
     googleString(phrase);
   }
-
 }

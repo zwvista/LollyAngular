@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -7,31 +7,40 @@ import { MatTable } from '@angular/material/table';
 import { googleString } from '../../../common/common';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phrases-unit2',
   templateUrl: './phrases-unit2.component.html',
   styleUrls: ['./phrases-unit2.component.css']
 })
-export class PhrasesUnit2Component implements OnInit {
+export class PhrasesUnit2Component implements OnInit, OnDestroy {
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'PHRASEID', 'PHRASE', 'TRANSLATION', 'ACTION'];
+
+  appService = container.resolve(AppService);
+  phrasesUnitService = container.resolve(PhrasesUnitService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   filter: string;
   filterType = 0;
 
-  constructor(private appService: AppService,
-              public phrasesUnitService: PhrasesUnitService,
-              public settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
+    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
       this.onRefresh();
-    });
+    }));
   }
 
-  onRefresh() {
-    this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async onRefresh() {
+    await this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType);
   }
 
   dropTable(event: CdkDragDrop<MUnitPhrase[]>) {
@@ -40,12 +49,11 @@ export class PhrasesUnit2Component implements OnInit {
     this.table.renderRows();
   }
 
-  deletePhrase(item: MUnitPhrase) {
-    this.phrasesUnitService.delete(item);
+  async deletePhrase(item: MUnitPhrase) {
+    await this.phrasesUnitService.delete(item);
   }
 
   googlePhrase(phrase: string) {
     googleString(phrase);
   }
-
 }

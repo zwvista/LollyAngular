@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsListener, SettingsService } from '../../../view-models/misc/settings.service';
-import { concatMap } from 'rxjs/operators';
+import { container } from 'tsyringe';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css', '../../../common/common.css']
+  styleUrls: ['./settings.component.css', '../../../common.css']
 })
 export class SettingsComponent implements OnInit, SettingsListener {
+
+  settingsService = container.resolve(SettingsService);
 
   get toTypeIsUnit() {
     return this.settingsService.toType === 0;
@@ -19,69 +21,69 @@ export class SettingsComponent implements OnInit, SettingsListener {
     return this.settingsService.toType === 2;
   }
 
-  constructor(public settingsService: SettingsService) { }
+  constructor() { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.settingsService.settingsListener = this;
-    this.settingsService.getData().subscribe();
+    await this.settingsService.getData();
   }
 
-  onLangChange(index) {
+  async onLangChange(index) {
     this.settingsService.selectedLang = this.settingsService.languages[index];
-    this.settingsService.updateLang().subscribe();
+    await this.settingsService.updateLang();
   }
 
-  onVoiceChange(index) {
+  async onVoiceChange(index) {
     this.settingsService.selectedVoice = this.settingsService.voices[index];
-    this.settingsService.updateVoice().subscribe();
+    await this.settingsService.updateVoice();
   }
 
-  onDictReferenceChange(index) {
+  async onDictReferenceChange(index) {
     this.settingsService.selectedDictReference = this.settingsService.dictsReference[index];
-    this.settingsService.updateDictReference().subscribe();
+    await this.settingsService.updateDictReference();
   }
 
-  onDictNoteChange(index) {
+  async onDictNoteChange(index) {
     this.settingsService.selectedDictNote = this.settingsService.dictsNote[index];
-    this.settingsService.updateDictNote().subscribe();
+    await this.settingsService.updateDictNote();
   }
 
-  onDictTranslationChange(index) {
+  async onDictTranslationChange(index) {
     this.settingsService.selectedDictTranslation = this.settingsService.dictsTranslation[index];
-    this.settingsService.updateDictTranslation().subscribe();
+    await this.settingsService.updateDictTranslation();
   }
 
-  onTextbookChange(index) {
+  async onTextbookChange(index) {
     this.settingsService.selectedTextbook = this.settingsService.textbooks[index];
-    this.settingsService.updateTextbook().subscribe();
+    await this.settingsService.updateTextbook();
   }
 
-  onUnitFromChange(index) {
-    this.settingsService.updateUnitFrom(this.settingsService.units[index].value).subscribe();
+  async onUnitFromChange(index) {
+    await this.settingsService.updateUnitFrom(this.settingsService.units[index].value);
   }
 
-  onPartFromChange(index) {
-    this.settingsService.updatePartFrom(this.settingsService.parts[index].value).subscribe();
+  async onPartFromChange(index) {
+    await this.settingsService.updatePartFrom(this.settingsService.parts[index].value);
   }
 
-  onToTypeChange(index) {
-    this.settingsService.updateToType(this.settingsService.toTypes[index].value).subscribe();
+  async onToTypeChange(index) {
+    await this.settingsService.updateToType(this.settingsService.toTypes[index].value);
   }
 
-  previousUnitPart() {
-    this.settingsService.previousUnitPart().subscribe();
+  async previousUnitPart() {
+    await this.settingsService.previousUnitPart();
   }
 
-  nextUnitPart() {
-    this.settingsService.nextUnitPart().subscribe();
+  async nextUnitPart() {
+    await this.settingsService.nextUnitPart();
   }
 
-  onUnitToChange(index) {
-    this.settingsService.updateUnitTo(this.settingsService.units[index].value).subscribe();
+  async onUnitToChange(index) {
+    await this.settingsService.updateUnitTo(this.settingsService.units[index].value);
   }
 
-  onPartToChange(index) {
-    this.settingsService.updateUnitTo(this.settingsService.parts[index].value).subscribe();
+  async onPartToChange(index) {
+    await this.settingsService.updateUnitTo(this.settingsService.parts[index].value);
   }
 
   onGetData(): void {

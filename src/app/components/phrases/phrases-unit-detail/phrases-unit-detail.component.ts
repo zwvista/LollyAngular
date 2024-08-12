@@ -5,19 +5,20 @@ import { Location } from '@angular/common';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { SelectItem } from 'primeng/api';
+import { container } from 'tsyringe';
 
 @Component({
   selector: 'app-phrases-unit-detail',
   templateUrl: './phrases-unit-detail.component.html',
-  styleUrls: ['./phrases-unit-detail.component.css', '../../../common/common.css']
+  styleUrls: ['./phrases-unit-detail.component.css', '../../../common.css']
 })
 export class PhrasesUnitDetailComponent implements OnInit {
 
+  phrasesUnitService = container.resolve(PhrasesUnitService);
+  settingsService = container.resolve(SettingsService);
   item: MUnitPhrase;
 
-  constructor(private phrasesUnitService: PhrasesUnitService,
-              public settingsService: SettingsService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private location: Location
   ) { }
 
@@ -27,17 +28,13 @@ export class PhrasesUnitDetailComponent implements OnInit {
     this.item = o ? {...o} as MUnitPhrase : this.phrasesUnitService.newUnitPhrase();
   }
 
-  goBack(): void {
+  goBack() {
     this.location.back();
   }
 
-  save(): void {
+  async save() {
     this.item.PHRASE = this.settingsService.autoCorrectInput(this.item.PHRASE);
-    if (this.item.ID) {
-      this.phrasesUnitService.update(this.item).subscribe(_ => this.goBack());
-    } else {
-      this.phrasesUnitService.create(this.item).subscribe(_ => this.goBack());
-    }
+    await (this.item.ID ? this.phrasesUnitService.update(this.item) : this.phrasesUnitService.create(this.item));
+    this.goBack();
   }
-
 }

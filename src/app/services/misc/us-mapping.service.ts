@@ -1,21 +1,13 @@
-import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { MUSMapping, MUSMappings } from '../../models/misc/usmapping';
+import { singleton } from "tsyringe";
 
-@Injectable({providedIn: 'root'})
+@singleton()
 export class UsMappingService extends BaseService {
 
-  constructor(http: HttpClient)  {
-    super(http);
-  }
-
-  getData(): Observable<MUSMapping[]> {
+  async getData(): Promise<MUSMapping[]> {
     const url = `${this.baseUrlAPI}USMAPPINGS`;
-    return this.httpGet<MUSMappings>(url).pipe(
-      map(result => result.records.map(value => Object.assign(new MUSMapping(), value))),
-    );
+    const result = await this.httpGet<MUSMappings>(url);
+    return result.records.map(value => Object.assign(new MUSMapping(), value));
   }
 }

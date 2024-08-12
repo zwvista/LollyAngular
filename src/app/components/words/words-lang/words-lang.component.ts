@@ -1,62 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { MLangWord } from '../../../models/wpp/lang-word';
 import { AppService } from '../../../view-models/misc/app.service';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-lang',
   templateUrl: './words-lang.component.html',
-  styleUrls: ['./words-lang.component.css', '../../../common/common.css']
+  styleUrls: ['./words-lang.component.css', '../../../common.css']
 })
-export class WordsLangComponent implements OnInit {
+export class WordsLangComponent implements OnInit, OnDestroy {
 
+  appService = container.resolve(AppService);
+  wordsLangService = container.resolve(WordsLangService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   newWord: string;
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
 
-  constructor(private appService: AppService,
-              public wordsLangService: WordsLangService,
-              public settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
+    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
       this.rows = this.settingsService.USROWSPERPAGE;
       this.onRefresh();
-    });
+    }));
   }
 
-  paginate(event) {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async paginate(event) {
     this.rows = event.rows;
     this.page = event.page + 1;
-    this.onRefresh();
+    await this.onRefresh();
   }
 
-  onEnterNewWord() {
-    if (!this.newWord) return;
-    const o = this.wordsLangService.newLangWord();
-    o.WORD = this.settingsService.autoCorrectInput(this.newWord);
-    this.newWord = '';
-    this.wordsLangService.create(o).subscribe(id => {
-      o.ID = id as number;
-      this.wordsLangService.langWords.push(o);
-    });
+  async onRefresh() {
+    await this.wordsLangService.getData(this.page, this.rows, this.filter, this.filterType);
   }
 
-  onRefresh() {
-    this.wordsLangService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
+  async deleteWord(item: MLangWord) {
+    await this.wordsLangService.delete(item);
   }
 
-  deleteWord(item: MLangWord) {
-    this.wordsLangService.delete(item);
-  }
-
-  getNote(index: number) {
+  async getNote(index: number) {
     console.log(index);
-    this.wordsLangService.getNote(index).subscribe();
+    await this.wordsLangService.getNote(index);
   }
 
   googleWord(word: string) {

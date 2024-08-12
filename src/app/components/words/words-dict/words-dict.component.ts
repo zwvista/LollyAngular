@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
 import { MDictionary } from '../../../models/misc/dictionary';
 import { HtmlService } from '../../../services/misc/html.service';
 import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
+import { container } from 'tsyringe';
+import { AppService } from '../../../view-models/misc/app.service';
 
 @Component({
   selector: 'app-words-dict',
@@ -15,17 +17,17 @@ import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
 })
 export class WordsDictComponent implements OnInit {
 
+  wordsUnitService = container.resolve(WordsUnitService);
+  wordsLangService = container.resolve(WordsLangService);
+  settingsService = container.resolve(SettingsService);
+  htmlService = container.resolve(HtmlService);
   words: SelectItem[];
   selectedWord: string;
   dictUrl = 'about:blank';
   dictSrc = null;
   selectedDictReference: MDictionary;
 
-  constructor(private wordsUnitService: WordsUnitService,
-              private wordsLangService: WordsLangService,
-              public settingsService: SettingsService,
-              private htmlService: HtmlService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private location: Location
   ) { }
 
@@ -44,16 +46,15 @@ export class WordsDictComponent implements OnInit {
     this.location.back();
   }
 
-  refreshDict() {
+  async refreshDict() {
     const item = this.selectedDictReference;
     const url = item.urlString(this.selectedWord, this.settingsService.autoCorrects);
     if (item.DICTTYPENAME === 'OFFLINE') {
       this.dictUrl = 'about:blank';
-      this.htmlService.getHtml(url).subscribe(html => {
-        this.dictSrc = item.htmlString(html, this.selectedWord)
-          .replace(/\n/g, ' ').replace(/"/g, '&quot;');
-        console.log(this.dictSrc);
-      });
+      const html = await this.htmlService.getHtml(url);
+      this.dictSrc = item.htmlString(html, this.selectedWord)
+        .replace(/\n/g, ' ').replace(/"/g, '&quot;');
+      console.log(this.dictSrc);
     } else {
       this.dictSrc = null;
       this.dictUrl = url;
@@ -71,5 +72,4 @@ export class WordsDictComponent implements OnInit {
     // }
     console.log(iFrameBody);
   }
-
 }

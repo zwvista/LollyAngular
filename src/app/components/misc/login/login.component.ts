@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../view-models/misc/login.service';
 import { GlobalVars } from '../../../common/common';
+import { container } from 'tsyringe';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +10,18 @@ import { GlobalVars } from '../../../common/common';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public loginService: LoginService) { }
+  loginService = container.resolve(LoginService);
 
-  ngOnInit(): void {
+  constructor() { }
+
+  ngOnInit() { }
+
+  async login() {
+    const userid = await this.loginService.login();
+    if (userid) {
+      localStorage.setItem('userid', userid);
+      GlobalVars.userid = userid;
+      window.location.href = '/';
+    }
   }
-
-  login() {
-    this.loginService.login().subscribe(userid => {
-      if (userid) {
-        localStorage.setItem('userid', userid);
-        GlobalVars.userid = userid;
-        window.location.href = '/';
-      }
-    });
-  }
-
 }

@@ -1,58 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-unit',
   templateUrl: './words-unit.component.html',
-  styleUrls: ['./words-unit.component.css', '../../../common/common.css']
+  styleUrls: ['./words-unit.component.css', '../../../common.css']
 })
-export class WordsUnitComponent implements OnInit {
+export class WordsUnitComponent implements OnInit, OnDestroy {
 
+  appService = container.resolve(AppService);
+  wordsUnitService = container.resolve(WordsUnitService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   newWord: string;
   filter: string;
   filterType = 0;
 
-  constructor(private appService: AppService,
-              public wordsUnitService: WordsUnitService,
-              public settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
-      this.onRefresh();
-    });
+    this.subscription.add(this.appService.initializeObject.subscribe(async _ => {
+      await this.onRefresh();
+    }));
   }
 
-  onEnterNewWord() {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async onEnterNewWord() {
     if (!this.newWord) return;
     const o = this.wordsUnitService.newUnitWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
     this.newWord = '';
-    this.wordsUnitService.create(o).subscribe(id => {
-      o.ID = id as number;
-      this.wordsUnitService.unitWords.push(o);
-    });
+    const id = await this.wordsUnitService.create(o);
+    o.ID = id as number;
+    this.wordsUnitService.unitWords.push(o);
   }
 
-  onRefresh() {
-    this.wordsUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
+  async onRefresh() {
+    await this.wordsUnitService.getDataInTextbook(this.filter, this.filterType);
   }
 
-  onReorder(from: number, to: number) {
+  async onReorder(from: number, to: number) {
     console.log(`${from},${to}`);
-    this.wordsUnitService.reindex(index => {});
+    await this.wordsUnitService.reindex(index => {});
   }
 
-  deleteWord(item: MUnitWord) {
-    this.wordsUnitService.delete(item);
+  async deleteWord(item: MUnitWord) {
+    await this.wordsUnitService.delete(item);
   }
 
-  getNote(index: number) {
+  async getNote(index: number) {
     console.log(index);
-    this.wordsUnitService.getNote(index).subscribe();
+    await this.wordsUnitService.getNote(index);
   }
 
   googleWord(word: string) {

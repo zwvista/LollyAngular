@@ -3,6 +3,7 @@ import { AppService } from './view-models/misc/app.service';
 import { MenuItem } from 'primeng/api';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { container } from 'tsyringe';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  appService = container.resolve(AppService);
   title = 'Lolly Angular';
   itemsApp: MenuItem[] = [
     {label: 'App1', icon: 'fa fa-fw fa-dollar', command: event => this.handleChange(event)},
@@ -39,18 +41,17 @@ export class AppComponent implements OnInit {
   // https://stackoverflow.com/questions/62095354/angular-login-page
   isLoginPage: boolean;
 
-  constructor(private appService: AppService,
-              private router: Router) {
+  constructor(private router: Router) {
+  }
+
+  ngOnInit() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.isLoginPage = this.router.url === '/login';
       if (!this.isLoginPage)
-        appService.getData();
+        this.appService.getData();
     });
-  }
-
-  ngOnInit() {
   }
 
   handleChange(event) {

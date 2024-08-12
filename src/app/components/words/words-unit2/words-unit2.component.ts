@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
@@ -6,45 +6,52 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatTable } from '@angular/material/table';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-unit2',
   templateUrl: './words-unit2.component.html',
   styleUrls: ['./words-unit2.component.css']
 })
-export class WordsUnit2Component implements OnInit {
+export class WordsUnit2Component implements OnInit, OnDestroy {
   // https://stackoverflow.com/questions/53377450/reorder-mat-table-rows-with-angular-materials-drag-and-drop
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;
 
   displayedColumns: string[] = ['position', 'ID', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'ACCURACY', 'ACTION'];
 
+  appService = container.resolve(AppService);
+  wordsUnitService = container.resolve(WordsUnitService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   newWord: string;
   filter: string;
   filterType = 0;
 
-  constructor(private appService: AppService,
-              public wordsUnitService: WordsUnitService,
-              public settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
+    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
       this.onRefresh();
-    });
+    }));
   }
 
-  onEnterNewWord() {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async onEnterNewWord() {
     if (!this.newWord) return;
     const o = this.wordsUnitService.newUnitWord();
     o.WORD = this.settingsService.autoCorrectInput(this.newWord);
     this.newWord = '';
-    this.wordsUnitService.create(o).subscribe(id => {
-      o.ID = id as number;
-      this.wordsUnitService.unitWords.push(o);
-    });
+    const id = await this.wordsUnitService.create(o);
+    o.ID = id as number;
+    this.wordsUnitService.unitWords.push(o);
   }
 
-  onRefresh() {
-    this.wordsUnitService.getDataInTextbook(this.filter, this.filterType).subscribe();
+  async onRefresh() {
+    await this.wordsUnitService.getDataInTextbook(this.filter, this.filterType);
   }
 
   dropTable(event: CdkDragDrop<MUnitWord[]>) {
@@ -53,13 +60,13 @@ export class WordsUnit2Component implements OnInit {
     this.table.renderRows();
   }
 
-  deleteWord(item: MUnitWord) {
-    this.wordsUnitService.delete(item);
+  async deleteWord(item: MUnitWord) {
+    await this.wordsUnitService.delete(item);
   }
 
-  getNote(index: number) {
+  async getNote(index: number) {
     console.log(index);
-    this.wordsUnitService.getNote(index).subscribe();
+    await this.wordsUnitService.getNote(index);
   }
 
   googleWord(word: string) {
@@ -69,5 +76,4 @@ export class WordsUnit2Component implements OnInit {
   getNotes(ifEmpty: boolean) {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
   }
-
 }

@@ -1,5 +1,5 @@
 export class MUsers {
-  records: MUser[];
+  records!: MUser[];
 }
 export class MUser {
   ID = 0;

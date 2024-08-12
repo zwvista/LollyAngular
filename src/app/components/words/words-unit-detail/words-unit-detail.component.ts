@@ -4,20 +4,20 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { SettingsService } from '../../../view-models/misc/settings.service';
-import { SelectItem } from 'primeng/api';
+import { container } from 'tsyringe';
 
 @Component({
   selector: 'app-words-unit-detail',
   templateUrl: './words-unit-detail.component.html',
-  styleUrls: ['./words-unit-detail.component.css', '../../../common/common.css']
+  styleUrls: ['./words-unit-detail.component.css', '../../../common.css']
 })
 export class WordsUnitDetailComponent implements OnInit {
 
+  wordsUnitService = container.resolve(WordsUnitService);
+  settingsService = container.resolve(SettingsService);
   item: MUnitWord;
 
-  constructor(private wordsUnitService: WordsUnitService,
-              public settingsService: SettingsService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private location: Location
   ) { }
 
@@ -27,17 +27,13 @@ export class WordsUnitDetailComponent implements OnInit {
     this.item = o || this.wordsUnitService.newUnitWord();
   }
 
-  goBack(): void {
+  goBack() {
     this.location.back();
   }
 
-  save(): void {
+  async save() {
     this.item.WORD = this.settingsService.autoCorrectInput(this.item.WORD);
-    if (this.item.ID) {
-      this.wordsUnitService.update(this.item).subscribe(_ => this.goBack());
-    } else {
-      this.wordsUnitService.create(this.item).subscribe(_ => this.goBack());
-    }
+    await (this.item.ID ? this.wordsUnitService.update(this.item) : this.wordsUnitService.create(this.item));
+    this.goBack();
   }
-
 }

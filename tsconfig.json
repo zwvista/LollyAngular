@@ -8,6 +8,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
@@ -16,6 +17,7 @@
       "es2017",
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true
   }
 }

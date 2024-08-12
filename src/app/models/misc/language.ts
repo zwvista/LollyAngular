@@ -1,5 +1,5 @@
 export class MLanguages {
-  records: MLanguage[];
+  records!: MLanguage[];
 }
 export class MLanguage {
   ID = 0;

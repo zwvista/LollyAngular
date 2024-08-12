@@ -1,51 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppService } from '../../../view-models/misc/app.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { MPattern } from '../../../models/wpp/pattern';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-patterns2',
   templateUrl: './patterns2.component.html',
   styleUrls: ['./patterns2.component.css']
 })
-export class Patterns2Component implements OnInit {
+export class Patterns2Component implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['ID', 'PATTERN', 'NOTE', 'TAGS', 'ACTION'];
 
+  appService = container.resolve(AppService);
+  patternsService = container.resolve(PatternsService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
 
-  constructor(private appService: AppService,
-              public patternsService: PatternsService,
-              public settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
+    this.subscription.add(this.appService.initializeObject.subscribe(_ => {
       this.rows = this.settingsService.USROWSPERPAGE;
       this.onRefresh();
-    });
+    }));
   }
 
-  paginate(event) {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async paginate(event) {
     this.rows = event.pageSize;
     this.page = event.pageIndex + 1;
-    this.onRefresh();
+    await this.onRefresh();
   }
 
-  onRefresh() {
-    this.patternsService.getData(this.page, this.rows, this.filter, this.filterType).subscribe();
+  async onRefresh() {
+    this.patternsService.getData(this.page, this.rows, this.filter, this.filterType);
   }
 
-  deletePattern(id: number) {
-    this.patternsService.delete(id);
+  async deletePattern(id: number) {
+    await this.patternsService.delete(id);
   }
 
   googlePattern(phrase: string) {
     googleString(phrase);
   }
-
 }

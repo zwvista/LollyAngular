@@ -1,57 +1,64 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
+import { container } from 'tsyringe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-words-textbook2',
   templateUrl: './words-textbook2.component.html',
   styleUrls: ['./words-textbook2.component.css']
 })
-export class WordsTextbook2Component implements OnInit {
+export class WordsTextbook2Component implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['ID', 'TEXTBOOKNAME', 'UNIT', 'PART', 'SEQNUM', 'WORDID', 'WORD', 'NOTE', 'ACCURACY', 'ACTION'];
 
+  appService = container.resolve(AppService);
+  wordsUnitService = container.resolve(WordsUnitService);
+  settingsService = container.resolve(SettingsService);
+  subscription = new Subscription();
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
   textbookFilter = 0;
 
-  constructor(private appService: AppService,
-              public wordsUnitService: WordsUnitService,
-              public settingsService: SettingsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.appService.initializeObject.subscribe(_ => {
+    this.subscription.add(this.appService.initializeObject.subscribe(async _ => {
       this.rows = this.settingsService.USROWSPERPAGE;
-      this.onRefresh();
-    });
+      await this.onRefresh();
+    }));
   }
 
-  paginate(event) {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async paginate(event) {
     this.rows = event.pageSize;
     this.page = event.pageIndex + 1;
-    this.onRefresh();
+    await this.onRefresh();
   }
 
-  onRefresh() {
-    this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter).subscribe();
+  async onRefresh() {
+    await this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter);
   }
 
-  deleteWord(item: MUnitWord) {
-    this.wordsUnitService.delete(item);
+  async deleteWord(item: MUnitWord) {
+    await this.wordsUnitService.delete(item);
   }
 
-  getNote(index: number) {
+  async getNote(index: number) {
     console.log(index);
-    this.wordsUnitService.getNote(index).subscribe();
+    await this.wordsUnitService.getNote(index);
   }
 
   googleWord(word: string) {
     googleString(word);
   }
-
 }

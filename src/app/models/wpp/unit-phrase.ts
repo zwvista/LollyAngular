@@ -1,7 +1,7 @@
 import { MTextbook } from '../misc/textbook';
 
 export class MUnitPhrases {
-  records: MUnitPhrase[];
+  records!: MUnitPhrase[];
   results = 0;
 }
 export class MUnitPhrase {
@@ -16,7 +16,7 @@ export class MUnitPhrase {
   PHRASE = '';
   TRANSLATION = '';
 
-  textbook: MTextbook;
+  textbook!: MTextbook;
   get UNITSTR(): string {
     return this.textbook.UNITSTR(this.UNIT);
   }

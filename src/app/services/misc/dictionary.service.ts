@@ -1,36 +1,29 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { MDictionary, MDictionaries } from '../../models/misc/dictionary';
+import {
+  MDictionary,
+  MDictionaries,
+} from '../../models/misc/dictionary';
+import { singleton } from "tsyringe";
 
-@Injectable({providedIn: 'root'})
+@singleton()
 export class DictionaryService extends BaseService {
 
-  constructor(http: HttpClient)  {
-    super(http);
-  }
-
-  getDictsReference(langid: number): Observable<MDictionary[]> {
+  async getDictsReference(langid: number): Promise<MDictionary[]> {
     const url = `${this.baseUrlAPI}VDICTSREFERENCE?filter=LANGIDFROM,eq,${langid}&order=SEQNUM&order=DICTNAME`;
-    return this.httpGet<MDictionaries>(url).pipe(
-      map(result => result.records.map(value => Object.assign(new MDictionary(), value))),
-    );
+    const result = await this.httpGet<MDictionaries>(url);
+    return result.records.map(value => Object.assign(new MDictionary(), value));
   }
 
-  getDictsNote(langid: number): Observable<MDictionary[]> {
+  async getDictsNote(langid: number): Promise<MDictionary[]> {
     const url = `${this.baseUrlAPI}VDICTSNOTE?filter=LANGIDFROM,eq,${langid}`;
-    return this.httpGet<MDictionaries>(url).pipe(
-      map(result => result.records.map(value => Object.assign(new MDictionary(), value))),
-    );
+    const result = await this.httpGet<MDictionaries>(url);
+    return result.records.map(value => Object.assign(new MDictionary(), value));
   }
 
-  getDictsTranslation(langid: number): Observable<MDictionary[]> {
+  async getDictsTranslation(langid: number): Promise<MDictionary[]> {
     const url = `${this.baseUrlAPI}VDICTSTRANSLATION?filter=LANGIDFROM,eq,${langid}`;
-    return this.httpGet<MDictionaries>(url).pipe(
-      map(result => result.records.map(value => Object.assign(new MDictionary(), value))),
-    );
+    const result = await this.httpGet<MDictionaries>(url);
+    return result.records.map(value => Object.assign(new MDictionary(), value));
   }
 
 }

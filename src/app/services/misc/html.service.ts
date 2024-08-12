@@ -1,14 +1,8 @@
-import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { singleton } from "tsyringe";
 
-@Injectable({providedIn: 'root'})
+@singleton()
 export class HtmlService extends BaseService {
-
-  constructor(http: HttpClient)  {
-    super(http);
-  }
 
   static extractTextFrom(html: string, transform: string, template: string,
                          templateHandler: (text: string, template: string) => string): string {
@@ -43,10 +37,9 @@ export class HtmlService extends BaseService {
     return text;
   }
 
-  getHtml(url: string): Observable<string> {
-    // https://www.concretepage.com/angular-2/angular-httpclient-get-example#Text
-    return this.http.get(url, {responseType: 'text'}).pipe(
-    );
+  async getHtml(url: string): Promise<string> {
+    const result = await fetch(url);
+    return await result.text();
   }
 
 }

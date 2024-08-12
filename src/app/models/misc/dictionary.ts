@@ -29,7 +29,7 @@ export class MDictionary {
 }
 
 export class MDictionaries {
-  records: MDictionary[];
+  records!: MDictionary[];
 }
 
 const cssFolder = 'http://zwvista.com/lolly/css/';
