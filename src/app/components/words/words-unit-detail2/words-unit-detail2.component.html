@@ -1,0 +1,68 @@
+<mat-dialog-content>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>ID:</mat-label>
+      <input matInput class="" [(ngModel)]="item.ID" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>UNIT:</mat-label>
+      <mat-select [(ngModel)]="item.UNIT">
+        <mat-option *ngFor="let o of settingsService.units" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>PART:</mat-label>
+      <mat-select [(ngModel)]="item.PART">
+        <mat-option *ngFor="let o of settingsService.parts" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>SEQNUM:</mat-label>
+      <input matInput [(ngModel)]="item.SEQNUM">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>WORDID:</mat-label>
+      <input matInput [(ngModel)]="item.WORDID" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>WORD:</mat-label>
+      <input matInput [(ngModel)]="item.WORD">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>NOTE:</mat-label>
+      <input matInput [(ngModel)]="item.NOTE">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>FAMIID:</mat-label>
+      <input matInput [(ngModel)]="item.FAMIID" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>ACCURACY:</mat-label>
+      <input matInput [value]="item.ACCURACY" disabled>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

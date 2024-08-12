@@ -7,6 +7,8 @@ import { MatTable } from '@angular/material/table';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { MatDialog } from '@angular/material/dialog';
+import { WordsUnitDetail2Component } from '../words-unit-detail2/words-unit-detail2.component';
 
 @Component({
   selector: 'app-words-unit2',
@@ -26,7 +28,7 @@ export class WordsUnit2Component implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -68,5 +70,14 @@ export class WordsUnit2Component implements OnInit {
 
   getNotes(ifEmpty: boolean) {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
+  }
+
+  showDetailDialog(id: number) {
+    const dialogRef = this.dialog.open(WordsUnitDetail2Component, {
+      data: { id },
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 }

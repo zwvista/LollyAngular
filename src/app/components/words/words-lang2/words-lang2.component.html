@@ -34,23 +34,23 @@
 
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.ID}} </td>
+    <td mat-cell *matCellDef="let row"> {{row.ID}} </td>
   </ng-container>
   <ng-container matColumnDef="WORD">
     <th mat-header-cell *matHeaderCellDef> WORD </th>
-    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.WORD}} </td>
+    <td mat-cell *matCellDef="let row"> {{row.WORD}} </td>
   </ng-container>
   <ng-container matColumnDef="NOTE">
     <th mat-header-cell *matHeaderCellDef> NOTE </th>
-    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.NOTE}} </td>
+    <td mat-cell *matCellDef="let row"> {{row.NOTE}} </td>
   </ng-container>
   <ng-container matColumnDef="ACCURACY">
     <th mat-header-cell *matHeaderCellDef> ACCURACY </th>
-    <td mat-cell *matCellDef="let row" [ngStyle]="row.colorStyle"> {{row.ACCURACY}} </td>
+    <td mat-cell *matCellDef="let row"> {{row.ACCURACY}} </td>
   </ng-container>
   <ng-container matColumnDef="ACTION">
     <th mat-header-cell *matHeaderCellDef> ACTION </th>
-    <td mat-cell *matCellDef="let row; let index = index;" [ngStyle]="row.colorStyle">
+    <td mat-cell *matCellDef="let row; let index = index;">
       <button mat-mini-fab color="warn" matTooltip="Delete" (click)="deleteWord(row)">
         <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
       </button>

@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { WordsUnitDetailComponent } from '../words-unit-detail/words-unit-detail.component';
 
 @Component({
   selector: 'app-words-unit',
   templateUrl: './words-unit.component.html',
-  styleUrls: ['./words-unit.component.css', '../../../common.css']
+  styleUrls: ['./words-unit.component.css', '../../../common.css'],
+  providers: [DialogService]
 })
-export class WordsUnitComponent implements OnInit {
+export class WordsUnitComponent implements OnInit, OnDestroy {
 
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
@@ -19,12 +22,19 @@ export class WordsUnitComponent implements OnInit {
   newWord: string;
   filter: string;
   filterType = 0;
+  ref: DynamicDialogRef | undefined;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
     await this.onRefresh();
+  }
+
+  ngOnDestroy() {
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 
   async onEnterNewWord() {
@@ -61,5 +71,14 @@ export class WordsUnitComponent implements OnInit {
 
   getNotes(ifEmpty: boolean) {
     this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
+  }
+
+  showDetailDialog(id: number) {
+    this.ref = this.dialogService.open(WordsUnitDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.ref.onClose.subscribe((res) => {
+    });
   }
 }

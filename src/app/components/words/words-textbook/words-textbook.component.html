@@ -33,7 +33,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-row let-index="rowIndex">
-    <tr [pSelectableRow]="row" [ngStyle]="row.colorStyle">
+    <tr [pSelectableRow]="row">
       <td>{{row.ID}}</td>
       <td>{{row.TEXTBOOKNAME}}</td>
       <td>{{row.UNITSTR}}</td>
