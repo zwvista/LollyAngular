@@ -5,11 +5,12 @@ import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-words-textbook',
   templateUrl: './words-textbook.component.html',
-  styleUrls: ['./words-textbook.component.css', '../../../common.css']
+  styleUrls: ['./words-textbook.component.css', '../../../common.css'],
 })
 export class WordsTextbookComponent implements OnInit {
 

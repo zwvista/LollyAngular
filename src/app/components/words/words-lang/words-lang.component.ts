@@ -5,11 +5,12 @@ import { googleString } from '../../../common/common';
 import { MLangWord } from '../../../models/wpp/lang-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-words-lang',
   templateUrl: './words-lang.component.html',
-  styleUrls: ['./words-lang.component.css', '../../../common.css']
+  styleUrls: ['./words-lang.component.css', '../../../common.css'],
 })
 export class WordsLangComponent implements OnInit {
 

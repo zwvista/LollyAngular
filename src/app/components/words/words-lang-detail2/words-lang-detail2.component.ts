@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MLangWord } from '../../../models/wpp/lang-word';
 import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { container } from 'tsyringe';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-words-lang-detail',
-  templateUrl: './words-lang-detail.component.html',
-  styleUrls: ['./words-lang-detail.component.css', '../../../common.css']
+  selector: 'app-words-lang-detail2',
+  templateUrl: './words-lang-detail2.component.html',
+  styleUrls: ['./words-lang-detail2.component.css', '../../../common.css']
 })
-export class WordsLangDetailComponent implements OnInit {
+export class WordsLangDetail2Component implements OnInit {
 
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
   item: MLangWord;
 
-  constructor(public dialogRef: DynamicDialogRef,
-              public dialogConfig: DynamicDialogConfig
+  constructor(private dialogRef: MatDialogRef<WordsLangDetail2Component>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit() {
-    const id = this.dialogConfig.data.id;
+    const id = this.data.id;
     const itemOld = this.wordsLangService.langWords.find(value => value.ID === id);
     this.item = itemOld ? Object.create(itemOld) as MLangWord : this.wordsLangService.newLangWord();
   }

@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { MPattern } from '../../../models/wpp/pattern';
 import { container } from 'tsyringe';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-patterns-detail',
-  templateUrl: './patterns-detail.component.html',
-  styleUrls: ['./patterns-detail.component.css']
+  selector: 'app-patterns-detail2',
+  templateUrl: './patterns-detail2.component.html',
+  styleUrls: ['./patterns-detail2.component.css']
 })
-export class PatternsDetailComponent implements OnInit {
+export class PatternsDetail2Component implements OnInit {
 
   patternsService = container.resolve(PatternsService);
   settingsService = container.resolve(SettingsService);
   item: MPattern;
 
-  constructor(public dialogRef: DynamicDialogRef,
-              public dialogConfig: DynamicDialogConfig
+  constructor(private dialogRef: MatDialogRef<PatternsDetail2Component>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit() {
-    const id = this.dialogConfig.data.id;
+    const id = this.data.id;
     const itemOld = this.patternsService.patterns.find(value => value.ID === id);
     this.item = itemOld ? Object.create(itemOld) as MPattern : this.patternsService.newPattern();
   }

@@ -12,17 +12,16 @@ import { WordsUnitDetailComponent } from '../words-unit-detail/words-unit-detail
   selector: 'app-words-unit',
   templateUrl: './words-unit.component.html',
   styleUrls: ['./words-unit.component.css', '../../../common.css'],
-  providers: [DialogService]
 })
 export class WordsUnitComponent implements OnInit, OnDestroy {
 
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   newWord: string;
   filter: string;
   filterType = 0;
-  ref: DynamicDialogRef | undefined;
 
   constructor(public dialogService: DialogService) { }
 
@@ -32,8 +31,8 @@ export class WordsUnitComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.ref) {
-      this.ref.close();
+    if (this.dialogRef) {
+      this.dialogRef.close();
     }
   }
 
@@ -74,11 +73,11 @@ export class WordsUnitComponent implements OnInit, OnDestroy {
   }
 
   showDetailDialog(id: number) {
-    this.ref = this.dialogService.open(WordsUnitDetailComponent, {
+    this.dialogRef = this.dialogService.open(WordsUnitDetailComponent, {
       data: { id },
       width: '750px'
     });
-    this.ref.onClose.subscribe((res) => {
+    this.dialogRef.onClose.subscribe((res) => {
     });
   }
 }

@@ -5,11 +5,12 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { AppService } from '../../../view-models/misc/app.service';
 import { MLangPhrase } from '../../../models/wpp/lang-phrase';
 import { container } from 'tsyringe';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-phrases-lang',
   templateUrl: './phrases-lang.component.html',
-  styleUrls: ['./phrases-lang.component.css', '../../../common.css']
+  styleUrls: ['./phrases-lang.component.css', '../../../common.css'],
 })
 export class PhrasesLangComponent implements OnInit {
 

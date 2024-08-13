@@ -5,11 +5,12 @@ import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.servic
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-phrases-textbook',
   templateUrl: './phrases-textbook.component.html',
-  styleUrls: ['./phrases-textbook.component.css', '../../../common.css']
+  styleUrls: ['./phrases-textbook.component.css', '../../../common.css'],
 })
 export class PhrasesTextbookComponent implements OnInit {
 

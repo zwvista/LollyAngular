@@ -4,11 +4,12 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { googleString } from '../../../common/common';
 import { container } from 'tsyringe';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-patterns',
   templateUrl: './patterns.component.html',
-  styleUrls: ['./patterns.component.css', '../../../common.css']
+  styleUrls: ['./patterns.component.css', '../../../common.css'],
 })
 export class PatternsComponent implements OnInit {
 

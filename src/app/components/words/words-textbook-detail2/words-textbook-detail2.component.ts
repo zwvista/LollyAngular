@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { container } from 'tsyringe';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-words-textbook-detail',
-  templateUrl: './words-textbook-detail.component.html',
-  styleUrls: ['./words-textbook-detail.component.css', '../../../common.css']
+  selector: 'app-words-textbook-detail2',
+  templateUrl: './words-textbook-detail2.component.html',
+  styleUrls: ['./words-textbook-detail2.component.css', '../../../common.css']
 })
-export class WordsTextbookDetailComponent implements OnInit {
+export class WordsTextbookDetail2Component implements OnInit {
 
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
   item: MUnitWord;
 
-  constructor(public dialogRef: DynamicDialogRef,
-              public dialogConfig: DynamicDialogConfig
+  constructor(private dialogRef: MatDialogRef<WordsTextbookDetail2Component>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit() {
-    const id = this.dialogConfig.data.id;
+    const id = this.data.id;
     this.item = Object.create(this.wordsUnitService.textbookWords.find(value => value.ID === id)!) as MUnitWord;
   }
 

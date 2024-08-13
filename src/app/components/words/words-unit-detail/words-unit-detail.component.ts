@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { SettingsService } from '../../../view-models/misc/settings.service';
 import { container } from 'tsyringe';
@@ -18,23 +16,23 @@ export class WordsUnitDetailComponent implements OnInit {
   settingsService = container.resolve(SettingsService);
   item: MUnitWord;
 
-  constructor(public ref: DynamicDialogRef,
-              public config: DynamicDialogConfig
+  constructor(public dialogRef: DynamicDialogRef,
+              public dialogConfig: DynamicDialogConfig
   ) { }
 
   ngOnInit() {
-    const id = this.config.data.id;
+    const id = this.dialogConfig.data.id;
     const itemOld = this.wordsUnitService.unitWords.find(value => value.ID === id);
     this.item = itemOld ? Object.create(itemOld) as MUnitWord : this.wordsUnitService.newUnitWord();
   }
 
   cancel() {
-    this.ref.close();
+    this.dialogRef.close();
   }
 
   async save() {
     this.item.WORD = this.settingsService.autoCorrectInput(this.item.WORD);
     await (this.item.ID ? this.wordsUnitService.update(this.item) : this.wordsUnitService.create(this.item));
-    this.ref.close();
+    this.dialogRef.close();
   }
 }
