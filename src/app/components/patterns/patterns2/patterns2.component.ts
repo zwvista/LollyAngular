@@ -4,6 +4,8 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { googleString } from '../../../common/common';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { container } from 'tsyringe';
+import { MatDialog } from '@angular/material/dialog';
+import { PatternsDetail2Component } from '../patterns-detail2/patterns-detail2.component';
 
 @Component({
   selector: 'app-patterns2',
@@ -22,7 +24,7 @@ export class Patterns2Component implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -46,5 +48,14 @@ export class Patterns2Component implements OnInit {
 
   googlePattern(phrase: string) {
     googleString(phrase);
+  }
+
+  showDetailDialog(id: number) {
+    const dialogRef = this.dialog.open(PatternsDetail2Component, {
+      data: { id },
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 }

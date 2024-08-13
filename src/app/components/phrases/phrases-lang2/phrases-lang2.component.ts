@@ -5,6 +5,8 @@ import { googleString } from '../../../common/common';
 import { AppService } from '../../../view-models/misc/app.service';
 import { MLangPhrase } from '../../../models/wpp/lang-phrase';
 import { container } from 'tsyringe';
+import { MatDialog } from '@angular/material/dialog';
+import { PhrasesLangDetail2Component } from '../phrases-lang-detail2/phrases-lang-detail2.component';
 
 @Component({
   selector: 'app-phrases-lang2',
@@ -23,7 +25,7 @@ export class PhrasesLang2Component implements OnInit {
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -47,5 +49,14 @@ export class PhrasesLang2Component implements OnInit {
 
   googlePhrase(phrase: string) {
     googleString(phrase);
+  }
+
+  showDetailDialog(id: number) {
+    const dialogRef = this.dialog.open(PhrasesLangDetail2Component, {
+      data: { id },
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 }

@@ -5,6 +5,8 @@ import { googleString } from '../../../common/common';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { MatDialog } from '@angular/material/dialog';
+import { WordsTextbookDetail2Component } from '../words-textbook-detail2/words-textbook-detail2.component';
 
 @Component({
   selector: 'app-words-textbook2',
@@ -24,7 +26,7 @@ export class WordsTextbook2Component implements OnInit {
   filterType = 0;
   textbookFilter = 0;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -53,5 +55,14 @@ export class WordsTextbook2Component implements OnInit {
 
   googleWord(word: string) {
     googleString(word);
+  }
+
+  showDetailDialog(id: number) {
+    const dialogRef = this.dialog.open(WordsTextbookDetail2Component, {
+      data: { id },
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 }

@@ -5,6 +5,8 @@ import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { googleString } from '../../../common/common';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
+import { MatDialog } from '@angular/material/dialog';
+import { PhrasesTextbookDetail2Component } from '../phrases-textbook-detail2/phrases-textbook-detail2.component';
 
 @Component({
   selector: 'app-phrases-textbook2',
@@ -24,7 +26,7 @@ export class PhrasesTextbook2Component implements OnInit {
   filterType = 0;
   textbookFilter = 0;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -48,5 +50,14 @@ export class PhrasesTextbook2Component implements OnInit {
 
   googlePhrase(phrase: string) {
     googleString(phrase);
+  }
+
+  showDetailDialog(id: number) {
+    const dialogRef = this.dialog.open(PhrasesTextbookDetail2Component, {
+      data: { id },
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+    });
   }
 }
