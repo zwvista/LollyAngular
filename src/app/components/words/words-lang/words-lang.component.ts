@@ -5,7 +5,8 @@ import { googleString } from '../../../common/common';
 import { MLangWord } from '../../../models/wpp/lang-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { WordsLangDetailComponent } from '../words-lang-detail/words-lang-detail.component';
 
 @Component({
   selector: 'app-words-lang',
@@ -17,13 +18,14 @@ export class WordsLangComponent implements OnInit {
   appService = container.resolve(AppService);
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   newWord: string;
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -52,5 +54,14 @@ export class WordsLangComponent implements OnInit {
 
   googleWord(word: string) {
     googleString(word);
+  }
+
+  showDetailDialog(id: number) {
+    this.dialogRef = this.dialogService.open(WordsLangDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.dialogRef.onClose.subscribe((res) => {
+    });
   }
 }

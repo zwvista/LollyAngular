@@ -5,7 +5,8 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { AppService } from '../../../view-models/misc/app.service';
 import { MLangPhrase } from '../../../models/wpp/lang-phrase';
 import { container } from 'tsyringe';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PhrasesLangDetailComponent } from '../phrases-lang-detail/phrases-lang-detail.component';
 
 @Component({
   selector: 'app-phrases-lang',
@@ -17,12 +18,13 @@ export class PhrasesLangComponent implements OnInit {
   appService = container.resolve(AppService);
   phrasesLangService = container.resolve(PhrasesLangService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -46,5 +48,14 @@ export class PhrasesLangComponent implements OnInit {
 
   googlePhrase(phrase: string) {
     googleString(phrase);
+  }
+
+  showDetailDialog(id: number) {
+    this.dialogRef = this.dialogService.open(PhrasesLangDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.dialogRef.onClose.subscribe((res) => {
+    });
   }
 }

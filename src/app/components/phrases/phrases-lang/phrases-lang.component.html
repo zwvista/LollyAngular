@@ -6,9 +6,7 @@
       <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
     </span>
-    <a routerLink="/phrases-lang-detail/0">
-      <button pButton type="button" label="Add" icon="fa fa-plus"></button>
-    </a>
+    <button pButton type="button" label="Add" icon="fa fa-plus" (click)="showDetailDialog(0)"></button>
     <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh()"></button>
   </div>
 </p-toolbar>
@@ -32,9 +30,7 @@
       <td>
         <button pButton icon="fa fa-trash" class="p-button-danger"
                 pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(row)"></button>
-        <a routerLink="/phrases-lang-detail/{{row.ID}}">
-          <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top"></button>
-        </a>
+        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)"></button>
         <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(row.PHRASE)"
                 pTooltip="Speak" tooltipPosition="top"></button>
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->

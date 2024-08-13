@@ -5,7 +5,8 @@ import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.servic
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PhrasesTextbookDetailComponent } from '../phrases-textbook-detail/phrases-textbook-detail.component';
 
 @Component({
   selector: 'app-phrases-textbook',
@@ -17,13 +18,14 @@ export class PhrasesTextbookComponent implements OnInit {
   appService = container.resolve(AppService);
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
   textbookFilter = 0;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -47,5 +49,14 @@ export class PhrasesTextbookComponent implements OnInit {
 
   googlePhrase(phrase: string) {
     googleString(phrase);
+  }
+
+  showDetailDialog(id: number) {
+    this.dialogRef = this.dialogService.open(PhrasesTextbookDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.dialogRef.onClose.subscribe((res) => {
+    });
   }
 }

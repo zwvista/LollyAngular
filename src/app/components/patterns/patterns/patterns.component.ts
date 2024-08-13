@@ -4,7 +4,8 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { PatternsService } from '../../../view-models/wpp/patterns.service';
 import { googleString } from '../../../common/common';
 import { container } from 'tsyringe';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PatternsDetailComponent } from '../patterns-detail/patterns-detail.component';
 
 @Component({
   selector: 'app-patterns',
@@ -16,12 +17,13 @@ export class PatternsComponent implements OnInit {
   appService = container.resolve(AppService);
   patternsService = container.resolve(PatternsService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -47,4 +49,12 @@ export class PatternsComponent implements OnInit {
     googleString(pattern);
   }
 
+  showDetailDialog(id: number) {
+    this.dialogRef = this.dialogService.open(PatternsDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.dialogRef.onClose.subscribe((res) => {
+    });
+  }
 }

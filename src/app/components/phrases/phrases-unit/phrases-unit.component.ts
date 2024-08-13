@@ -5,7 +5,8 @@ import { SettingsService } from '../../../view-models/misc/settings.service';
 import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PhrasesUnitDetailComponent } from '../phrases-unit-detail/phrases-unit-detail.component';
 
 @Component({
   selector: 'app-phrases-unit',
@@ -17,10 +18,11 @@ export class PhrasesUnitComponent implements OnInit {
   appService = container.resolve(AppService);
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   filter: string;
   filterType = 0;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -42,5 +44,14 @@ export class PhrasesUnitComponent implements OnInit {
 
   googlePhrase(phrase: string) {
     googleString(phrase);
+  }
+
+  showDetailDialog(id: number) {
+    this.dialogRef = this.dialogService.open(PhrasesUnitDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.dialogRef.onClose.subscribe((res) => {
+    });
   }
 }

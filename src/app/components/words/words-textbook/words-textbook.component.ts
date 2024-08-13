@@ -5,7 +5,8 @@ import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
 import { MUnitWord } from '../../../models/wpp/unit-word';
 import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { WordsTextbookDetailComponent } from '../words-textbook-detail/words-textbook-detail.component';
 
 @Component({
   selector: 'app-words-textbook',
@@ -17,13 +18,14 @@ export class WordsTextbookComponent implements OnInit {
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
+  dialogRef: DynamicDialogRef | undefined;
   rows = 0;
   page = 1;
   filter: string;
   filterType = 0;
   textbookFilter = 0;
 
-  constructor() { }
+  constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
@@ -52,5 +54,14 @@ export class WordsTextbookComponent implements OnInit {
 
   googleWord(word: string) {
     googleString(word);
+  }
+
+  showDetailDialog(id: number) {
+    this.dialogRef = this.dialogService.open(WordsTextbookDetailComponent, {
+      data: { id },
+      width: '750px'
+    });
+    this.dialogRef.onClose.subscribe((res) => {
+    });
   }
 }
