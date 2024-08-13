@@ -1,36 +1,36 @@
-<div class="p-grid mt-2 mb-2">
-  <label class="p-col-1" for="ID">ID:</label>
-  <input class="p-col-3" id="ID" type="text" pInputText [(ngModel)]="item.ID" disabled>
+<div class="field grid mt-2 mb-2">
+  <label class="col-2" for="ID">ID:</label>
+  <input class="col" id="ID" type="text" pInputText [(ngModel)]="item.ID" disabled>
 </div>
-<div class="p-grid mt-2 mb-2">
-  <label class="p-col-1" for="TEXTBOOK">TEXTBOOK:</label>
-  <input class="p-col-3" id="TEXTBOOK" type="text" pInputText [(ngModel)]="item.TEXTBOOKNAME" disabled>
+<div class="field grid mt-2 mb-2">
+  <label class="col-2" for="TEXTBOOK">TEXTBOOK:</label>
+  <input class="col" id="TEXTBOOK" type="text" pInputText [(ngModel)]="item.TEXTBOOKNAME" disabled>
 </div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="UNIT">UNIT:</label>
-  <p-dropdown id="UNIT" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="settingsService.units" [(ngModel)]="item.UNIT">
+<div class="field grid mb-2">
+  <label class="col-2" for="UNIT">UNIT:</label>
+  <p-dropdown id="UNIT" autoWidth="false" class="col" [style]="{'width':'100%'}" [options]="settingsService.units" [(ngModel)]="item.UNIT">
   </p-dropdown>
 </div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="PART">PART:</label>
-  <p-dropdown id="PART" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="settingsService.parts" [(ngModel)]="item.PART">
+<div class="field grid mb-2">
+  <label class="col-2" for="PART">PART:</label>
+  <p-dropdown id="PART" autoWidth="false" class="col" [style]="{'width':'100%'}" [options]="settingsService.parts" [(ngModel)]="item.PART">
   </p-dropdown>
 </div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="SEQNUM">SEQNUM:</label>
-  <input class="p-col-3" id="SEQNUM" type="text" pInputText [(ngModel)]="item.SEQNUM">
+<div class="field grid mb-2">
+  <label class="col-2" for="SEQNUM">SEQNUM:</label>
+  <input class="col" id="SEQNUM" type="text" pInputText [(ngModel)]="item.SEQNUM">
 </div>
-<div class="p-grid mt-2 mb-2">
-  <label class="p-col-1" for="PHRASEID">PHRASEID:</label>
-  <input class="p-col-3" id="PHRASEID" type="text" pInputText [(ngModel)]="item.PHRASEID" disabled>
+<div class="field grid mt-2 mb-2">
+  <label class="col-2" for="PHRASEID">PHRASEID:</label>
+  <input class="col" id="PHRASEID" type="text" pInputText [(ngModel)]="item.PHRASEID" disabled>
 </div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="PHRASE">PHRASE:</label>
-  <input class="p-col-3" id="PHRASE" type="text" pInputText [(ngModel)]="item.PHRASE">
+<div class="field grid mb-2">
+  <label class="col-2" for="PHRASE">PHRASE:</label>
+  <input class="col" id="PHRASE" type="text" pInputText [(ngModel)]="item.PHRASE">
 </div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="TRANSLATION">TRANSLATION:</label>
-  <input class="p-col-3" id="TRANSLATION" type="text" pInputText [(ngModel)]="item.TRANSLATION">
+<div class="field grid mb-2">
+  <label class="col-2" for="TRANSLATION">TRANSLATION:</label>
+  <input class="col" id="TRANSLATION" type="text" pInputText [(ngModel)]="item.TRANSLATION">
 </div>
 <div>
   <button pButton label="Cancel" (click)="cancel()"></button>
