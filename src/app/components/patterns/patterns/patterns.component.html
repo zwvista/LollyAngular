@@ -6,8 +6,8 @@
       <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
     </span>
-    <button pButton type="button" label="Add" icon="fa fa-plus" (click)="showDetailDialog(0)"></button>
-    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh()"></button>
+    <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
+    <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
   </div>
 </p-toolbar>
 <p-paginator [rows]="rows" [totalRecords]="patternsService.patternCount"
@@ -30,16 +30,16 @@
       <td>{{row.NOTE}}</td>
       <td>{{row.TAGS}}</td>
       <td>
-        <button pButton icon="fa fa-trash" class="p-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (click)="deletePattern(row.ID)"></button>
-        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)"></button>
-        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(row.PATTERN)"
-                pTooltip="Speak" tooltipPosition="top"></button>
+        <p-button icon="fa fa-trash" [rounded]="true" severity="danger"
+                pTooltip="Delete" tooltipPosition="top" (click)="deletePattern(row.ID)" />
+        <p-button icon="fa fa-edit" [rounded]="true" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)" />
+        <p-button icon="fa fa-volume-up" [rounded]="true" (click)="settingsService.speak(row.PATTERN)"
+                pTooltip="Speak" tooltipPosition="top" />
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.PATTERN"
-                pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-google" (click)="googlePattern(row.PATTERN)"
-                pTooltip="Google Pattern" tooltipPosition="top"></button>
+        <p-button icon="fa fa-copy" [rounded]="true" ngxClipboard [cbContent]="row.PATTERN"
+                pTooltip="Copy" tooltipPosition="top" />
+        <p-button icon="fa fa-google" [rounded]="true" (click)="googlePattern(row.PATTERN)"
+                pTooltip="Google Pattern" tooltipPosition="top" />
       </td>
     </tr>
   </ng-template>

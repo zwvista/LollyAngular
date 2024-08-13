@@ -8,9 +8,9 @@
     </span>
     <p-dropdown id="textbookFilter" [options]="settingsService.textbookFilters" [(ngModel)]="textbookFilter" (onChange)="onRefresh()">
     </p-dropdown>
-    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh()"></button>
+    <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
     <a routerLink="/words-dict/textbook/0">
-      <button pButton type="button" label="Dictionary" icon="fa fa-book"></button>
+      <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
     </a>
   </div>
 </p-toolbar>
@@ -44,20 +44,20 @@
       <td>{{row.NOTE}}</td>
       <td>{{row.ACCURACY}}</td>
       <td>
-        <button pButton icon="fa fa-trash" class="p-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(row)"></button>
-        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)"></button>
-        <button pButton icon="fa fa-volume-up" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)"
-                pTooltip="Speak" tooltipPosition="top"></button>
+        <p-button icon="fa fa-trash" [rounded]="true" severity="danger"
+                pTooltip="Delete" tooltipPosition="top" (click)="deleteWord(row)" />
+        <p-button icon="fa fa-edit" [rounded]="true" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)" />
+        <p-button icon="fa fa-volume-up" [rounded]="true" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)"
+                pTooltip="Speak" tooltipPosition="top" />
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.WORD"
-                pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-google" (click)="googleWord(row.WORD)"
-                pTooltip="Google Word" tooltipPosition="top"></button>
+        <p-button icon="fa fa-copy" [rounded]="true" ngxClipboard [cbContent]="row.WORD"
+                pTooltip="Copy" tooltipPosition="top" />
+        <p-button icon="fa fa-google" [rounded]="true" (click)="googleWord(row.WORD)"
+                pTooltip="Google Word" tooltipPosition="top" />
         <a routerLink="/words-dict/textbook/{{index}}">
-          <button pButton icon="fa fa-book" pTooltip="Dictionary" tooltipPosition="top"></button>
+          <p-button icon="fa fa-book" [rounded]="true" pTooltip="Dictionary" tooltipPosition="top" />
         </a>
-        <button pButton label="Retrieve Note" [hidden]="!settingsService.selectedDictNote" class="p-button-warning" (click)="getNote(index)"></button>
+        <p-button label="Retrieve Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="getNote(index)" />
       </td>
     </tr>
   </ng-template>

@@ -8,7 +8,7 @@
     </span>
     <p-dropdown id="textbookFilter" [options]="settingsService.textbookFilters" [(ngModel)]="textbookFilter" (onChange)="onRefresh()">
     </p-dropdown>
-    <button pButton type="button" label="Refresh" icon="fa fa-refresh" (click)="onRefresh()"></button>
+    <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
   </div>
 </p-toolbar>
 <p-paginator [rows]="rows" [totalRecords]="phrasesUnitService.textbookPhraseCount"
@@ -39,16 +39,16 @@
       <td>{{row.PHRASE}}</td>
       <td>{{row.TRANSLATION}}</td>
       <td>
-        <button pButton icon="fa fa-trash" class="p-button-danger"
-                pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(row)"></button>
-        <button pButton icon="fa fa-edit" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)"></button>
-        <button pButton icon="fa fa-volume-up" (click)="settingsService.speak(row.PHRASE)"
-                pTooltip="Speak" tooltipPosition="top"></button>
+        <p-button icon="fa fa-trash" [rounded]="true" severity="danger"
+                pTooltip="Delete" tooltipPosition="top" (click)="deletePhrase(row)" />
+        <p-button icon="fa fa-edit" [rounded]="true" pTooltip="Edit" tooltipPosition="top" (click)="showDetailDialog(row.ID)" />
+        <p-button icon="fa fa-volume-up" [rounded]="true" (click)="settingsService.speak(row.PHRASE)"
+                pTooltip="Speak" tooltipPosition="top" />
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
-        <button pButton icon="fa fa-copy" ngxClipboard [cbContent]="row.PHRASE"
-                pTooltip="Copy" tooltipPosition="top"></button>
-        <button pButton icon="fa fa-google" (click)="googlePhrase(row.PHRASE)"
-                pTooltip="Google Phrase" tooltipPosition="top"></button>
+        <p-button icon="fa fa-copy" [rounded]="true" ngxClipboard [cbContent]="row.PHRASE"
+                pTooltip="Copy" tooltipPosition="top" />
+        <p-button icon="fa fa-google" [rounded]="true" (click)="googlePhrase(row.PHRASE)"
+                pTooltip="Google Phrase" tooltipPosition="top" />
       </td>
     </tr>
   </ng-template>
