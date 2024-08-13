@@ -1,47 +1,74 @@
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="ID">ID:</label>
-  <input class="p-col-3" id="ID" type="text" pInputText [(ngModel)]="item.ID" disabled>
-</div>
-<div class="p-grid mt-2 mb-2">
-  <label class="p-col-1" for="TEXTBOOK">TEXTBOOK:</label>
-  <input class="p-col-3" id="TEXTBOOK" type="text" pInputText [(ngModel)]="item.TEXTBOOKNAME" disabled>
-</div>
-<!-- https://stackoverflow.com/questions/41354416/primeng-p-dropdown-stretch-100 -->
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="UNIT">UNIT:</label>
-  <p-dropdown id="UNIT" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="settingsService.units" [(ngModel)]="item.UNIT">
-  </p-dropdown>
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="UNIT">PART:</label>
-  <p-dropdown id="PART" autoWidth="false" class="p-col-3" styleClass="p-col-3" [style]="{'width':'100%'}" [options]="settingsService.parts" [(ngModel)]="item.PART">
-  </p-dropdown>
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="SEQNUM">SEQNUM:</label>
-  <input class="p-col-3" id="SEQNUM" type="text" pInputText [(ngModel)]="item.SEQNUM">
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="WORDID">WORDID:</label>
-  <input class="p-col-3" id="WORDID" type="text" pInputText [(ngModel)]="item.WORDID" disabled>
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="WORD">WORD:</label>
-  <input class="p-col-3" id="WORD" type="text" pInputText [(ngModel)]="item.WORD">
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="NOTE">NOTE:</label>
-  <input class="p-col-3" id="NOTE" type="text" pInputText [(ngModel)]="item.NOTE">
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="FAMIID">FAMIID:</label>
-  <input class="p-col-3" id="FAMIID" type="text" pInputText [(ngModel)]="item.FAMIID" disabled>
-</div>
-<div class="p-grid mb-2">
-  <label class="p-col-1" for="ACCURACY">ACCURACY:</label>
-  <input class="p-col-3" id="ACCURACY" type="text" pInputText [value]="item.ACCURACY" disabled>
-</div>
-<div>
-  <button pButton label="Cancel" (click)="cancel()"></button>
-  <button pButton label="Save" (click)="save()"></button>
-</div>
+<mat-dialog-content>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>ID:</mat-label>
+      <input matInput [(ngModel)]="item.ID" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>TEXTBOOK:</mat-label>
+      <input matInput [(ngModel)]="item.TEXTBOOKNAME" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>UNIT:</mat-label>
+      <mat-select [(ngModel)]="item.UNIT">
+        <mat-option *ngFor="let o of settingsService.units" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>PART:</mat-label>
+      <mat-select [(ngModel)]="item.PART">
+        <mat-option *ngFor="let o of settingsService.parts" [value]="o.value">
+          {{o.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>SEQNUM:</mat-label>
+      <input matInput [(ngModel)]="item.SEQNUM">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>WORDID:</mat-label>
+      <input matInput [(ngModel)]="item.WORDID" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>WORD:</mat-label>
+      <input matInput [(ngModel)]="item.WORD">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>NOTE:</mat-label>
+      <input matInput [(ngModel)]="item.NOTE">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>FAMIID:</mat-label>
+      <input matInput [(ngModel)]="item.FAMIID" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>ACCURACY:</mat-label>
+      <input matInput [value]="item.ACCURACY" disabled>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
