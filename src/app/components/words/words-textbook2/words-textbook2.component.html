@@ -76,11 +76,9 @@
       <button mat-mini-fab color="warn" matTooltip="Delete" (click)="deleteWord(row)">
         <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
       </button>
-      <a routerLink="/words-textbook-detail/{{row.ID}}">
-        <button mat-mini-fab color="primary" matTooltip="Edit">
-          <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
-        </button>
-      </a>
+      <button mat-mini-fab color="primary" matTooltip="Edit" (click)="showDetailDialog(row.ID)">
+        <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
+      </button>
       <button mat-mini-fab color="primary" matTooltip="Speak"
               [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)">
         <mat-icon fontSet="fa" fontIcon="fa-volume-up"></mat-icon>
