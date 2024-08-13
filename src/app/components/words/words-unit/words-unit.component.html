@@ -1,24 +1,23 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
-      <span class="ui-float-label">
-        <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnterNewWord()">
-        <label for="word">New Word</label>
-      </span>
-      <p-button icon="fa fa-volume-up" [rounded]="true" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(newWord)"
-              pTooltip="Speak" tooltipPosition="top" />
-      <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()">
-      </p-dropdown>
-      <span class="ui-float-label">
-        <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
-        <label for="filter">Filter</label>
-      </span>
-      <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
-      <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
-      <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Retrieve All Notes" (click)="getNotes(false)" />
-      <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Retrieve Notes If Empty" (click)="getNotes(true)" />
-      <a routerLink="/words-dict/unit/0">
-        <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
-      </a>
+    <p-floatLabel class="inline-block">
+      <input id="word" type="text" pInputText [(ngModel)]="newWord" (keyup.enter)="onEnterNewWord()">
+      <label for="word">New Word</label>
+    </p-floatLabel>
+    <p-button icon="fa fa-volume-up" [rounded]="true" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(newWord)"
+            pTooltip="Speak" tooltipPosition="top" />
+    <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()" />
+    <p-floatLabel class="inline-block">
+      <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
+      <label for="filter">Filter</label>
+    </p-floatLabel>
+    <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
+    <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Retrieve All Notes" (click)="getNotes(false)" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Retrieve Notes If Empty" (click)="getNotes(true)" />
+    <a routerLink="/words-dict/unit/0">
+      <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
+    </a>
   </div>
 </p-toolbar>
 <p-table [value]="wordsUnitService.unitWords" selectionMode="single" [autoLayout]="true"

@@ -17,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { ListboxModule } from 'primeng/listbox';
 import { PaginatorModule } from 'primeng/paginator';
@@ -123,6 +124,7 @@ import { WordsUnitDetailComponent } from './components/words/words-unit-detail/w
     ButtonModule,
     DynamicDialogModule,
     DropdownModule,
+    FloatLabelModule,
     InputTextModule,
     ListboxModule,
     PaginatorModule,

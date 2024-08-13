@@ -2,8 +2,7 @@
   <div class="p-toolbar-group-left">
     <p-button label="Back" [rounded]="true" (click)="goBack()" />
     <p-dropdown class="p-col-2" [options]="settingsService.dictsReference" [(ngModel)]="selectedDictReference"
-                optionLabel="DICTNAME" (onChange)="refreshDict()">
-    </p-dropdown>
+                optionLabel="DICTNAME" (onChange)="refreshDict()" />
   </div>
 </p-toolbar>
 <div class="field grid">

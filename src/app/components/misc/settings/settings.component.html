@@ -45,10 +45,9 @@
     </select>
   </div>
   <div class="row mb-2">
-    <select id="toType" class="col-1 form-control" [(ngModel)]="settingsService.toType" (change)="onToTypeChange($event.target.selectedIndex)">
+    <select id="toType" class="col-2" [(ngModel)]="settingsService.toType" (change)="onToTypeChange($event.target.selectedIndex)">
       <option *ngFor="let o of settingsService.toTypes" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <label class="col-1 control-label"></label>
     <select id="unitTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (change)="onUnitToChange($event.target.selectedIndex)">
       <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
     </select>
