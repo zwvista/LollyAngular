@@ -47,9 +47,12 @@ export class WordsTextbookComponent implements OnInit {
     await this.wordsUnitService.delete(item);
   }
 
-  async getNote(index: number) {
-    console.log(index);
-    await this.wordsUnitService.getNote(index);
+  async getNote(item: MUnitWord) {
+    await this.wordsUnitService.getNote(item);
+  }
+
+  async clearNote(item: MUnitWord) {
+    await this.wordsUnitService.clearNote(item);
   }
 
   googleWord(word: string) {

@@ -13,8 +13,10 @@
     </p-floatLabel>
     <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
     <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
-    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Retrieve All Notes" (click)="getNotes(false)" />
-    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Retrieve Notes If Empty" (click)="getNotes(true)" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Get All Notes" (click)="getNotes(false)" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Get Notes If Empty" (click)="getNotes(true)" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Clear All Notes" (click)="clearNotes(false)" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warning" label="Clear Notes If Empty" (click)="clearNotes(true)" />
     <a routerLink="/words-dict/unit/0">
       <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
     </a>
@@ -63,7 +65,8 @@
         <a routerLink="/words-dict/unit/{{index}}">
           <p-button icon="fa fa-book" [rounded]="true" pTooltip="Dictionary" tooltipPosition="top" />
         </a>
-        <p-button label="Retrieve Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="getNote(index)" />
+        <p-button label="Get Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="getNote(row)" />
+        <p-button label="Get Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="clearNote(row)" />
       </td>
     </tr>
   </ng-template>

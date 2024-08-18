@@ -55,7 +55,8 @@
         <a routerLink="/words-dict/textbook/{{index}}">
           <p-button icon="fa fa-book" [rounded]="true" pTooltip="Dictionary" tooltipPosition="top" />
         </a>
-        <p-button label="Retrieve Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="getNote(index)" />
+        <p-button label="Get Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="getNote(index)" />
+        <p-button label="Clear Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="clearNote(index)" />
       </td>
     </tr>
   </ng-template>

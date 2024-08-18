@@ -48,9 +48,12 @@ export class WordsLang2Component implements OnInit {
     await this.wordsLangService.delete(item);
   }
 
-  async getNote(index: number) {
-    console.log(index);
-    await this.wordsLangService.getNote(index);
+  async getNote(item: MLangWord) {
+    await this.wordsLangService.getNote(item);
+  }
+
+  async clearNote(item: MLangWord) {
+    await this.wordsLangService.clearNote(item);
   }
 
   googleWord(word: string) {

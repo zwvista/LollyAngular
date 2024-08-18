@@ -24,10 +24,16 @@
       <span><mat-icon fontSet="fa" fontIcon="fa-refresh"></mat-icon>Refresh</span>
     </button>
     <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNotes(false)">
-      Retrieve All Notes
+      Get All Notes
     </button>
     <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNotes(true)">
-      Retrieve Notes If Empty
+      Get Notes If Empty
+    </button>
+    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="clearNotes(false)">
+      Clear All Notes
+    </button>
+    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="clearNotes(true)">
+      Clear Notes If Empty
     </button>
     <a routerLink="/words-dict/unit/0">
       <button mat-raised-button color="primary">
@@ -104,8 +110,8 @@
           <mat-icon fontSet="fa" fontIcon="fa-book"></mat-icon>
         </button>
       </a>
-      <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNote(index)">
-        Retrieve Note
+      <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNote(row)">
+        Get Note
       </button>
     </td>
   </ng-container>

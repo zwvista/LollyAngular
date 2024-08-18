@@ -94,8 +94,11 @@
           <mat-icon fontSet="fa" fontIcon="fa-book"></mat-icon>
         </button>
       </a>
-      <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNote(index)">
-        Retrieve Note
+      <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNote(row)">
+        Get Note
+      </button>
+      <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="clearNote(row)">
+        Clear Note
       </button>
     </td>
   </ng-container>
