@@ -7,12 +7,16 @@
   <input class="col" id="PATTERN" type="text" pInputText [(ngModel)]="item.PATTERN">
 </div>
 <div class="field grid mb-2">
-  <label class="col-2" for="NOTE">NOTE:</label>
-  <input class="col" id="NOTE" type="text" pInputText [(ngModel)]="item.NOTE">
-</div>
-<div class="field grid mb-2">
   <label class="col-2" for="TAGS">TAGS:</label>
   <input class="col" id="TAGS" type="text" pInputText [(ngModel)]="item.TAGS">
+</div>
+<div class="field grid mb-2">
+  <label class="col-2" for="TITLE">TITLE:</label>
+  <input class="col" id="TITLE" type="text" pInputText [(ngModel)]="item.TITLE">
+</div>
+<div class="field grid mb-2">
+  <label class="col-2" for="URL">URL:</label>
+  <input class="col" id="URL" type="text" pInputText [(ngModel)]="item.URL">
 </div>
 <div class="flex justify-content-end">
   <p-button label="Cancel" [rounded]="true" (click)="cancel()" />

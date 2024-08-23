@@ -14,7 +14,7 @@ import { PatternsDetail2Component } from '../patterns-detail2/patterns-detail2.c
 })
 export class Patterns2Component implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'PATTERN', 'NOTE', 'TAGS', 'ACTION'];
+  displayedColumns: string[] = ['ID', 'PATTERN', 'TAGS', 'TITLE', 'URL', 'ACTION'];
 
   appService = container.resolve(AppService);
   patternsService = container.resolve(PatternsService);
