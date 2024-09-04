@@ -6,7 +6,7 @@
       <label for="filter">Filter</label>
     </p-floatLabel>
     <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
-    <p-button label="Refresh" [rounded]="true" icon="fa fa-refresh" (click)="onRefresh()" />
+    <p-button label="Refresh" [rounded]="true" icon="fa fa-sync" (click)="onRefresh()" />
     <a routerLink="/words-dict/lang/0">
       <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
     </a>
@@ -40,7 +40,7 @@
         <!-- https://stackoverflow.com/questions/45768583/angular-4-copy-text-to-clipboard -->
         <p-button icon="fa fa-copy" [rounded]="true" ngxClipboard [cbContent]="row.WORD"
                 pTooltip="Copy" tooltipPosition="top" />
-        <p-button icon="fa fa-google" [rounded]="true" (click)="googleWord(row.WORD)"
+        <p-button icon="fab fa-google" [rounded]="true" (click)="googleWord(row.WORD)"
                 pTooltip="Google Word" tooltipPosition="top" />
         <a routerLink="/words-dict/lang/{{index}}">
           <p-button icon="fa fa-book" [rounded]="true" pTooltip="Dictionary" tooltipPosition="top" />

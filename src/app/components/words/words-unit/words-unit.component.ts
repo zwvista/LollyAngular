@@ -7,6 +7,7 @@ import { AppService } from '../../../view-models/misc/app.service';
 import { container } from 'tsyringe';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { WordsUnitDetailComponent } from '../words-unit-detail/words-unit-detail.component';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-words-unit',
