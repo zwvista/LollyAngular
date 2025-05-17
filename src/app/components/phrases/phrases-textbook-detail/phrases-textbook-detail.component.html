@@ -8,12 +8,12 @@
 </div>
 <div class="field grid mb-2">
   <label class="col-2" for="UNIT">UNIT:</label>
-  <p-dropdown id="UNIT" autoWidth="false" class="col" [style]="{'width':'100%'}" [options]="settingsService.units" [(ngModel)]="item.UNIT">
+  <p-dropdown id="UNIT" autoWidth="false" class="col" [options]="settingsService.units" [(ngModel)]="item.UNIT">
   </p-dropdown>
 </div>
 <div class="field grid mb-2">
   <label class="col-2" for="PART">PART:</label>
-  <p-dropdown id="PART" autoWidth="false" class="col" [style]="{'width':'100%'}" [options]="settingsService.parts" [(ngModel)]="item.PART">
+  <p-dropdown id="PART" autoWidth="false" class="col" [options]="settingsService.parts" [(ngModel)]="item.PART">
   </p-dropdown>
 </div>
 <div class="field grid mb-2">
@@ -33,6 +33,6 @@
   <input class="col" id="TRANSLATION" type="text" pInputText [(ngModel)]="item.TRANSLATION">
 </div>
 <div class="flex justify-content-end">
-  <p-button label="Cancel" [rounded]="true" (click)="cancel()" />
+  <p-button label="Cancel" [rounded]="true" (click)="cancel()" severity="secondary" class="mr-2" />
   <p-button label="Save" [rounded]="true" (click)="save()" />
 </div>
