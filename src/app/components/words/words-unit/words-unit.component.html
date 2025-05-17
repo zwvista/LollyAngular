@@ -66,7 +66,7 @@
           <p-button icon="fa fa-book" [rounded]="true" pTooltip="Dictionary" tooltipPosition="top" />
         </a>
         <p-button label="Get Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="getNote(row)" />
-        <p-button label="Get Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="clearNote(row)" />
+        <p-button label="Clear Note" [rounded]="true" [hidden]="!settingsService.selectedDictNote" severity="warning" (click)="clearNote(row)" />
       </td>
     </tr>
   </ng-template>
