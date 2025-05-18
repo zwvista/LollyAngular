@@ -14,19 +14,19 @@ export class AppComponent implements OnInit {
   appService = container.resolve(AppService);
   title = 'Lolly Angular';
   itemsApp: MenuItem[] = [
-    {label: 'App1', icon: 'fa fa-fw fa-dollar', command: event => this.handleChange(event)},
-    {label: 'App2', icon: 'fa fa-fw fa-euro', command: event => this.handleChange(event)},
+    {label: 'App1', icon: 'fa fa-dollar-sign', command: event => this.handleChange(event)},
+    {label: 'App2', icon: 'fa fa-euro-sign', command: event => this.handleChange(event)},
   ];
   activeItemApp = this.itemsApp[0];
   items: MenuItem[] = [
-    {label: 'Words in Unit', icon: 'fa fa-fw fa-bus', routerLink: '/words-unit'},
-    {label: 'Phrases in Unit', icon: 'fa fa-fw fa-train', routerLink: '/phrases-unit'},
-    {label: 'Words in Textbook', icon: 'fa fa-fw fa-car', routerLink: '/words-textbook'},
-    {label: 'Phrases in Textbook', icon: 'fa fa-fw fa-taxi', routerLink: '/phrases-textbook'},
-    {label: 'Words in Language', icon: 'fa fa-fw fa-plane', routerLink: '/words-lang'},
-    {label: 'Phrases in Language', icon: 'fa fa-fw fa-rocket', routerLink: '/phrases-lang'},
-    {label: 'Patterns in Language', icon: 'fa fa-fw fa-motorcycle', routerLink: '/patterns'},
-    {label: 'Settings', icon: 'fa fa-fw fa-gear', routerLink: '/settings'},
+    {label: 'Words in Unit', icon: 'fa fa-bus', routerLink: '/words-unit'},
+    {label: 'Phrases in Unit', icon: 'fa fa-train', routerLink: '/phrases-unit'},
+    {label: 'Words in Textbook', icon: 'fa fa-car', routerLink: '/words-textbook'},
+    {label: 'Phrases in Textbook', icon: 'fa fa-taxi', routerLink: '/phrases-textbook'},
+    {label: 'Words in Language', icon: 'fa fa-plane', routerLink: '/words-lang'},
+    {label: 'Phrases in Language', icon: 'fa fa-rocket', routerLink: '/phrases-lang'},
+    {label: 'Patterns in Language', icon: 'fa fa-motorcycle', routerLink: '/patterns'},
+    {label: 'Settings', icon: 'fa fa-gear', routerLink: '/settings'},
   ];
   tabLinks: MenuItem[] = [
     {label: 'Words in Unit', icon: 'fa-bus', routerLink: '/words-unit2'},
