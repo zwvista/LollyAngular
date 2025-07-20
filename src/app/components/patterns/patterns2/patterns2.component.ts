@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../../view-models/misc/app.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
-import { googleString } from '../../../common/common';
-import { PatternsService } from '../../../view-models/wpp/patterns.service';
+import { AppService } from '../../../shared/view-models/misc/app.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
+import { googleString } from '../../../shared/common/common';
+import { PatternsService } from '../../../shared/view-models/wpp/patterns.service';
 import { container } from 'tsyringe';
 import { MatDialog } from '@angular/material/dialog';
 import { PatternsDetail2Component } from '../patterns-detail2/patterns-detail2.component';

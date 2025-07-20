@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from './view-models/misc/app.service';
+import { AppService } from './shared/view-models/misc/app.service';
 import { MenuItem } from 'primeng/api';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';

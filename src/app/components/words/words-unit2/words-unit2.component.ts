@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
-import { googleString } from '../../../common/common';
+import { WordsUnitService } from '../../../shared/view-models/wpp/words-unit.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
+import { googleString } from '../../../shared/common/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatTable } from '@angular/material/table';
-import { MUnitWord } from '../../../models/wpp/unit-word';
-import { AppService } from '../../../view-models/misc/app.service';
+import { MUnitWord } from '../../../shared/models/wpp/unit-word';
+import { AppService } from '../../../shared/view-models/misc/app.service';
 import { container } from 'tsyringe';
 import { MatDialog } from '@angular/material/dialog';
 import { WordsUnitDetail2Component } from '../words-unit-detail2/words-unit-detail2.component';

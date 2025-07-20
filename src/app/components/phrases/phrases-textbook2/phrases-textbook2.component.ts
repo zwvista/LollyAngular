@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
-import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
-import { googleString } from '../../../common/common';
-import { AppService } from '../../../view-models/misc/app.service';
+import { PhrasesUnitService } from '../../../shared/view-models/wpp/phrases-unit.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
+import { MUnitPhrase } from '../../../shared/models/wpp/unit-phrase';
+import { googleString } from '../../../shared/common/common';
+import { AppService } from '../../../shared/view-models/misc/app.service';
 import { container } from 'tsyringe';
 import { MatDialog } from '@angular/material/dialog';
 import { PhrasesTextbookDetail2Component } from '../phrases-textbook-detail2/phrases-textbook-detail2.component';

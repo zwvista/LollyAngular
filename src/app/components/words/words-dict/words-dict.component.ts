@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WordsUnitService } from '../../../view-models/wpp/words-unit.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
+import { WordsUnitService } from '../../../shared/view-models/wpp/words-unit.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
 import { SelectItem } from 'primeng/api';
 import { Location } from '@angular/common';
-import { MDictionary } from '../../../models/misc/dictionary';
-import { HtmlService } from '../../../services/misc/html.service';
-import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
+import { MDictionary } from '../../../shared/models/misc/dictionary';
+import { HtmlService } from '../../../shared/services/misc/html.service';
+import { WordsLangService } from '../../../shared/view-models/wpp/words-lang.service';
 import { container } from 'tsyringe';
 
 @Component({

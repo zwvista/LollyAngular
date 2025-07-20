@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
+import { PhrasesUnitService } from '../../../shared/view-models/wpp/phrases-unit.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MUnitWord } from '../../../models/wpp/unit-word';
+import { MUnitWord } from '../../../shared/models/wpp/unit-word';
 import { MatTable } from '@angular/material/table';
-import { googleString } from '../../../common/common';
-import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
-import { AppService } from '../../../view-models/misc/app.service';
+import { googleString } from '../../../shared/common/common';
+import { MUnitPhrase } from '../../../shared/models/wpp/unit-phrase';
+import { AppService } from '../../../shared/view-models/misc/app.service';
 import { container } from 'tsyringe';
 import { MatDialog } from '@angular/material/dialog';
 import { PhrasesUnitDetail2Component } from '../phrases-unit-detail2/phrases-unit-detail2.component';

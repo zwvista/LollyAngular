@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsListener, SettingsService } from '../../../view-models/misc/settings.service';
+import { SettingsListener, SettingsService } from '../../../shared/view-models/misc/settings.service';
 import { container } from 'tsyringe';
 
 @Component({

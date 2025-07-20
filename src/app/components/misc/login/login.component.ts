@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../../view-models/misc/login.service';
-import { GlobalVars } from '../../../common/common';
+import { LoginService } from '../../../shared/view-models/misc/login.service';
+import { GlobalVars } from '../../../shared/common/common';
 import { container } from 'tsyringe';
 
 @Component({

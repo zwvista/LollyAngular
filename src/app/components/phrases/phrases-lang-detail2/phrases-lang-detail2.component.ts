@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MLangPhrase } from '../../../models/wpp/lang-phrase';
-import { PhrasesLangService } from '../../../view-models/wpp/phrases-lang.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
+import { MLangPhrase } from '../../../shared/models/wpp/lang-phrase';
+import { PhrasesLangService } from '../../../shared/view-models/wpp/phrases-lang.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
 import { container } from 'tsyringe';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 

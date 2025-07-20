@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../../../view-models/misc/settings.service';
-import { googleString } from '../../../common/common';
-import { PhrasesUnitService } from '../../../view-models/wpp/phrases-unit.service';
-import { MUnitPhrase } from '../../../models/wpp/unit-phrase';
-import { AppService } from '../../../view-models/misc/app.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
+import { googleString } from '../../../shared/common/common';
+import { PhrasesUnitService } from '../../../shared/view-models/wpp/phrases-unit.service';
+import { MUnitPhrase } from '../../../shared/models/wpp/unit-phrase';
+import { AppService } from '../../../shared/view-models/misc/app.service';
 import { container } from 'tsyringe';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PhrasesTextbookDetailComponent } from '../phrases-textbook-detail/phrases-textbook-detail.component';

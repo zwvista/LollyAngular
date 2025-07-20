@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MLangWord } from '../../../models/wpp/lang-word';
-import { WordsLangService } from '../../../view-models/wpp/words-lang.service';
-import { SettingsService } from '../../../view-models/misc/settings.service';
+import { MLangWord } from '../../../shared/models/wpp/lang-word';
+import { WordsLangService } from '../../../shared/view-models/wpp/words-lang.service';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
 import { container } from 'tsyringe';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 

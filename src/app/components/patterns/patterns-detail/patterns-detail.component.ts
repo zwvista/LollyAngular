@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../../../view-models/misc/settings.service';
-import { PatternsService } from '../../../view-models/wpp/patterns.service';
-import { MPattern } from '../../../models/wpp/pattern';
+import { SettingsService } from '../../../shared/view-models/misc/settings.service';
+import { PatternsService } from '../../../shared/view-models/wpp/patterns.service';
+import { MPattern } from '../../../shared/models/wpp/pattern';
 import { container } from 'tsyringe';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
