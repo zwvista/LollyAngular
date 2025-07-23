@@ -40,7 +40,7 @@
     <select id="unitFrom" class="col" [(ngModel)]="settingsService.USUNITFROM" (ngModelChange)="onUnitFromChange()">
       <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <select id="partFrom" class="col" [disabled]="toTypeIsUnit" [(ngModel)]="settingsService.USPARTFROM" (change)="onPartFromChange()">
+    <select id="partFrom" class="col" [disabled]="toTypeIsUnit" [(ngModel)]="settingsService.USPARTFROM" (ngModelChange)="onPartFromChange()">
       <option *ngFor="let o of settingsService.parts" [ngValue]="o.value">{{o.label}}</option>
     </select>
   </div>
@@ -48,10 +48,10 @@
     <select id="toType" class="col-2" [(ngModel)]="settingsService.toType" (USUNITFROM)="onToTypeChange()">
       <option *ngFor="let o of settingsService.toTypes" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <select id="unitTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (USUNITFROM)="onUnitToChange()">
+    <select id="unitTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (ngModelChange)="onUnitToChange()">
       <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <select id="partTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USPARTTO" (USUNITFROM)="onPartToChange()">
+    <select id="partTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USPARTTO" (ngModelChange)="onPartToChange()">
       <option *ngFor="let o of settingsService.parts" [ngValue]="o.value">{{o.label}}</option>
     </select>
   </div>
