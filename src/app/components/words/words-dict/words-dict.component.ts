@@ -18,7 +18,7 @@ export class WordsDictComponent implements OnInit {
 
   wordsUnitService = container.resolve(WordsUnitService);
   wordsLangService = container.resolve(WordsLangService);
-  settingsService = container.resolve(SettingsService);
+  settingsService: SettingsService = container.resolve(SettingsService);
   htmlService = container.resolve(HtmlService);
   words: SelectItem[];
   selectedWord: string;

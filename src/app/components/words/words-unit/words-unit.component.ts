@@ -18,7 +18,7 @@ export class WordsUnitComponent implements OnInit, OnDestroy {
 
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
-  settingsService = container.resolve(SettingsService);
+  settingsService: SettingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
   newWord: string;
   filter: string;

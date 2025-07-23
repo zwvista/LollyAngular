@@ -9,7 +9,7 @@ import { container } from 'tsyringe';
 })
 export class SettingsComponent implements OnInit, SettingsListener {
 
-  settingsService = container.resolve(SettingsService);
+  settingsService: SettingsService = container.resolve(SettingsService);
 
   get toTypeIsUnit() {
     return this.settingsService.toType === 0;
@@ -28,46 +28,40 @@ export class SettingsComponent implements OnInit, SettingsListener {
     await this.settingsService.getData();
   }
 
-  async onLangChange(index) {
-    this.settingsService.selectedLang = this.settingsService.languages[index];
+  async onLangChange() {
     await this.settingsService.updateLang();
   }
 
-  async onVoiceChange(index) {
-    this.settingsService.selectedVoice = this.settingsService.voices[index];
+  async onVoiceChange() {
     await this.settingsService.updateVoice();
   }
 
-  async onDictReferenceChange(index) {
-    this.settingsService.selectedDictReference = this.settingsService.dictsReference[index];
+  async onDictReferenceChange() {
     await this.settingsService.updateDictReference();
   }
 
-  async onDictNoteChange(index) {
-    this.settingsService.selectedDictNote = this.settingsService.dictsNote[index];
+  async onDictNoteChange() {
     await this.settingsService.updateDictNote();
   }
 
-  async onDictTranslationChange(index) {
-    this.settingsService.selectedDictTranslation = this.settingsService.dictsTranslation[index];
+  async onDictTranslationChange() {
     await this.settingsService.updateDictTranslation();
   }
 
-  async onTextbookChange(index) {
-    this.settingsService.selectedTextbook = this.settingsService.textbooks[index];
+  async onTextbookChange() {
     await this.settingsService.updateTextbook();
   }
 
-  async onUnitFromChange(index) {
-    await this.settingsService.updateUnitFrom(this.settingsService.units[index].value);
+  async onUnitFromChange() {
+    await this.settingsService.updateUnitFrom(this.settingsService.USUNITFROM);
   }
 
-  async onPartFromChange(index) {
-    await this.settingsService.updatePartFrom(this.settingsService.parts[index].value);
+  async onPartFromChange() {
+    await this.settingsService.updatePartFrom(this.settingsService.USPARTFROM);
   }
 
-  async onToTypeChange(index) {
-    await this.settingsService.updateToType(this.settingsService.toTypes[index].value);
+  async onToTypeChange() {
+    await this.settingsService.updateToType(this.settingsService.toType);
   }
 
   async previousUnitPart() {
@@ -78,12 +72,12 @@ export class SettingsComponent implements OnInit, SettingsListener {
     await this.settingsService.nextUnitPart();
   }
 
-  async onUnitToChange(index) {
-    await this.settingsService.updateUnitTo(this.settingsService.units[index].value);
+  async onUnitToChange() {
+    await this.settingsService.updateUnitTo(this.settingsService.USUNITTO);
   }
 
-  async onPartToChange(index) {
-    await this.settingsService.updateUnitTo(this.settingsService.parts[index].value);
+  async onPartToChange() {
+    await this.settingsService.updateUnitTo(this.settingsService.USPARTTO);
   }
 
   onGetData(): void {

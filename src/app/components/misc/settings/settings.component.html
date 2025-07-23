@@ -1,57 +1,57 @@
 <div class="container mt-2">
   <div class="row mb-2">
     <label for="lang" class="col-2 text-left">Language:</label>
-    <select id="lang" class="col" [(ngModel)]="settingsService.selectedLang" (change)="onLangChange($event.target.selectedIndex)">
+    <select id="lang" class="col" [(ngModel)]="settingsService.selectedLang" (ngModelChange)="onLangChange()">
       <option *ngFor="let o of settingsService.languages" [ngValue]="o">{{o.NAME}}</option>
     </select>
   </div>
     <div class="row mb-2">
       <label for="voice" class="col-2">Voice:</label>
-      <select id="voice" class="col" [(ngModel)]="settingsService.selectedVoice" (change)="onVoiceChange($event.target.selectedIndex)">
+      <select id="voice" class="col" [(ngModel)]="settingsService.selectedVoice" (ngModelChange)="onVoiceChange()">
         <option *ngFor="let o of settingsService.voices" [ngValue]="o">{{o.VOICENAME}}</option>
       </select>
     </div>
   <div class="row mb-2">
     <label for="dictReference" class="col-2">Dictionary(Reference):</label>
-    <select id="dictReference" class="col" [(ngModel)]="settingsService.selectedDictReference" (change)="onDictReferenceChange($event.target.selectedIndex)">
+    <select id="dictReference" class="col" [(ngModel)]="settingsService.selectedDictReference" (ngModelChange)="onDictReferenceChange()">
       <option *ngFor="let o of settingsService.dictsReference" [ngValue]="o">{{o.NAME}}</option>
     </select>
   </div>
   <div class="row mb-2">
     <label for="dictNote" class="col-2">Dictionary(Note):</label>
-    <select id="dictNote" class="col" [(ngModel)]="settingsService.selectedDictNote" (change)="onDictNoteChange($event.target.selectedIndex)">
+    <select id="dictNote" class="col" [(ngModel)]="settingsService.selectedDictNote" (ngModelChange)="onDictNoteChange()">
       <option *ngFor="let o of settingsService.dictsNote" [ngValue]="o">{{o.NAME}}</option>
     </select>
   </div>
   <div class="row mb-2">
     <label for="dictTranslation" class="col-2">Dictionary(Translation):</label>
-    <select id="dictTranslation" class="col" [(ngModel)]="settingsService.selectedDictTranslation" (change)="onDictTranslationChange($event.target.selectedIndex)">
+    <select id="dictTranslation" class="col" [(ngModel)]="settingsService.selectedDictTranslation" (ngModelChange)="onDictTranslationChange()">
       <option *ngFor="let o of settingsService.dictsTranslation" [ngValue]="o">{{o.NAME}}</option>
     </select>
   </div>
   <div class="row mb-2">
     <label for="textbook" class="col-2">Textbook:</label>
-    <select id="textbook" class="col" [(ngModel)]="settingsService.selectedTextbook" (change)="onTextbookChange($event.target.selectedIndex)">
+    <select id="textbook" class="col" [(ngModel)]="settingsService.selectedTextbook" (ngModelChange)="onTextbookChange()">
       <option *ngFor="let o of settingsService.textbooks" [ngValue]="o">{{o.NAME}}</option>
     </select>
   </div>
   <div class="row mb-2">
     <label for="unitFrom" class="col-2">Unit:</label>
-    <select id="unitFrom" class="col" [(ngModel)]="settingsService.USUNITFROM" (change)="onUnitFromChange($event.target.selectedIndex)">
+    <select id="unitFrom" class="col" [(ngModel)]="settingsService.USUNITFROM" (ngModelChange)="onUnitFromChange()">
       <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <select id="partFrom" class="col" [disabled]="toTypeIsUnit" [(ngModel)]="settingsService.USPARTFROM" (change)="onPartFromChange($event.target.selectedIndex)">
+    <select id="partFrom" class="col" [disabled]="toTypeIsUnit" [(ngModel)]="settingsService.USPARTFROM" (change)="onPartFromChange()">
       <option *ngFor="let o of settingsService.parts" [ngValue]="o.value">{{o.label}}</option>
     </select>
   </div>
   <div class="row mb-2">
-    <select id="toType" class="col-2" [(ngModel)]="settingsService.toType" (change)="onToTypeChange($event.target.selectedIndex)">
+    <select id="toType" class="col-2" [(ngModel)]="settingsService.toType" (USUNITFROM)="onToTypeChange()">
       <option *ngFor="let o of settingsService.toTypes" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <select id="unitTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (change)="onUnitToChange($event.target.selectedIndex)">
+    <select id="unitTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USUNITTO" (USUNITFROM)="onUnitToChange()">
       <option *ngFor="let o of settingsService.units" [ngValue]="o.value">{{o.label}}</option>
     </select>
-    <select id="partTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USPARTTO" (change)="onPartToChange($event.target.selectedIndex)">
+    <select id="partTo" class="col" [disabled]="!toTypeIsTo" [(ngModel)]="settingsService.USPARTTO" (USUNITFROM)="onPartToChange()">
       <option *ngFor="let o of settingsService.parts" [ngValue]="o.value">{{o.label}}</option>
     </select>
   </div>
