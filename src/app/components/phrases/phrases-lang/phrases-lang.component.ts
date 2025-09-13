@@ -9,9 +9,10 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PhrasesLangDetailComponent } from '../phrases-lang-detail/phrases-lang-detail.component';
 
 @Component({
-  selector: 'app-phrases-lang',
-  templateUrl: './phrases-lang.component.html',
-  styleUrls: ['./phrases-lang.component.css', '../../../common.css'],
+    selector: 'app-phrases-lang',
+    templateUrl: './phrases-lang.component.html',
+    styleUrls: ['./phrases-lang.component.css', '../../../common.css'],
+    standalone: false
 })
 export class PhrasesLangComponent implements OnInit {
 

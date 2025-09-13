@@ -8,9 +8,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PatternsDetail2Component } from '../patterns-detail2/patterns-detail2.component';
 
 @Component({
-  selector: 'app-patterns2',
-  templateUrl: './patterns2.component.html',
-  styleUrls: ['./patterns2.component.css']
+    selector: 'app-patterns2',
+    templateUrl: './patterns2.component.html',
+    styleUrls: ['./patterns2.component.css'],
+    standalone: false
 })
 export class Patterns2Component implements OnInit {
 

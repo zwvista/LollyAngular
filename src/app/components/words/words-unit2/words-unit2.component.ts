@@ -11,9 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { WordsUnitDetail2Component } from '../words-unit-detail2/words-unit-detail2.component';
 
 @Component({
-  selector: 'app-words-unit2',
-  templateUrl: './words-unit2.component.html',
-  styleUrls: ['./words-unit2.component.css']
+    selector: 'app-words-unit2',
+    templateUrl: './words-unit2.component.html',
+    styleUrls: ['./words-unit2.component.css'],
+    standalone: false
 })
 export class WordsUnit2Component implements OnInit {
   // https://stackoverflow.com/questions/53377450/reorder-mat-table-rows-with-angular-materials-drag-and-drop

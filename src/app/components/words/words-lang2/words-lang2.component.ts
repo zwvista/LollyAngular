@@ -9,9 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { WordsLangDetail2Component } from '../words-lang-detail2/words-lang-detail2.component';
 
 @Component({
-  selector: 'app-words-lang2',
-  templateUrl: './words-lang2.component.html',
-  styleUrls: ['./words-lang2.component.css']
+    selector: 'app-words-lang2',
+    templateUrl: './words-lang2.component.html',
+    styleUrls: ['./words-lang2.component.css'],
+    standalone: false
 })
 export class WordsLang2Component implements OnInit {
 

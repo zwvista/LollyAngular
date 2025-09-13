@@ -9,9 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PhrasesTextbookDetail2Component } from '../phrases-textbook-detail2/phrases-textbook-detail2.component';
 
 @Component({
-  selector: 'app-phrases-textbook2',
-  templateUrl: './phrases-textbook2.component.html',
-  styleUrls: ['./phrases-textbook2.component.css']
+    selector: 'app-phrases-textbook2',
+    templateUrl: './phrases-textbook2.component.html',
+    styleUrls: ['./phrases-textbook2.component.css'],
+    standalone: false
 })
 export class PhrasesTextbook2Component implements OnInit {
 

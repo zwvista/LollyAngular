@@ -1,10 +1,10 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "downlevelIteration": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "esModuleInterop": true,
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -17,8 +17,7 @@
       "es2017",
       "dom"
     ],
-    "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "strictTemplates": true

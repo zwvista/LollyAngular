@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-dict-browser',
-  templateUrl: './dict-browser.component.html',
-  styleUrls: ['./dict-browser.component.css']
+    selector: 'app-dict-browser',
+    templateUrl: './dict-browser.component.html',
+    styleUrls: ['./dict-browser.component.css'],
+    standalone: false
 })
 export class DictBrowserComponent implements OnInit {
 

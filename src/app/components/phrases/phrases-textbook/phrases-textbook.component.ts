@@ -9,9 +9,10 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PhrasesTextbookDetailComponent } from '../phrases-textbook-detail/phrases-textbook-detail.component';
 
 @Component({
-  selector: 'app-phrases-textbook',
-  templateUrl: './phrases-textbook.component.html',
-  styleUrls: ['./phrases-textbook.component.css', '../../../common.css'],
+    selector: 'app-phrases-textbook',
+    templateUrl: './phrases-textbook.component.html',
+    styleUrls: ['./phrases-textbook.component.css', '../../../common.css'],
+    standalone: false
 })
 export class PhrasesTextbookComponent implements OnInit {
 

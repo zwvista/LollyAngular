@@ -6,9 +6,10 @@ import { container } from 'tsyringe';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-phrases-lang-detail2',
-  templateUrl: './phrases-lang-detail2.component.html',
-  styleUrls: ['./phrases-lang-detail2.component.css', '../../../common.css']
+    selector: 'app-phrases-lang-detail2',
+    templateUrl: './phrases-lang-detail2.component.html',
+    styleUrls: ['./phrases-lang-detail2.component.css', '../../../common.css'],
+    standalone: false
 })
 export class PhrasesLangDetail2Component implements OnInit {
 

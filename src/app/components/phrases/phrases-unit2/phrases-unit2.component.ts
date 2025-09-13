@@ -12,9 +12,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PhrasesUnitDetail2Component } from '../phrases-unit-detail2/phrases-unit-detail2.component';
 
 @Component({
-  selector: 'app-phrases-unit2',
-  templateUrl: './phrases-unit2.component.html',
-  styleUrls: ['./phrases-unit2.component.css']
+    selector: 'app-phrases-unit2',
+    templateUrl: './phrases-unit2.component.html',
+    styleUrls: ['./phrases-unit2.component.css'],
+    standalone: false
 })
 export class PhrasesUnit2Component implements OnInit {
   @ViewChild('table', {static: true}) table: MatTable<MUnitWord>;

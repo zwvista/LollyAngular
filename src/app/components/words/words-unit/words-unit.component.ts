@@ -10,9 +10,10 @@ import { WordsUnitDetailComponent } from '../words-unit-detail/words-unit-detail
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-words-unit',
-  templateUrl: './words-unit.component.html',
-  styleUrls: ['./words-unit.component.css', '../../../common.css'],
+    selector: 'app-words-unit',
+    templateUrl: './words-unit.component.html',
+    styleUrls: ['./words-unit.component.css', '../../../common.css'],
+    standalone: false
 })
 export class WordsUnitComponent implements OnInit, OnDestroy {
 

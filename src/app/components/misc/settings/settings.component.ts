@@ -3,9 +3,10 @@ import { SettingsListener, SettingsService } from '../../../shared/view-models/m
 import { container } from 'tsyringe';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css', '../../../common.css']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.css', '../../../common.css'],
+    standalone: false
 })
 export class SettingsComponent implements OnInit, SettingsListener {
 

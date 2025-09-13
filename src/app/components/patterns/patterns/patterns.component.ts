@@ -8,9 +8,10 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PatternsDetailComponent } from '../patterns-detail/patterns-detail.component';
 
 @Component({
-  selector: 'app-patterns',
-  templateUrl: './patterns.component.html',
-  styleUrls: ['./patterns.component.css', '../../../common.css'],
+    selector: 'app-patterns',
+    templateUrl: './patterns.component.html',
+    styleUrls: ['./patterns.component.css', '../../../common.css'],
+    standalone: false
 })
 export class PatternsComponent implements OnInit {
 

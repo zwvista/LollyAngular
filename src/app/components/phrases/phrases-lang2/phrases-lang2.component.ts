@@ -9,9 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PhrasesLangDetail2Component } from '../phrases-lang-detail2/phrases-lang-detail2.component';
 
 @Component({
-  selector: 'app-phrases-lang2',
-  templateUrl: './phrases-lang2.component.html',
-  styleUrls: ['./phrases-lang2.component.css']
+    selector: 'app-phrases-lang2',
+    templateUrl: './phrases-lang2.component.html',
+    styleUrls: ['./phrases-lang2.component.css'],
+    standalone: false
 })
 export class PhrasesLang2Component implements OnInit {
 

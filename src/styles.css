@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~primeng/resources/primeng.min.css';
-@import '~primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~primeflex/primeflex.css';
-@import '~primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+@import 'primeicons/primeicons.css';
 
 /* https://github.com/angular/components/issues/9874 */
 .mat-table {

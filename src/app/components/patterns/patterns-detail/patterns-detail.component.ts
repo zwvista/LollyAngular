@@ -6,9 +6,10 @@ import { container } from 'tsyringe';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
-  selector: 'app-patterns-detail',
-  templateUrl: './patterns-detail.component.html',
-  styleUrls: ['./patterns-detail.component.css']
+    selector: 'app-patterns-detail',
+    templateUrl: './patterns-detail.component.html',
+    styleUrls: ['./patterns-detail.component.css'],
+    standalone: false
 })
 export class PatternsDetailComponent implements OnInit {
 

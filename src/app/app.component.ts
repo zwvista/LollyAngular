@@ -6,9 +6,10 @@ import { filter } from 'rxjs/operators';
 import { container } from 'tsyringe';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   appService = container.resolve(AppService);

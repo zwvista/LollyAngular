@@ -6,9 +6,10 @@ import { container } from 'tsyringe';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
-  selector: 'app-words-textbook-detail',
-  templateUrl: './words-textbook-detail.component.html',
-  styleUrls: ['./words-textbook-detail.component.css', '../../../common.css']
+    selector: 'app-words-textbook-detail',
+    templateUrl: './words-textbook-detail.component.html',
+    styleUrls: ['./words-textbook-detail.component.css', '../../../common.css'],
+    standalone: false
 })
 export class WordsTextbookDetailComponent implements OnInit {
 

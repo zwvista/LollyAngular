@@ -10,9 +10,10 @@ import { WordsLangService } from '../../../shared/view-models/wpp/words-lang.ser
 import { container } from 'tsyringe';
 
 @Component({
-  selector: 'app-words-dict',
-  templateUrl: './words-dict.component.html',
-  styleUrls: ['./words-dict.component.css']
+    selector: 'app-words-dict',
+    templateUrl: './words-dict.component.html',
+    styleUrls: ['./words-dict.component.css'],
+    standalone: false
 })
 export class WordsDictComponent implements OnInit {
 
