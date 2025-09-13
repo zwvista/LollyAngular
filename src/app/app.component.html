@@ -1,20 +1,27 @@
 <h1>{{title}}</h1>
-<div *ngIf="!isLoginPage">
-<p-tabMenu [model]="itemsApp" [activeItem]="activeItemApp"></p-tabMenu>
-<p-tabMenu [model]="items" *ngIf="activeItemApp === itemsApp[0]"></p-tabMenu>
-<nav mat-tab-nav-bar *ngIf="activeItemApp === itemsApp[1]">
-  <a mat-tab-link
-     *ngFor="let tabLink of tabLinks; let i = index"
-     [routerLink]="tabLink.routerLink"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    <span>
-      <mat-icon fontSet="fa" fontIcon={{tabLink.icon}}></mat-icon>
-      {{tabLink.label}}
-    </span>
-  </a>
-</nav>
-</div>
+@if (!isLoginPage) {
+  <div>
+    <p-tabMenu [model]="itemsApp" [activeItem]="activeItemApp"></p-tabMenu>
+    @if (activeItemApp === itemsApp[0]) {
+      <p-tabMenu [model]="items"></p-tabMenu>
+    }
+    @if (activeItemApp === itemsApp[1]) {
+      <nav mat-tab-nav-bar>
+        @for (tabLink of tabLinks; track tabLink; let i = $index) {
+          <a mat-tab-link
+            [routerLink]="tabLink.routerLink"
+            routerLinkActive #rla="routerLinkActive"
+            [active]="rla.isActive">
+            <span>
+              <mat-icon fontSet="fa" fontIcon={{tabLink.icon}}></mat-icon>
+              {{tabLink.label}}
+            </span>
+          </a>
+        }
+      </nav>
+    }
+  </div>
+}
 <mat-tab-nav-panel #tabPanel>
   <router-outlet></router-outlet>
 </mat-tab-nav-panel>

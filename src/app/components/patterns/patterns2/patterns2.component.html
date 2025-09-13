@@ -2,9 +2,11 @@
   <mat-toolbar-row>
     <mat-form-field>
       <mat-select [(value)]="filterType" (selectionChange)="onRefresh()">
-        <mat-option *ngFor="let o of settingsService.patternFilterTypes" [value]="o.value">
-          {{o.label}}
-        </mat-option>
+        @for (o of settingsService.patternFilterTypes; track o) {
+          <mat-option [value]="o.value">
+            {{o.label}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -19,9 +21,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-paginator [length]="patternsService.patternCount"
-               [pageSize]="rows"
-               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
-               (page)="paginate($event)">
+  [pageSize]="rows"
+  [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+  (page)="paginate($event)">
 </mat-paginator>
 <table mat-table [dataSource]="patternsService.patterns" class="mat-elevation-z8">
 
@@ -71,7 +73,7 @@
 
 </table>
 <mat-paginator [length]="patternsService.patternCount"
-               [pageSize]="rows"
-               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
-               (page)="paginate($event)">
+  [pageSize]="rows"
+  [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+  (page)="paginate($event)">
 </mat-paginator>

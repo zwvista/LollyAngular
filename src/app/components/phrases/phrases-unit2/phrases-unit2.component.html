@@ -2,9 +2,11 @@
   <mat-toolbar-row>
     <mat-form-field>
       <mat-select [(value)]="filterType" (selectionChange)="onRefresh()">
-        <mat-option *ngFor="let o of settingsService.phraseFilterTypes" [value]="o.value">
-          {{o.label}}
-        </mat-option>
+        @for (o of settingsService.phraseFilterTypes; track o) {
+          <mat-option [value]="o.value">
+            {{o.label}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -19,9 +21,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <table mat-table #table [dataSource]="phrasesUnitService.unitPhrases" class="mat-elevation-z8"
-       cdkDropList
-       [cdkDropListData]="phrasesUnitService.unitPhrases"
-       (cdkDropListDropped)="dropTable($event)">
+  cdkDropList
+  [cdkDropListData]="phrasesUnitService.unitPhrases"
+  (cdkDropListDropped)="dropTable($event)">
 
   <!-- Position Column -->
   <ng-container matColumnDef="position">

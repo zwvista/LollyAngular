@@ -2,9 +2,11 @@
   <mat-toolbar-row>
     <mat-form-field>
       <mat-select [(value)]="filterType" (selectionChange)="onRefresh()">
-        <mat-option *ngFor="let o of settingsService.wordFilterTypes" [value]="o.value">
-          {{o.label}}
-        </mat-option>
+        @for (o of settingsService.wordFilterTypes; track o) {
+          <mat-option [value]="o.value">
+            {{o.label}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -24,9 +26,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-paginator [length]="wordsLangService.langWordsCount"
-               [pageSize]="rows"
-               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
-               (page)="paginate($event)">
+  [pageSize]="rows"
+  [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+  (page)="paginate($event)">
 </mat-paginator>
 <table mat-table [dataSource]="wordsLangService.langWords" class="mat-elevation-z8">
 
@@ -56,7 +58,7 @@
         <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
       </button>
       <button mat-mini-fab color="primary" matTooltip="Speak"
-              [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)">
+        [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(row.WORD)">
         <mat-icon fontSet="fa" fontIcon="fa-volume-up"></mat-icon>
       </button>
       <button mat-mini-fab color="primary" matTooltip="Copy" ngxClipboard [cbContent]="row.WORD">
@@ -84,7 +86,7 @@
 
 </table>
 <mat-paginator [length]="wordsLangService.langWordsCount"
-               [pageSize]="rows"
-               [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
-               (page)="paginate($event)">
+  [pageSize]="rows"
+  [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
+  (page)="paginate($event)">
 </mat-paginator>

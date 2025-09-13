@@ -15,9 +15,11 @@
     <mat-form-field class="col">
       <mat-label>UNIT:</mat-label>
       <mat-select [(ngModel)]="item.UNIT">
-        <mat-option *ngFor="let o of settingsService.units" [value]="o.value">
-          {{o.label}}
-        </mat-option>
+        @for (o of settingsService.units; track o) {
+          <mat-option [value]="o.value">
+            {{o.label}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -25,9 +27,11 @@
     <mat-form-field class="col">
       <mat-label>PART:</mat-label>
       <mat-select [(ngModel)]="item.PART">
-        <mat-option *ngFor="let o of settingsService.parts" [value]="o.value">
-          {{o.label}}
-        </mat-option>
+        @for (o of settingsService.parts; track o) {
+          <mat-option [value]="o.value">
+            {{o.label}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
