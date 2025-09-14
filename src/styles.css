@@ -3,6 +3,7 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'primeflex/primeflex.css';
 @import 'primeicons/primeicons.css';
+@import "tailwindcss";
 
 /* https://github.com/angular/components/issues/9874 */
 .mat-table {
