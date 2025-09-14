@@ -1,5 +1,5 @@
 <p-toolbar>
-  <div class="p-toolbar-group-start">
+  <ng-template #start>
     <p-dropdown id="filterType" [options]="settingsService.patternFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
       <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
@@ -7,7 +7,7 @@
     </p-floatLabel>
     <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
     <p-button label="Refresh" [rounded]="true" icon="fa fa-sync" (click)="onRefresh()" />
-  </div>
+  </ng-template>
 </p-toolbar>
 <p-paginator [rows]="rows" [totalRecords]="patternsService.patternCount"
              [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"

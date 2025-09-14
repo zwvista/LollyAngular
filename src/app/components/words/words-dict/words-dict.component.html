@@ -1,9 +1,9 @@
 <p-toolbar>
-  <div class="p-toolbar-group-left">
+  <ng-template #start>
     <p-button label="Back" [rounded]="true" (click)="goBack()" />
     <p-dropdown class="p-col-2" [options]="settingsService.dictsReference" [(ngModel)]="selectedDictReference"
                 optionLabel="DICTNAME" (onChange)="refreshDict()" />
-  </div>
+  </ng-template>
 </p-toolbar>
 <div class="field grid">
   <!-- https://github.com/primefaces/primeng/issues/3948 -->

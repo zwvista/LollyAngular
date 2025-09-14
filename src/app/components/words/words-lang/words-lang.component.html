@@ -1,5 +1,5 @@
 <p-toolbar>
-  <div class="p-toolbar-group-start">
+  <ng-template #start>
     <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
       <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
@@ -10,7 +10,7 @@
     <a routerLink="/words-dict/lang/0">
       <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
     </a>
-  </div>
+  </ng-template>
 </p-toolbar>
 <p-paginator [rows]="rows" [totalRecords]="wordsLangService.langWordsCount"
              [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
