@@ -64,6 +64,9 @@ import { WordsUnit2Component } from './components/words/words-unit2/words-unit2.
 import { WordsUnitComponent } from './components/words/words-unit/words-unit.component';
 import { WordsUnitDetail2Component } from './components/words/words-unit-detail2/words-unit-detail2.component';
 import { WordsUnitDetailComponent } from './components/words/words-unit-detail/words-unit-detail.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
 
 
 @NgModule({
@@ -138,6 +141,12 @@ import { WordsUnitDetailComponent } from './components/words/words-unit-detail/w
   providers: [
     DialogService,
     provideHttpClient(withInterceptorsFromDi()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: Aura
+      }
+    })
   ]
 })
 export class AppModule { }
