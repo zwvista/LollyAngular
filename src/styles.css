@@ -4,6 +4,7 @@
 @import 'primeflex/primeflex.css';
 @import 'primeicons/primeicons.css';
 @import "tailwindcss";
+@plugin "tailwindcss-primeui";
 
 /* https://github.com/angular/components/issues/9874 */
 .mat-table {

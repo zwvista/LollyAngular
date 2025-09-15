@@ -1,11 +1,11 @@
-<div class="max-w-4xl mx-auto p-4 space-y-4">
+<div class="settings-container">
   <!-- Language -->
-  <div class="flex items-center space-x-4">
-    <label for="lang" class="w-32 text-sm font-medium text-gray-700">Language:</label>
+  <div class="form-row">
+    <label for="lang">Language:</label>
     <select id="lang"
             [(ngModel)]="settingsService.selectedLang"
             (ngModelChange)="onLangChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.languages; track o) {
         <option [ngValue]="o">{{ o.NAME }}</option>
       }
@@ -13,12 +13,12 @@
   </div>
 
   <!-- Voice -->
-  <div class="flex items-center space-x-4">
-    <label for="voice" class="w-32 text-sm font-medium text-gray-700">Voice:</label>
+  <div class="form-row">
+    <label for="voice">Voice:</label>
     <select id="voice"
             [(ngModel)]="settingsService.selectedVoice"
             (ngModelChange)="onVoiceChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.voices; track o) {
         <option [ngValue]="o">{{ o.VOICENAME }}</option>
       }
@@ -26,12 +26,12 @@
   </div>
 
   <!-- Dictionary(Reference) -->
-  <div class="flex items-center space-x-4">
-    <label for="dictReference" class="w-32 text-sm font-medium text-gray-700">Dictionary(Reference):</label>
+  <div class="form-row">
+    <label for="dictReference">Dictionary(Reference):</label>
     <select id="dictReference"
             [(ngModel)]="settingsService.selectedDictReference"
             (ngModelChange)="onDictReferenceChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.dictsReference; track o) {
         <option [ngValue]="o">{{ o.NAME }}</option>
       }
@@ -39,12 +39,12 @@
   </div>
 
   <!-- Dictionary(Note) -->
-  <div class="flex items-center space-x-4">
-    <label for="dictNote" class="w-32 text-sm font-medium text-gray-700">Dictionary(Note):</label>
+  <div class="form-row">
+    <label for="dictNote">Dictionary(Note):</label>
     <select id="dictNote"
             [(ngModel)]="settingsService.selectedDictNote"
             (ngModelChange)="onDictNoteChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.dictsNote; track o) {
         <option [ngValue]="o">{{ o.NAME }}</option>
       }
@@ -52,12 +52,12 @@
   </div>
 
   <!-- Dictionary(Translation) -->
-  <div class="flex items-center space-x-4">
-    <label for="dictTranslation" class="w-32 text-sm font-medium text-gray-700">Dictionary(Translation):</label>
+  <div class="form-row">
+    <label for="dictTranslation">Dictionary(Translation):</label>
     <select id="dictTranslation"
             [(ngModel)]="settingsService.selectedDictTranslation"
             (ngModelChange)="onDictTranslationChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.dictsTranslation; track o) {
         <option [ngValue]="o">{{ o.NAME }}</option>
       }
@@ -65,12 +65,12 @@
   </div>
 
   <!-- Textbook -->
-  <div class="flex items-center space-x-4">
-    <label for="textbook" class="w-32 text-sm font-medium text-gray-700">Textbook:</label>
+  <div class="form-row">
+    <label for="textbook">Textbook:</label>
     <select id="textbook"
             [(ngModel)]="settingsService.selectedTextbook"
             (ngModelChange)="onTextbookChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.textbooks; track o) {
         <option [ngValue]="o">{{ o.NAME }}</option>
       }
@@ -78,12 +78,12 @@
   </div>
 
   <!-- Unit From -->
-  <div class="flex items-center space-x-4">
-    <label for="unitFrom" class="w-32 text-sm font-medium text-gray-700">Unit:</label>
+  <div class="form-row">
+    <label for="unitFrom">Unit:</label>
     <select id="unitFrom"
             [(ngModel)]="settingsService.USUNITFROM"
             (ngModelChange)="onUnitFromChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            class="select-input">
       @for (o of settingsService.units; track o) {
         <option [ngValue]="o.value">{{ o.label }}</option>
       }
@@ -92,7 +92,7 @@
             [disabled]="toTypeIsUnit"
             [(ngModel)]="settingsService.USPARTFROM"
             (ngModelChange)="onPartFromChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+            class="select-input">
       @for (o of settingsService.parts; track o) {
         <option [ngValue]="o.value">{{ o.label }}</option>
       }
@@ -100,11 +100,11 @@
   </div>
 
   <!-- To Type + Unit/Part To -->
-  <div class="flex items-center space-x-4">
+  <div class="form-row">
     <select id="toType"
             [(ngModel)]="settingsService.toType"
             (ngModelChange)="onToTypeChange()"
-    class="w-32 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+    class="select-short">
     @for (o of settingsService.toTypes; track o) {
       <option [ngValue]="o.value">{{ o.label }}</option>
     }
@@ -113,7 +113,7 @@
             [disabled]="!toTypeIsTo"
             [(ngModel)]="settingsService.USUNITTO"
             (ngModelChange)="onUnitToChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+            class="select-input">
       @for (o of settingsService.units; track o) {
         <option [ngValue]="o.value">{{ o.label }}</option>
       }
@@ -122,7 +122,7 @@
             [disabled]="!toTypeIsTo"
             [(ngModel)]="settingsService.USPARTTO"
             (ngModelChange)="onPartToChange()"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+            class="select-input">
       @for (o of settingsService.parts; track o) {
         <option [ngValue]="o.value">{{ o.label }}</option>
       }
@@ -130,15 +130,15 @@
   </div>
 
   <!-- Previous / Next Buttons -->
-  <div class="flex items-center space-x-4">
-    <div class="w-32"></div>
-    <div class="flex space-x-2">
-      <button class="px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+  <div class="form-row">
+    <div class="label-spacer"></div>
+    <div class="button-group">
+      <button class="btn-primary"
               [disabled]="toTypeIsTo"
               (click)="previousUnitPart()">
         Previous
       </button>
-      <button class="px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      <button class="btn-primary"
               [disabled]="toTypeIsTo"
               (click)="nextUnitPart()">
         Next
