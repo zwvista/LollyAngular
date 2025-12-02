@@ -22,8 +22,6 @@ export class WordsTextbookComponent implements OnInit {
   dialogRef: DynamicDialogRef | undefined;
   rows = 0;
   page = 1;
-  filter: string;
-  filterType = 0;
   textbookFilter = 0;
 
   constructor(public dialogService: DialogService) { }
@@ -41,7 +39,7 @@ export class WordsTextbookComponent implements OnInit {
   }
 
   async onRefresh() {
-    await this.wordsUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter);
+    await this.wordsUnitService.getDataInLang(this.page, this.rows, this.textbookFilter);
   }
 
   async deleteWord(item: MUnitWord) {

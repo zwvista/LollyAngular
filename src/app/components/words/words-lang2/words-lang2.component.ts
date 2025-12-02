@@ -21,11 +21,8 @@ export class WordsLang2Component implements OnInit {
   appService = container.resolve(AppService);
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
-  newWord: string;
   rows = 0;
   page = 1;
-  filter: string;
-  filterType = 0;
 
   constructor(private dialog: MatDialog) { }
 
@@ -42,7 +39,7 @@ export class WordsLang2Component implements OnInit {
   }
 
   async onRefresh() {
-    await this.wordsLangService.getData(this.page, this.rows, this.filter, this.filterType);
+    await this.wordsLangService.getData(this.page, this.rows);
   }
 
   async deleteWord(item: MLangWord) {

@@ -20,11 +20,8 @@ export class WordsLangComponent implements OnInit {
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
-  newWord: string;
   rows = 0;
   page = 1;
-  filter: string;
-  filterType = 0;
 
   constructor(public dialogService: DialogService) { }
 
@@ -41,7 +38,7 @@ export class WordsLangComponent implements OnInit {
   }
 
   async onRefresh() {
-    await this.wordsLangService.getData(this.page, this.rows, this.filter, this.filterType);
+    await this.wordsLangService.getData(this.page, this.rows);
   }
 
   async deleteWord(item: MLangWord) {

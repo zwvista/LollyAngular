@@ -7,7 +7,6 @@ import { AppService } from '../../../shared/view-models/misc/app.service';
 import { container } from 'tsyringe';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { WordsUnitDetailComponent } from '../words-unit-detail/words-unit-detail.component';
-import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-words-unit',
@@ -21,9 +20,6 @@ export class WordsUnitComponent implements OnInit, OnDestroy {
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService: SettingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
-  newWord: string;
-  filter: string;
-  filterType = 0;
 
   constructor(public dialogService: DialogService) { }
 
@@ -39,17 +35,11 @@ export class WordsUnitComponent implements OnInit, OnDestroy {
   }
 
   async onEnterNewWord() {
-    if (!this.newWord) return;
-    const o = this.wordsUnitService.newUnitWord();
-    o.WORD = this.settingsService.autoCorrectInput(this.newWord);
-    this.newWord = '';
-    const id = await this.wordsUnitService.create(o);
-    o.ID = id as number;
-    this.wordsUnitService.unitWords.push(o);
+    await this.wordsUnitService.createWithNewWord();
   }
 
   async onRefresh() {
-    await this.wordsUnitService.getDataInTextbook(this.filter, this.filterType);
+    await this.wordsUnitService.getDataInTextbook();
   }
 
   async onReorder(from: number, to: number) {

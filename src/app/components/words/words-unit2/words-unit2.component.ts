@@ -25,9 +25,6 @@ export class WordsUnit2Component implements OnInit {
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
-  newWord: string;
-  filter: string;
-  filterType = 0;
 
   constructor(private dialog: MatDialog) { }
 
@@ -37,17 +34,11 @@ export class WordsUnit2Component implements OnInit {
   }
 
   async onEnterNewWord() {
-    if (!this.newWord) return;
-    const o = this.wordsUnitService.newUnitWord();
-    o.WORD = this.settingsService.autoCorrectInput(this.newWord);
-    this.newWord = '';
-    const id = await this.wordsUnitService.create(o);
-    o.ID = id as number;
-    this.wordsUnitService.unitWords.push(o);
+    await this.wordsUnitService.createWithNewWord();
   }
 
   async onRefresh() {
-    await this.wordsUnitService.getDataInTextbook(this.filter, this.filterType);
+    await this.wordsUnitService.getDataInTextbook();
   }
 
   dropTable(event: CdkDragDrop<MUnitWord[]>) {

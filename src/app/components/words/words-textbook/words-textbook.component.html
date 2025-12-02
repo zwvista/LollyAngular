@@ -1,8 +1,8 @@
 <p-toolbar>
   <ng-template #start>
-    <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="wordsUnitService.filterType" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
-      <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
+      <input id="filter" type="text" pInputText [(ngModel)]="wordsUnitService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
     </p-floatLabel>
     <p-dropdown id="textbookFilter" [options]="settingsService.textbookFilters" [(ngModel)]="textbookFilter" (onChange)="onRefresh()" />

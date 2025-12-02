@@ -1,7 +1,7 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <mat-form-field>
-      <mat-select [(value)]="filterType" (selectionChange)="onRefresh()">
+      <mat-select [(value)]="wordsUnitService.filterType" (selectionChange)="onRefresh()">
         @for (o of settingsService.wordFilterTypes; track o) {
           <mat-option [value]="o.value">
             {{o.label}}
@@ -10,7 +10,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Filter" [(ngModel)]="filter" (keyup.enter)="onRefresh()">
+      <input matInput placeholder="Filter" [(ngModel)]="wordsUnitService.filter" (keyup.enter)="onRefresh()">
     </mat-form-field>
     <mat-form-field>
       <mat-select [(value)]="textbookFilter" (selectionChange)="onRefresh()">
