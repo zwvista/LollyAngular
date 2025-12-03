@@ -21,27 +21,23 @@ export class PhrasesLang2Component implements OnInit {
   appService = container.resolve(AppService);
   phrasesLangService = container.resolve(PhrasesLangService);
   settingsService = container.resolve(SettingsService);
-  rows = 0;
-  page = 1;
-  filter: string;
-  filterType = 0;
 
   constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.phrasesLangService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.pageSize;
-    this.page = event.pageIndex + 1;
+    this.phrasesLangService.rows = event.pageSize;
+    this.phrasesLangService.page = event.pageIndex + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.phrasesLangService.getData(this.page, this.rows, this.filter, this.filterType);
+    await this.phrasesLangService.getData();
   }
 
   async deletePhrase(item: MLangPhrase) {

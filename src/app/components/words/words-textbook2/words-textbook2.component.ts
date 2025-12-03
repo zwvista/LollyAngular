@@ -21,26 +21,23 @@ export class WordsTextbook2Component implements OnInit {
   appService = container.resolve(AppService);
   wordsUnitService = container.resolve(WordsUnitService);
   settingsService = container.resolve(SettingsService);
-  rows = 0;
-  page = 1;
-  textbookFilter = 0;
 
   constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.wordsUnitService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.pageSize;
-    this.page = event.pageIndex + 1;
+    this.wordsUnitService.rows = event.pageSize;
+    this.wordsUnitService.page = event.pageIndex + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.wordsUnitService.getDataInLang(this.page, this.rows, this.textbookFilter);
+    await this.wordsUnitService.getDataInLang();
   }
 
   async deleteWord(item: MUnitWord) {

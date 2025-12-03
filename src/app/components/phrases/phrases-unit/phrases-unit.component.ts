@@ -20,8 +20,6 @@ export class PhrasesUnitComponent implements OnInit {
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
-  filter: string;
-  filterType = 0;
 
   constructor(public dialogService: DialogService) { }
 
@@ -36,7 +34,7 @@ export class PhrasesUnitComponent implements OnInit {
   }
 
   async onRefresh() {
-    await this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType);
+    await this.phrasesUnitService.getDataInTextbook();
   }
 
   async deletePhrase(item: MUnitPhrase) {

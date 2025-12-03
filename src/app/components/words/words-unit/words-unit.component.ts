@@ -63,12 +63,12 @@ export class WordsUnitComponent implements OnInit, OnDestroy {
     googleString(word);
   }
 
-  getNotes(ifEmpty: boolean) {
-    this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
+  getNotes() {
+    this.wordsUnitService.getNotes(() => {}, () => {});
   }
 
-  clearNotes(ifEmpty: boolean) {
-    this.wordsUnitService.clearNotes(ifEmpty, () => {}, () => {});
+  clearNotes() {
+    this.wordsUnitService.clearNotes(() => {}, () => {});
   }
 
   showDetailDialog(id: number) {

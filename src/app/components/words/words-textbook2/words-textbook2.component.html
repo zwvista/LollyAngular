@@ -13,7 +13,7 @@
       <input matInput placeholder="Filter" [(ngModel)]="wordsUnitService.filter" (keyup.enter)="onRefresh()">
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(value)]="textbookFilter" (selectionChange)="onRefresh()">
+      <mat-select [(value)]="wordsUnitService.textbookFilter" (selectionChange)="onRefresh()">
         @for (o of settingsService.textbookFilters; track o) {
           <mat-option [value]="o.value">
             {{o.label}}
@@ -32,7 +32,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-paginator [length]="wordsUnitService.textbookWordCount"
-  [pageSize]="rows"
+  [pageSize]="wordsUnitService.rows"
   [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
   (page)="paginate($event)">
 </mat-paginator>
@@ -112,7 +112,7 @@
 
 </table>
 <mat-paginator [length]="wordsUnitService.textbookWordCount"
-  [pageSize]="rows"
+  [pageSize]="wordsUnitService.rows"
   [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
   (page)="paginate($event)">
 </mat-paginator>

@@ -25,8 +25,6 @@ export class PhrasesUnit2Component implements OnInit {
   appService = container.resolve(AppService);
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
-  filter: string;
-  filterType = 0;
 
   constructor(private dialog: MatDialog) { }
 
@@ -36,7 +34,7 @@ export class PhrasesUnit2Component implements OnInit {
   }
 
   async onRefresh() {
-    await this.phrasesUnitService.getDataInTextbook(this.filter, this.filterType);
+    await this.phrasesUnitService.getDataInTextbook();
   }
 
   dropTable(event: CdkDragDrop<MUnitPhrase[]>) {

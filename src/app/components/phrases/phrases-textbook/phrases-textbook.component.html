@@ -1,15 +1,15 @@
 <p-toolbar>
   <ng-template #start>
-    <p-dropdown id="filterType" [options]="settingsService.phraseFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterType" [options]="settingsService.phraseFilterTypes" [(ngModel)]="phrasesUnitService.filterType" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
-      <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
+      <input id="filter" type="text" pInputText [(ngModel)]="phrasesUnitService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
     </p-floatLabel>
-    <p-dropdown id="textbookFilter" [options]="settingsService.textbookFilters" [(ngModel)]="textbookFilter" (onChange)="onRefresh()" />
+    <p-dropdown id="textbookFilter" [options]="settingsService.textbookFilters" [(ngModel)]="phrasesUnitService.textbookFilter" (onChange)="onRefresh()" />
     <p-button label="Refresh" [rounded]="true" icon="fa fa-sync" (click)="onRefresh()" />
   </ng-template>
 </p-toolbar>
-<p-paginator [rows]="rows" [totalRecords]="phrasesUnitService.textbookPhraseCount"
+<p-paginator [rows]="phrasesUnitService.rows" [totalRecords]="phrasesUnitService.textbookPhraseCount"
              [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
              (onPageChange)="paginate($event)"></p-paginator>
 <p-table [value]="phrasesUnitService.textbookPhrases" selectionMode="single" [autoLayout]="true">
@@ -51,6 +51,6 @@
     </tr>
   </ng-template>
 </p-table>
-<p-paginator [rows]="rows" [totalRecords]="phrasesUnitService.textbookPhraseCount"
+<p-paginator [rows]="phrasesUnitService.rows" [totalRecords]="phrasesUnitService.textbookPhraseCount"
              [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
              (onPageChange)="paginate($event)"></p-paginator>

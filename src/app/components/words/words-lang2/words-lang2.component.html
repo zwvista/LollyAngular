@@ -26,7 +26,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-paginator [length]="wordsLangService.langWordsCount"
-  [pageSize]="rows"
+  [pageSize]="wordsLangService.rows"
   [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
   (page)="paginate($event)">
 </mat-paginator>
@@ -86,7 +86,7 @@
 
 </table>
 <mat-paginator [length]="wordsLangService.langWordsCount"
-  [pageSize]="rows"
+  [pageSize]="wordsLangService.rows"
   [pageSizeOptions]="settingsService.USROWSPERPAGEOPTIONS"
   (page)="paginate($event)">
 </mat-paginator>

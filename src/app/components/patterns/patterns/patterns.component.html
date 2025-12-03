@@ -1,15 +1,15 @@
 <p-toolbar>
   <ng-template #start>
-    <p-dropdown id="filterType" [options]="settingsService.patternFilterTypes" [(ngModel)]="filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterType" [options]="settingsService.patternFilterTypes" [(ngModel)]="patternsService.filterType" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
-      <input id="filter" type="text" pInputText [(ngModel)]="filter" (keyup.enter)="onRefresh()">
+      <input id="filter" type="text" pInputText [(ngModel)]="patternsService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
     </p-floatLabel>
     <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
     <p-button label="Refresh" [rounded]="true" icon="fa fa-sync" (click)="onRefresh()" />
   </ng-template>
 </p-toolbar>
-<p-paginator [rows]="rows" [totalRecords]="patternsService.patternCount"
+<p-paginator [rows]="patternsService.rows" [totalRecords]="patternsService.patternCount"
              [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
              (onPageChange)="paginate($event)"></p-paginator>
 <p-table [value]="patternsService.patterns" selectionMode="single" [autoLayout]="true">
@@ -45,6 +45,6 @@
     </tr>
   </ng-template>
 </p-table>
-<p-paginator [rows]="rows" [totalRecords]="patternsService.patternCount"
+<p-paginator [rows]="patternsService.rows" [totalRecords]="patternsService.patternCount"
              [rowsPerPageOptions]="settingsService.USROWSPERPAGEOPTIONS"
              (onPageChange)="paginate($event)"></p-paginator>

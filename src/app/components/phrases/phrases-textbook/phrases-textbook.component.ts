@@ -20,28 +20,23 @@ export class PhrasesTextbookComponent implements OnInit {
   phrasesUnitService = container.resolve(PhrasesUnitService);
   settingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
-  rows = 0;
-  page = 1;
-  filter: string;
-  filterType = 0;
-  textbookFilter = 0;
 
   constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.phrasesUnitService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.rows;
-    this.page = event.page + 1;
+    this.phrasesUnitService.rows = event.rows;
+    this.phrasesUnitService.page = event.page + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.phrasesUnitService.getDataInLang(this.page, this.rows, this.filter, this.filterType, this.textbookFilter);
+    await this.phrasesUnitService.getDataInLang();
   }
 
   async deletePhrase(item: MUnitPhrase) {

@@ -25,17 +25,12 @@
     <button mat-raised-button color="primary" (click)="onRefresh()">
       <span><mat-icon fontSet="fa" fontIcon="fa-sync"></mat-icon>Refresh</span>
     </button>
-    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNotes(false)">
-      Get All Notes
+    <mat-checkbox [(ngModel)]="wordsUnitService.ifEmpty">If Empty</mat-checkbox>
+    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNotes()">
+      Get Notes
     </button>
-    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="getNotes(true)">
-      Get Notes If Empty
-    </button>
-    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="clearNotes(false)">
-      Clear All Notes
-    </button>
-    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="clearNotes(true)">
-      Clear Notes If Empty
+    <button mat-raised-button color="accent" [hidden]="!settingsService.selectedDictNote" (click)="clearNotes()">
+      Clear Notes
     </button>
     <a routerLink="/words-dict/unit/0">
       <button mat-raised-button color="primary">

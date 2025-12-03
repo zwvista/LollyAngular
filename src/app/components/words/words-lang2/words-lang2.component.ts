@@ -21,25 +21,23 @@ export class WordsLang2Component implements OnInit {
   appService = container.resolve(AppService);
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
-  rows = 0;
-  page = 1;
 
   constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.wordsLangService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.pageSize;
-    this.page = event.pageIndex + 1;
+    this.wordsLangService.rows = event.pageSize;
+    this.wordsLangService.page = event.pageIndex + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.wordsLangService.getData(this.page, this.rows);
+    await this.wordsLangService.getData();
   }
 
   async deleteWord(item: MLangWord) {

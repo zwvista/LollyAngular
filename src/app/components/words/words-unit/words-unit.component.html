@@ -13,10 +13,13 @@
     </p-floatLabel>
     <p-button label="Add" [rounded]="true" icon="fa fa-plus" (click)="showDetailDialog(0)" />
     <p-button label="Refresh" [rounded]="true" icon="fa fa-sync" (click)="onRefresh()" />
-    <p-button [hidden]="!settingsService.selectedDictNote" severity="warn" label="Get All Notes" (click)="getNotes(false)" />
-    <p-button [hidden]="!settingsService.selectedDictNote" severity="warn" label="Get Notes If Empty" (click)="getNotes(true)" />
-    <p-button [hidden]="!settingsService.selectedDictNote" severity="warn" label="Clear All Notes" (click)="clearNotes(false)" />
-    <p-button [hidden]="!settingsService.selectedDictNote" severity="warn" label="Clear Notes If Empty" (click)="clearNotes(true)" />
+    <div class="flex items-center">
+      <p-checkbox inputId="ifEmpty" [binary]="true" [(ngModel)]="wordsUnitService.ifEmpty" />
+      <label for="ifEmpty" class="ml-2">If Empty</label>
+      <p-toggle-switch [(ngModel)]="wordsUnitService.ifEmpty" />
+    </div>
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warn" label="Get Notes" (click)="getNotes()" />
+    <p-button [hidden]="!settingsService.selectedDictNote" severity="warn" label="Clear Notes" (click)="clearNotes()" />
     <a routerLink="/words-dict/unit/0">
       <p-button label="Dictionary" [rounded]="true" icon="fa fa-book" />
     </a>

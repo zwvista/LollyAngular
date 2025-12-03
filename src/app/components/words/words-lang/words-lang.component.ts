@@ -20,25 +20,23 @@ export class WordsLangComponent implements OnInit {
   wordsLangService = container.resolve(WordsLangService);
   settingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
-  rows = 0;
-  page = 1;
 
   constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.wordsLangService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.rows;
-    this.page = event.page + 1;
+    this.wordsLangService.rows = event.rows;
+    this.wordsLangService.page = event.page + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.wordsLangService.getData(this.page, this.rows);
+    await this.wordsLangService.getData();
   }
 
   async deleteWord(item: MLangWord) {

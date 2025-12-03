@@ -20,27 +20,23 @@ export class Patterns2Component implements OnInit {
   appService = container.resolve(AppService);
   patternsService = container.resolve(PatternsService);
   settingsService = container.resolve(SettingsService);
-  rows = 0;
-  page = 1;
-  filter: string;
-  filterType = 0;
 
   constructor(private dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.patternsService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.pageSize;
-    this.page = event.pageIndex + 1;
+    this.patternsService.rows = event.pageSize;
+    this.patternsService.page = event.pageIndex + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.patternsService.getData(this.page, this.rows, this.filter, this.filterType);
+    await this.patternsService.getData();
   }
 
   async deletePattern(id: number) {

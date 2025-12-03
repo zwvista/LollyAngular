@@ -19,27 +19,23 @@ export class PatternsComponent implements OnInit {
   patternsService = container.resolve(PatternsService);
   settingsService = container.resolve(SettingsService);
   dialogRef: DynamicDialogRef | undefined;
-  rows = 0;
-  page = 1;
-  filter: string;
-  filterType = 0;
 
   constructor(public dialogService: DialogService) { }
 
   async ngOnInit() {
     await this.appService.getData();
-    this.rows = this.settingsService.USROWSPERPAGE;
+    this.patternsService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
   async paginate(event) {
-    this.rows = event.rows;
-    this.page = event.page + 1;
+    this.patternsService.rows = event.rows;
+    this.patternsService.page = event.page + 1;
     await this.onRefresh();
   }
 
   async onRefresh() {
-    await this.patternsService.getData(this.page, this.rows, this.filter, this.filterType);
+    await this.patternsService.getData();
   }
 
   async deletePattern(id: number) {

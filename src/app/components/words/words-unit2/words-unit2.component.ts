@@ -63,12 +63,12 @@ export class WordsUnit2Component implements OnInit {
     googleString(word);
   }
 
-  getNotes(ifEmpty: boolean) {
-    this.wordsUnitService.getNotes(ifEmpty, () => {}, () => {});
+  getNotes() {
+    this.wordsUnitService.getNotes(() => {}, () => {});
   }
 
-  clearNotes(ifEmpty: boolean) {
-    this.wordsUnitService.clearNotes(ifEmpty, () => {}, () => {});
+  clearNotes() {
+    this.wordsUnitService.clearNotes(() => {}, () => {});
   }
 
   showDetailDialog(id: number) {

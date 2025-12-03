@@ -67,6 +67,9 @@ import { WordsUnitDetailComponent } from './components/words/words-unit-detail/w
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { Checkbox, CheckboxModule } from 'primeng/checkbox';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 
 
 @NgModule({
@@ -106,38 +109,42 @@ import Aura from '@primeuix/themes/aura';
     WordsUnitDetailComponent,
   ],
   bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    FormsModule,
-    DragDropModule,
-    // Material
-    MatButtonModule,
-    MatDialogModule,
-    MatIconModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatSelectModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    // PrimeNG
-    ButtonModule,
-    DynamicDialogModule,
-    DropdownModule,
-    FloatLabelModule,
-    InputTextModule,
-    ListboxModule,
-    PaginatorModule,
-    TabMenuModule,
-    TableModule,
-    ToolbarModule,
-    TooltipModule,
-    // 3rd-party
-    ClipboardModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        FormsModule,
+        DragDropModule,
+        // Material
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatIconModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        // PrimeNG
+        ButtonModule,
+        CheckboxModule,
+        DynamicDialogModule,
+        DropdownModule,
+        FloatLabelModule,
+        InputTextModule,
+        ListboxModule,
+        PaginatorModule,
+        TabMenuModule,
+        TableModule,
+        ToggleSwitchModule,
+        ToolbarModule,
+        TooltipModule,
+        // 3rd-party
+        ClipboardModule,
+        Checkbox
+    ],
   providers: [
     DialogService,
     provideHttpClient(withInterceptorsFromDi()),
