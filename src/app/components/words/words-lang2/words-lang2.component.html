@@ -1,11 +1,9 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <mat-form-field>
-      <mat-select [(value)]="wordsLangService.filterType" (selectionChange)="onRefresh()">
-        @for (o of settingsService.wordFilterTypes; track o) {
-          <mat-option [value]="o.value">
-            {{o.label}}
-          </mat-option>
+      <mat-select [(value)]="wordsLangService.filterScope" (selectionChange)="onRefresh()">
+        @for (o of wordsLangService.scopeFilters; track o) {
+          <mat-option [value]="o">{{o}}</mat-option>
         }
       </mat-select>
     </mat-form-field>

@@ -1,6 +1,6 @@
 <p-toolbar>
   <ng-template #start>
-    <p-dropdown id="filterType" [options]="settingsService.phraseFilterTypes" [(ngModel)]="phrasesUnitService.filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterScope" [options]="phrasesUnitService.scopeFilters" [(ngModel)]="phrasesUnitService.filterScope" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
       <input id="filter" type="text" pInputText [(ngModel)]="phrasesUnitService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>

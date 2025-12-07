@@ -6,7 +6,7 @@
     </p-floatLabel>
     <p-button icon="fa fa-volume-up" [rounded]="true" [hidden]="!settingsService.selectedVoice" (click)="settingsService.speak(wordsUnitService.newWord)"
             pTooltip="Speak" tooltipPosition="top" />
-    <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="wordsUnitService.filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterScope" [options]="wordsUnitService.scopeFilters" [(ngModel)]="wordsUnitService.filterScope" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
       <input id="filter" type="text" pInputText [(ngModel)]="wordsUnitService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
@@ -44,7 +44,7 @@
   <ng-template pTemplate="body" let-row let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="row">
       <td>
-        <i [hidden]="!settingsService.isSingleUnitPart || wordsUnitService.filterType !== 0" class="fa fa-bars" pReorderableRowHandle></i>
+        <i [hidden]="!settingsService.isSingleUnitPart || wordsUnitService.filter" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
       <td>{{row.ID}}</td>
       <td>{{row.UNITSTR}}</td>

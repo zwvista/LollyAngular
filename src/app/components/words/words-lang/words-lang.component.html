@@ -1,6 +1,6 @@
 <p-toolbar>
   <ng-template #start>
-    <p-dropdown id="filterType" [options]="settingsService.wordFilterTypes" [(ngModel)]="wordsLangService.filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterScope" [options]="wordsLangService.scopeFilters" [(ngModel)]="wordsLangService.filterScope" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
       <input id="filter" type="text" pInputText [(ngModel)]="wordsLangService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>

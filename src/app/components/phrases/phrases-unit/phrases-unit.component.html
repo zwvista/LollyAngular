@@ -1,6 +1,6 @@
 <p-toolbar>
   <ng-template #start>
-    <p-dropdown id="filterType" [options]="settingsService.phraseFilterTypes" [(ngModel)]="phrasesUnitService.filterType" (onChange)="onRefresh()" />
+    <p-dropdown id="filterScope" [options]="phrasesUnitService.scopeFilters" [(ngModel)]="phrasesUnitService.filterScope" (onChange)="onRefresh()" />
     <p-floatLabel class="inline-block">
       <input id="filter" type="text" pInputText [(ngModel)]="phrasesUnitService.filter" (keyup.enter)="onRefresh()">
       <label for="filter">Filter</label>
@@ -27,7 +27,7 @@
   <ng-template pTemplate="body" let-row let-index="rowIndex">
     <tr [pReorderableRow]="index" [pSelectableRow]="row">
       <td>
-        <i [hidden]="!settingsService.isSingleUnitPart || phrasesUnitService.filterType !== 0" class="fa fa-bars" pReorderableRowHandle></i>
+        <i [hidden]="!settingsService.isSingleUnitPart || phrasesUnitService.filter" class="fa fa-bars" pReorderableRowHandle></i>
       </td>
       <td>{{row.ID}}</td>
       <td>{{row.UNITSTR}}</td>

@@ -1,11 +1,9 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <mat-form-field>
-      <mat-select [(value)]="phrasesUnitService.filterType" (selectionChange)="onRefresh()">
-        @for (o of settingsService.phraseFilterTypes; track o) {
-          <mat-option [value]="o.value">
-            {{o.label}}
-          </mat-option>
+      <mat-select [(value)]="phrasesUnitService.filterScope" (selectionChange)="onRefresh()">
+        @for (o of phrasesUnitService.scopeFilters; track o) {
+          <mat-option [value]="o">{{o}}</mat-option>
         }
       </mat-select>
     </mat-form-field>
