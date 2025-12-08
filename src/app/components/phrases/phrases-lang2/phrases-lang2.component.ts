@@ -26,7 +26,6 @@ export class PhrasesLang2Component implements OnInit {
 
   async ngOnInit() {
     await this.appService.getData();
-    this.phrasesLangService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 

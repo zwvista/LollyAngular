@@ -25,7 +25,6 @@ export class WordsLangComponent implements OnInit {
 
   async ngOnInit() {
     await this.appService.getData();
-    this.wordsLangService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 

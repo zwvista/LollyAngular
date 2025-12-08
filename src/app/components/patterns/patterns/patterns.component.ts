@@ -24,7 +24,6 @@ export class PatternsComponent implements OnInit {
 
   async ngOnInit() {
     await this.appService.getData();
-    this.patternsService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 

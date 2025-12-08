@@ -25,7 +25,6 @@ export class PhrasesTextbookComponent implements OnInit {
 
   async ngOnInit() {
     await this.appService.getData();
-    this.phrasesUnitService.rows = this.settingsService.USROWSPERPAGE;
     await this.onRefresh();
   }
 
